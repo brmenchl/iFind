@@ -22,6 +22,15 @@
 		CEA6D38718BD4E8000F36A35 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA6D38618BD4E8000F36A35 /* MapKit.framework */; };
 		CEA6D38918BD4FFC00F36A35 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEA6D38818BD4FFC00F36A35 /* Storyboard.storyboard */; };
 		CEA6D38B18BD505700F36A35 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA6D38A18BD505700F36A35 /* Parse.framework */; };
+		CEA6D38D18BD517500F36A35 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA6D38C18BD517500F36A35 /* AudioToolbox.framework */; };
+		CEA6D38F18BD518200F36A35 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA6D38E18BD518200F36A35 /* CFNetwork.framework */; };
+		CEA6D39118BD519100F36A35 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA6D39018BD519100F36A35 /* CoreLocation.framework */; };
+		CEA6D39318BD51A100F36A35 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA6D39218BD51A100F36A35 /* libz.dylib */; };
+		CEA6D39518BD51AD00F36A35 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA6D39418BD51AD00F36A35 /* MobileCoreServices.framework */; };
+		CEA6D39718BD51BC00F36A35 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA6D39618BD51BC00F36A35 /* QuartzCore.framework */; };
+		CEA6D39918BD51C600F36A35 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA6D39818BD51C600F36A35 /* Security.framework */; };
+		CEA6D39B18BD51D000F36A35 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA6D39A18BD51D000F36A35 /* StoreKit.framework */; };
+		CEA6D39D18BD51DD00F36A35 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA6D39C18BD51DD00F36A35 /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +63,15 @@
 		CEA6D38618BD4E8000F36A35 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		CEA6D38818BD4FFC00F36A35 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		CEA6D38A18BD505700F36A35 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		CEA6D38C18BD517500F36A35 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		CEA6D38E18BD518200F36A35 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		CEA6D39018BD519100F36A35 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		CEA6D39218BD51A100F36A35 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		CEA6D39418BD51AD00F36A35 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		CEA6D39618BD51BC00F36A35 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		CEA6D39818BD51C600F36A35 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		CEA6D39A18BD51D000F36A35 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		CEA6D39C18BD51DD00F36A35 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +79,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEA6D39D18BD51DD00F36A35 /* SystemConfiguration.framework in Frameworks */,
+				CEA6D39B18BD51D000F36A35 /* StoreKit.framework in Frameworks */,
+				CEA6D39918BD51C600F36A35 /* Security.framework in Frameworks */,
+				CEA6D39718BD51BC00F36A35 /* QuartzCore.framework in Frameworks */,
+				CEA6D39518BD51AD00F36A35 /* MobileCoreServices.framework in Frameworks */,
+				CEA6D39318BD51A100F36A35 /* libz.dylib in Frameworks */,
+				CEA6D39118BD519100F36A35 /* CoreLocation.framework in Frameworks */,
+				CEA6D38F18BD518200F36A35 /* CFNetwork.framework in Frameworks */,
+				CEA6D38D18BD517500F36A35 /* AudioToolbox.framework in Frameworks */,
 				CEA6D35A18BD4E2800F36A35 /* CoreGraphics.framework in Frameworks */,
 				CEA6D35C18BD4E2800F36A35 /* UIKit.framework in Frameworks */,
 				CEA6D38718BD4E8000F36A35 /* MapKit.framework in Frameworks */,
@@ -104,6 +131,15 @@
 		CEA6D35618BD4E2700F36A35 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CEA6D39C18BD51DD00F36A35 /* SystemConfiguration.framework */,
+				CEA6D39A18BD51D000F36A35 /* StoreKit.framework */,
+				CEA6D39818BD51C600F36A35 /* Security.framework */,
+				CEA6D39618BD51BC00F36A35 /* QuartzCore.framework */,
+				CEA6D39418BD51AD00F36A35 /* MobileCoreServices.framework */,
+				CEA6D39218BD51A100F36A35 /* libz.dylib */,
+				CEA6D39018BD519100F36A35 /* CoreLocation.framework */,
+				CEA6D38E18BD518200F36A35 /* CFNetwork.framework */,
+				CEA6D38C18BD517500F36A35 /* AudioToolbox.framework */,
 				CEA6D38A18BD505700F36A35 /* Parse.framework */,
 				CEA6D38618BD4E8000F36A35 /* MapKit.framework */,
 				CEA6D35718BD4E2700F36A35 /* Foundation.framework */,
