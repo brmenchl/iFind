@@ -471,6 +471,7 @@
 				CEA6D38218BD4E2800F36A35 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CEA6D38318BD4E2800F36A35 /* Build configuration list for PBXNativeTarget "iFindTests" */ = {
 			isa = XCConfigurationList;
@@ -479,6 +480,7 @@
 				CEA6D38518BD4E2800F36A35 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
