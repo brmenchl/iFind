@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE3E63D118BD55A400A5DCD7 /* GemFinderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3E63D018BD55A400A5DCD7 /* GemFinderViewController.m */; };
 		CEA6D35818BD4E2800F36A35 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA6D35718BD4E2700F36A35 /* Foundation.framework */; };
 		CEA6D35A18BD4E2800F36A35 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA6D35918BD4E2800F36A35 /* CoreGraphics.framework */; };
 		CEA6D35C18BD4E2800F36A35 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA6D35B18BD4E2800F36A35 /* UIKit.framework */; };
@@ -44,6 +45,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CE3E63CF18BD55A400A5DCD7 /* GemFinderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GemFinderViewController.h; sourceTree = "<group>"; };
+		CE3E63D018BD55A400A5DCD7 /* GemFinderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GemFinderViewController.m; sourceTree = "<group>"; };
 		CEA6D35418BD4E2700F36A35 /* iFind.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iFind.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEA6D35718BD4E2700F36A35 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		CEA6D35918BD4E2800F36A35 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -158,6 +161,8 @@
 				CEA6D38818BD4FFC00F36A35 /* Storyboard.storyboard */,
 				CEA6D36918BD4E2800F36A35 /* Images.xcassets */,
 				CEA6D35E18BD4E2800F36A35 /* Supporting Files */,
+				CE3E63CF18BD55A400A5DCD7 /* GemFinderViewController.h */,
+				CE3E63D018BD55A400A5DCD7 /* GemFinderViewController.m */,
 			);
 			path = iFind;
 			sourceTree = "<group>";
@@ -299,6 +304,7 @@
 			files = (
 				CEA6D36818BD4E2800F36A35 /* AppDelegate.m in Sources */,
 				CEA6D36418BD4E2800F36A35 /* main.m in Sources */,
+				CE3E63D118BD55A400A5DCD7 /* GemFinderViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
