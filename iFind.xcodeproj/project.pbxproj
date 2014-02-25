@@ -19,6 +19,7 @@
 		CEA6D37318BD4E2800F36A35 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA6D35B18BD4E2800F36A35 /* UIKit.framework */; };
 		CEA6D37B18BD4E2800F36A35 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CEA6D37918BD4E2800F36A35 /* InfoPlist.strings */; };
 		CEA6D37D18BD4E2800F36A35 /* iFindTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA6D37C18BD4E2800F36A35 /* iFindTests.m */; };
+		CEA6D38718BD4E8000F36A35 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA6D38618BD4E8000F36A35 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		CEA6D37818BD4E2800F36A35 /* iFindTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iFindTests-Info.plist"; sourceTree = "<group>"; };
 		CEA6D37A18BD4E2800F36A35 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CEA6D37C18BD4E2800F36A35 /* iFindTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iFindTests.m; sourceTree = "<group>"; };
+		CEA6D38618BD4E8000F36A35 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 			files = (
 				CEA6D35A18BD4E2800F36A35 /* CoreGraphics.framework in Frameworks */,
 				CEA6D35C18BD4E2800F36A35 /* UIKit.framework in Frameworks */,
+				CEA6D38718BD4E8000F36A35 /* MapKit.framework in Frameworks */,
 				CEA6D35818BD4E2800F36A35 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -96,6 +99,7 @@
 		CEA6D35618BD4E2700F36A35 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CEA6D38618BD4E8000F36A35 /* MapKit.framework */,
 				CEA6D35718BD4E2700F36A35 /* Foundation.framework */,
 				CEA6D35918BD4E2800F36A35 /* CoreGraphics.framework */,
 				CEA6D35B18BD4E2800F36A35 /* UIKit.framework */,
@@ -191,6 +195,16 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = FuarkNet;
 				TargetAttributes = {
+					CEA6D35318BD4E2700F36A35 = {
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.iOS = {
+								enabled = 1;
+							};
+						};
+					};
 					CEA6D36E18BD4E2800F36A35 = {
 						TestTargetID = CEA6D35318BD4E2700F36A35;
 					};
