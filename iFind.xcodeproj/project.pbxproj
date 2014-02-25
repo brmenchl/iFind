@@ -20,6 +20,8 @@
 		CEA6D37B18BD4E2800F36A35 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CEA6D37918BD4E2800F36A35 /* InfoPlist.strings */; };
 		CEA6D37D18BD4E2800F36A35 /* iFindTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA6D37C18BD4E2800F36A35 /* iFindTests.m */; };
 		CEA6D38718BD4E8000F36A35 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA6D38618BD4E8000F36A35 /* MapKit.framework */; };
+		CEA6D38918BD4FFC00F36A35 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEA6D38818BD4FFC00F36A35 /* Storyboard.storyboard */; };
+		CEA6D38B18BD505700F36A35 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA6D38A18BD505700F36A35 /* Parse.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +52,8 @@
 		CEA6D37A18BD4E2800F36A35 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CEA6D37C18BD4E2800F36A35 /* iFindTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iFindTests.m; sourceTree = "<group>"; };
 		CEA6D38618BD4E8000F36A35 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		CEA6D38818BD4FFC00F36A35 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
+		CEA6D38A18BD505700F36A35 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +65,7 @@
 				CEA6D35C18BD4E2800F36A35 /* UIKit.framework in Frameworks */,
 				CEA6D38718BD4E8000F36A35 /* MapKit.framework in Frameworks */,
 				CEA6D35818BD4E2800F36A35 /* Foundation.framework in Frameworks */,
+				CEA6D38B18BD505700F36A35 /* Parse.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,6 +104,7 @@
 		CEA6D35618BD4E2700F36A35 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CEA6D38A18BD505700F36A35 /* Parse.framework */,
 				CEA6D38618BD4E8000F36A35 /* MapKit.framework */,
 				CEA6D35718BD4E2700F36A35 /* Foundation.framework */,
 				CEA6D35918BD4E2800F36A35 /* CoreGraphics.framework */,
@@ -113,6 +119,7 @@
 			children = (
 				CEA6D36618BD4E2800F36A35 /* AppDelegate.h */,
 				CEA6D36718BD4E2800F36A35 /* AppDelegate.m */,
+				CEA6D38818BD4FFC00F36A35 /* Storyboard.storyboard */,
 				CEA6D36918BD4E2800F36A35 /* Images.xcassets */,
 				CEA6D35E18BD4E2800F36A35 /* Supporting Files */,
 			);
@@ -235,6 +242,7 @@
 			files = (
 				CEA6D36218BD4E2800F36A35 /* InfoPlist.strings in Resources */,
 				CEA6D36A18BD4E2800F36A35 /* Images.xcassets in Resources */,
+				CEA6D38918BD4FFC00F36A35 /* Storyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,6 +381,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/amilenius/Desktop/iFind,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iFind/iFind-Prefix.pch";
 				INFOPLIST_FILE = "iFind/iFind-Info.plist";
@@ -386,6 +398,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/amilenius/Desktop/iFind,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iFind/iFind-Prefix.pch";
 				INFOPLIST_FILE = "iFind/iFind-Info.plist";
