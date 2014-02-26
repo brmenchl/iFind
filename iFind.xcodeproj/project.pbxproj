@@ -30,8 +30,12 @@
 		CEA6D39518BD51AD00F36A35 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA6D39418BD51AD00F36A35 /* MobileCoreServices.framework */; };
 		CEA6D39718BD51BC00F36A35 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA6D39618BD51BC00F36A35 /* QuartzCore.framework */; };
 		CEA6D39918BD51C600F36A35 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA6D39818BD51C600F36A35 /* Security.framework */; };
-		CEA6D39B18BD51D000F36A35 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA6D39A18BD51D000F36A35 /* StoreKit.framework */; };
 		CEA6D39D18BD51DD00F36A35 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA6D39C18BD51DD00F36A35 /* SystemConfiguration.framework */; };
+		E2CC0AF918BE95E3008B6094 /* compass@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2CC0AF818BE95E3008B6094 /* compass@2x.png */; };
+		E2CC0AFB18BE964A008B6094 /* compass.png in Resources */ = {isa = PBXBuildFile; fileRef = E2CC0AFA18BE964A008B6094 /* compass.png */; };
+		E2CC0B0018BE96ED008B6094 /* BounceMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2CC0AFF18BE96ED008B6094 /* BounceMenuController.m */; };
+		E2CC0B0318BE96F7008B6094 /* PlusButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E2CC0B0218BE96F7008B6094 /* PlusButton.m */; };
+		E2CC0B0518BE9AF9008B6094 /* barDivider.png in Resources */ = {isa = PBXBuildFile; fileRef = E2CC0B0418BE9AF9008B6094 /* barDivider.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,8 +77,14 @@
 		CEA6D39418BD51AD00F36A35 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		CEA6D39618BD51BC00F36A35 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		CEA6D39818BD51C600F36A35 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		CEA6D39A18BD51D000F36A35 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		CEA6D39C18BD51DD00F36A35 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		E2CC0AF818BE95E3008B6094 /* compass@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "compass@2x.png"; sourceTree = "<group>"; };
+		E2CC0AFA18BE964A008B6094 /* compass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = compass.png; sourceTree = "<group>"; };
+		E2CC0AFE18BE96EC008B6094 /* BounceMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BounceMenuController.h; sourceTree = "<group>"; };
+		E2CC0AFF18BE96ED008B6094 /* BounceMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BounceMenuController.m; sourceTree = "<group>"; };
+		E2CC0B0118BE96F7008B6094 /* PlusButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlusButton.h; sourceTree = "<group>"; };
+		E2CC0B0218BE96F7008B6094 /* PlusButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlusButton.m; sourceTree = "<group>"; };
+		E2CC0B0418BE9AF9008B6094 /* barDivider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barDivider.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,9 +93,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEA6D39D18BD51DD00F36A35 /* SystemConfiguration.framework in Frameworks */,
-				CEA6D39B18BD51D000F36A35 /* StoreKit.framework in Frameworks */,
 				CEA6D39918BD51C600F36A35 /* Security.framework in Frameworks */,
 				CEA6D39718BD51BC00F36A35 /* QuartzCore.framework in Frameworks */,
+				CEA6D38B18BD505700F36A35 /* Parse.framework in Frameworks */,
 				CEA6D39518BD51AD00F36A35 /* MobileCoreServices.framework in Frameworks */,
 				CEA6D39318BD51A100F36A35 /* libz.dylib in Frameworks */,
 				CEA6D39118BD519100F36A35 /* CoreLocation.framework in Frameworks */,
@@ -95,7 +105,6 @@
 				CEA6D35C18BD4E2800F36A35 /* UIKit.framework in Frameworks */,
 				CEA6D38718BD4E8000F36A35 /* MapKit.framework in Frameworks */,
 				CEA6D35818BD4E2800F36A35 /* Foundation.framework in Frameworks */,
-				CEA6D38B18BD505700F36A35 /* Parse.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,7 +144,6 @@
 			isa = PBXGroup;
 			children = (
 				CEA6D39C18BD51DD00F36A35 /* SystemConfiguration.framework */,
-				CEA6D39A18BD51D000F36A35 /* StoreKit.framework */,
 				CEA6D39818BD51C600F36A35 /* Security.framework */,
 				CEA6D39618BD51BC00F36A35 /* QuartzCore.framework */,
 				CEA6D39418BD51AD00F36A35 /* MobileCoreServices.framework */,
@@ -156,6 +164,11 @@
 		CEA6D35D18BD4E2800F36A35 /* iFind */ = {
 			isa = PBXGroup;
 			children = (
+				E2CC0B0618BE9C2B008B6094 /* Images */,
+				E2CC0B0118BE96F7008B6094 /* PlusButton.h */,
+				E2CC0B0218BE96F7008B6094 /* PlusButton.m */,
+				E2CC0AFE18BE96EC008B6094 /* BounceMenuController.h */,
+				E2CC0AFF18BE96ED008B6094 /* BounceMenuController.m */,
 				CEA6D36618BD4E2800F36A35 /* AppDelegate.h */,
 				CEA6D36718BD4E2800F36A35 /* AppDelegate.m */,
 				CEA6D38818BD4FFC00F36A35 /* Storyboard.storyboard */,
@@ -194,6 +207,16 @@
 				CEA6D37918BD4E2800F36A35 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E2CC0B0618BE9C2B008B6094 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				E2CC0B0418BE9AF9008B6094 /* barDivider.png */,
+				E2CC0AFA18BE964A008B6094 /* compass.png */,
+				E2CC0AF818BE95E3008B6094 /* compass@2x.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -244,9 +267,13 @@
 				ORGANIZATIONNAME = FuarkNet;
 				TargetAttributes = {
 					CEA6D35318BD4E2700F36A35 = {
+						DevelopmentTeam = K99KPPSM33;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
+							};
+							com.apple.InAppPurchase = {
+								enabled = 0;
 							};
 							com.apple.iOS = {
 								enabled = 1;
@@ -281,9 +308,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2CC0AF918BE95E3008B6094 /* compass@2x.png in Resources */,
+				E2CC0AFB18BE964A008B6094 /* compass.png in Resources */,
 				CEA6D36218BD4E2800F36A35 /* InfoPlist.strings in Resources */,
 				CEA6D36A18BD4E2800F36A35 /* Images.xcassets in Resources */,
 				CEA6D38918BD4FFC00F36A35 /* Storyboard.storyboard in Resources */,
+				E2CC0B0518BE9AF9008B6094 /* barDivider.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,8 +332,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2CC0B0318BE96F7008B6094 /* PlusButton.m in Sources */,
 				CEA6D36818BD4E2800F36A35 /* AppDelegate.m in Sources */,
 				CEA6D36418BD4E2800F36A35 /* main.m in Sources */,
+				E2CC0B0018BE96ED008B6094 /* BounceMenuController.m in Sources */,
 				CE3E63D118BD55A400A5DCD7 /* GemFinderViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -423,9 +455,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/amilenius/Desktop/iFind,
+					.,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iFind/iFind-Prefix.pch";
@@ -440,9 +473,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/amilenius/Desktop/iFind,
+					.,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iFind/iFind-Prefix.pch";

@@ -13,26 +13,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    
-    BounceMenuController *bounceMenuController = [[BounceMenuController alloc] init];
-    
-    // optionally load view controllers from a storyboard
-    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
-    UIViewController *findervc = [sb instantiateViewControllerWithIdentifier:@"finderVC"];
-    
     [Parse setApplicationId:@"EXa4eSmnKSJ1Pe4KR1e6hnNMmTvbs7ExC441LLkR"
                   clientKey:@"4Cg6pBg5EUV3IAKmrpKsTLUoHMBbxoysNvL81q1x"];
-    
-    // set the view controllers for the bounc menu
-    NSArray* controllers = [NSArray arrayWithObjects:findervc, nil];
-    bounceMenuController.viewControllers = controllers;
-    bounceMenuController.delegate = self;
-    
-    self.window.rootViewController = bounceMenuController;
-    
-    [self.window makeKeyAndVisible];
-    
     return YES;
 }
 
@@ -61,14 +43,6 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-}
-
-- (BOOL)bouncMenuController:(BounceMenuController *)controller shouldSelectViewController:(UIViewController *)viewController {
-    return YES;
-}
-
-- (void)bouncMenuController:(BounceMenuController *)controller didSelectViewController:(UIViewController *)viewController {
-    NSLog(@"selected view controller: %@", viewController);
 }
 
 @end
