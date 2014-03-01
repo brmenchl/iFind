@@ -9,9 +9,13 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 #import "BounceMenuController.h"
+#import "WelcomeViewController.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate, BounceMenuControllerDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, BounceMenuControllerDelegate, WelcomeViewControllerDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) NSArray *controllers;
+@property (strong, nonatomic) BounceMenuController *bounceMenuController;
 
+-(void) welcomeViewController:(WelcomeViewController *)controller didUserLoginSuccessfully:(BOOL)success;
 @end

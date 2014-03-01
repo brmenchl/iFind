@@ -141,8 +141,8 @@
 
 - (void)controllerSelected:(UIButton *)button {
 
-    if (self.delegate != nil && [self.delegate respondsToSelector:@selector(bouncMenuController:shouldSelectViewController:)]) {
-        BOOL shouldSelect = [self.delegate bouncMenuController:self shouldSelectViewController:self.selectedViewController];
+    if (self.delegate != nil && [self.delegate respondsToSelector:@selector(bounceMenuController:shouldSelectViewController:)]) {
+        BOOL shouldSelect = [self.delegate bounceMenuController:self shouldSelectViewController:self.selectedViewController];
         if (!shouldSelect) {
             [self closeMenu];
             return;
@@ -158,8 +158,8 @@
         [self.contentView removeFromSuperview];
         self.contentView = self.selectedViewController.view;
         
-        if (self.delegate != nil && [self.delegate respondsToSelector:@selector(bouncMenuController:didSelectViewController:)]) {
-            [self.delegate bouncMenuController:self didSelectViewController:self.selectedViewController];
+        if (self.delegate != nil && [self.delegate respondsToSelector:@selector(bounceMenuController:didSelectViewController:)]) {
+            [self.delegate bounceMenuController:self didSelectViewController:self.selectedViewController];
         }
     }
     

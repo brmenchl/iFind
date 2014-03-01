@@ -12,63 +12,63 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    
-    BounceMenuController *bounceMenuController = [[BounceMenuController alloc] init];
-    
-    // optionally load view controllers from a storyboard
-    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
-    UIViewController *findervc = [sb instantiateViewControllerWithIdentifier:@"finderVC"];
     
     [Parse setApplicationId:@"EXa4eSmnKSJ1Pe4KR1e6hnNMmTvbs7ExC441LLkR"
                   clientKey:@"4Cg6pBg5EUV3IAKmrpKsTLUoHMBbxoysNvL81q1x"];
+    [PFFacebookUtils initializeFacebook];
+    [FBLoginView class];
     
-    // set the view controllers for the bounc menu
-    NSArray* controllers = [NSArray arrayWithObjects:findervc, nil];
-    bounceMenuController.viewControllers = controllers;
-    bounceMenuController.delegate = self;
-    
-    self.window.rootViewController = bounceMenuController;
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController *findervc = [sb instantiateViewControllerWithIdentifier:@"finderVC"];
+    UIViewController *settingsvc = [sb instantiateViewControllerWithIdentifier:@"settingsVC"];
+    self.controllers = [NSArray arrayWithObjects:findervc, settingsvc, nil];
+    self.bounceMenuController = [[BounceMenuController alloc] init];
+    self.bounceMenuController.viewControllers = self.controllers;
+    self.bounceMenuController.delegate = self;
+
+    if([PFUser currentUser]) {
+        self.window.rootViewController = self.bounceMenuController;
+    }
+    else {
+        WelcomeViewController *welcomeVC = [sb instantiateViewControllerWithIdentifier:@"welcomeVC"];
+        welcomeVC.delegate = self;
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController: welcomeVC];
+        self.window.rootViewController = nav;
+    }
     
     [self.window makeKeyAndVisible];
-    
     return YES;
 }
 
-- (void)applicationWillResignActive:(UIApplication *)application
-{
-    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-    // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    return [FBAppCall handleOpenURL:url sourceApplication:sourceApplication withSession:[PFFacebookUtils session]];
 }
 
-- (void)applicationDidEnterBackground:(UIApplication *)application
-{
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-}
-
-- (void)applicationWillEnterForeground:(UIApplication *)application
-{
-    // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-}
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    [FBAppCall handleDidBecomeActiveWithSession:[PFFacebookUtils session]];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
-    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    [[PFFacebookUtils session] close];
 }
 
-- (BOOL)bouncMenuController:(BounceMenuController *)controller shouldSelectViewController:(UIViewController *)viewController {
+- (BOOL)bounceMenuController:(BounceMenuController *)controller shouldSelectViewController:(UIViewController *)viewController {
     return YES;
 }
 
-- (void)bouncMenuController:(BounceMenuController *)controller didSelectViewController:(UIViewController *)viewController {
+- (void)bounceMenuController:(BounceMenuController *)controller didSelectViewController:(UIViewController *)viewController {
     NSLog(@"selected view controller: %@", viewController);
+}
+
+- (void) welcomeViewController:(WelcomeViewController *)controller didUserLoginSuccessfully:(BOOL)success {
+    if(success) {
+        self.window.rootViewController = self.bounceMenuController;
+    }
 }
 
 @end

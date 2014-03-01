@@ -12,8 +12,8 @@
 
 @protocol BounceMenuControllerDelegate <NSObject>
 
-- (BOOL)bouncMenuController:(BounceMenuController *)controller shouldSelectViewController:(UIViewController *)viewController;
-- (void)bouncMenuController:(BounceMenuController *)controller didSelectViewController:(UIViewController *)viewController;
+- (BOOL)bounceMenuController:(BounceMenuController *)controller shouldSelectViewController:(UIViewController *)viewController;
+- (void)bounceMenuController:(BounceMenuController *)controller didSelectViewController:(UIViewController *)viewController;
 
 @end
 
