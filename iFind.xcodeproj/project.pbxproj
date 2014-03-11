@@ -30,6 +30,7 @@
 		CEA6D39718BD51BC00F36A35 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA6D39618BD51BC00F36A35 /* QuartzCore.framework */; };
 		CEA6D39918BD51C600F36A35 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA6D39818BD51C600F36A35 /* Security.framework */; };
 		CEA6D39D18BD51DD00F36A35 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA6D39C18BD51DD00F36A35 /* SystemConfiguration.framework */; };
+		E2675C6418CFB26A00F56BD3 /* CreateAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2675C6318CFB26A00F56BD3 /* CreateAccountViewController.m */; };
 		E2CC0AF918BE95E3008B6094 /* compass@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2CC0AF818BE95E3008B6094 /* compass@2x.png */; };
 		E2CC0AFB18BE964A008B6094 /* compass.png in Resources */ = {isa = PBXBuildFile; fileRef = E2CC0AFA18BE964A008B6094 /* compass.png */; };
 		E2CC0B0018BE96ED008B6094 /* BounceMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2CC0AFF18BE96ED008B6094 /* BounceMenuController.m */; };
@@ -82,6 +83,8 @@
 		CEA6D39618BD51BC00F36A35 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		CEA6D39818BD51C600F36A35 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		CEA6D39C18BD51DD00F36A35 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		E2675C6218CFB26A00F56BD3 /* CreateAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateAccountViewController.h; sourceTree = "<group>"; };
+		E2675C6318CFB26A00F56BD3 /* CreateAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateAccountViewController.m; sourceTree = "<group>"; };
 		E2CC0AF818BE95E3008B6094 /* compass@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "compass@2x.png"; sourceTree = "<group>"; };
 		E2CC0AFA18BE964A008B6094 /* compass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = compass.png; sourceTree = "<group>"; };
 		E2CC0AFE18BE96EC008B6094 /* BounceMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BounceMenuController.h; sourceTree = "<group>"; };
@@ -242,6 +245,8 @@
 				E2E7CD9818C1761100C20286 /* WelcomeViewController.m */,
 				E2E711C918C1AAF900F5EAC1 /* SettingsViewController.h */,
 				E2E711CA18C1AAF900F5EAC1 /* SettingsViewController.m */,
+				E2675C6218CFB26A00F56BD3 /* CreateAccountViewController.h */,
+				E2675C6318CFB26A00F56BD3 /* CreateAccountViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -373,6 +378,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2675C6418CFB26A00F56BD3 /* CreateAccountViewController.m in Sources */,
 				E2CC0B0318BE96F7008B6094 /* PlusButton.m in Sources */,
 				CEA6D36818BD4E2800F36A35 /* AppDelegate.m in Sources */,
 				CEA6D36418BD4E2800F36A35 /* main.m in Sources */,

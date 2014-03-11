@@ -70,8 +70,8 @@
 
 - (void)viewWillLayoutSubviews {
     self.menuButton.frame = CGRectMake(15, self.view.bounds.size.height - 45, self.menuButton.frame.size.width, self.menuButton.frame.size.height);
-    self.vertBar.frame = CGRectMake(62, self.view.bounds.size.height - 50, 4,40);
-    self.vertBar.alpha = 1;
+    self.vertBar.frame = CGRectMake(62, self.view.bounds.size.height - 45, 4,30);
+    self.vertBar.alpha = 0.6;
     for (UIViewController *viewController in self.viewControllers) {
         viewController.view.frame = CGRectMake(self.contentView.frame.origin.x, self.contentView.frame.origin.y, self.view.bounds.size.width, self.view.bounds.size.height);
     }

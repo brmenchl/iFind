@@ -43,10 +43,6 @@
     }
 }
 
-
-
-
-
 - (IBAction)tapGestureRecognizer:(id)sender {
     [self.view endEditing:YES];
 }
