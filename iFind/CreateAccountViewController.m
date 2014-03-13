@@ -15,56 +15,109 @@
 
 @implementation CreateAccountViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    self.usernameField.text = @"";
+    self.emailField.text = @"";
+    self.emailFieldAgain.text = @"";
+    self.passwordField.text = @"";
+    self.passwordFieldAgain.text = @"";
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     [self.navigationController setNavigationBarHidden: NO animated:NO];
-    // Do any additional setup after loading the view.
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldsChanged:) name:UITextFieldTextDidChangeNotification object:nil];
+    self.createLockerButton.enabled = NO;
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextFieldTextDidChangeNotification object:nil];
 }
 
-- (void)signUp {
-    PFUser *user = [PFUser user];
-    user.username = @"my name";
-    user.password = @"my pass";
-    user.email = @"email@example.com";
-    
-    // other fields can be set just like with PFObject
-    user[@"phone"] = @"415-392-0202";
-    
-    [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        if (!error) {
-            // Hooray! Let them use the app now.
-        } else {
-            NSString *errorString = [error userInfo][@"error"];
-            // Show the errorString somewhere and let the user try again.
+- (void)textFieldsChanged:(NSNotification *)note {
+    if(self.usernameField.text != nil &&
+       self.emailField != nil &&
+       [self.emailFieldAgain.text isEqualToString:self.emailFieldAgain.text] &&
+       self.passwordField != nil &&
+       [self.passwordFieldAgain.text isEqualToString:self.passwordFieldAgain.text]) {
+        self.createLockerButton.enabled = YES;
+    }
+    else {
+        self.createLockerButton.enabled = NO;
+    }
+}
+
+- (IBAction)tapAwayGesture:(id)sender {
+    [self.view endEditing:YES];
+}
+
+- (IBAction)createLockerPress:(id)sender {
+    UIAlertView *alertView = nil;
+    if([self NStringIsValidPassword:self.passwordField.text]) {
+        if([self NSStringIsValidEmail:self.emailField.text]) {
+            PFUser *user = [PFUser user];
+            user.username = self.usernameField.text;
+            user.password = self.passwordField.text;
+            user.email = self.emailField.text;
+            [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                if (!error) {
+                    [self.delegate viewController:self didUserLoginSuccessfully:YES];
+                } else {
+                    NSString *errorString = [error userInfo][@"error"];
+                    NSLog(@"%@",errorString);
+                }
+            }];
         }
-    }];
+        else {
+            alertView = [[UIAlertView alloc] initWithTitle:@"Invalid Email" message:@"Please enter a valid email" delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+            [alertView show];
+        }
+    }
+    else {
+        alertView = [[UIAlertView alloc] initWithTitle:@"Invalid Password" message:@"Please enter a valid password\n(passwords must have at least 8 characters and be a mix of letters and numbers)" delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+        [alertView show];
+    }
 }
 
-/*
-#pragma mark - Navigation
+-(BOOL) NStringIsValidPassword: (NSString *)checkString {
+    NSString *passwordRegex = @"(?=^.{8,}$)(?=.*[0-9])(?!.*[!@# $%^&*])(?![.\n])(?=.*[a-z]).*$";
+    NSPredicate *passTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", passwordRegex];
+    return [passTest evaluateWithObject:checkString];
+}
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+-(BOOL) NSStringIsValidEmail:(NSString *)checkString {
+    BOOL stricterFilter = YES;
+    NSString *strictFilterString = @"[A-Z0-9a-z\\._%+-]+@([A-Za-z0-9-]+\\.)+[A-Za-z]{2,4}";
+    NSString *unstrictFilterString = @".+@([A-Za-z0-9]+\\.)+[A-Za-z]{2}[A-Za-z]*";
+    NSString *emailRegex = stricterFilter ? strictFilterString : unstrictFilterString;
+    NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
+    return [emailTest evaluateWithObject:checkString];
+}
+
+
+// THIS IS APPARENTLY NOT A GREAT WAY TO MOVE SCREEN CONTENT UP AND DOWN TO AVOID THE KEYBOARD
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    [self animateViewUp: YES];
+}
+
+- (void) textFieldDidEndEditing: (UITextField *)textField {
+    [self animateViewUp: NO];
+}
+
+- (void) animateViewUp: (BOOL) up
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    const int movementDistance = 80;
+    const float movementDuration = 0.3f;
+    
+    int movement = (up ? -movementDistance : movementDistance);
+    
+    [UIView beginAnimations: @"anim" context: nil];
+    [UIView setAnimationBeginsFromCurrentState: YES];
+    [UIView setAnimationDuration: movementDuration];
+    self.view.frame = CGRectOffset(self.view.frame, 0, movement);
+    [UIView commitAnimations];
 }
-*/
-
 @end

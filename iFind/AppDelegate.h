@@ -10,12 +10,16 @@
 #import <Parse/Parse.h>
 #import "BounceMenuController.h"
 #import "WelcomeViewController.h"
+#import "CreateAccountViewController.h"
+#import "SettingsViewController.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate, BounceMenuControllerDelegate, WelcomeViewControllerDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, BounceMenuControllerDelegate, WelcomeViewControllerDelegate, CreateAccountViewControllerDelegate, SettingsViewControllerDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) NSArray *controllers;
 @property (strong, nonatomic) BounceMenuController *bounceMenuController;
+@property (strong, nonatomic) UINavigationController *nav;
 
--(void) welcomeViewController:(WelcomeViewController *)controller didUserLoginSuccessfully:(BOOL)success;
+-(void) viewController:(UIViewController *)controller didUserLoginSuccessfully:(BOOL)success;
+-(void) viewController:(UIViewController *)controller didUserLogoutSuccessfully:(BOOL)success;
 @end

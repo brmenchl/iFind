@@ -8,6 +8,7 @@
 
 #import "WelcomeViewController.h"
 #import <Parse/Parse.h>
+#import "CreateAccountViewController.h"
 
 @interface WelcomeViewController ()
 @end
@@ -21,7 +22,12 @@
     [self.navigationController setNavigationBarHidden: YES animated:NO];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldsChanged:) name:UITextFieldTextDidChangeNotification object:nil];
     self.loginButton.enabled = NO;
-    self.createAccountButton = NO;
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    self.usernameField.text = @"";
+    self.passwordField.text = @"";
 }
 
 - (void)dealloc {
@@ -35,11 +41,9 @@
        self.passwordField.text != nil &&
        self.passwordField.text.length > 6) {
         self.loginButton.enabled = YES;
-        self.createAccountButton.enabled = YES;
     }
     else {
         self.loginButton.enabled = NO;
-        self.createAccountButton.enabled = NO;
     }
 }
 
@@ -48,11 +52,42 @@
 }
 
 - (IBAction)loginPress:(id)sender {
-    NSLog(@"HI");
+    self.loginButton.enabled = NO;
+    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+	[spinner startAnimating];
+	[spinner layoutSubviews];
+    
+	[self.view addSubview:spinner];
+    
+    [PFUser logInWithUsernameInBackground:self.usernameField.text password:self.passwordField.text block:^(PFUser *user, NSError *error) {
+        [spinner stopAnimating];
+        [spinner removeFromSuperview];
+        
+        if(user) {
+            [self.delegate viewController:self didUserLoginSuccessfully:YES];
+        }
+        else {
+            self.loginButton.enabled = YES;
+            UIAlertView *alertView = nil;
+            if(error == nil) {
+                //USERNAME OR PASSWORD IS WRONG
+                alertView = [[UIAlertView alloc] initWithTitle:@"Couldn’t log in:\nThe username or password were wrong." message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok", nil];
+            }
+            else {
+                //SOMETHING ELSE IS WRONG
+                alertView = [[UIAlertView alloc] initWithTitle:[[error userInfo] objectForKey:@"error"] message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok", nil];
+            }
+            [alertView show];
+        }
+    }];
 }
 
-- (IBAction)createAccountPress:(id)sender {
-    NSLog(@"HI");
+
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if([segue.identifier isEqualToString:@"createAccountSegue"]) {
+        CreateAccountViewController *vc = segue.destinationViewController;
+        vc.delegate = (id<CreateAccountViewControllerDelegate>)self.delegate;
+    }
 }
 
 - (IBAction)fbLoginPress:(id)sender {
@@ -73,11 +108,11 @@
         }
         else if (user.isNew) {
             NSLog(@"User with facebook signed up and logged in");
-            [self.delegate welcomeViewController:self didUserLoginSuccessfully:YES];
+            [self.delegate viewController:self didUserLoginSuccessfully:YES];
         }
         else {
             NSLog(@"User with facebook logged in");
-            [self.delegate welcomeViewController:self didUserLoginSuccessfully:YES];
+            [self.delegate viewController:self didUserLoginSuccessfully:YES];
         }
     }];
     [self.activityIndicator startAnimating];

@@ -21,20 +21,21 @@
     
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UIViewController *findervc = [sb instantiateViewControllerWithIdentifier:@"finderVC"];
-    UIViewController *settingsvc = [sb instantiateViewControllerWithIdentifier:@"settingsVC"];
+    SettingsViewController *settingsvc = [sb instantiateViewControllerWithIdentifier:@"settingsVC"];
+    settingsvc.delegate = self;
     self.controllers = [NSArray arrayWithObjects:findervc, settingsvc, nil];
     self.bounceMenuController = [[BounceMenuController alloc] init];
     self.bounceMenuController.viewControllers = self.controllers;
     self.bounceMenuController.delegate = self;
+    WelcomeViewController *welcomeVC = [sb instantiateViewControllerWithIdentifier:@"welcomeVC"];
+    welcomeVC.delegate = self;
+    self.nav = [[UINavigationController alloc] initWithRootViewController: welcomeVC];
 
     if([PFUser currentUser]) {
         self.window.rootViewController = self.bounceMenuController;
     }
     else {
-        WelcomeViewController *welcomeVC = [sb instantiateViewControllerWithIdentifier:@"welcomeVC"];
-        welcomeVC.delegate = self;
-        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController: welcomeVC];
-        self.window.rootViewController = nav;
+        self.window.rootViewController = self.nav;
     }
     
     [self.window makeKeyAndVisible];
@@ -65,9 +66,15 @@
     NSLog(@"selected view controller: %@", viewController);
 }
 
-- (void) welcomeViewController:(WelcomeViewController *)controller didUserLoginSuccessfully:(BOOL)success {
+- (void) viewController:(UIViewController *)controller didUserLoginSuccessfully:(BOOL)success{
     if(success) {
         self.window.rootViewController = self.bounceMenuController;
+    }
+}
+
+- (void) viewController:(UIViewController *)controller didUserLogoutSuccessfully:(BOOL)success{
+    if(success) {
+        self.window.rootViewController = self.nav;
     }
 }
 

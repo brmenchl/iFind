@@ -10,7 +10,7 @@
 @class WelcomeViewController;
 
 @protocol WelcomeViewControllerDelegate <NSObject, UITextFieldDelegate>
-- (void) welcomeViewController:(WelcomeViewController *)controller didUserLoginSuccessfully:(BOOL)success;
+- (void) viewController:(UIViewController *)controller didUserLoginSuccessfully:(BOOL)success;
 @end
 
 @interface WelcomeViewController : UIViewController
@@ -24,7 +24,6 @@
 
 - (IBAction)tapGestureRecognizer:(id)sender;
 - (IBAction)loginPress:(id)sender;
-- (IBAction)createAccountPress:(id)sender;
 - (IBAction)fbLoginPress:(id)sender;
 
 @property (nonatomic, assign) id <WelcomeViewControllerDelegate> delegate;
