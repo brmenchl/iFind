@@ -7,6 +7,7 @@
 //
 
 #import "CreateAccountViewController.h"
+#import "AppDelegate.h"
 #import <Parse/Parse.h>
 
 @interface CreateAccountViewController ()
@@ -63,6 +64,7 @@
             user.email = self.emailField.text;
             [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 if (!error) {
+                    [self.delegate createGem:DefaultStartingInventory];
                     [self.delegate viewController:self didUserLoginSuccessfully:YES];
                 } else {
                     NSString *errorString = [error userInfo][@"error"];
@@ -76,13 +78,13 @@
         }
     }
     else {
-        alertView = [[UIAlertView alloc] initWithTitle:@"Invalid Password" message:@"Please enter a valid password\n(passwords must have at least 8 characters and be a mix of letters and numbers)" delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+        alertView = [[UIAlertView alloc] initWithTitle:@"Invalid Password" message:@"Please enter a valid password\n(passwords must have at least 6 characters and be a mix of letters and numbers)" delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
         [alertView show];
     }
 }
 
 -(BOOL) NStringIsValidPassword: (NSString *)checkString {
-    NSString *passwordRegex = @"(?=^.{8,}$)(?=.*[0-9])(?!.*[!@# $%^&*])(?![.\n])(?=.*[a-z]).*$";
+    NSString *passwordRegex = @"(?=^.{6,}$)(?=.*[0-9])(?![.\n])(?=.*[a-zA-Z]).*$";
     NSPredicate *passTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", passwordRegex];
     return [passTest evaluateWithObject:checkString];
 }

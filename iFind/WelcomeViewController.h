@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 @class WelcomeViewController;
 
-@protocol WelcomeViewControllerDelegate <NSObject, UITextFieldDelegate>
+@protocol WelcomeViewControllerDelegate <NSObject, UITextFieldDelegate, UIAlertViewDelegate>
 - (void) viewController:(UIViewController *)controller didUserLoginSuccessfully:(BOOL)success;
+- (void) createGem:(NSUInteger)count;
 @end
 
 @interface WelcomeViewController : UIViewController

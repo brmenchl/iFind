@@ -9,8 +9,12 @@
 #import "WelcomeViewController.h"
 #import <Parse/Parse.h>
 #import "CreateAccountViewController.h"
+#import "AppDelegate.h"
 
-@interface WelcomeViewController ()
+@interface WelcomeViewController () {
+    UIAlertView *loginErrorAlert;
+    UIAlertView *forgotPasswordAlert;
+}
 @end
 
 @implementation WelcomeViewController
@@ -20,8 +24,8 @@
 {
     [super viewDidLoad];
     [self.navigationController setNavigationBarHidden: YES animated:NO];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldsChanged:) name:UITextFieldTextDidChangeNotification object:nil];
-    self.loginButton.enabled = NO;
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldsChanged:) name:UITextFieldTextDidChangeNotification object:nil];
+//    self.loginButton.enabled = NO;
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -30,58 +34,59 @@
     self.passwordField.text = @"";
 }
 
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextFieldTextDidChangeNotification object:nil];
-}
+//- (void)dealloc {
+//    [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextFieldTextDidChangeNotification object:nil];
+//}
 
-// VALIDITY CHECKS
-- (void)textFieldsChanged:(NSNotification *)note {
-    if(self.usernameField.text != nil &&
-       self.usernameField.text.length > 6 &&
-       self.passwordField.text != nil &&
-       self.passwordField.text.length > 6) {
-        self.loginButton.enabled = YES;
-    }
-    else {
-        self.loginButton.enabled = NO;
-    }
-}
+//// VALIDITY CHECKS
+//- (void)textFieldsChanged:(NSNotification *)note {
+//    if(self.usernameField.text != nil &&
+//       self.passwordField.text != nil) {
+//        self.loginButton.enabled = YES;
+//    }
+//    else {
+//        self.loginButton.enabled = NO;
+//    }
+//}
 
 - (IBAction)tapGestureRecognizer:(id)sender {
     [self.view endEditing:YES];
 }
 
 - (IBAction)loginPress:(id)sender {
-    self.loginButton.enabled = NO;
-    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-	[spinner startAnimating];
-	[spinner layoutSubviews];
-    
-	[self.view addSubview:spinner];
-    
+//    self.loginButton.enabled = NO;
     [PFUser logInWithUsernameInBackground:self.usernameField.text password:self.passwordField.text block:^(PFUser *user, NSError *error) {
-        [spinner stopAnimating];
-        [spinner removeFromSuperview];
-        
+        [self.activityIndicator stopAnimating];
         if(user) {
             [self.delegate viewController:self didUserLoginSuccessfully:YES];
         }
         else {
-            self.loginButton.enabled = YES;
-            UIAlertView *alertView = nil;
+//            self.loginButton.enabled = YES;
             if(error == nil) {
                 //USERNAME OR PASSWORD IS WRONG
-                alertView = [[UIAlertView alloc] initWithTitle:@"Couldn’t log in:\nThe username or password were wrong." message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok", nil];
+                loginErrorAlert = [[UIAlertView alloc] initWithTitle:@"Couldn’t log in:\nThe username or password were wrong." message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok", @"Forgot Password", nil];
             }
             else {
                 //SOMETHING ELSE IS WRONG
-                alertView = [[UIAlertView alloc] initWithTitle:[[error userInfo] objectForKey:@"error"] message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok", nil];
+                loginErrorAlert = [[UIAlertView alloc] initWithTitle:[[error userInfo] objectForKey:@"error"] message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok", @"Forgot Password", nil];
             }
-            [alertView show];
+            [loginErrorAlert show];
         }
     }];
+    [self.activityIndicator startAnimating];
 }
 
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    if(alertView == loginErrorAlert && buttonIndex == 1) {
+        forgotPasswordAlert = [[UIAlertView alloc] initWithTitle:@"Forgot Password" message: @"Please enter the email address associated with the account and we will send you a link to reset your password." delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Reset", nil];
+        forgotPasswordAlert.alertViewStyle = UIAlertViewStylePlainTextInput;
+        [forgotPasswordAlert show];
+    }
+    else if(alertView == forgotPasswordAlert && buttonIndex == forgotPasswordAlert.firstOtherButtonIndex) {
+        [PFUser requestPasswordResetForEmailInBackground:[forgotPasswordAlert textFieldAtIndex:0].text];
+    }
+}
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if([segue.identifier isEqualToString:@"createAccountSegue"]) {
@@ -108,6 +113,7 @@
         }
         else if (user.isNew) {
             NSLog(@"User with facebook signed up and logged in");
+            [self.delegate createGem:DefaultStartingInventory];
             [self.delegate viewController:self didUserLoginSuccessfully:YES];
         }
         else {

@@ -68,11 +68,6 @@
     return self;
 }
 
-- (void)viewDidDisappear:(BOOL)animated {
-    [super viewDidDisappear:animated];
-    [self setSelectedIndex:0];
-}
-
 - (void)viewWillLayoutSubviews {
     self.menuButton.frame = CGRectMake(15, self.view.bounds.size.height - 45, self.menuButton.frame.size.width, self.menuButton.frame.size.height);
     self.vertBar.frame = CGRectMake(62, self.view.bounds.size.height - 45, 4,30);

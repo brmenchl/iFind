@@ -11,6 +11,7 @@
 @class CreateAccountViewController;
 @protocol CreateAccountViewControllerDelegate <NSObject, UITextFieldDelegate>
 - (void) viewController:(UIViewController *)controller didUserLoginSuccessfully:(BOOL)success;
+- (void) createGem:(NSUInteger)count;
 @end
 
 @interface CreateAccountViewController : UIViewController <UITextFieldDelegate>

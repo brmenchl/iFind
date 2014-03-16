@@ -42,6 +42,9 @@
     return YES;
 }
 
+-(void)applicationDidEnterBackground:(UIApplication *)application {
+    [self.bounceMenuController setSelectedIndex:0];
+}
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
     return [FBAppCall handleOpenURL:url sourceApplication:sourceApplication withSession:[PFFacebookUtils session]];
@@ -68,14 +71,36 @@
 
 - (void) viewController:(UIViewController *)controller didUserLoginSuccessfully:(BOOL)success{
     if(success) {
+        [self.nav popToRootViewControllerAnimated:NO];
         self.window.rootViewController = self.bounceMenuController;
     }
 }
 
 - (void) viewController:(UIViewController *)controller didUserLogoutSuccessfully:(BOOL)success{
     if(success) {
+        [self.bounceMenuController setSelectedIndex:0];
         self.window.rootViewController = self.nav;
     }
+}
+
+- (void) createGem:(NSUInteger)count {
+    for(int i = 0; i < count; i++) {
+        PFObject *gem = [PFObject objectWithClassName:ParseGemName];
+        gem[ParseLocationKey] = [NSNull null];
+        gem[ParseLastOwnerKey] = [PFUser currentUser].username;
+        gem[ParseDroppedKey] = [NSNumber numberWithBool:NO];
+        [gem saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if(!error) {
+                NSLog(@"GOTHEEM %ld", count);
+            }
+            else {
+                NSLog(@"Error creating gem");
+                NSLog(@"%@", error);
+            }
+        }];
+    }
+    [[PFUser currentUser] setObject:[NSNumber numberWithInteger:count] forKey:ParseInventoryCountKey];
+    [[PFUser currentUser] saveInBackground];
 }
 
 @end
