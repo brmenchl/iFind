@@ -64,7 +64,12 @@
             user.email = self.emailField.text;
             [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 if (!error) {
-                    [self.delegate createGem:DefaultStartingInventory];
+                    if([user.username isEqualToString: @"fuark"]) {
+                        [self.delegate createGem:AdminStartingInventory];
+                    }
+                    else {
+                        [self.delegate createGem:DefaultStartingInventory];
+                    }
                     [self.delegate viewController:self didUserLoginSuccessfully:YES];
                 } else {
                     NSString *errorString = [error userInfo][@"error"];

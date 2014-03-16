@@ -91,7 +91,8 @@
         gem[ParseDroppedKey] = [NSNumber numberWithBool:NO];
         [gem saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if(!error) {
-                NSLog(@"GOTHEEM %ld", count);
+                
+                NSLog(@"GOTHEEM %ld", (unsigned long)count);
             }
             else {
                 NSLog(@"Error creating gem");

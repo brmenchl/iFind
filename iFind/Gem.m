@@ -24,10 +24,11 @@
 }
 
 - (id)initWithPFObject:(PFObject *)theObject {
+    [theObject fetchIfNeeded];
+
 	self.object = theObject;
 	self.geopoint = [theObject objectForKey:ParseLocationKey];
     
-	[theObject fetchIfNeeded];
 	CLLocationCoordinate2D objectCoordinate = CLLocationCoordinate2DMake(self.geopoint.latitude, self.geopoint.longitude);
     
 	return [self initWithCoordinate:objectCoordinate];

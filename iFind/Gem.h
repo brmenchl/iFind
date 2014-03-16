@@ -11,7 +11,8 @@
 #import <Parse/Parse.h>
 
 @interface Gem : NSObject <MKAnnotation>
-@property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
+@property (nonatomic) CLLocationCoordinate2D coordinate;
+
 
 - (id)initWithCoordinate:(CLLocationCoordinate2D)coord;
 - (id)initWithPFObject:(PFObject *)object;
@@ -20,6 +21,5 @@
 
 @property (nonatomic, readonly, strong) PFObject *object;
 @property (nonatomic, readonly, strong) PFGeoPoint *geopoint;
-@property (nonatomic, assign) BOOL animatesDrop;
 
 @end

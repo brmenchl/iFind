@@ -8,6 +8,7 @@
 
 static double const MaximumSearchDistance = 100.0;
 static double const DefaultStartingInventory = 5;
+static double const AdminStartingInventory = 100;
 static double const PickUpDistance = 100;
 // Parse API key constants:
 static NSString * const ParseLastOwnerKey = @"lastOwner";
@@ -35,6 +36,8 @@ static NSString * const GemPickedUpNotification = @"GemPickedUpNotification";
 @property (strong, nonatomic) NSArray *controllers;
 @property (strong, nonatomic) BounceMenuController *bounceMenuController;
 @property (strong, nonatomic) UINavigationController *nav;
+@property (nonatomic, strong) CLLocation *currentLocation;
+
 
 -(void) viewController:(UIViewController *)controller didUserLoginSuccessfully:(BOOL)success;
 -(void) viewController:(UIViewController *)controller didUserLogoutSuccessfully:(BOOL)success;

@@ -16,26 +16,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="lKL-le-a9Q">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lKL-le-a9Q">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="443"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GJ6-Sz-sHc">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GJ6-Sz-sHc">
                                 <rect key="frame" x="52" y="464" width="43" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="DROP">
-                                    <color key="titleColor" red="0.0" green="1" blue="0.084156221870000006" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="dropButtonPress:" destination="rbi-zI-fFJ" eventType="touchUpInside" id="e6o-ww-mIn"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6p1-xh-ubO">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6p1-xh-ubO">
                                 <rect key="frame" x="213" y="464" width="56" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="PICKUP">
-                                    <color key="titleColor" red="0.0" green="1" blue="0.084156221870000006" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -43,7 +41,18 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.77635095211842697" green="0.79673559445158282" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="6p1-xh-ubO" secondAttribute="trailing" constant="51" id="AjU-xg-vjd"/>
+                            <constraint firstItem="ei0-vq-uSz" firstAttribute="top" secondItem="6p1-xh-ubO" secondAttribute="bottom" constant="25" id="XaV-w9-hLG"/>
+                            <constraint firstItem="lKL-le-a9Q" firstAttribute="leading" secondItem="nZd-Y0-vom" secondAttribute="leading" id="YCx-ug-5YL"/>
+                            <constraint firstItem="GJ6-Sz-sHc" firstAttribute="leading" secondItem="nZd-Y0-vom" secondAttribute="leading" constant="52" id="fU9-ij-o31"/>
+                            <constraint firstAttribute="trailing" secondItem="lKL-le-a9Q" secondAttribute="trailing" id="icS-Ti-sgD"/>
+                            <constraint firstItem="6p1-xh-ubO" firstAttribute="top" secondItem="lKL-le-a9Q" secondAttribute="bottom" constant="21" id="jOq-VY-RoG"/>
+                            <constraint firstItem="lKL-le-a9Q" firstAttribute="top" secondItem="nZd-Y0-vom" secondAttribute="top" id="lXx-r2-ViH"/>
+                            <constraint firstItem="ei0-vq-uSz" firstAttribute="top" secondItem="GJ6-Sz-sHc" secondAttribute="bottom" constant="25" id="m8P-QJ-lUz"/>
+                            <constraint firstItem="GJ6-Sz-sHc" firstAttribute="top" secondItem="lKL-le-a9Q" secondAttribute="bottom" constant="21" id="uVB-Ig-2RA"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="GemFinder" image="compass.png" id="WlL-aE-xga"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
