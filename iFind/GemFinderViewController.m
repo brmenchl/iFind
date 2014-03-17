@@ -29,8 +29,6 @@
     }
     
     [super viewDidLoad];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gemDropped:) name:GemDroppedNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gemPickedUp:) name:GemPickedUpNotification object:nil];
     
     self.mapView.region = MKCoordinateRegionMake(CLLocationCoordinate2DMake(37.332495f, -122.029095f), MKCoordinateSpanMake(0.008516f, 0.021801f)); //Copied this from anywall..
     [self startUpdating];
@@ -39,7 +37,7 @@
 - (void)viewWillAppear:(BOOL)animated {
 	[self.locationManager startUpdatingLocation];
 	[super viewWillAppear:animated];
-    self.dropButton.enabled = self.firstGemInInventory != nil;
+//    self.dropButton.enabled = self.firstGemInInventory != nil;
     self.pickupButton.enabled = (closestDistance != -1) && (closestDistance < PickUpDistance);
 }
 
@@ -57,7 +55,7 @@
 }
 
 - (void) startUpdating {
-    NSLog(@"UPDATING");
+    NSLog(@"startUpdating called");
     if(self.locationManager == nil) {
         self.locationManager = [[CLLocationManager alloc] init];
     }
@@ -74,8 +72,8 @@
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    NSLog(@"UPDATE");
-    NSLog((self.firstGemInInventory != nil) ? @"GOTGEM" : @"NOGEM");
+    NSLog(@"locationManager didUpdate");
+    NSLog((self.firstGemInInventory != nil) ? @"gem found" : @"no gem found");
 	appDelegate.currentLocation = [locations lastObject];
     MKCoordinateRegion newRegion = MKCoordinateRegionMakeWithDistance(appDelegate.currentLocation.coordinate, 305 * 2.0f, 305 * 2.0f);
     //CHECK ANYWALLS FILTER DISTANCE STUFF.  THEY STORE THE LAST ZOOM LEVEL IN USER DEFAULTS AND CREATE A GLOBAL TO REFERENCE IT.  305 is approx 1000 feet, totally arbitrary.
@@ -83,55 +81,48 @@
     [self queryForAllPostsNearLocation:appDelegate.currentLocation];
 }
 
-- (void)gemDropped:(NSNotification *)note {
-    NSLog(@"CAUGHT DROP");
-	AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-	[self queryForAllPostsNearLocation:appDelegate.currentLocation];
-}
-
-- (void) gemPickedUp:(NSNotification *)note {
-    NSLog(@"CAUGHT PICKUP");
-   	AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-	[self queryForAllPostsNearLocation:appDelegate.currentLocation];
-}
-
 - (IBAction)dropButtonPress:(id)sender {
-    NSLog(@"DROP PRESS");
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    if(![CLLocationManager locationServicesEnabled]) {
-        NSLog(@"UHH");
-        [turnOnLocationServicesAlert show];
-    }
-    else {
-        NSLog(@"OK FROM HERE");
-        PFGeoPoint *droppedGemLocation = [PFGeoPoint geoPointWithLocation:appDelegate.currentLocation];
-        self.firstGemInInventory[ParseLocationKey] = droppedGemLocation;
-        self.firstGemInInventory[ParseLastOwnerKey] = [PFUser currentUser].username;
-        self.firstGemInInventory[ParseDroppedKey] = [NSNumber numberWithBool:YES];
-        NSLog(@"%@", self.firstGemInInventory);
-        [self.firstGemInInventory saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-            NSLog(@"WHAT");
-            if (error) {
-                NSLog(@"Couldn't save");
-                NSLog(@"%@", error);
-                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:[[error userInfo] objectForKey:@"error"] message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok", nil];
-                [alertView show];
-                return;
-            }
-            if (succeeded) {
-                NSLog(@"Successfully saved");
-                NSLog(@"%@", self.firstGemInInventory);
-                [[PFUser currentUser] incrementKey:ParseInventoryCountKey byAmount:@-1];
-                [[PFUser currentUser] saveInBackground];
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [[NSNotificationCenter defaultCenter] postNotificationName:GemDroppedNotification object:nil];
-                });
-            }
-            else {
-                NSLog(@"Failed to save.");
-            }
-        }];
-    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:PresentLeaveGemVCNotification object:nil];
+    });
+//    NSLog(@"DROP PRESS");
+//    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+//    if(![CLLocationManager locationServicesEnabled]) {
+//        NSLog(@"UHH");
+//        [turnOnLocationServicesAlert show];
+//    }
+//    else {
+//        NSLog(@"OK FROM HERE");
+//        PFGeoPoint *droppedGemLocation = [PFGeoPoint geoPointWithLocation:appDelegate.currentLocation];
+//        self.firstGemInInventory[ParseLocationKey] = droppedGemLocation;
+//        self.firstGemInInventory[ParseLastOwnerKey] = [PFUser currentUser].username;
+//        self.firstGemInInventory[ParseDroppedKey] = [NSNumber numberWithBool:YES];
+//        NSLog(@"%@", self.firstGemInInventory);
+//        [self.firstGemInInventory saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+//            NSLog(@"WHAT");
+//            if (error) {
+//                NSLog(@"Couldn't save");
+//                NSLog(@"%@", error);
+//                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:[[error userInfo] objectForKey:@"error"] message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok", nil];
+//                [alertView show];
+//                return;
+//            }
+//            if (succeeded) {
+//                NSLog(@"Successfully saved");
+//                NSLog(@"%@", self.firstGemInInventory);
+//                [[PFUser currentUser] incrementKey:ParseInventoryCountKey byAmount:@-1];
+//                [[PFUser currentUser] saveInBackground];
+//                AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+//                [self queryForAllPostsNearLocation:appDelegate.currentLocation];
+//                dispatch_async(dispatch_get_main_queue(), ^{
+//                    [[NSNotificationCenter defaultCenter] postNotificationName:GemDroppedNotification object:nil];
+//                });
+//            }
+//            else {
+//                NSLog(@"Failed to save.");
+//            }
+//        }];
+//    }
 }
 
 - (IBAction)pickupButtonPress:(id)sender {
@@ -149,6 +140,8 @@
             if(succeeded) {
                 closestDistance = -1;
                 self.closestGem = nil;
+                AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+                [self queryForAllPostsNearLocation:appDelegate.currentLocation];
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [[NSNotificationCenter defaultCenter] postNotificationName:GemPickedUpNotification object:nil];
                 });
@@ -259,7 +252,7 @@
                 self.firstGemInInventory = [objects lastObject];
                 NSLog(@"%@", self.firstGemInInventory);
                 if(self.firstGemInInventory != nil) {
-                    self.dropButton.enabled = YES;
+//                    self.dropButton.enabled = YES;
                 }
                 self.pickupButton.enabled = (closestDistance != -1) && (closestDistance < PickUpDistance);
             }

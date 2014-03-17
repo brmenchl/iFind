@@ -17,11 +17,13 @@ static NSString * const ParseUsernameKey = @"username";
 static NSString * const ParseLocationKey = @"location";
 static NSString * const ParseInventoryCountKey = @"gemInventoryCount";
 static NSString * const ParseGemName = @"Gem";
+static NSString * const ParseContentName = @"Content";
 static NSUInteger const ParseGemQueryLimit = 20;
 
 // Notification Names:
 static NSString * const GemDroppedNotification = @"GemDroppedNotification";
 static NSString * const GemPickedUpNotification = @"GemPickedUpNotification";
+static NSString * const PresentLeaveGemVCNotification = @"PresentLeaveGemVCNotification";
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>

@@ -8,6 +8,8 @@
 
 #import <QuartzCore/QuartzCore.h>
 #import "BounceMenuController.h"
+#import "LeaveGemViewController.h"
+#import "AppDelegate.h"
 #import "PlusButton.h"
 
 @interface BounceMenuController ()
@@ -66,6 +68,15 @@
         [self.view addSubview:self.menuButton];
     }
     return self;
+}
+
+- (void) viewDidLoad {
+    [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(presentLeaveGemVC) name:PresentLeaveGemVCNotification object:nil];
+}
+
+- (void) dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:PresentLeaveGemVCNotification object:nil];
 }
 
 - (void)viewWillLayoutSubviews {
@@ -274,6 +285,13 @@
         [self.buttons removeAllObjects];
         
         self.isAnimating = NO;
+    }];
+}
+
+- (void)presentLeaveGemVC {
+    LeaveGemViewController *leaveGemVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"LeaveGemVC"];
+    [self presentViewController:leaveGemVC animated:YES completion:^(void) {
+        
     }];
 }
 
