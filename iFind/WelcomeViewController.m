@@ -20,10 +20,27 @@
 @implementation WelcomeViewController
 
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden: YES animated:NO];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     [self.navigationController setNavigationBarHidden: YES animated:NO];
+    UIImage *backgroundImage = [UIImage imageNamed:@"tower.jpg"];
+    UIImageView *backgroundImageView=[[UIImageView alloc]initWithFrame:self.view.frame];
+    backgroundImageView.image=backgroundImage;
+    backgroundImageView.contentMode = UIViewContentModeScaleAspectFill;
+    [self.view insertSubview:backgroundImageView atIndex:0];
+    
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@" " style:UIBarButtonItemStyleDone target:nil action:nil];
+    [[self navigationItem] setBackBarButtonItem:backButton];
+    
+    
+    
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldsChanged:) name:UITextFieldTextDidChangeNotification object:nil];
 //    self.loginButton.enabled = NO;
 }

@@ -28,8 +28,20 @@
 {
     [super viewDidLoad];
     [self.navigationController setNavigationBarHidden: NO animated:NO];
+    self.navigationController.navigationBar.tintColor = [UIColor blackColor];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
+                                                  forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.shadowImage = [UIImage new];
+    self.navigationController.navigationBar.translucent = YES;
+    self.navigationController.view.backgroundColor = [UIColor clearColor];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldsChanged:) name:UITextFieldTextDidChangeNotification object:nil];
     self.createLockerButton.enabled = NO;
+    
+    UIImage *backgroundImage = [UIImage imageNamed:@"waterfall.jpg"];
+    UIImageView *backgroundImageView=[[UIImageView alloc]initWithFrame:self.view.frame];
+    backgroundImageView.image=backgroundImage;
+    backgroundImageView.contentMode = UIViewContentModeScaleAspectFill;
+    [self.view insertSubview:backgroundImageView atIndex:0];
 }
 
 - (void)dealloc {
