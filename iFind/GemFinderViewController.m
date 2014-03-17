@@ -40,7 +40,7 @@
 	[self.locationManager startUpdatingLocation];
 	[super viewWillAppear:animated];
     self.dropButton.enabled = self.firstGemInInventory != nil;
-    self.pickupButton.enabled = closestDistance < PickUpDistance;
+    self.pickupButton.enabled = (closestDistance != -1) && (closestDistance < PickUpDistance);
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -147,6 +147,7 @@
                 NSLog(@"error saving");
             }
             if(succeeded) {
+                closestDistance = -1;
                 self.closestGem = nil;
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [[NSNotificationCenter defaultCenter] postNotificationName:GemPickedUpNotification object:nil];
@@ -260,6 +261,7 @@
                 if(self.firstGemInInventory != nil) {
                     self.dropButton.enabled = YES;
                 }
+                self.pickupButton.enabled = (closestDistance != -1) && (closestDistance < PickUpDistance);
             }
         }];
     }

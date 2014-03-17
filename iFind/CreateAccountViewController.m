@@ -20,7 +20,6 @@
     [super viewDidDisappear:animated];
     self.usernameField.text = @"";
     self.emailField.text = @"";
-    self.emailFieldAgain.text = @"";
     self.passwordField.text = @"";
     self.passwordFieldAgain.text = @"";
 }
@@ -40,7 +39,6 @@
 - (void)textFieldsChanged:(NSNotification *)note {
     if(self.usernameField.text != nil &&
        self.emailField != nil &&
-       [self.emailFieldAgain.text isEqualToString:self.emailFieldAgain.text] &&
        self.passwordField != nil &&
        [self.passwordFieldAgain.text isEqualToString:self.passwordFieldAgain.text]) {
         self.createLockerButton.enabled = YES;

@@ -16,12 +16,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lKL-le-a9Q">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="443"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lKL-le-a9Q">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="495"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GJ6-Sz-sHc">
-                                <rect key="frame" x="52" y="464" width="43" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GJ6-Sz-sHc">
+                                <rect key="frame" x="54" y="494" width="43" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="DROP">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -30,8 +30,8 @@
                                     <action selector="dropButtonPress:" destination="rbi-zI-fFJ" eventType="touchUpInside" id="e6o-ww-mIn"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6p1-xh-ubO">
-                                <rect key="frame" x="213" y="464" width="56" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6p1-xh-ubO">
+                                <rect key="frame" x="210" y="494" width="56" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="PICKUP">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -42,17 +42,6 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.77635095211842697" green="0.79673559445158282" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="6p1-xh-ubO" secondAttribute="trailing" constant="51" id="AjU-xg-vjd"/>
-                            <constraint firstItem="ei0-vq-uSz" firstAttribute="top" secondItem="6p1-xh-ubO" secondAttribute="bottom" constant="25" id="XaV-w9-hLG"/>
-                            <constraint firstItem="lKL-le-a9Q" firstAttribute="leading" secondItem="nZd-Y0-vom" secondAttribute="leading" id="YCx-ug-5YL"/>
-                            <constraint firstItem="GJ6-Sz-sHc" firstAttribute="leading" secondItem="nZd-Y0-vom" secondAttribute="leading" constant="52" id="fU9-ij-o31"/>
-                            <constraint firstAttribute="trailing" secondItem="lKL-le-a9Q" secondAttribute="trailing" id="icS-Ti-sgD"/>
-                            <constraint firstItem="6p1-xh-ubO" firstAttribute="top" secondItem="lKL-le-a9Q" secondAttribute="bottom" constant="21" id="jOq-VY-RoG"/>
-                            <constraint firstItem="lKL-le-a9Q" firstAttribute="top" secondItem="nZd-Y0-vom" secondAttribute="top" id="lXx-r2-ViH"/>
-                            <constraint firstItem="ei0-vq-uSz" firstAttribute="top" secondItem="GJ6-Sz-sHc" secondAttribute="bottom" constant="25" id="m8P-QJ-lUz"/>
-                            <constraint firstItem="GJ6-Sz-sHc" firstAttribute="top" secondItem="lKL-le-a9Q" secondAttribute="bottom" constant="21" id="uVB-Ig-2RA"/>
-                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="GemFinder" image="compass.png" id="WlL-aE-xga"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
@@ -168,19 +157,13 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="fill" borderStyle="roundedRect" placeholder="Display Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bjm-Dt-C9X">
-                                <rect key="frame" x="84" y="66" width="152" height="30"/>
+                                <rect key="frame" x="84" y="127" width="152" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="fill" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ugI-h5-QzE">
-                                <rect key="frame" x="84" y="119" width="152" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="fill" borderStyle="roundedRect" placeholder="Email Again" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hNo-9a-Ftk">
-                                <rect key="frame" x="84" y="179" width="152" height="30"/>
+                                <rect key="frame" x="84" y="180" width="152" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -218,7 +201,6 @@
                     <connections>
                         <outlet property="createLockerButton" destination="W9u-3O-ok9" id="Xog-1i-gss"/>
                         <outlet property="emailField" destination="ugI-h5-QzE" id="bZE-yd-m4O"/>
-                        <outlet property="emailFieldAgain" destination="hNo-9a-Ftk" id="ygp-BF-ktN"/>
                         <outlet property="passwordField" destination="6Lg-cm-25c" id="4RK-v7-qaa"/>
                         <outlet property="passwordFieldAgain" destination="RLM-76-7LS" id="Py6-BT-weA"/>
                         <outlet property="usernameField" destination="bjm-Dt-C9X" id="1OP-mF-kNN"/>
@@ -256,7 +238,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="1" blue="0.084156221867472958" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.8413869305513354" green="0.92588104822815331" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" image="settingsGear.png" id="l45-Ke-TrD"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
