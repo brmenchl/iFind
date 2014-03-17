@@ -30,6 +30,8 @@
 		CEA6D39718BD51BC00F36A35 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA6D39618BD51BC00F36A35 /* QuartzCore.framework */; };
 		CEA6D39918BD51C600F36A35 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA6D39818BD51C600F36A35 /* Security.framework */; };
 		CEA6D39D18BD51DD00F36A35 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA6D39C18BD51DD00F36A35 /* SystemConfiguration.framework */; };
+		CEB7B36C18D68D3A00AC72C5 /* tower.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CEB7B36B18D68D3A00AC72C5 /* tower.jpg */; };
+		CEB7B36E18D6A8F000AC72C5 /* waterfall.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CEB7B36D18D6A8F000AC72C5 /* waterfall.jpg */; };
 		E2546AEE18D27DE0005F2D8B /* Gem.m in Sources */ = {isa = PBXBuildFile; fileRef = E2546AED18D27DE0005F2D8B /* Gem.m */; };
 		E2675C6418CFB26A00F56BD3 /* CreateAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2675C6318CFB26A00F56BD3 /* CreateAccountViewController.m */; };
 		E2733BD418D6A49200EB51B0 /* LeaveGemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2733BD318D6A49200EB51B0 /* LeaveGemViewController.m */; };
@@ -89,6 +91,8 @@
 		CEA6D39618BD51BC00F36A35 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		CEA6D39818BD51C600F36A35 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		CEA6D39C18BD51DD00F36A35 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		CEB7B36B18D68D3A00AC72C5 /* tower.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tower.jpg; sourceTree = "<group>"; };
+		CEB7B36D18D6A8F000AC72C5 /* waterfall.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = waterfall.jpg; sourceTree = "<group>"; };
 		E2546AEC18D27DE0005F2D8B /* Gem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gem.h; sourceTree = "<group>"; };
 		E2546AED18D27DE0005F2D8B /* Gem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Gem.m; sourceTree = "<group>"; };
 		E2675C6218CFB26A00F56BD3 /* CreateAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateAccountViewController.h; sourceTree = "<group>"; };
@@ -394,6 +398,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEB7B36E18D6A8F000AC72C5 /* waterfall.jpg in Resources */,
 				E2E711C818C1AAD600F5EAC1 /* settingsGear@2x.png in Resources */,
 				E2E711BE18C17DB100F5EAC1 /* Main.storyboard in Resources */,
 				E2733BE018D6B8B300EB51B0 /* plusButton@2x.png in Resources */,
@@ -404,6 +409,7 @@
 				CEA6D36A18BD4E2800F36A35 /* Images.xcassets in Resources */,
 				E2733BDF18D6B8B300EB51B0 /* plusButton.png in Resources */,
 				E2CC0B0518BE9AF9008B6094 /* barDivider.png in Resources */,
+				CEB7B36C18D68D3A00AC72C5 /* tower.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
