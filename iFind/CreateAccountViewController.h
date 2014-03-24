@@ -7,24 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@class CreateAccountViewController;
-@protocol CreateAccountViewControllerDelegate <NSObject, UITextFieldDelegate>
-- (void) viewController:(UIViewController *)controller didUserLoginSuccessfully:(BOOL)success;
-- (void) createGem:(NSUInteger)count;
-@end
+#import "AccountHandlerDelegate.h"
 
 @interface CreateAccountViewController : UIViewController <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *usernameField;
 @property (weak, nonatomic) IBOutlet UITextField *emailField;
-@property (weak, nonatomic) IBOutlet UITextField *emailFieldAgain;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordFieldAgain;
-@property (weak, nonatomic) IBOutlet UIButton *createLockerButton;
-- (IBAction)tapAwayGesture:(id)sender;
 
+- (IBAction)tapAwayGesture:(id)sender;
 - (IBAction)createLockerPress:(id)sender;
-@property (nonatomic, assign) id <CreateAccountViewControllerDelegate> delegate;
+
+@property (nonatomic, assign) id <AccountHandlerDelegate> delegate;
 
 @end

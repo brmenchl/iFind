@@ -1,5 +1,5 @@
 //
-//  Gem.h
+//  GemAnnotation.h
 //  iFind
 //
 //  Created by Bradley Menchl on 3/13/14.
@@ -10,13 +10,13 @@
 #import <MapKit/MapKit.h>
 #import <Parse/Parse.h>
 
-@interface Gem : NSObject <MKAnnotation>
+@interface GemAnnotation : NSObject <MKAnnotation>
 @property (nonatomic) CLLocationCoordinate2D coordinate;
 
 
 - (id)initWithCoordinate:(CLLocationCoordinate2D)coord;
 - (id)initWithPFObject:(PFObject *)object;
-- (BOOL)equalToGem:(Gem *)other;
+- (BOOL)equalToGem:(GemAnnotation *)other;
 
 
 @property (nonatomic, readonly, strong) PFObject *object;

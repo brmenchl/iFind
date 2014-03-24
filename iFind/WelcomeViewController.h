@@ -7,16 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-@class WelcomeViewController;
-
-@protocol WelcomeViewControllerDelegate <NSObject, UITextFieldDelegate, UIAlertViewDelegate>
-- (void) viewController:(UIViewController *)controller didUserLoginSuccessfully:(BOOL)success;
-- (void) createGem:(NSUInteger)count;
-@end
-
+#import "AccountHandlerDelegate.h"
 @interface WelcomeViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UILabel *appTitle;
 @property (weak, nonatomic) IBOutlet UITextField *usernameField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
@@ -29,6 +22,6 @@
 - (IBAction)loginPress:(id)sender;
 - (IBAction)fbLoginPress:(id)sender;
 
-@property (nonatomic, assign) id <WelcomeViewControllerDelegate> delegate;
+@property (nonatomic, assign) id <AccountHandlerDelegate> delegate;
 
 @end

@@ -7,15 +7,23 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <MapKit/MapKit.h>
 #import <Parse/Parse.h>
+#import "LeaveGemViewController.h"
+@class MKMapView;
+@class GemFinderViewController;
 
-@interface GemFinderViewController : UIViewController <CLLocationManagerDelegate>
+@protocol GemFinderViewControllerDelegate <NSObject>
+@end
+
+@interface GemFinderViewController : UIViewController <CLLocationManagerDelegate, LeaveGemViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UIButton *dropButton;
-@property (weak, nonatomic) IBOutlet UIButton *pickupButton;
+@property (weak, nonatomic) IBOutlet UIButton *pickUpButton;
 
 - (IBAction)dropButtonPress:(id)sender;
-- (IBAction)pickupButtonPress:(id)sender;
+- (IBAction)pickUpButtonPress:(id)sender;
 
+- (void)dropGemWithContent:(NSArray *)content;
+
+@property (nonatomic, assign) id<GemFinderViewControllerDelegate> delegate;
 @end

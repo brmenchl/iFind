@@ -7,15 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-@class SettingsViewController;
-@protocol SettingsViewControllerDelegate <NSObject>
--(void) viewController:(UIViewController *)controller didUserLogoutSuccessfully:(BOOL)success;
-@end
+#import "AccountHandlerDelegate.h"
 
 @interface SettingsViewController : UIViewController
 - (IBAction)logOutPress:(id)sender;
 
 
-@property (nonatomic, assign) id <SettingsViewControllerDelegate> delegate;
+@property (nonatomic, assign) id <AccountHandlerDelegate> delegate;
 
 @end

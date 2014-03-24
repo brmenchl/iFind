@@ -17,11 +17,11 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lKL-le-a9Q">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="510"/>
+                                <rect key="frame" x="0.0" y="58" width="320" height="417"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GJ6-Sz-sHc">
-                                <rect key="frame" x="86" y="518" width="43" height="30"/>
+                                <rect key="frame" x="83" y="20" width="42" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
                                 <state key="normal" title="DROP">
@@ -32,14 +32,14 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6p1-xh-ubO">
-                                <rect key="frame" x="178" y="518" width="56" height="30"/>
+                                <rect key="frame" x="184" y="20" width="53" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
                                 <state key="normal" title="PICKUP">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="pickupButtonPress:" destination="rbi-zI-fFJ" eventType="touchUpInside" id="zG8-1C-J0f"/>
+                                    <action selector="pickUpButtonPress:" destination="rbi-zI-fFJ" eventType="touchUpInside" id="mYq-1A-2lj"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -50,7 +50,7 @@
                     <connections>
                         <outlet property="dropButton" destination="GJ6-Sz-sHc" id="joN-K4-ci8"/>
                         <outlet property="mapView" destination="lKL-le-a9Q" id="ICs-eh-B12"/>
-                        <outlet property="pickupButton" destination="6p1-xh-ubO" id="mQu-c5-8lR"/>
+                        <outlet property="pickUpButton" destination="6p1-xh-ubO" id="jrd-U9-PBe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HLf-53-0Ye" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -96,7 +96,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Ceh-7c-fwB" kind="push" identifier="createAccountSegue" id="oAn-Ca-wlh"/>
+                                    <segue destination="Ceh-7c-fwB" kind="push" identifier="createAccountSegue" id="R6m-p0-Qgw"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZVw-GZ-TEm">
@@ -144,7 +144,6 @@
                     <navigationItem key="navigationItem" id="2PI-11-U5d"/>
                     <connections>
                         <outlet property="activityIndicator" destination="EaM-ci-E7p" id="jBi-jF-C43"/>
-                        <outlet property="appTitle" destination="Pd2-Wl-3hv" id="Pf0-dr-cnP"/>
                         <outlet property="createAccountButton" destination="iFb-oc-OiK" id="sTX-Gq-S96"/>
                         <outlet property="facebookButton" destination="f5f-3P-NIh" id="45X-cw-F15"/>
                         <outlet property="loginButton" destination="ZVw-GZ-TEm" id="x6f-Fi-Wal"/>
@@ -179,8 +178,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="fill" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ugI-h5-QzE">
-                                <rect key="frame" x="84" y="186" width="152" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ugI-h5-QzE">
+                                <rect key="frame" x="84" y="180" width="152" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -220,7 +219,6 @@
                         <barButtonItem key="backBarButtonItem" title="   " id="I4h-O7-bXn"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="createLockerButton" destination="W9u-3O-ok9" id="Xog-1i-gss"/>
                         <outlet property="emailField" destination="ugI-h5-QzE" id="bZE-yd-m4O"/>
                         <outlet property="passwordField" destination="6Lg-cm-25c" id="4RK-v7-qaa"/>
                         <outlet property="passwordFieldAgain" destination="RLM-76-7LS" id="Py6-BT-weA"/>
@@ -281,24 +279,56 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AXX-yD-Soh">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Yf-CV-Hpb">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N3R-wK-vHe">
-                                        <rect key="frame" x="145" y="269" width="30" height="30"/>
+                                        <rect key="frame" x="145" y="263" width="30" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="plusButton.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="addContentPress:" destination="GGY-1S-GMC" eventType="touchUpInside" id="4Kh-mH-ZsO"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bA2-Ku-Xex">
+                                        <rect key="frame" x="125" y="312" width="71" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Drop Gem">
+                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="dropGemButtonPress:" destination="GGY-1S-GMC" eventType="touchUpInside" id="jei-iX-YJg"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="Qpb-Go-nr8" appends="YES" id="Rci-xi-1YW"/>
+                        </connections>
                     </view>
+                    <connections>
+                        <outlet property="addContentButton" destination="N3R-wK-vHe" id="czn-R5-umk"/>
+                        <outlet property="backgroundImage" destination="AXX-yD-Soh" id="zR4-aa-2WY"/>
+                        <outlet property="scrollView" destination="7Yf-CV-Hpb" id="MdG-Xw-nxw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ouf-4i-VJj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Qpb-Go-nr8">
+                    <connections>
+                        <action selector="tapGestureRecognizer:" destination="GGY-1S-GMC" id="HXc-Gi-VtR"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="23" y="668"/>
         </scene>

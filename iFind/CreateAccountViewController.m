@@ -16,6 +16,10 @@
 
 @implementation CreateAccountViewController
 
+- (void)viewDidAppear:(BOOL)animated   {
+    [super viewDidAppear:animated];
+}
+
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     self.usernameField.text = @"";
@@ -24,40 +28,20 @@
     self.passwordFieldAgain.text = @"";
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     [self.navigationController setNavigationBarHidden: NO animated:NO];
     self.navigationController.navigationBar.tintColor = [UIColor blackColor];
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
-                                                  forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
     self.navigationController.navigationBar.shadowImage = [UIImage new];
     self.navigationController.navigationBar.translucent = YES;
     self.navigationController.view.backgroundColor = [UIColor clearColor];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldsChanged:) name:UITextFieldTextDidChangeNotification object:nil];
-    self.createLockerButton.enabled = NO;
-    
+        
     UIImage *backgroundImage = [UIImage imageNamed:@"waterfall.jpg"];
     UIImageView *backgroundImageView=[[UIImageView alloc]initWithFrame:self.view.frame];
     backgroundImageView.image=backgroundImage;
     backgroundImageView.contentMode = UIViewContentModeScaleAspectFill;
     [self.view insertSubview:backgroundImageView atIndex:0];
-}
-
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextFieldTextDidChangeNotification object:nil];
-}
-
-- (void)textFieldsChanged:(NSNotification *)note {
-    if(self.usernameField.text != nil &&
-       self.emailField != nil &&
-       self.passwordField != nil &&
-       [self.passwordFieldAgain.text isEqualToString:self.passwordFieldAgain.text]) {
-        self.createLockerButton.enabled = YES;
-    }
-    else {
-        self.createLockerButton.enabled = NO;
-    }
 }
 
 - (IBAction)tapAwayGesture:(id)sender {
@@ -74,16 +58,10 @@
             user.email = self.emailField.text;
             [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 if (!error) {
-                    if([user.username isEqualToString: @"fuark"]) {
-                        [self.delegate createGem:AdminStartingInventory];
-                    }
-                    else {
-                        [self.delegate createGem:DefaultStartingInventory];
-                    }
+                    [self.delegate createGem:DefaultStartingInventory];
                     [self.delegate viewController:self didUserLoginSuccessfully:YES];
                 } else {
-                    NSString *errorString = [error userInfo][@"error"];
-                    NSLog(@"%@",errorString);
+                    NSLog(@"%@", [[[error userInfo] objectForKey:@"NSUnderlyingErrorKey"]localizedDescription]);
                 }
             }];
         }

@@ -7,11 +7,13 @@
 //
 
 #import "AppDelegate.h"
+#import "SettingsViewController.h"
+#import "GemFinderViewController.h"
+#import "WelcomeViewController.h"
 
 @implementation AppDelegate
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions{
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     [Parse setApplicationId:@"EXa4eSmnKSJ1Pe4KR1e6hnNMmTvbs7ExC441LLkR"
@@ -20,13 +22,19 @@
     [FBLoginView class];
     
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UIViewController *findervc = [sb instantiateViewControllerWithIdentifier:@"finderVC"];
+    
+    //Initializing bouncemenucontroller
+    self.bounceMenuController = [[BounceMenuController alloc] init];
+    GemFinderViewController *findervc = [sb instantiateViewControllerWithIdentifier:@"finderVC"];
+    findervc.delegate = (id<GemFinderViewControllerDelegate>)self.bounceMenuController;
     SettingsViewController *settingsvc = [sb instantiateViewControllerWithIdentifier:@"settingsVC"];
     settingsvc.delegate = self;
     self.controllers = [NSArray arrayWithObjects:findervc, settingsvc, nil];
-    self.bounceMenuController = [[BounceMenuController alloc] init];
+    
+
     self.bounceMenuController.viewControllers = self.controllers;
     self.bounceMenuController.delegate = self;
+    //Initializing Login/Signup screen
     WelcomeViewController *welcomeVC = [sb instantiateViewControllerWithIdentifier:@"welcomeVC"];
     welcomeVC.delegate = self;
     self.nav = [[UINavigationController alloc] initWithRootViewController: welcomeVC];
@@ -51,13 +59,11 @@
 }
 
 
-- (void)applicationDidBecomeActive:(UIApplication *)application
-{
+- (void)applicationDidBecomeActive:(UIApplication *)application {
     [FBAppCall handleDidBecomeActiveWithSession:[PFFacebookUtils session]];
 }
 
-- (void)applicationWillTerminate:(UIApplication *)application
-{
+- (void)applicationWillTerminate:(UIApplication *)application {
     [[PFFacebookUtils session] close];
 }
 
@@ -66,7 +72,6 @@
 }
 
 - (void)bounceMenuController:(BounceMenuController *)controller didSelectViewController:(UIViewController *)viewController {
-    NSLog(@"selected view controller: %@", viewController);
 }
 
 - (void) viewController:(UIViewController *)controller didUserLoginSuccessfully:(BOOL)success{
@@ -83,24 +88,23 @@
     }
 }
 
+// TO DO:
+// Gem[location]: empty array
+// Gem[currentLocation]: null
+// Gem[metadata]: null
+// Store gem object in User[inventory] array
 - (void) createGem:(NSUInteger)count {
+    NSMutableArray *inventory = [[NSMutableArray alloc] init];
+
     for(int i = 0; i < count; i++) {
-        PFObject *gem = [PFObject objectWithClassName:ParseGemName];
-        gem[ParseLocationKey] = [NSNull null];
-        gem[ParseLastOwnerKey] = [PFUser currentUser].username;
-        gem[ParseDroppedKey] = [NSNumber numberWithBool:NO];
-        [gem saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-            if(!error) {
-                
-                NSLog(@"GOTHEEM %ld", (unsigned long)count);
-            }
-            else {
-                NSLog(@"Error creating gem");
-                NSLog(@"%@", error);
-            }
-        }];
-    }
-    [[PFUser currentUser] setObject:[NSNumber numberWithInteger:count] forKey:ParseInventoryCountKey];
+        //Creating a new Gem Parse object
+        PFObject *gem = [PFObject objectWithClassName:ParseGemClassName];
+        gem[ParseGemLocationsKey] = [[NSMutableArray alloc] init];
+        gem[ParseGemCurrentLocationKey] = [NSNull null];
+        gem[ParseGemMetadataReferenceKey] = [NSNull null];
+        [inventory addObject:gem];
+    }    
+    [[PFUser currentUser] addObjectsFromArray:inventory forKey:ParseUserInventoryKey];
     [[PFUser currentUser] saveInBackground];
 }
 

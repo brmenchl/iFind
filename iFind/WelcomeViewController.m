@@ -20,16 +20,10 @@
 @implementation WelcomeViewController
 
 
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden: YES animated:NO];
-}
-
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     [self.navigationController setNavigationBarHidden: YES animated:NO];
+
     UIImage *backgroundImage = [UIImage imageNamed:@"tower.jpg"];
     UIImageView *backgroundImageView=[[UIImageView alloc]initWithFrame:self.view.frame];
     backgroundImageView.image=backgroundImage;
@@ -38,54 +32,36 @@
     
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@" " style:UIBarButtonItemStyleDone target:nil action:nil];
     [[self navigationItem] setBackBarButtonItem:backButton];
-    
-    
-    
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldsChanged:) name:UITextFieldTextDidChangeNotification object:nil];
-//    self.loginButton.enabled = NO;
+    self.loginButton.enabled = NO;
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     self.usernameField.text = @"";
     self.passwordField.text = @"";
+    self.loginButton.enabled = NO;
 }
-
-//- (void)dealloc {
-//    [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextFieldTextDidChangeNotification object:nil];
-//}
-
-//// VALIDITY CHECKS
-//- (void)textFieldsChanged:(NSNotification *)note {
-//    if(self.usernameField.text != nil &&
-//       self.passwordField.text != nil) {
-//        self.loginButton.enabled = YES;
-//    }
-//    else {
-//        self.loginButton.enabled = NO;
-//    }
-//}
 
 - (IBAction)tapGestureRecognizer:(id)sender {
     [self.view endEditing:YES];
 }
 
 - (IBAction)loginPress:(id)sender {
-//    self.loginButton.enabled = NO;
     [PFUser logInWithUsernameInBackground:self.usernameField.text password:self.passwordField.text block:^(PFUser *user, NSError *error) {
         [self.activityIndicator stopAnimating];
         if(user) {
+            //Success
             [self.delegate viewController:self didUserLoginSuccessfully:YES];
         }
         else {
-//            self.loginButton.enabled = YES;
             if(error == nil) {
-                //USERNAME OR PASSWORD IS WRONG
                 loginErrorAlert = [[UIAlertView alloc] initWithTitle:@"Couldn’t log in:\nThe username or password were wrong." message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok", @"Forgot Password", nil];
             }
             else {
-                //SOMETHING ELSE IS WRONG
-                loginErrorAlert = [[UIAlertView alloc] initWithTitle:[[error userInfo] objectForKey:@"error"] message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok", @"Forgot Password", nil];
+                NSLog(@"%@", [[[error userInfo] objectForKey:@"NSUnderlyingErrorKey"]localizedDescription]);
+                if([error code] == 101) {
+                    loginErrorAlert = [[UIAlertView alloc] initWithTitle:@"Couldn't log in:\nThe username or password were wrong." message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok",@"Forgot Password", nil];
+                }
             }
             [loginErrorAlert show];
         }
@@ -93,14 +69,16 @@
     [self.activityIndicator startAnimating];
 }
 
-
+// Called upon dismissal of UIAlertView
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
     if(alertView == loginErrorAlert && buttonIndex == 1) {
+        //OPEN PASSWORD REST PROMPT
         forgotPasswordAlert = [[UIAlertView alloc] initWithTitle:@"Forgot Password" message: @"Please enter the email address associated with the account and we will send you a link to reset your password." delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Reset", nil];
         forgotPasswordAlert.alertViewStyle = UIAlertViewStylePlainTextInput;
         [forgotPasswordAlert show];
     }
     else if(alertView == forgotPasswordAlert && buttonIndex == forgotPasswordAlert.firstOtherButtonIndex) {
+        //RESET PASSWORD
         [PFUser requestPasswordResetForEmailInBackground:[forgotPasswordAlert textFieldAtIndex:0].text];
     }
 }
@@ -108,24 +86,20 @@
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if([segue.identifier isEqualToString:@"createAccountSegue"]) {
         CreateAccountViewController *vc = segue.destinationViewController;
-        vc.delegate = (id<CreateAccountViewControllerDelegate>)self.delegate;
+        vc.delegate = self.delegate;
     }
 }
 
 - (IBAction)fbLoginPress:(id)sender {
-    NSArray *fbPermissions = @[ @"user_about_me", @"user_relationships", @"user_birthday", @"user_location"];
+    NSArray *fbPermissions = @[];
     [PFFacebookUtils logInWithPermissions:fbPermissions block:^(PFUser *user, NSError *error) {
         [self.activityIndicator stopAnimating]; // Hide loading indicator
         if (!user) {
             if (!error) {
                 NSLog(@"The user cancelled the Facebook login.");
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Log In Error" message:@"The user cancelled the Facebook login." delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Dismiss", nil];
-                [alert show];
             }
             else {
                 NSLog(@"An error occurred: %@", error);
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Log In Error" message:[error description] delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Dismiss", nil];
-                [alert show];
             }
         }
         else if (user.isNew) {
@@ -148,6 +122,12 @@
 }
 
 - (void) textFieldDidEndEditing: (UITextField *)textField {
+    if(![self.usernameField.text isEqualToString:@""] && ![self.passwordField.text isEqualToString:@""]) {
+        self.loginButton.enabled = YES;
+    }
+    else {
+        self.loginButton.enabled = NO;
+    }
     [self animateViewUp: NO];
 }
 

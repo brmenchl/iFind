@@ -6,15 +6,15 @@
 //  Copyright (c) 2014 FuarkNet. All rights reserved.
 //
 
-#import "Gem.h"
+#import "GemAnnotation.h"
 #import "AppDelegate.h"
 
-@interface Gem ()
+@interface GemAnnotation ()
 @property (nonatomic, strong) PFObject *object;
 @property (nonatomic, strong) PFGeoPoint *geopoint;
 @end
 
-@implementation Gem
+@implementation GemAnnotation
 
 - (id)initWithCoordinate:(CLLocationCoordinate2D)coord {
     if ((self = [super init])) {
@@ -27,14 +27,14 @@
     [theObject fetchIfNeeded];
 
 	self.object = theObject;
-	self.geopoint = [theObject objectForKey:ParseLocationKey];
+	self.geopoint = [theObject objectForKey:ParseGemCurrentLocationKey];
     
 	CLLocationCoordinate2D objectCoordinate = CLLocationCoordinate2DMake(self.geopoint.latitude, self.geopoint.longitude);
     
 	return [self initWithCoordinate:objectCoordinate];
 }
 
-- (BOOL) equalToGem:(Gem *)other {
+- (BOOL) equalToGem:(GemAnnotation *)other {
     if(other == nil) {
         return NO;
     }
