@@ -104,6 +104,10 @@
         }
         else if (user.isNew) {
             NSLog(@"User with facebook signed up and logged in");
+            PFUser * user = [PFUser currentUser];
+            user[ParseUserInventoryKey] = [[NSArray alloc] init];
+            user[ParseUserTimelineKey] = [[NSArray alloc] init];
+            [user saveInBackground];
             [self.delegate createGem:DefaultStartingInventory];
             [self.delegate viewController:self didUserLoginSuccessfully:YES];
         }

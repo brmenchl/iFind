@@ -56,6 +56,8 @@
             user.username = self.usernameField.text;
             user.password = self.passwordField.text;
             user.email = self.emailField.text;
+            user[ParseUserInventoryKey] = [[NSArray alloc] init];
+            user[ParseUserTimelineKey] = [[NSArray alloc] init];
             [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 if (!error) {
                     [self.delegate createGem:DefaultStartingInventory];

@@ -11,4 +11,6 @@
 @interface ContentView : UIView
 
 -(id)contentData;
+-(UIImage *)buttonImage;
+-(void)clearData;
 @end

@@ -19,7 +19,6 @@
     [Parse setApplicationId:@"EXa4eSmnKSJ1Pe4KR1e6hnNMmTvbs7ExC441LLkR"
                   clientKey:@"4Cg6pBg5EUV3IAKmrpKsTLUoHMBbxoysNvL81q1x"];
     [PFFacebookUtils initializeFacebook];
-    [FBLoginView class];
     
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
@@ -94,18 +93,33 @@
 // Gem[metadata]: null
 // Store gem object in User[inventory] array
 - (void) createGem:(NSUInteger)count {
+    NSLog(@"creating gems");
     NSMutableArray *inventory = [[NSMutableArray alloc] init];
-
+    PFUser *user = [PFUser currentUser];
     for(int i = 0; i < count; i++) {
         //Creating a new Gem Parse object
         PFObject *gem = [PFObject objectWithClassName:ParseGemClassName];
         gem[ParseGemLocationsKey] = [[NSMutableArray alloc] init];
         gem[ParseGemCurrentLocationKey] = [NSNull null];
         gem[ParseGemMetadataReferenceKey] = [NSNull null];
+        gem[ParseGemCurrentOwnerKey] = [PFUser currentUser];
         [inventory addObject:gem];
-    }    
-    [[PFUser currentUser] addObjectsFromArray:inventory forKey:ParseUserInventoryKey];
-    [[PFUser currentUser] saveInBackground];
+    }
+    [user addObjectsFromArray:inventory forKey:ParseUserInventoryKey];
+    NSLog(@"%@",user);
+    [user saveInBackgroundWithBlock:^(BOOL success, NSError *error) {
+        NSLog(@"BLOCK");
+        if(success) {
+            NSLog(@"Inventory on creation: %@",[PFUser currentUser][ParseUserInventoryKey]);
+        }
+        else if (!error) {
+            NSLog(@"uh no error");
+        }
+        else {
+            NSLog(@"error");
+            NSLog(@"%@", [[[error userInfo] objectForKey:@"NSUnderlyingErrorKey"]localizedDescription]);
+        }
+    }];
 }
 
 @end

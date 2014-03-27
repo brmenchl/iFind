@@ -10,12 +10,21 @@
 
 @interface ContentView()
 @property (nonatomic, weak) NSObject *content;
+@property (nonatomic, strong) UIImage * buttonImage;
 @end
 
 @implementation ContentView
 
 - (id) contentData {
     return self.content;
+}
+
+- (UIImage *)buttonImage {
+    return self.buttonImage;
+}
+
+- (void) clearData {
+    self.content = nil;
 }
 
 @end

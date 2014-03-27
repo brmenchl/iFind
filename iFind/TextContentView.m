@@ -10,6 +10,7 @@
 
 @interface TextContentView()
 @property (nonatomic, strong) UITextView *textView;
+@property (nonatomic, strong) UIImage *buttonImage;
 @end
 @implementation TextContentView
 
@@ -20,24 +21,32 @@
         self.textView.delegate = self;
         [self.textView setShowsVerticalScrollIndicator:NO];
         [self.textView setShowsHorizontalScrollIndicator:NO];
-        self.textView.backgroundColor = [UIColor clearColor];
+        self.textView.backgroundColor = [UIColor colorWithRed:0.68 green:0.71 blue:0.71 alpha:0.4];
         [self addSubview:self.textView];
     }
     return self;
 }
 
-- (void) setFrame:(CGRect)frame {
-    [super setFrame:frame];
-    self.textView.frame = self.bounds;
+-(id) init {
+    CGRect main = [UIScreen mainScreen].bounds;
+    self = [self initWithFrame:CGRectMake(0,0,main.size.width, 60)];
+    if(self) {
+        self.buttonImage = [UIImage imageNamed:@"messenger-generic.png"];
+    }
+    return self;
 }
 
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-    NSUInteger newLength = [textField.text length] + [string length] - range.length;
-    return (newLength > 25) ? NO : YES;
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    NSUInteger newLength = [textView.text length] + [text length] - range.length;
+    return (newLength > 140) ? NO : YES;
 }
 
 -(id)contentData {
     return self.textView.text;
+}
+
+-(void)clearData {
+    self.textView.text = @"";
 }
 
 @end

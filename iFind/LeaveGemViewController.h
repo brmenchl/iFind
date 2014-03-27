@@ -11,21 +11,21 @@
 #import "AppDelegate.h"
 
 @protocol LeaveGemViewControllerDelegate <NSObject>
-
 - (void) dropGemWithContent:(NSArray *)content;
-
 @end
 
-@interface LeaveGemViewController : UIViewController <ALRadialMenuDelegate>
+@interface LeaveGemViewController : UIViewController <ALRadialMenuDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITableViewDataSource, UITableViewDelegate>
 
-- (IBAction)addContentPress:(id)sender;
-@property (weak, nonatomic) IBOutlet UIButton *addContentButton;
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (weak, nonatomic) IBOutlet UIImageView *backgroundImage;
+- (void)addContentPress:(UIButton *)sender;
+- (IBAction)dropGemButtonPress:(id)sender;
+- (IBAction)cancelButtonPress:(id)sender;
+- (IBAction)tapGestureRecognized:(id)sender;
+
+
+
 @property (weak, nonatomic) UIImage *blurImage;
 @property (strong, nonatomic) ALRadialMenu *radialMenu;
-- (IBAction)tapGestureRecognizer:(id)sender;
-- (IBAction)dropGemButtonPress:(id)sender;
-
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, retain) id<LeaveGemViewControllerDelegate> delegate;
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 @end

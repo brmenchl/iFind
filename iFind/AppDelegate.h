@@ -21,10 +21,11 @@ static NSString * const ParseGemClassName = @"Gem";
 static NSString * const ParseGemLocationsKey = @"location"; //Array of CLLocations
 static NSString * const ParseGemCurrentLocationKey = @"currentLocation"; //PFGeopoint
 static NSString * const ParseGemMetadataReferenceKey = @"metadata"; //Pointer to metadata
+static NSString * const ParseGemCurrentOwnerKey = @"currentOwner"; //Pointer to user currently holding gem, nil if on map
 //Gem Metadata Class
 static NSString * const ParseGemMetadataClassName = @"GemMetadata";
-static NSString * const ParseMetaTextContentKey = @"textContent"; //String
-static NSString * const ParseMetaPickUpDateKey = @"pickUpDate"; //Date
+static NSString * const ParseMetaTextContentKey = @"textContent"; //Text message content
+static NSString * const ParseMetaImageContentKey = @"imageContent"; //Photo content
 static NSString * const ParseMetaGemReferenceKey = @"gem"; //Pointer to gem
 
 // Notification Names:

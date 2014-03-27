@@ -9,14 +9,14 @@
             <objects>
                 <viewController storyboardIdentifier="finderVC" id="rbi-zI-fFJ" customClass="GemFinderViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="IcE-9Y-KG4"/>
-                        <viewControllerLayoutGuide type="bottom" id="ei0-vq-uSz"/>
+                        <viewControllerLayoutGuide type="top" id="9bM-e5-g8h"/>
+                        <viewControllerLayoutGuide type="bottom" id="KiG-5k-9bw"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="nZd-Y0-vom">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lKL-le-a9Q">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" pitchEnabled="NO" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lKL-le-a9Q">
                                 <rect key="frame" x="0.0" y="58" width="320" height="417"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </mapView>
@@ -57,13 +57,97 @@
             </objects>
             <point key="canvasLocation" x="23" y="-21"/>
         </scene>
+        <!--Leave Gem View Controller-->
+        <scene sceneID="9Ia-31-h2e">
+            <objects>
+                <viewController storyboardIdentifier="LeaveGemVC" id="tJe-mi-KTq" customClass="LeaveGemViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dYk-e5-37f"/>
+                        <viewControllerLayoutGuide type="bottom" id="xv0-Vt-dcQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4eh-cH-Mm5">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pJu-0l-bek">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="MmP-SY-Ntm">
+                                <rect key="frame" x="0.0" y="44" width="320" height="480"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outlet property="dataSource" destination="tJe-mi-KTq" id="GbW-Z9-l0H"/>
+                                    <outlet property="delegate" destination="tJe-mi-KTq" id="NKj-gv-BHf"/>
+                                    <outletCollection property="gestureRecognizers" destination="cz7-7W-Evv" appends="YES" id="5eb-fI-l3b"/>
+                                </connections>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cxk-jj-MeA">
+                                <rect key="frame" x="20" y="518" width="77" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="77" id="cGQ-1U-1ll"/>
+                                </constraints>
+                                <state key="normal" title="Drop Gem">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="dropGemButtonPress:" destination="tJe-mi-KTq" eventType="touchUpInside" id="smE-kA-Hb7"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BTM-WO-b2u">
+                                <rect key="frame" x="252" y="518" width="48" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelButtonPress:" destination="tJe-mi-KTq" eventType="touchUpInside" id="1IW-LL-pZ8"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="MmP-SY-Ntm" firstAttribute="trailing" secondItem="pJu-0l-bek" secondAttribute="trailing" id="5qa-Pq-gNE"/>
+                            <constraint firstItem="cxk-jj-MeA" firstAttribute="leading" secondItem="4eh-cH-Mm5" secondAttribute="leading" constant="20" symbolic="YES" id="AY9-g1-yay"/>
+                            <constraint firstAttribute="trailing" secondItem="BTM-WO-b2u" secondAttribute="trailing" constant="20" symbolic="YES" id="Aef-Hh-IZ0"/>
+                            <constraint firstItem="xv0-Vt-dcQ" firstAttribute="top" secondItem="MmP-SY-Ntm" secondAttribute="bottom" constant="44" id="FcT-iS-bru"/>
+                            <constraint firstAttribute="trailing" secondItem="MmP-SY-Ntm" secondAttribute="trailing" id="aJM-Lt-aS2"/>
+                            <constraint firstItem="xv0-Vt-dcQ" firstAttribute="top" secondItem="cxk-jj-MeA" secondAttribute="bottom" constant="20" id="bSj-go-jqg"/>
+                            <constraint firstItem="pJu-0l-bek" firstAttribute="top" secondItem="4eh-cH-Mm5" secondAttribute="top" id="jaq-Yl-Nxa"/>
+                            <constraint firstItem="xv0-Vt-dcQ" firstAttribute="top" secondItem="BTM-WO-b2u" secondAttribute="bottom" constant="20" id="jgu-Q1-bVx"/>
+                            <constraint firstItem="MmP-SY-Ntm" firstAttribute="top" secondItem="dYk-e5-37f" secondAttribute="bottom" constant="24" id="maR-xH-wpr"/>
+                            <constraint firstItem="MmP-SY-Ntm" firstAttribute="leading" secondItem="pJu-0l-bek" secondAttribute="leading" id="sAp-O5-Sgq"/>
+                            <constraint firstItem="MmP-SY-Ntm" firstAttribute="leading" secondItem="4eh-cH-Mm5" secondAttribute="leading" id="xoQ-eS-6UY"/>
+                            <constraint firstItem="MmP-SY-Ntm" firstAttribute="centerY" secondItem="pJu-0l-bek" secondAttribute="centerY" id="ylA-k7-anK"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="backgroundImageView" destination="pJu-0l-bek" id="i54-Sa-34x"/>
+                        <outlet property="tableView" destination="MmP-SY-Ntm" id="C1A-H6-lRF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cqg-E1-O3i" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="cz7-7W-Evv">
+                    <connections>
+                        <action selector="tapGestureRecognized:" destination="tJe-mi-KTq" id="Wbu-Rh-0Nw"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="23" y="660"/>
+        </scene>
         <!--Welcome View Controller-->
         <scene sceneID="dZJ-hP-y8f">
             <objects>
                 <viewController storyboardIdentifier="welcomeVC" id="quL-I0-GfF" customClass="WelcomeViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="vhx-Lg-JMR"/>
-                        <viewControllerLayoutGuide type="bottom" id="8Xb-DU-19x"/>
+                        <viewControllerLayoutGuide type="top" id="YPt-J2-bc6"/>
+                        <viewControllerLayoutGuide type="bottom" id="pBf-xO-MmX"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="vTP-PF-C00">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -165,8 +249,8 @@
             <objects>
                 <viewController id="Ceh-7c-fwB" customClass="CreateAccountViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="4MD-CG-o0s"/>
-                        <viewControllerLayoutGuide type="bottom" id="PpB-0f-y2S"/>
+                        <viewControllerLayoutGuide type="top" id="mgJ-9U-BPh"/>
+                        <viewControllerLayoutGuide type="bottom" id="p5U-fF-2c6"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="58A-vv-SVp">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -239,8 +323,8 @@
             <objects>
                 <viewController storyboardIdentifier="settingsVC" id="AdG-YQ-gZx" customClass="SettingsViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="9Io-UR-nws"/>
-                        <viewControllerLayoutGuide type="bottom" id="C3b-Xn-7Os"/>
+                        <viewControllerLayoutGuide type="top" id="Cxe-XD-Lcg"/>
+                        <viewControllerLayoutGuide type="bottom" id="lNS-tx-UzQ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="9ve-XK-nwu">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -267,75 +351,9 @@
             </objects>
             <point key="canvasLocation" x="469" y="-21"/>
         </scene>
-        <!--Leave Gem View Controller-->
-        <scene sceneID="sce-qa-npn">
-            <objects>
-                <viewController storyboardIdentifier="LeaveGemVC" id="GGY-1S-GMC" customClass="LeaveGemViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="sdz-jB-a4r"/>
-                        <viewControllerLayoutGuide type="bottom" id="brq-OY-DfV"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="eoh-4O-JKS">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AXX-yD-Soh">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Yf-CV-Hpb">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N3R-wK-vHe">
-                                        <rect key="frame" x="145" y="263" width="30" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="plusButton.png">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="addContentPress:" destination="GGY-1S-GMC" eventType="touchUpInside" id="4Kh-mH-ZsO"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bA2-Ku-Xex">
-                                        <rect key="frame" x="125" y="312" width="71" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Drop Gem">
-                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="dropGemButtonPress:" destination="GGY-1S-GMC" eventType="touchUpInside" id="jei-iX-YJg"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </scrollView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <gestureRecognizers/>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="Qpb-Go-nr8" appends="YES" id="Rci-xi-1YW"/>
-                        </connections>
-                    </view>
-                    <connections>
-                        <outlet property="addContentButton" destination="N3R-wK-vHe" id="czn-R5-umk"/>
-                        <outlet property="backgroundImage" destination="AXX-yD-Soh" id="zR4-aa-2WY"/>
-                        <outlet property="scrollView" destination="7Yf-CV-Hpb" id="MdG-Xw-nxw"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ouf-4i-VJj" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="Qpb-Go-nr8">
-                    <connections>
-                        <action selector="tapGestureRecognizer:" destination="GGY-1S-GMC" id="HXc-Gi-VtR"/>
-                    </connections>
-                </tapGestureRecognizer>
-            </objects>
-            <point key="canvasLocation" x="23" y="668"/>
-        </scene>
     </scenes>
     <resources>
         <image name="compass.png" width="30" height="30"/>
-        <image name="plusButton.png" width="30" height="30"/>
         <image name="settingsGear.png" width="30" height="30"/>
     </resources>
     <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
