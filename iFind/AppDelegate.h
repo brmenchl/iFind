@@ -6,10 +6,10 @@
 //  Copyright (c) 2014 FuarkNet. All rights reserved.
 //
 
-static double const MaximumSearchDistance = 100.0;
-static double const DefaultStartingInventory = 5;
-static double const PickUpDistance = 100;
-static NSUInteger const GemQueryLimit = 20;
+static double const MaximumSearchDistance = 100.0;  //Maximum distance to look for nearby gems (meters?)
+static double const DefaultStartingInventory = 5; //Default amount of gems given to a new user
+static double const PickUpDistance = 100; //Maximum distance allowing user to pick up a gem (meters?)  needs to be less
+static NSUInteger const GemQueryLimit = 20; //Currently limits the mapview querying for nearby gems, we might set this to 1 later
 
 // Parse API key constants:
 //User Class
@@ -33,8 +33,8 @@ static NSString * const GemDroppedNotification = @"GemDroppedNotification";
 static NSString * const GemPickedUpNotification = @"GemPickedUpNotification";
 static NSString * const PresentLeaveGemVCNotification = @"PresentLeaveGemVCNotification";
 static NSString * const GemContentDeletedNotification = @"GemContentDeletedNotification";
-static NSString * const SignUpCompletedNotification = @"SignUpCompletedNotification";
-static NSString * const LoginCompletedNotification = @"LoginCompletedNotification";
+//static NSString * const SignUpCompletedNotification = @"SignUpCompletedNotification";
+//static NSString * const LoginCompletedNotification = @"LoginCompletedNotification";
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
@@ -43,14 +43,17 @@ static NSString * const LoginCompletedNotification = @"LoginCompletedNotificatio
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, BounceMenuControllerDelegate, AccountHandlerDelegate>
 
+//Reference to the window object
 @property (strong, nonatomic) UIWindow *window;
-@property (strong, nonatomic) NSArray *controllers;
+
+//Public reference to the bounceMenuController, which is the wrapper controller over all the main views of the app
 @property (strong, nonatomic) BounceMenuController *bounceMenuController;
+
+//Public reference to the NavigationController, which is the wrapper controller for the login and sign up screens.
+//We might want to make create user a modal view controller, so we might eventually get rid of this
 @property (strong, nonatomic) UINavigationController *nav;
+
+//Public reference to the last current location grabbed by Core Location.  This should speed up some execution.
 @property (nonatomic, strong) CLLocation *currentLocation;
 
-
--(void) viewController:(UIViewController *)controller didUserLoginSuccessfully:(BOOL)success;
--(void) viewController:(UIViewController *)controller didUserLogoutSuccessfully:(BOOL)success;
--(void) createGem:(NSUInteger)count;
 @end

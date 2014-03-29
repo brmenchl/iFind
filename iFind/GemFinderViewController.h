@@ -8,22 +8,24 @@
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
-#import "LeaveGemViewController.h"
+#import "AddContentViewController.h"
 @class MKMapView;
-@class GemFinderViewController;
 
-@protocol GemFinderViewControllerDelegate <NSObject>
-@end
+@interface GemFinderViewController : UIViewController <CLLocationManagerDelegate, AddContentViewControllerDelegate>
 
-@interface GemFinderViewController : UIViewController <CLLocationManagerDelegate, LeaveGemViewControllerDelegate>
+//Temporary mapview outlet to show nearby gems
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
+
+//Outlet for drop gem button (for enabling/disabling)
 @property (weak, nonatomic) IBOutlet UIButton *dropButton;
+
+//Outlet for pick up gem button (for enabling/disabling)
 @property (weak, nonatomic) IBOutlet UIButton *pickUpButton;
 
+//Handles pressing the drop gem button
 - (IBAction)dropButtonPress:(id)sender;
+
+//Handles pressing the pick up gem button
 - (IBAction)pickUpButtonPress:(id)sender;
 
-- (void)dropGemWithContent:(NSArray *)content;
-
-@property (nonatomic, assign) id<GemFinderViewControllerDelegate> delegate;
 @end

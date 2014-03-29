@@ -10,7 +10,9 @@
 #import "AppDelegate.h"
 
 @interface GemAnnotation ()
+//Stored PFObject reference
 @property (nonatomic, strong) PFObject *object;
+//Stored Parse location point reference
 @property (nonatomic, strong) PFGeoPoint *geopoint;
 @end
 
@@ -30,7 +32,7 @@
 	self.geopoint = [theObject objectForKey:ParseGemCurrentLocationKey];
     
 	CLLocationCoordinate2D objectCoordinate = CLLocationCoordinate2DMake(self.geopoint.latitude, self.geopoint.longitude);
-    
+    //Set required coordinate property to show up on the map
 	return [self initWithCoordinate:objectCoordinate];
 }
 

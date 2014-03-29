@@ -10,9 +10,11 @@
 #import "AccountHandlerDelegate.h"
 
 @interface SettingsViewController : UIViewController
+
+//handles pressing the log out button
 - (IBAction)logOutPress:(id)sender;
 
-
+//reference to AccountHandlerDelegate to handle log out success
 @property (nonatomic, assign) id <AccountHandlerDelegate> delegate;
 
 @end

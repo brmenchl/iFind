@@ -10,5 +10,6 @@
 
 @interface ImageContentView : ContentView <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
+//Extra method delayed add an image to an imagecontentview
 - (void) setImage:(UIImage *)image;
 @end

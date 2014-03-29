@@ -37,7 +37,7 @@
 		E234E85818E00C0100E2B16D /* TextContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = E234E85718E00C0100E2B16D /* TextContentView.m */; };
 		E2546AEE18D27DE0005F2D8B /* GemAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = E2546AED18D27DE0005F2D8B /* GemAnnotation.m */; };
 		E2675C6418CFB26A00F56BD3 /* CreateAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2675C6318CFB26A00F56BD3 /* CreateAccountViewController.m */; };
-		E2733BD418D6A49200EB51B0 /* LeaveGemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2733BD318D6A49200EB51B0 /* LeaveGemViewController.m */; };
+		E2733BD418D6A49200EB51B0 /* AddContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2733BD318D6A49200EB51B0 /* AddContentViewController.m */; };
 		E2733BD918D6B42C00EB51B0 /* ALRadialButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E2733BD618D6B42C00EB51B0 /* ALRadialButton.m */; };
 		E2733BDA18D6B42C00EB51B0 /* ALRadialMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = E2733BD818D6B42C00EB51B0 /* ALRadialMenu.m */; };
 		E2733BDF18D6B8B300EB51B0 /* plusButton.png in Resources */ = {isa = PBXBuildFile; fileRef = E2733BDD18D6B8B300EB51B0 /* plusButton.png */; };
@@ -112,8 +112,8 @@
 		E2546AED18D27DE0005F2D8B /* GemAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GemAnnotation.m; sourceTree = "<group>"; };
 		E2675C6218CFB26A00F56BD3 /* CreateAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateAccountViewController.h; sourceTree = "<group>"; };
 		E2675C6318CFB26A00F56BD3 /* CreateAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateAccountViewController.m; sourceTree = "<group>"; };
-		E2733BD218D6A49200EB51B0 /* LeaveGemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeaveGemViewController.h; sourceTree = "<group>"; };
-		E2733BD318D6A49200EB51B0 /* LeaveGemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeaveGemViewController.m; sourceTree = "<group>"; };
+		E2733BD218D6A49200EB51B0 /* AddContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddContentViewController.h; sourceTree = "<group>"; };
+		E2733BD318D6A49200EB51B0 /* AddContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddContentViewController.m; sourceTree = "<group>"; };
 		E2733BD518D6B42C00EB51B0 /* ALRadialButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ALRadialButton.h; path = "../../../../../../Downloads/ALRadial-master/ALRadial/ALRadial/ALRadialButton.h"; sourceTree = "<group>"; };
 		E2733BD618D6B42C00EB51B0 /* ALRadialButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ALRadialButton.m; path = "../../../../../../Downloads/ALRadial-master/ALRadial/ALRadial/ALRadialButton.m"; sourceTree = "<group>"; };
 		E2733BD718D6B42C00EB51B0 /* ALRadialMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ALRadialMenu.h; path = "../../../../../../Downloads/ALRadial-master/ALRadial/ALRadial/ALRadialMenu.h"; sourceTree = "<group>"; };
@@ -224,6 +224,7 @@
 			children = (
 				CEA6D36618BD4E2800F36A35 /* AppDelegate.h */,
 				CEA6D36718BD4E2800F36A35 /* AppDelegate.m */,
+				E2E30DD618E61BFA004770FA /* Views */,
 				E2CC0B0F18BEB7E8008B6094 /* Models */,
 				E2CC0B0918BEA48E008B6094 /* Controllers */,
 				E2CC0B0618BE9C2B008B6094 /* Assets */,
@@ -321,10 +322,10 @@
 				E2733BDC18D6B48700EB51B0 /* Login/Welcome */,
 				CE3E63CF18BD55A400A5DCD7 /* GemFinderViewController.h */,
 				CE3E63D018BD55A400A5DCD7 /* GemFinderViewController.m */,
+				E2733BD218D6A49200EB51B0 /* AddContentViewController.h */,
+				E2733BD318D6A49200EB51B0 /* AddContentViewController.m */,
 				E2E711C918C1AAF900F5EAC1 /* SettingsViewController.h */,
 				E2E711CA18C1AAF900F5EAC1 /* SettingsViewController.m */,
-				E2733BD218D6A49200EB51B0 /* LeaveGemViewController.h */,
-				E2733BD318D6A49200EB51B0 /* LeaveGemViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -332,14 +333,20 @@
 		E2CC0B0F18BEB7E8008B6094 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				E2CC0B0118BE96F7008B6094 /* PlusButton.h */,
-				E2CC0B0218BE96F7008B6094 /* PlusButton.m */,
-				E234E84118DF9F2D00E2B16D /* AccountHandlerDelegate.h */,
-				E234E85018DFE57500E2B16D /* UIImage+ImageEffects.h */,
-				E234E85118DFE57500E2B16D /* UIImage+ImageEffects.m */,
-				E2733BDB18D6B43000EB51B0 /* ALRadial */,
 				E2546AEC18D27DE0005F2D8B /* GemAnnotation.h */,
 				E2546AED18D27DE0005F2D8B /* GemAnnotation.m */,
+				E234E84118DF9F2D00E2B16D /* AccountHandlerDelegate.h */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		E2E30DD618E61BFA004770FA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E2733BDB18D6B43000EB51B0 /* ALRadial */,
+				E2E30DD718E61F1D004770FA /* PlusButton */,
+				E234E85018DFE57500E2B16D /* UIImage+ImageEffects.h */,
+				E234E85118DFE57500E2B16D /* UIImage+ImageEffects.m */,
 				E234E85318E00AF300E2B16D /* ContentView.h */,
 				E234E85418E00AF300E2B16D /* ContentView.m */,
 				E234E85618E00C0100E2B16D /* TextContentView.h */,
@@ -347,7 +354,16 @@
 				E2BA8BC818E0CB14002027EE /* ImageContentView.h */,
 				E2BA8BC918E0CB14002027EE /* ImageContentView.m */,
 			);
-			name = Models;
+			name = Views;
+			sourceTree = "<group>";
+		};
+		E2E30DD718E61F1D004770FA /* PlusButton */ = {
+			isa = PBXGroup;
+			children = (
+				E2CC0B0218BE96F7008B6094 /* PlusButton.m */,
+				E2CC0B0118BE96F7008B6094 /* PlusButton.h */,
+			);
+			name = PlusButton;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -491,7 +507,7 @@
 				CE3E63D118BD55A400A5DCD7 /* GemFinderViewController.m in Sources */,
 				E2E711CB18C1AAF900F5EAC1 /* SettingsViewController.m in Sources */,
 				E234E85518E00AF300E2B16D /* ContentView.m in Sources */,
-				E2733BD418D6A49200EB51B0 /* LeaveGemViewController.m in Sources */,
+				E2733BD418D6A49200EB51B0 /* AddContentViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

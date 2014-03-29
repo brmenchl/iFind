@@ -10,7 +10,18 @@
 
 @interface ContentView : UIView
 
+/*
+ *  returns the relevant data from the contentView (UIImage, nsstring,...)
+ */
 -(id)contentData;
+
+/*
+ *  returns the image to go on the ALRadial button menu
+ */
 -(UIImage *)buttonImage;
+
+/*
+ *  removes all data from the contentView to refresh view
+ */
 -(void)clearData;
 @end
