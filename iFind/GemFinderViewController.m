@@ -184,7 +184,8 @@
     
     //Blurring the image with Apple's "UIImage+ImageEffects"
     UIImage *blurImage = [screenshot applyBlurWithRadius:1 tintColor:[UIColor colorWithWhite:0 alpha:0.2] saturationDeltaFactor:1 maskImage:nil];
-    [self.addContentViewController.backgroundImageView setImage:blurImage];
+    NSLog(@"image is: %@",blurImage);
+    self.addContentViewController.blurImage = blurImage;
     
     //Present AddContentViewController
     [self.view.window.rootViewController presentViewController:self.addContentViewController animated:YES completion:NULL];

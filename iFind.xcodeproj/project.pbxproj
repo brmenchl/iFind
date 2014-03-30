@@ -40,10 +40,9 @@
 		E2733BD418D6A49200EB51B0 /* AddContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2733BD318D6A49200EB51B0 /* AddContentViewController.m */; };
 		E2733BD918D6B42C00EB51B0 /* ALRadialButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E2733BD618D6B42C00EB51B0 /* ALRadialButton.m */; };
 		E2733BDA18D6B42C00EB51B0 /* ALRadialMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = E2733BD818D6B42C00EB51B0 /* ALRadialMenu.m */; };
-		E2733BDF18D6B8B300EB51B0 /* plusButton.png in Resources */ = {isa = PBXBuildFile; fileRef = E2733BDD18D6B8B300EB51B0 /* plusButton.png */; };
-		E2733BE018D6B8B300EB51B0 /* plusButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2733BDE18D6B8B300EB51B0 /* plusButton@2x.png */; };
 		E2733BE418D6C12500EB51B0 /* soundcloud.png in Resources */ = {isa = PBXBuildFile; fileRef = E2733BE318D6C12500EB51B0 /* soundcloud.png */; };
 		E2733BE618D6C15B00EB51B0 /* messenger-generic.png in Resources */ = {isa = PBXBuildFile; fileRef = E2733BE518D6C15B00EB51B0 /* messenger-generic.png */; };
+		E2AC39D518E892E70030461C /* plusButton.png in Resources */ = {isa = PBXBuildFile; fileRef = E2AC39D418E892E70030461C /* plusButton.png */; };
 		E2BA8BCA18E0CB14002027EE /* ImageContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = E2BA8BC918E0CB14002027EE /* ImageContentView.m */; };
 		E2BA8BCC18E224EF002027EE /* orkut.png in Resources */ = {isa = PBXBuildFile; fileRef = E2BA8BCB18E224EF002027EE /* orkut.png */; };
 		E2BA8BDD18E2AC43002027EE /* trashButton.png in Resources */ = {isa = PBXBuildFile; fileRef = E2BA8BDC18E2AC43002027EE /* trashButton.png */; };
@@ -118,10 +117,9 @@
 		E2733BD618D6B42C00EB51B0 /* ALRadialButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ALRadialButton.m; path = "../../../../../../Downloads/ALRadial-master/ALRadial/ALRadial/ALRadialButton.m"; sourceTree = "<group>"; };
 		E2733BD718D6B42C00EB51B0 /* ALRadialMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ALRadialMenu.h; path = "../../../../../../Downloads/ALRadial-master/ALRadial/ALRadial/ALRadialMenu.h"; sourceTree = "<group>"; };
 		E2733BD818D6B42C00EB51B0 /* ALRadialMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ALRadialMenu.m; path = "../../../../../../Downloads/ALRadial-master/ALRadial/ALRadial/ALRadialMenu.m"; sourceTree = "<group>"; };
-		E2733BDD18D6B8B300EB51B0 /* plusButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = plusButton.png; path = ../../../../../../Desktop/plusButton.png; sourceTree = "<group>"; };
-		E2733BDE18D6B8B300EB51B0 /* plusButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "plusButton@2x.png"; path = "../../../../../../Desktop/plusButton@2x.png"; sourceTree = "<group>"; };
 		E2733BE318D6C12500EB51B0 /* soundcloud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = soundcloud.png; sourceTree = "<group>"; };
 		E2733BE518D6C15B00EB51B0 /* messenger-generic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messenger-generic.png"; sourceTree = "<group>"; };
+		E2AC39D418E892E70030461C /* plusButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plusButton.png; sourceTree = "<group>"; };
 		E2BA8BC818E0CB14002027EE /* ImageContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageContentView.h; sourceTree = "<group>"; };
 		E2BA8BC918E0CB14002027EE /* ImageContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageContentView.m; sourceTree = "<group>"; };
 		E2BA8BCB18E224EF002027EE /* orkut.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = orkut.png; sourceTree = "<group>"; };
@@ -298,14 +296,13 @@
 		E2CC0B0618BE9C2B008B6094 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				E2AC39D418E892E70030461C /* plusButton.png */,
 				E2BA8BDC18E2AC43002027EE /* trashButton.png */,
 				E2BA8BCB18E224EF002027EE /* orkut.png */,
 				E2733BE518D6C15B00EB51B0 /* messenger-generic.png */,
 				E2733BE318D6C12500EB51B0 /* soundcloud.png */,
 				CEB7B36B18D68D3A00AC72C5 /* tower.jpg */,
 				CEB7B36D18D6A8F000AC72C5 /* waterfall.jpg */,
-				E2733BDD18D6B8B300EB51B0 /* plusButton.png */,
-				E2733BDE18D6B8B300EB51B0 /* plusButton@2x.png */,
 				E2E711C518C1AAD600F5EAC1 /* settingsGear.png */,
 				E2E711C618C1AAD600F5EAC1 /* settingsGear@2x.png */,
 				E2CC0B0418BE9AF9008B6094 /* barDivider.png */,
@@ -459,19 +456,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				E2BA8BDD18E2AC43002027EE /* trashButton.png in Resources */,
+				E2AC39D518E892E70030461C /* plusButton.png in Resources */,
 				CEB7B36E18D6A8F000AC72C5 /* waterfall.jpg in Resources */,
 				E2733BE618D6C15B00EB51B0 /* messenger-generic.png in Resources */,
 				E2E711C818C1AAD600F5EAC1 /* settingsGear@2x.png in Resources */,
 				E2E711BE18C17DB100F5EAC1 /* Main.storyboard in Resources */,
 				E2733BE418D6C12500EB51B0 /* soundcloud.png in Resources */,
-				E2733BE018D6B8B300EB51B0 /* plusButton@2x.png in Resources */,
 				E2CC0AF918BE95E3008B6094 /* compass@2x.png in Resources */,
 				E2CC0AFB18BE964A008B6094 /* compass.png in Resources */,
 				CEA6D36218BD4E2800F36A35 /* InfoPlist.strings in Resources */,
 				E2E711C718C1AAD600F5EAC1 /* settingsGear.png in Resources */,
 				E2BA8BCC18E224EF002027EE /* orkut.png in Resources */,
 				CEA6D36A18BD4E2800F36A35 /* Images.xcassets in Resources */,
-				E2733BDF18D6B8B300EB51B0 /* plusButton.png in Resources */,
 				E2CC0B0518BE9AF9008B6094 /* barDivider.png in Resources */,
 				CEB7B36C18D68D3A00AC72C5 /* tower.jpg in Resources */,
 			);

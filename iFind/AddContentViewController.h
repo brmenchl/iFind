@@ -32,6 +32,8 @@
 //Outlet for background UIImageView
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 
+@property (strong,nonatomic) UIImage *blurImage;
+
 //Reference to AddContentViewControllerDelegate
 @property (nonatomic, retain) id<AddContentViewControllerDelegate> delegate;
 

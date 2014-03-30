@@ -62,15 +62,13 @@
     //Initialize imagePicger
     self.imagePickerController = [[UIImagePickerController alloc] init];
     self.imagePickerController.delegate = self;
-    self.imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
-    self.imagePickerController.showsCameraControls = YES;
 }
 
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
     //Reset blurred background
-    [self setBackgroundImageView:self.backgroundImageView];
+    [self.backgroundImageView setImage:self.blurImage];
     [self.tableView reloadData];
 }
 
@@ -248,6 +246,8 @@
         return;
     }
     else {
+        self.imagePickerController.delegate = self;
+        self.imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
         [self presentViewController:self.imagePickerController animated:YES completion:NULL];
     }
 }
