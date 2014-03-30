@@ -62,6 +62,11 @@
     // We should be resetting drop and pick up gem buttons here, you shouldn't be able to drop or pick up unless valid
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self.addContentViewController view];
+}
+
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
 	[self.locationManager stopUpdatingLocation];
@@ -183,8 +188,7 @@
     UIGraphicsEndImageContext();
     
     //Blurring the image with Apple's "UIImage+ImageEffects"
-    UIImage *blurImage = [screenshot applyBlurWithRadius:1 tintColor:[UIColor colorWithWhite:0 alpha:0.2] saturationDeltaFactor:1 maskImage:nil];
-    NSLog(@"image is: %@",blurImage);
+    UIImage *blurImage = [screenshot applyBlurWithRadius:3 tintColor:[UIColor colorWithWhite:1 alpha:0.4] saturationDeltaFactor:1 maskImage:nil];
     self.addContentViewController.blurImage = blurImage;
     
     //Present AddContentViewController

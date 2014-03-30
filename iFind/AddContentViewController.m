@@ -41,7 +41,7 @@
 
 - (void) viewDidLoad {
     [super viewDidLoad];
-    
+    NSLog(@"viewDidLoad");
     //Initialize radialMenu
     self.radialMenu = [[ALRadialMenu alloc] init];
 	self.radialMenu.delegate = self;
@@ -66,7 +66,6 @@
 
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
     //Reset blurred background
     [self.backgroundImageView setImage:self.blurImage];
     [self.tableView reloadData];

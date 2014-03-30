@@ -31,10 +31,6 @@ static NSString * const ParseMetaGemReferenceKey = @"gem"; //Pointer to gem
 // Notification Names:
 static NSString * const GemDroppedNotification = @"GemDroppedNotification";
 static NSString * const GemPickedUpNotification = @"GemPickedUpNotification";
-static NSString * const PresentLeaveGemVCNotification = @"PresentLeaveGemVCNotification";
-static NSString * const GemContentDeletedNotification = @"GemContentDeletedNotification";
-//static NSString * const SignUpCompletedNotification = @"SignUpCompletedNotification";
-//static NSString * const LoginCompletedNotification = @"LoginCompletedNotification";
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
@@ -55,5 +51,8 @@ static NSString * const GemContentDeletedNotification = @"GemContentDeletedNotif
 
 //Public reference to the last current location grabbed by Core Location.  This should speed up some execution.
 @property (nonatomic, strong) CLLocation *currentLocation;
+
+// Queues
+@property dispatch_queue_t backgroundQueue;
 
 @end

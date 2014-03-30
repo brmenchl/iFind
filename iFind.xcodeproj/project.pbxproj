@@ -32,14 +32,14 @@
 		CEA6D39D18BD51DD00F36A35 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA6D39C18BD51DD00F36A35 /* SystemConfiguration.framework */; };
 		CEB7B36C18D68D3A00AC72C5 /* tower.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CEB7B36B18D68D3A00AC72C5 /* tower.jpg */; };
 		CEB7B36E18D6A8F000AC72C5 /* waterfall.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CEB7B36D18D6A8F000AC72C5 /* waterfall.jpg */; };
+		E21F9A6218E8DDE70029BA85 /* ALRadialButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E21F9A5F18E8DDE70029BA85 /* ALRadialButton.m */; };
+		E21F9A6318E8DDE70029BA85 /* ALRadialMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = E21F9A6118E8DDE70029BA85 /* ALRadialMenu.m */; };
 		E234E85218DFE57500E2B16D /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = E234E85118DFE57500E2B16D /* UIImage+ImageEffects.m */; };
 		E234E85518E00AF300E2B16D /* ContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = E234E85418E00AF300E2B16D /* ContentView.m */; };
 		E234E85818E00C0100E2B16D /* TextContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = E234E85718E00C0100E2B16D /* TextContentView.m */; };
 		E2546AEE18D27DE0005F2D8B /* GemAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = E2546AED18D27DE0005F2D8B /* GemAnnotation.m */; };
 		E2675C6418CFB26A00F56BD3 /* CreateAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2675C6318CFB26A00F56BD3 /* CreateAccountViewController.m */; };
 		E2733BD418D6A49200EB51B0 /* AddContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2733BD318D6A49200EB51B0 /* AddContentViewController.m */; };
-		E2733BD918D6B42C00EB51B0 /* ALRadialButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E2733BD618D6B42C00EB51B0 /* ALRadialButton.m */; };
-		E2733BDA18D6B42C00EB51B0 /* ALRadialMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = E2733BD818D6B42C00EB51B0 /* ALRadialMenu.m */; };
 		E2733BE418D6C12500EB51B0 /* soundcloud.png in Resources */ = {isa = PBXBuildFile; fileRef = E2733BE318D6C12500EB51B0 /* soundcloud.png */; };
 		E2733BE618D6C15B00EB51B0 /* messenger-generic.png in Resources */ = {isa = PBXBuildFile; fileRef = E2733BE518D6C15B00EB51B0 /* messenger-generic.png */; };
 		E2AC39D518E892E70030461C /* plusButton.png in Resources */ = {isa = PBXBuildFile; fileRef = E2AC39D418E892E70030461C /* plusButton.png */; };
@@ -100,6 +100,10 @@
 		CEA6D39C18BD51DD00F36A35 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		CEB7B36B18D68D3A00AC72C5 /* tower.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tower.jpg; sourceTree = "<group>"; };
 		CEB7B36D18D6A8F000AC72C5 /* waterfall.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = waterfall.jpg; sourceTree = "<group>"; };
+		E21F9A5E18E8DDE70029BA85 /* ALRadialButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALRadialButton.h; sourceTree = "<group>"; };
+		E21F9A5F18E8DDE70029BA85 /* ALRadialButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALRadialButton.m; sourceTree = "<group>"; };
+		E21F9A6018E8DDE70029BA85 /* ALRadialMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALRadialMenu.h; sourceTree = "<group>"; };
+		E21F9A6118E8DDE70029BA85 /* ALRadialMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALRadialMenu.m; sourceTree = "<group>"; };
 		E234E84118DF9F2D00E2B16D /* AccountHandlerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountHandlerDelegate.h; sourceTree = "<group>"; };
 		E234E85018DFE57500E2B16D /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
 		E234E85118DFE57500E2B16D /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
@@ -113,10 +117,6 @@
 		E2675C6318CFB26A00F56BD3 /* CreateAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateAccountViewController.m; sourceTree = "<group>"; };
 		E2733BD218D6A49200EB51B0 /* AddContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddContentViewController.h; sourceTree = "<group>"; };
 		E2733BD318D6A49200EB51B0 /* AddContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddContentViewController.m; sourceTree = "<group>"; };
-		E2733BD518D6B42C00EB51B0 /* ALRadialButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ALRadialButton.h; path = "../../../../../../Downloads/ALRadial-master/ALRadial/ALRadial/ALRadialButton.h"; sourceTree = "<group>"; };
-		E2733BD618D6B42C00EB51B0 /* ALRadialButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ALRadialButton.m; path = "../../../../../../Downloads/ALRadial-master/ALRadial/ALRadial/ALRadialButton.m"; sourceTree = "<group>"; };
-		E2733BD718D6B42C00EB51B0 /* ALRadialMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ALRadialMenu.h; path = "../../../../../../Downloads/ALRadial-master/ALRadial/ALRadial/ALRadialMenu.h"; sourceTree = "<group>"; };
-		E2733BD818D6B42C00EB51B0 /* ALRadialMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ALRadialMenu.m; path = "../../../../../../Downloads/ALRadial-master/ALRadial/ALRadial/ALRadialMenu.m"; sourceTree = "<group>"; };
 		E2733BE318D6C12500EB51B0 /* soundcloud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = soundcloud.png; sourceTree = "<group>"; };
 		E2733BE518D6C15B00EB51B0 /* messenger-generic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messenger-generic.png"; sourceTree = "<group>"; };
 		E2AC39D418E892E70030461C /* plusButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plusButton.png; sourceTree = "<group>"; };
@@ -274,10 +274,10 @@
 		E2733BDB18D6B43000EB51B0 /* ALRadial */ = {
 			isa = PBXGroup;
 			children = (
-				E2733BD518D6B42C00EB51B0 /* ALRadialButton.h */,
-				E2733BD618D6B42C00EB51B0 /* ALRadialButton.m */,
-				E2733BD718D6B42C00EB51B0 /* ALRadialMenu.h */,
-				E2733BD818D6B42C00EB51B0 /* ALRadialMenu.m */,
+				E21F9A5E18E8DDE70029BA85 /* ALRadialButton.h */,
+				E21F9A5F18E8DDE70029BA85 /* ALRadialButton.m */,
+				E21F9A6018E8DDE70029BA85 /* ALRadialMenu.h */,
+				E21F9A6118E8DDE70029BA85 /* ALRadialMenu.m */,
 			);
 			name = ALRadial;
 			sourceTree = "<group>";
@@ -494,13 +494,13 @@
 				E234E85218DFE57500E2B16D /* UIImage+ImageEffects.m in Sources */,
 				CEA6D36818BD4E2800F36A35 /* AppDelegate.m in Sources */,
 				CEA6D36418BD4E2800F36A35 /* main.m in Sources */,
-				E2733BDA18D6B42C00EB51B0 /* ALRadialMenu.m in Sources */,
 				E2CC0B0018BE96ED008B6094 /* BounceMenuController.m in Sources */,
 				E234E85818E00C0100E2B16D /* TextContentView.m in Sources */,
-				E2733BD918D6B42C00EB51B0 /* ALRadialButton.m in Sources */,
+				E21F9A6318E8DDE70029BA85 /* ALRadialMenu.m in Sources */,
 				E2E7CD9918C1761100C20286 /* WelcomeViewController.m in Sources */,
 				E2546AEE18D27DE0005F2D8B /* GemAnnotation.m in Sources */,
 				CE3E63D118BD55A400A5DCD7 /* GemFinderViewController.m in Sources */,
+				E21F9A6218E8DDE70029BA85 /* ALRadialButton.m in Sources */,
 				E2E711CB18C1AAF900F5EAC1 /* SettingsViewController.m in Sources */,
 				E234E85518E00AF300E2B16D /* ContentView.m in Sources */,
 				E2733BD418D6A49200EB51B0 /* AddContentViewController.m in Sources */,
