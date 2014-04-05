@@ -11,6 +11,7 @@
 #import "ContentView.h"
 #import "TextContentView.h"
 #import "ImageContentView.h"
+#import "SoundcloudContentView.h"
 #import "AppDelegate.h"
 
 @interface AddContentViewController ()
@@ -54,7 +55,7 @@
     
     //Initialize the unused and current content view arrays
     //I PUT THIS DUMMY ELEMENT HERE BECAUSE THE GUY WHO MADE THE RADIAL MENU DOES 1-BASED COUNTING
-    self.unusedContentViews = [[NSMutableArray alloc] initWithObjects:@"dummy", [[TextContentView alloc] init], [[ImageContentView alloc] init], nil];
+    self.unusedContentViews = [[NSMutableArray alloc] initWithObjects:@"dummy", [[TextContentView alloc] init], [[ImageContentView alloc] init], [[SoundcloudContentView alloc] init], nil];
     self.currentContentViews = [[NSMutableArray alloc] init];
     
     self.tableView.backgroundColor = [UIColor clearColor];
@@ -229,6 +230,14 @@
         [self.currentContentViews addObject:[self.unusedContentViews objectAtIndex:index]];
         [self.unusedContentViews removeObjectAtIndex:index];
         [self.tableView reloadData];
+    }
+    else if ([[self.unusedContentViews objectAtIndex:index] isKindOfClass:[SoundcloudContentView class]]){
+    
+        //Add textContentView and reload the table
+        [self.currentContentViews addObject:[self.unusedContentViews objectAtIndex:index]];
+        [self.unusedContentViews removeObjectAtIndex:index];
+        [self.tableView reloadData];
+    
     }
 }
 
