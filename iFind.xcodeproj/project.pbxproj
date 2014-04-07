@@ -32,6 +32,8 @@
 		CEA6D39D18BD51DD00F36A35 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA6D39C18BD51DD00F36A35 /* SystemConfiguration.framework */; };
 		CEB7B36C18D68D3A00AC72C5 /* tower.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CEB7B36B18D68D3A00AC72C5 /* tower.jpg */; };
 		CEB7B36E18D6A8F000AC72C5 /* waterfall.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CEB7B36D18D6A8F000AC72C5 /* waterfall.jpg */; };
+		CEDAA0B218E91336009A67F9 /* SoundcloudContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDAA0B118E91336009A67F9 /* SoundcloudContentView.m */; };
+		CEDAA0B418E95250009A67F9 /* music_beamed_note.png in Resources */ = {isa = PBXBuildFile; fileRef = CEDAA0B318E95250009A67F9 /* music_beamed_note.png */; };
 		E21F9A6218E8DDE70029BA85 /* ALRadialButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E21F9A5F18E8DDE70029BA85 /* ALRadialButton.m */; };
 		E21F9A6318E8DDE70029BA85 /* ALRadialMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = E21F9A6118E8DDE70029BA85 /* ALRadialMenu.m */; };
 		E21F9A6618E90B8C0029BA85 /* download.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = E21F9A6518E90B8C0029BA85 /* download.jpeg */; };
@@ -103,6 +105,9 @@
 		CEA6D39C18BD51DD00F36A35 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		CEB7B36B18D68D3A00AC72C5 /* tower.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tower.jpg; sourceTree = "<group>"; };
 		CEB7B36D18D6A8F000AC72C5 /* waterfall.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = waterfall.jpg; sourceTree = "<group>"; };
+		CEDAA0B018E91336009A67F9 /* SoundcloudContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundcloudContentView.h; sourceTree = "<group>"; };
+		CEDAA0B118E91336009A67F9 /* SoundcloudContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundcloudContentView.m; sourceTree = "<group>"; };
+		CEDAA0B318E95250009A67F9 /* music_beamed_note.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = music_beamed_note.png; sourceTree = "<group>"; };
 		E21F9A5E18E8DDE70029BA85 /* ALRadialButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALRadialButton.h; sourceTree = "<group>"; };
 		E21F9A5F18E8DDE70029BA85 /* ALRadialButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALRadialButton.m; sourceTree = "<group>"; };
 		E21F9A6018E8DDE70029BA85 /* ALRadialMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALRadialMenu.h; sourceTree = "<group>"; };
@@ -367,6 +372,8 @@
 				E234E85718E00C0100E2B16D /* TextContentView.m */,
 				E2BA8BC818E0CB14002027EE /* ImageContentView.h */,
 				E2BA8BC918E0CB14002027EE /* ImageContentView.m */,
+				CEDAA0B018E91336009A67F9 /* SoundcloudContentView.h */,
+				CEDAA0B118E91336009A67F9 /* SoundcloudContentView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -484,6 +491,7 @@
 				E21F9A6618E90B8C0029BA85 /* download.jpeg in Resources */,
 				CEA6D36218BD4E2800F36A35 /* InfoPlist.strings in Resources */,
 				E2E711C718C1AAD600F5EAC1 /* settingsGear.png in Resources */,
+				CEDAA0B418E95250009A67F9 /* music_beamed_note.png in Resources */,
 				E2BA8BCC18E224EF002027EE /* orkut.png in Resources */,
 				CEA6D36A18BD4E2800F36A35 /* Images.xcassets in Resources */,
 				E2CC0B0518BE9AF9008B6094 /* barDivider.png in Resources */,
@@ -518,6 +526,7 @@
 				E21F9A6318E8DDE70029BA85 /* ALRadialMenu.m in Sources */,
 				E2E7CD9918C1761100C20286 /* WelcomeViewController.m in Sources */,
 				E2546AEE18D27DE0005F2D8B /* GemAnnotation.m in Sources */,
+				CEDAA0B218E91336009A67F9 /* SoundcloudContentView.m in Sources */,
 				CE3E63D118BD55A400A5DCD7 /* GemFinderViewController.m in Sources */,
 				E21F9A6218E8DDE70029BA85 /* ALRadialButton.m in Sources */,
 				E2CB286518EF382000E2E386 /* GGAddContentViewController.m in Sources */,
