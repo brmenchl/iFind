@@ -34,6 +34,8 @@
 		CEB7B36E18D6A8F000AC72C5 /* waterfall.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CEB7B36D18D6A8F000AC72C5 /* waterfall.jpg */; };
 		E21F9A6218E8DDE70029BA85 /* ALRadialButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E21F9A5F18E8DDE70029BA85 /* ALRadialButton.m */; };
 		E21F9A6318E8DDE70029BA85 /* ALRadialMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = E21F9A6118E8DDE70029BA85 /* ALRadialMenu.m */; };
+		E21F9A6618E90B8C0029BA85 /* download.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = E21F9A6518E90B8C0029BA85 /* download.jpeg */; };
+		E21F9A6A18E958DA0029BA85 /* archive.png in Resources */ = {isa = PBXBuildFile; fileRef = E21F9A6918E958DA0029BA85 /* archive.png */; };
 		E234E85218DFE57500E2B16D /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = E234E85118DFE57500E2B16D /* UIImage+ImageEffects.m */; };
 		E234E85518E00AF300E2B16D /* ContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = E234E85418E00AF300E2B16D /* ContentView.m */; };
 		E234E85818E00C0100E2B16D /* TextContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = E234E85718E00C0100E2B16D /* TextContentView.m */; };
@@ -45,7 +47,8 @@
 		E2AC39D518E892E70030461C /* plusButton.png in Resources */ = {isa = PBXBuildFile; fileRef = E2AC39D418E892E70030461C /* plusButton.png */; };
 		E2BA8BCA18E0CB14002027EE /* ImageContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = E2BA8BC918E0CB14002027EE /* ImageContentView.m */; };
 		E2BA8BCC18E224EF002027EE /* orkut.png in Resources */ = {isa = PBXBuildFile; fileRef = E2BA8BCB18E224EF002027EE /* orkut.png */; };
-		E2BA8BDD18E2AC43002027EE /* trashButton.png in Resources */ = {isa = PBXBuildFile; fileRef = E2BA8BDC18E2AC43002027EE /* trashButton.png */; };
+		E2CB286518EF382000E2E386 /* GGAddContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2CB286418EF382000E2E386 /* GGAddContentViewController.m */; };
+		E2CB286818EF397400E2E386 /* GGAddContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = E2CB286718EF397400E2E386 /* GGAddContentView.m */; };
 		E2CC0AF918BE95E3008B6094 /* compass@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2CC0AF818BE95E3008B6094 /* compass@2x.png */; };
 		E2CC0AFB18BE964A008B6094 /* compass.png in Resources */ = {isa = PBXBuildFile; fileRef = E2CC0AFA18BE964A008B6094 /* compass.png */; };
 		E2CC0B0018BE96ED008B6094 /* BounceMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2CC0AFF18BE96ED008B6094 /* BounceMenuController.m */; };
@@ -104,6 +107,8 @@
 		E21F9A5F18E8DDE70029BA85 /* ALRadialButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALRadialButton.m; sourceTree = "<group>"; };
 		E21F9A6018E8DDE70029BA85 /* ALRadialMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALRadialMenu.h; sourceTree = "<group>"; };
 		E21F9A6118E8DDE70029BA85 /* ALRadialMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALRadialMenu.m; sourceTree = "<group>"; };
+		E21F9A6518E90B8C0029BA85 /* download.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = download.jpeg; sourceTree = "<group>"; };
+		E21F9A6918E958DA0029BA85 /* archive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = archive.png; sourceTree = "<group>"; };
 		E234E84118DF9F2D00E2B16D /* AccountHandlerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountHandlerDelegate.h; sourceTree = "<group>"; };
 		E234E85018DFE57500E2B16D /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
 		E234E85118DFE57500E2B16D /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
@@ -123,7 +128,12 @@
 		E2BA8BC818E0CB14002027EE /* ImageContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageContentView.h; sourceTree = "<group>"; };
 		E2BA8BC918E0CB14002027EE /* ImageContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageContentView.m; sourceTree = "<group>"; };
 		E2BA8BCB18E224EF002027EE /* orkut.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = orkut.png; sourceTree = "<group>"; };
-		E2BA8BDC18E2AC43002027EE /* trashButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trashButton.png; sourceTree = "<group>"; };
+		E2CB286318EF382000E2E386 /* GGAddContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGAddContentViewController.h; sourceTree = "<group>"; };
+		E2CB286418EF382000E2E386 /* GGAddContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGAddContentViewController.m; sourceTree = "<group>"; };
+		E2CB286618EF397400E2E386 /* GGAddContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGAddContentView.h; sourceTree = "<group>"; };
+		E2CB286718EF397400E2E386 /* GGAddContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGAddContentView.m; sourceTree = "<group>"; };
+		E2CB286918EF3CEB00E2E386 /* GGAddContentViewDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GGAddContentViewDataSource.h; sourceTree = "<group>"; };
+		E2CB286A18F11F5600E2E386 /* GGAddContentViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GGAddContentViewDelegate.h; sourceTree = "<group>"; };
 		E2CC0AF818BE95E3008B6094 /* compass@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "compass@2x.png"; sourceTree = "<group>"; };
 		E2CC0AFA18BE964A008B6094 /* compass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = compass.png; sourceTree = "<group>"; };
 		E2CC0AFE18BE96EC008B6094 /* BounceMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BounceMenuController.h; sourceTree = "<group>"; };
@@ -229,6 +239,12 @@
 				CEA6D36918BD4E2800F36A35 /* Images.xcassets */,
 				CEA6D35E18BD4E2800F36A35 /* Supporting Files */,
 				E2E711BD18C17DB100F5EAC1 /* Main.storyboard */,
+				E2CB286318EF382000E2E386 /* GGAddContentViewController.h */,
+				E2CB286418EF382000E2E386 /* GGAddContentViewController.m */,
+				E2CB286618EF397400E2E386 /* GGAddContentView.h */,
+				E2CB286718EF397400E2E386 /* GGAddContentView.m */,
+				E2CB286918EF3CEB00E2E386 /* GGAddContentViewDataSource.h */,
+				E2CB286A18F11F5600E2E386 /* GGAddContentViewDelegate.h */,
 			);
 			path = iFind;
 			sourceTree = "<group>";
@@ -296,8 +312,9 @@
 		E2CC0B0618BE9C2B008B6094 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				E21F9A6918E958DA0029BA85 /* archive.png */,
+				E21F9A6518E90B8C0029BA85 /* download.jpeg */,
 				E2AC39D418E892E70030461C /* plusButton.png */,
-				E2BA8BDC18E2AC43002027EE /* trashButton.png */,
 				E2BA8BCB18E224EF002027EE /* orkut.png */,
 				E2733BE518D6C15B00EB51B0 /* messenger-generic.png */,
 				E2733BE318D6C12500EB51B0 /* soundcloud.png */,
@@ -455,7 +472,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E2BA8BDD18E2AC43002027EE /* trashButton.png in Resources */,
+				E21F9A6A18E958DA0029BA85 /* archive.png in Resources */,
 				E2AC39D518E892E70030461C /* plusButton.png in Resources */,
 				CEB7B36E18D6A8F000AC72C5 /* waterfall.jpg in Resources */,
 				E2733BE618D6C15B00EB51B0 /* messenger-generic.png in Resources */,
@@ -464,6 +481,7 @@
 				E2733BE418D6C12500EB51B0 /* soundcloud.png in Resources */,
 				E2CC0AF918BE95E3008B6094 /* compass@2x.png in Resources */,
 				E2CC0AFB18BE964A008B6094 /* compass.png in Resources */,
+				E21F9A6618E90B8C0029BA85 /* download.jpeg in Resources */,
 				CEA6D36218BD4E2800F36A35 /* InfoPlist.strings in Resources */,
 				E2E711C718C1AAD600F5EAC1 /* settingsGear.png in Resources */,
 				E2BA8BCC18E224EF002027EE /* orkut.png in Resources */,
@@ -496,11 +514,13 @@
 				CEA6D36418BD4E2800F36A35 /* main.m in Sources */,
 				E2CC0B0018BE96ED008B6094 /* BounceMenuController.m in Sources */,
 				E234E85818E00C0100E2B16D /* TextContentView.m in Sources */,
+				E2CB286818EF397400E2E386 /* GGAddContentView.m in Sources */,
 				E21F9A6318E8DDE70029BA85 /* ALRadialMenu.m in Sources */,
 				E2E7CD9918C1761100C20286 /* WelcomeViewController.m in Sources */,
 				E2546AEE18D27DE0005F2D8B /* GemAnnotation.m in Sources */,
 				CE3E63D118BD55A400A5DCD7 /* GemFinderViewController.m in Sources */,
 				E21F9A6218E8DDE70029BA85 /* ALRadialButton.m in Sources */,
+				E2CB286518EF382000E2E386 /* GGAddContentViewController.m in Sources */,
 				E2E711CB18C1AAF900F5EAC1 /* SettingsViewController.m in Sources */,
 				E234E85518E00AF300E2B16D /* ContentView.m in Sources */,
 				E2733BD418D6A49200EB51B0 /* AddContentViewController.m in Sources */,

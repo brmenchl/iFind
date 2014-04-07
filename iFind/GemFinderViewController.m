@@ -39,7 +39,7 @@
     [super viewDidLoad];
     
     //Not sure if this is necessary
-    self.definesPresentationContext = YES;
+//    self.definesPresentationContext = YES;
     
     //Create alertview
     if(!self.turnOnLocationServicesAlert) {
@@ -97,6 +97,7 @@
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
+    NSLog(@"didUpdateLocations");
     //Set global reference to current location
 	appDelegate.currentLocation = [locations lastObject];
     
@@ -121,59 +122,70 @@
  *  all three objects (gem, gemMetadata, current user) are saved to Parse
  */
 - (void)dropGemWithContent:(NSArray *)content {
-    //If location services off
-    if(![CLLocationManager locationServicesEnabled]) {
-        [self.turnOnLocationServicesAlert show];
-        return;
-    }
-    
-    //Create new gemMetadata object, get reference to next gem to drop from current user inventory array
-    PFObject *gemMetadata = [PFObject objectWithClassName:ParseGemMetadataClassName];
-    PFObject *gemToDrop = [[[PFUser currentUser] objectForKey:ParseUserInventoryKey]anyObject];
-    
-    //Loop through all added content from AddContentViewController and add content to relevant field in gemMetadata object
-    for(NSObject *object in content) {
-        if([object isKindOfClass:[NSString class]]) {
-            gemMetadata[ParseMetaTextContentKey] = object;
+    NSLog(@"Drop gem with content");
+    @synchronized([PFUser currentUser]) {
+        //If location services off
+        if(![CLLocationManager locationServicesEnabled]) {
+            [self.turnOnLocationServicesAlert show];
+            return;
         }
-        else if([object isKindOfClass:[UIImage class]]) {
-            gemMetadata[ParseMetaImageContentKey] = [PFFile fileWithName:@"image.jpg" data:UIImageJPEGRepresentation((UIImage *)object, 0.05f)];
+        
+        //Create new gemMetadata object, get reference to next gem to drop from current user inventory array
+        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+
+        dispatch_async(appDelegate.currentUserQueue,^{
+
+        PFObject *gemMetadata = [PFObject objectWithClassName:ParseGemMetadataClassName];
+        NSLog(@"%@",[[PFUser currentUser] objectForKey:ParseUserInventoryKey]);
+        NSArray *inventory = [[PFUser currentUser] objectForKey:ParseUserInventoryKey];
+        PFObject *gemToDrop = [inventory firstObject];
+        [gemToDrop fetchIfNeeded];
+        
+        //Loop through all added content from AddContentViewController and add content to relevant field in gemMetadata object
+        for(NSObject *object in content) {
+            if([object isKindOfClass:[NSString class]]) {
+                gemMetadata[ParseMetaTextContentKey] = object;
+            }
+            else if([object isKindOfClass:[UIImage class]]) {
+                gemMetadata[ParseMetaImageContentKey] = [PFFile fileWithName:@"image.jpg" data:UIImageJPEGRepresentation((UIImage *)object, 0.05f)];
+            }
         }
-    }
-    
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    PFGeoPoint *droppedGemLocation = [PFGeoPoint geoPointWithLocation:appDelegate.currentLocation];
-    gemToDrop[ParseGemCurrentLocationKey] = droppedGemLocation;
-    [gemToDrop[ParseGemLocationsKey] addObject:droppedGemLocation];
-    gemToDrop[ParseGemMetadataReferenceKey] = gemMetadata;
-    gemToDrop[ParseGemCurrentOwnerKey] = [NSNull null];
-    gemMetadata[ParseMetaGemReferenceKey] = gemToDrop;
-    
-    NSLog(@"%@\n\n%@",gemToDrop, gemMetadata);
-    //Attempt to save gem and gemMetadata PFObjects
-    //THIS ENTIRE SET OF SAVES WILL EVENTUALLY NEED TO BE CHANGED,  APPARENTLY PARSE DOESN'T HANDLE NESTED API CALLS WELL
-    [PFObject saveAllInBackground:@[gemToDrop, gemMetadata] block:^(BOOL succeeded, NSError *error) {
-        if (succeeded) {
-            //Success
-            //Remove dropped gem object from current user's inventory
-            [[PFUser currentUser] removeObject:gemToDrop forKey:ParseUserInventoryKey];
-            NSLog(@"%@",[PFUser currentUser][ParseUserInventoryKey]);
-            //Attempt to save current user
-            [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError* error) {
-                if (succeeded) {
+
+
+        gemToDrop[ParseGemCurrentLocationKey] = [PFGeoPoint geoPointWithLocation:appDelegate.currentLocation];
+        [gemToDrop[ParseGemLocationsKey] addObject:[PFGeoPoint geoPointWithLocation:appDelegate.currentLocation]];
+            NSLog(@"this is the stuff: %@",gemToDrop[ParseGemLocationsKey]);
+        gemToDrop[ParseGemMetadataReferenceKey] = gemMetadata;
+        gemToDrop[ParseGemCurrentOwnerKey] = [NSNull null];
+        gemMetadata[ParseMetaGemReferenceKey] = gemToDrop;
+        
+        NSLog(@"%@\n\n%@",gemToDrop, gemMetadata);
+        //Attempt to save gem and gemMetadata PFObjects
+            NSError *dropGemError = nil;
+            [PFObject saveAll:@[gemToDrop, gemMetadata] error: &dropGemError];
+            if (!dropGemError) {
+                //Success
+                //Remove dropped gem object from current user's inventory
+                [[PFUser currentUser] removeObject:gemToDrop forKey:ParseUserInventoryKey];
+                NSLog(@"%@",[PFUser currentUser][ParseUserInventoryKey]);
+                //Attempt to save current user
+                [[PFUser currentUser] save:&dropGemError];
+                if(!dropGemError ) {
                     //Success
                     //Query for new nearby gems
-                    [self queryForAllPostsNearLocation:appDelegate.currentLocation];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self queryForAllPostsNearLocation:appDelegate.currentLocation];
+                    });
                 }
                 else {
-                    NSLog(@"%@", [[[error userInfo] objectForKey:@"NSUnderlyingErrorKey"]localizedDescription]);
+                    NSLog(@"%@", [[[dropGemError userInfo] objectForKey:@"NSUnderlyingErrorKey"]localizedDescription]);
                 }
-            }];
-        }
-        else {
-            NSLog(@"%@", [[[error userInfo] objectForKey:@"NSUnderlyingErrorKey"]localizedDescription]);
-        }
-    }];
+            }
+            else {
+                NSLog(@"%@", [[[dropGemError userInfo] objectForKey:@"NSUnderlyingErrorKey"]localizedDescription]);
+            }
+        });
+    }
 }
 
 - (IBAction)dropButtonPress:(id)sender {
@@ -196,30 +208,35 @@
 }
 
 - (IBAction)pickUpButtonPress:(id)sender {
-    if(![CLLocationManager locationServicesEnabled]) {
-        //if location services are disabled
-        [self.turnOnLocationServicesAlert show];
-        return;
+    @synchronized([PFUser currentUser]) {
+        if(![CLLocationManager locationServicesEnabled]) {
+            //if location services are disabled
+            [self.turnOnLocationServicesAlert show];
+            return;
+        }
+        
+        [[PFUser currentUser]addObject:self.closestGem[ParseGemMetadataReferenceKey] forKey:ParseUserTimelineKey];
+        [[PFUser currentUser] addObject:self.closestGem forKey:ParseUserInventoryKey];
+        self.closestGem[ParseGemCurrentLocationKey] = [NSNull null];
+        self.closestGem[ParseGemMetadataReferenceKey] = [NSNull null];
+        self.closestGem[ParseGemCurrentOwnerKey] = [PFUser currentUser];
+        
+        //Attempt to save picked up gem object and current user
+        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        dispatch_async(appDelegate.currentUserQueue, ^{
+            NSError *pickUpGemError = nil;
+            [PFObject saveAll:@[self.closestGem, [PFUser currentUser]] error:&pickUpGemError];
+            if(!pickUpGemError) {
+                //query for nearby gems
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self queryForAllPostsNearLocation:appDelegate.currentLocation];
+                });
+            }
+            else {
+                NSLog(@"%@", [[[pickUpGemError userInfo] objectForKey:@"NSUnderlyingErrorKey"]localizedDescription]);
+            }
+        });
     }
-    
-    [[PFUser currentUser]addObject:self.closestGem[ParseGemMetadataReferenceKey] forKey:ParseUserTimelineKey];
-    [[PFUser currentUser] addObject:self.closestGem forKey:ParseUserInventoryKey];
-    self.closestGem[ParseGemCurrentLocationKey] = [NSNull null];
-    self.closestGem[ParseGemMetadataReferenceKey] = [NSNull null];
-    self.closestGem[ParseGemCurrentOwnerKey] = [PFUser currentUser];
-
-    //Attempt to save picked up gem object and current user
-    [PFObject saveAllInBackground:@[self.closestGem, [PFUser currentUser]] block:^(BOOL succeeded, NSError * error) {
-        if(succeeded) {
-            AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-            
-            //query for nearby gems
-            [self queryForAllPostsNearLocation:appDelegate.currentLocation];
-        }
-        else {
-            NSLog(@"%@", [[[error userInfo] objectForKey:@"NSUnderlyingErrorKey"]localizedDescription]);
-        }
-    }];
 }
 
 
@@ -315,10 +332,12 @@
 			[self.mapView addAnnotations:gemsToAdd];
 			[self.gemAnnotationArray addObjectsFromArray:gemsToAdd];
             
-            //Set drop gem button to be enabled if there is a gem to drop
-            NSMutableArray *inventory = [[PFUser currentUser] objectForKey:ParseUserInventoryKey];
-            NSLog(@"inventory: %@",[PFUser currentUser][ParseUserInventoryKey]);
-            self.dropButton.enabled = [inventory count] > 0;
+            @synchronized([PFUser currentUser]) {
+                //Set drop gem button to be enabled if there is a gem to drop
+                NSMutableArray *inventory = [[PFUser currentUser] objectForKey:ParseUserInventoryKey];
+                NSLog(@"inventory: %@",[PFUser currentUser][ParseUserInventoryKey]);
+                self.dropButton.enabled = [inventory count] > 0;
+            }
         }
 	}];
 }

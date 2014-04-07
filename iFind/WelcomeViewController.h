@@ -29,6 +29,7 @@
 - (IBAction)loginPress:(id)sender;
 //Handles pressing the facebook log in button
 - (IBAction)fbLoginPress:(id)sender;
+- (IBAction)SkipLoginPress:(id)sender;
 
 //Account handler delegate to handle login success
 @property (nonatomic, assign) id <AccountHandlerDelegate> delegate;

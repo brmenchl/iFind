@@ -168,7 +168,7 @@
     //Notify delegate that gem is ready to be dropped, dismiss the view, and clear all data in the view
     [self.delegate dropGemWithContent:dataForGem];
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
-    [self clearAllData];
+    [self clearAllData]; 
 }
 
 - (IBAction)cancelButtonPress:(id)sender {
@@ -255,14 +255,23 @@
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     UIImage *photo = [info objectForKey:UIImagePickerControllerOriginalImage];
-    
-    //Shrink image
-    UIGraphicsBeginImageContext(CGSizeMake(640, 960));
-    [photo drawInRect: CGRectMake(0, 0, 640, 960)];
+    if(photo.imageOrientation == UIImageOrientationDown || photo.imageOrientation == UIImageOrientationUp) {
+        //Shrink image for landscape
+        UIGraphicsBeginImageContext(CGSizeMake(photo.size.width/3, photo.size.height/3));
+        [photo drawInRect: CGRectMake(0, 0, photo.size.width/3, photo.size.height/3)];
+    }
+    else {
+        //Shrink image for portrait
+        UIGraphicsBeginImageContext(CGSizeMake(photo.size.width/3, photo.size.height/3));
+        [photo drawInRect: CGRectMake(0, 0, photo.size.width/3, photo.size.height/3)];
+    }
     UIImage *smallImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
     //Set imageContentView content, add it, and reload the table
+    if(smallImage.imageOrientation == UIImageOrientationLeft || smallImage.imageOrientation == UIImageOrientationRight) {
+        NSLog(@"YEAH");
+    }
     [self.theImageContentView setImage:smallImage];
     [self.currentContentViews addObject:self.theImageContentView];
     [self.unusedContentViews removeObject:self.theImageContentView];

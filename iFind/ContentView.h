@@ -7,6 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+@class ContentView;
+
+@protocol ContentViewDelegate <NSObject>
+- (void) removeContentView:(ContentView *)contentView;
+@end
+
 
 @interface ContentView : UIView
 
@@ -24,4 +30,6 @@
  *  removes all data from the contentView to refresh view
  */
 -(void)clearData;
+
+@property (nonatomic, assign) id <ContentViewDelegate> delegate;
 @end

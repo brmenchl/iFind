@@ -61,33 +61,44 @@
 
 - (IBAction)loginPress:(id)sender {
     //Attempts to log in user with current credentials
-    [PFUser logInWithUsernameInBackground:self.usernameField.text password:self.passwordField.text block:^(PFUser *user, NSError *error) {
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    UIViewController *loadingVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"loadingVC"];
+    loadingVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    dispatch_async(appDelegate.currentUserQueue, ^{
+        NSError *logInError = nil;
+        [PFUser logInWithUsername:self.usernameField.text password:self.passwordField.text error:&logInError];
         //First, stop the spinner
         [self.activityIndicator stopAnimating];
-        if(user) {
+        [self.navigationController dismissViewControllerAnimated:YES completion:NULL];
+        if([PFUser currentUser]) {
             //Success, tell the delegate to handle successful user log in
-            [self.delegate viewController:self didUserLoginSuccessfully:YES];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.delegate viewController:self didUserLoginSuccessfully:YES];
+            });
         }
         else {
             //No success
-            if(error == nil) {
+            if(logInError == nil) {
                 //Not sure if this block will ever be reached
                 //set up login alertview
                 loginErrorAlert = [[UIAlertView alloc] initWithTitle:@"Couldn’t log in:\nThe username or password were wrong." message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok", @"Forgot Password", nil];
             }
             else {
-                NSLog(@"%@", [[[error userInfo] objectForKey:@"NSUnderlyingErrorKey"]localizedDescription]);
+                NSLog(@"%@", [[[logInError userInfo] objectForKey:@"NSUnderlyingErrorKey"]localizedDescription]);
                 //Error code 101 is sent by parse for invalid uname/pword combo
-                if([error code] == 101) {
+                if([logInError code] == 101) {
                     //set up login alertview
                     loginErrorAlert = [[UIAlertView alloc] initWithTitle:@"Couldn't log in:\nThe username or password were wrong." message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok",@"Forgot Password", nil];
                 }
             }
             //show login alertview
-            [loginErrorAlert show];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [loginErrorAlert show];                
+            });
         }
-    }];
+    });
     //Immediately start loading spinner
+    [self.navigationController presentViewController:loadingVC animated:NO completion:NULL];
     [self.activityIndicator startAnimating];
 }
 
@@ -107,14 +118,12 @@
             }
         }
         else if (user.isNew) {
-            //If this is the first time the user logged in (they created their account through facebook)
-            NSLog(@"User with facebook signed up and logged in");
-            PFUser * user = [PFUser currentUser];
-            user[ParseUserInventoryKey] = [[NSArray alloc] init];
-            user[ParseUserTimelineKey] = [[NSArray alloc] init];
-            [user saveInBackground];
-            [self.delegate createGem:DefaultStartingInventory];
-            [self.delegate viewController:self didUserLoginSuccessfully:YES];
+            @synchronized([PFUser currentUser]) {
+                //If this is the first time the user logged in (they created their account through facebook)
+                NSLog(@"User with facebook signed up and logged in");
+                [self.delegate createGem:DefaultStartingInventory];
+                [self.delegate viewController:self didUserLoginSuccessfully:YES];
+            }
         }
         else {
             NSLog(@"User with facebook logged in");
@@ -123,6 +132,20 @@
     }];
     //Immediately start loading spinner
     [self.activityIndicator startAnimating];
+}
+
+- (IBAction)SkipLoginPress:(id)sender {
+    [PFAnonymousUtils logInWithBlock:^(PFUser *user, NSError *error) {
+        if (error) {
+            NSLog(@"Anonymous login failed.");
+            NSLog(@"%@", [[[error userInfo] objectForKey:@"NSUnderlyingErrorKey"]localizedDescription]);
+        }
+        else {
+            NSLog(@"Anonymous user logged in.");
+            [self.delegate createGem:DefaultStartingInventory];
+            [self.delegate viewController:self didUserLoginSuccessfully:YES];
+        }
+    }];
 }
 
 #pragma UIAlertViewDelegate methods
@@ -139,7 +162,10 @@
     else if(alertView == forgotPasswordAlert && buttonIndex == forgotPasswordAlert.firstOtherButtonIndex) {
         //Ask parse to sent password reset email (haven't tried with an invalid email)
         //This will send an email to the email with a web link to parse.com where they can reset their password
-        [PFUser requestPasswordResetForEmailInBackground:[forgotPasswordAlert textFieldAtIndex:0].text];
+        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        dispatch_async(appDelegate.currentUserQueue, ^{
+            [PFUser requestPasswordResetForEmail:[forgotPasswordAlert textFieldAtIndex:0].text];
+        });
     }
 }
 

@@ -22,47 +22,53 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions{
     //Setting global window reference, initializing window
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    
-    //Initializing the app with parse and facebook
-    [Parse setApplicationId:@"EXa4eSmnKSJ1Pe4KR1e6hnNMmTvbs7ExC441LLkR"
-                  clientKey:@"4Cg6pBg5EUV3IAKmrpKsTLUoHMBbxoysNvL81q1x"];
-    [PFFacebookUtils initializeFacebook];
-    
-    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    
-    //Initializing bouncemenucontroller and all sub-controllers, they are kept in the
-    self.bounceMenuController = [[BounceMenuController alloc] init];
-    GemFinderViewController *findervc = [sb instantiateViewControllerWithIdentifier:@"finderVC"];
-    SettingsViewController *settingsvc = [sb instantiateViewControllerWithIdentifier:@"settingsVC"];
-    //Setting the settings view controller delegate to the app delegate to handle log outs.  Might want to create a separate delegate to handle this
-    //Because you can only have one delegate on at a time.
-    settingsvc.delegate = self;
-    self.controllers = [NSArray arrayWithObjects:findervc, settingsvc, nil];
-    self.bounceMenuController.viewControllers = self.controllers;
-    self.bounceMenuController.delegate = self;
-    
-    //Initializing Login/Signup screen
-    WelcomeViewController *welcomeVC = [sb instantiateViewControllerWithIdentifier:@"welcomeVC"];
-    welcomeVC.delegate = self;
-    //initializing the navigation controller for the welcome controllers
-    self.nav = [[UINavigationController alloc] initWithRootViewController: welcomeVC];
-
-    //Check whether a user is currently logged in. If so, go straight to the bounce menu, if not, go to the welcome screen
-    if([PFUser currentUser]) {
-        self.window.rootViewController = self.bounceMenuController;
-    }
-    else {
-        self.window.rootViewController = self.nav;
-    }
-    
-    [self.window makeKeyAndVisible];
+//    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+//    
+//    //Initializing the app with parse and facebook
+//    [Parse setApplicationId:@"EXa4eSmnKSJ1Pe4KR1e6hnNMmTvbs7ExC441LLkR"
+//                  clientKey:@"4Cg6pBg5EUV3IAKmrpKsTLUoHMBbxoysNvL81q1x"];
+//    [PFFacebookUtils initializeFacebook];
+//    
+//    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    
+//    //Initializing bouncemenucontroller and all sub-controllers, they are kept in the
+//    self.bounceMenuController = [[BounceMenuController alloc] init];
+//    GemFinderViewController *findervc = [sb instantiateViewControllerWithIdentifier:@"finderVC"];
+//    SettingsViewController *settingsvc = [sb instantiateViewControllerWithIdentifier:@"settingsVC"];
+//    //Setting the settings view controller delegate to the app delegate to handle log outs.  Might want to create a separate delegate to handle this
+//    //Because you can only have one delegate on at a time.
+//    settingsvc.delegate = self;
+//    self.controllers = [NSArray arrayWithObjects:findervc, settingsvc, nil];
+//    self.bounceMenuController.viewControllers = self.controllers;
+//    self.bounceMenuController.delegate = self;
+//    
+//    //Initializing Login/Signup screen
+//    WelcomeViewController *welcomeVC = [sb instantiateViewControllerWithIdentifier:@"welcomeVC"];
+//    welcomeVC.delegate = self;
+//    //initializing the navigation controller for the welcome controllers
+//    self.nav = [[UINavigationController alloc] initWithRootViewController: welcomeVC];
+//
+//    //Check whether a user is currently logged in. If so, go straight to the bounce menu, if not, go to the welcome screen
+//    if([PFUser currentUser]) {
+//        [[PFUser currentUser] refresh];
+//    }
+//    if([PFUser currentUser]) {
+//        self.window.rootViewController = self.bounceMenuController;
+//    }
+//    else {
+//        self.window.rootViewController = self.nav;
+//    }
+//    
+//    self.currentUserQueue = dispatch_queue_create([CurrentUserQueueLabel cStringUsingEncoding:NSUTF8StringEncoding], NULL);
+//    [self.window makeKeyAndVisible];
     return YES;
 }
 
 -(void)applicationDidEnterBackground:(UIApplication *)application {
     //Set the current main screen to the gem finder controller
-    [self.bounceMenuController setSelectedIndex:0];
+    if(self.bounceMenuController.selectedIndex != 1) {
+        [self.bounceMenuController setSelectedIndex:0];
+    }
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
@@ -79,6 +85,10 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     //Required for facebook+parse
     [[PFFacebookUtils session] close];
+}
+
+- (void)dealloc {
+    self.currentUserQueue = nil;
 }
 
 #pragma BounceMenuControllerDelegate methods
@@ -121,29 +131,25 @@
  */
 - (void) createGem:(NSUInteger)count {
     NSLog(@"creating gems");
-    NSMutableArray *inventory = [[NSMutableArray alloc] init];
-    PFUser *user = [PFUser currentUser];
-    for(int i = 0; i < count; i++) {
-        //Creating a new Gem Parse object
-        PFObject *gem = [PFObject objectWithClassName:ParseGemClassName];
-        gem[ParseGemLocationsKey] = [[NSMutableArray alloc] init];
-        gem[ParseGemCurrentLocationKey] = [NSNull null];
-        gem[ParseGemMetadataReferenceKey] = [NSNull null];
-        gem[ParseGemCurrentOwnerKey] = [PFUser currentUser];
-        [inventory addObject:gem];
+    @synchronized([PFUser currentUser]) {
+        NSMutableArray *inventory = [[NSMutableArray alloc] init];
+        for(int i = 0; i < count; i++) {
+            NSLog(@"loop %i", i);
+            //Creating a new Gem Parse object
+            PFObject *gem = [PFObject objectWithClassName:ParseGemClassName];
+            gem[ParseGemLocationsKey] = [[NSMutableArray alloc] init];
+            gem[ParseGemCurrentLocationKey] = [NSNull null];
+            gem[ParseGemMetadataReferenceKey] = [NSNull null];
+            gem[ParseGemCurrentOwnerKey] = [PFUser currentUser];
+            [inventory addObject:gem];
+            [[PFUser currentUser] addObject:gem forKey:ParseUserInventoryKey];
+        }
+        dispatch_async(self.currentUserQueue, ^{
+            [PFObject saveAll:inventory];
+            [[PFUser currentUser] save];
+            NSLog(@"save complete");
+        });
     }
-    [user addObjectsFromArray:inventory forKey:ParseUserInventoryKey];
-    
-    [user saveInBackgroundWithBlock:^(BOOL success, NSError *error) {
-        NSLog(@"BLOCK");
-        if(success) {
-            NSLog(@"Inventory on creation: %@",[PFUser currentUser][ParseUserInventoryKey]);
-        }
-        else {
-            NSLog(@"error");
-            NSLog(@"%@", [[[error userInfo] objectForKey:@"NSUnderlyingErrorKey"]localizedDescription]);
-        }
-    }];
 }
 
 @end

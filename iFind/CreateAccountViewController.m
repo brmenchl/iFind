@@ -60,11 +60,15 @@
             //Initialize empty inventory and timeline arrays
             user[ParseUserInventoryKey] = [[NSArray alloc] init];
             user[ParseUserTimelineKey] = [[NSArray alloc] init];
+            
             //Sign up user
-            [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                if (!error) {
+            UIViewController *loadingVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"loadingVC"];
+            loadingVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+            [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
+                [self.navigationController dismissViewControllerAnimated:YES completion:NULL];
+                if(succeeded) {
                     //Success
-                    //Create gems for starting inventory and notify the delegate of a successful logi
+                    //Create gems for starting inventory and notify the delegate of a successful login
                     [self.delegate createGem:DefaultStartingInventory];
                     [self.delegate viewController:self didUserLoginSuccessfully:YES];
                 }
@@ -74,6 +78,8 @@
                     NSLog(@"%@", [[[error userInfo] objectForKey:@"NSUnderlyingErrorKey"]localizedDescription]);
                 }
             }];
+            [self.navigationController presentViewController:loadingVC animated:YES completion:NULL];
+            
         }
         else {
             //Invalid email
