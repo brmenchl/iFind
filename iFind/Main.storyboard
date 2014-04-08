@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="quL-I0-GfF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="aoK-Jk-fHN">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -43,7 +43,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.77635095211842697" green="0.79673559445158282" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.31949541445096646" green="0.30633188374882686" blue="0.31995376275510201" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="GemFinder" image="compass.png" id="WlL-aE-xga"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
@@ -55,7 +55,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HLf-53-0Ye" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="23" y="-21"/>
+            <point key="canvasLocation" x="531" y="-69"/>
         </scene>
         <!--Add Content View Controller-->
         <scene sceneID="9Ia-31-h2e">
@@ -139,7 +139,35 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="23" y="660"/>
+            <point key="canvasLocation" x="531" y="612"/>
+        </scene>
+        <!--Add Content View Controller-->
+        <scene sceneID="nSP-ew-vwa">
+            <objects>
+                <viewController id="aoK-Jk-fHN" customClass="GGAddContentViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mEV-zz-KfJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="dyb-P4-fC0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="m0e-fc-oTc">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rs0-kn-z9o" customClass="GGAddContentView">
+                                <rect key="frame" x="0.0" y="61" width="320" height="507"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="addContentView" destination="Rs0-kn-z9o" id="hkM-uj-lNK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jYW-tR-alT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="979" y="613"/>
         </scene>
         <!--Welcome View Controller-->
         <scene sceneID="dZJ-hP-y8f">
@@ -218,6 +246,17 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7LQ-0U-SZT">
+                                <rect key="frame" x="137" y="426" width="47" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
+                                <state key="normal" title="Fuck it">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="SkipLoginPress:" destination="quL-I0-GfF" eventType="touchUpInside" id="Ggw-Ov-Yta"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.089802834222159733" green="0.75718913944411437" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
@@ -343,7 +382,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sst-wl-urn">
-                                <rect key="frame" x="96" y="269" width="129" height="30"/>
+                                <rect key="frame" x="96" y="144" width="129" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
                                 <state key="normal" title="LOG OUT DOOD">
@@ -354,18 +393,72 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.089802834220000002" green="0.75718913939999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.31949541450000002" green="0.30633188369999997" blue="0.31995376279999999" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" image="settingsGear.png" id="l45-Ke-TrD"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yw3-08-N4W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="469" y="-21"/>
+            <point key="canvasLocation" x="977" y="-69"/>
+        </scene>
+        <!--View Controller - Timeline-->
+        <scene sceneID="n2S-fE-U26">
+            <objects>
+                <viewController id="UBR-Oa-8oM" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mbJ-Kd-vUC"/>
+                        <viewControllerLayoutGuide type="bottom" id="sI5-uz-Ayj"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1pG-63-uGQ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" red="0.31949541450000002" green="0.30633188369999997" blue="0.31995376279999999" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Timeline" image="archive.png" id="h2S-8Y-381"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5Vb-JW-iZv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1461" y="-69"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="kqT-yW-Zjg">
+            <objects>
+                <viewController storyboardIdentifier="loadingVC" id="Ca5-vp-Pir" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="PxW-bT-UHc"/>
+                        <viewControllerLayoutGuide type="bottom" id="gZh-Pd-dIb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="PNv-wZ-svs">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="download.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="MNa-8T-aTn">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Cgk-bQ-PKI">
+                                <rect key="frame" x="153" y="87" width="37" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="JYk-Mn-SlW">
+                                <rect key="frame" x="86" y="94" width="37" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jzf-us-pyN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1461" y="-743"/>
         </scene>
     </scenes>
     <resources>
+        <image name="archive.png" width="30" height="30"/>
         <image name="compass.png" width="30" height="30"/>
+        <image name="download.jpeg" width="211" height="238"/>
         <image name="settingsGear.png" width="30" height="30"/>
     </resources>
     <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>

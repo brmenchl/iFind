@@ -72,7 +72,9 @@
 
 -(void)applicationDidEnterBackground:(UIApplication *)application {
     //Set the current main screen to the gem finder controller
-    [self.bounceMenuController setSelectedIndex:0];
+    if(self.bounceMenuController.selectedIndex != 1) {
+        [self.bounceMenuController setSelectedIndex:0];
+    }
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
@@ -89,6 +91,10 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     //Required for facebook+parse
     [[PFFacebookUtils session] close];
+}
+
+- (void)dealloc {
+    self.currentUserQueue = nil;
 }
 
 #pragma BounceMenuControllerDelegate methods
@@ -131,29 +137,25 @@
  */
 - (void) createGem:(NSUInteger)count {
     NSLog(@"creating gems");
-    NSMutableArray *inventory = [[NSMutableArray alloc] init];
-    PFUser *user = [PFUser currentUser];
-    for(int i = 0; i < count; i++) {
-        //Creating a new Gem Parse object
-        PFObject *gem = [PFObject objectWithClassName:ParseGemClassName];
-        gem[ParseGemLocationsKey] = [[NSMutableArray alloc] init];
-        gem[ParseGemCurrentLocationKey] = [NSNull null];
-        gem[ParseGemMetadataReferenceKey] = [NSNull null];
-        gem[ParseGemCurrentOwnerKey] = [PFUser currentUser];
-        [inventory addObject:gem];
+    @synchronized([PFUser currentUser]) {
+        NSMutableArray *inventory = [[NSMutableArray alloc] init];
+        for(int i = 0; i < count; i++) {
+            NSLog(@"loop %i", i);
+            //Creating a new Gem Parse object
+            PFObject *gem = [PFObject objectWithClassName:ParseGemClassName];
+            gem[ParseGemLocationsKey] = [[NSMutableArray alloc] init];
+            gem[ParseGemCurrentLocationKey] = [NSNull null];
+            gem[ParseGemMetadataReferenceKey] = [NSNull null];
+            gem[ParseGemCurrentOwnerKey] = [PFUser currentUser];
+            [inventory addObject:gem];
+            [[PFUser currentUser] addObject:gem forKey:ParseUserInventoryKey];
+        }
+        dispatch_async(self.currentUserQueue, ^{
+            [PFObject saveAll:inventory];
+            [[PFUser currentUser] save];
+            NSLog(@"save complete");
+        });
     }
-    [user addObjectsFromArray:inventory forKey:ParseUserInventoryKey];
-    
-    [user saveInBackgroundWithBlock:^(BOOL success, NSError *error) {
-        NSLog(@"BLOCK");
-        if(success) {
-            NSLog(@"Inventory on creation: %@",[PFUser currentUser][ParseUserInventoryKey]);
-        }
-        else {
-            NSLog(@"error");
-            NSLog(@"%@", [[[error userInfo] objectForKey:@"NSUnderlyingErrorKey"]localizedDescription]);
-        }
-    }];
 }
 
 @end

@@ -30,5 +30,4 @@
 - (void) clearData {
     self.content = nil;
 }
-
 @end

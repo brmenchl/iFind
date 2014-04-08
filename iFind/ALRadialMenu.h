@@ -93,7 +93,7 @@
  * method that removes the item's from view
  * @param button the UIButton the items should recoil into
  */
-- (void)itemsWillDisapearIntoButton:(UIButton *) button;
+- (void)itemsWillDisapearIntoButton:(UIView *) button;
 
 /**
  * helper method to display or hide the buttons
@@ -128,7 +128,7 @@
  * @param duration how long the button will rotate for
  * @param direction whether to rotate forward or backward
  */
-- (void)shouldRotateButton:(UIButton *)button forDuration:(float)duration forwardDirection:(BOOL)direction;
+- (void)shouldRotateButton:(UIView *)button forDuration:(float)duration forwardDirection:(BOOL)direction;
 
 ///this method is called from the nstimer to fling the next item into view
 - (void)willFlingItem;

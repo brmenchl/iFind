@@ -18,7 +18,7 @@ static NSString * const ParseUserInventoryKey = @"inventory"; //Array of pointer
 static NSString * const ParseUserTimelineKey = @"timeline"; //Array of pairs of pointers to gems and arrays of pointers to all relevant metadata
 //Gem Class
 static NSString * const ParseGemClassName = @"Gem";
-static NSString * const ParseGemLocationsKey = @"location"; //Array of CLLocations
+static NSString * const ParseGemLocationsKey = @"locations"; //Array of CLLocations
 static NSString * const ParseGemCurrentLocationKey = @"currentLocation"; //PFGeopoint
 static NSString * const ParseGemMetadataReferenceKey = @"metadata"; //Pointer to metadata
 static NSString * const ParseGemCurrentOwnerKey = @"currentOwner"; //Pointer to user currently holding gem, nil if on map
@@ -31,6 +31,12 @@ static NSString * const ParseMetaGemReferenceKey = @"gem"; //Pointer to gem
 // Notification Names:
 static NSString * const GemDroppedNotification = @"GemDroppedNotification";
 static NSString * const GemPickedUpNotification = @"GemPickedUpNotification";
+
+// Queue Names:
+static NSString * const CurrentUserQueueLabel = @"currentUserQueue";
+
+// Storyboard View Controller Names:
+static NSString * const LoadingViewControllerIdentfier = @"LoadingViewController";
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
@@ -53,6 +59,6 @@ static NSString * const GemPickedUpNotification = @"GemPickedUpNotification";
 @property (nonatomic, strong) CLLocation *currentLocation;
 
 // Queues
-@property dispatch_queue_t backgroundQueue;
+@property dispatch_queue_t currentUserQueue;
 
 @end

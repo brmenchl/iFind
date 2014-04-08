@@ -110,7 +110,7 @@
 }
 
 
-- (void)itemsWillDisapearIntoButton:(UIButton *) button {
+- (void)itemsWillDisapearIntoButton:(UIView *) button {
 	if ([self.items count] == 0) {
 		//no items are displayed, we shouldn't be here
 		return;
@@ -193,7 +193,7 @@
 
 
 
-- (void)shouldRotateButton:(UIButton *)button forDuration:(float)duration forwardDirection:(BOOL)direction {
+- (void)shouldRotateButton:(UIView *)button forDuration:(float)duration forwardDirection:(BOOL)direction {
 	//use CABasicAnimation instead of a view animation so we can keep the spin going for more than 360
 	CABasicAnimation *spinAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
 	spinAnimation.duration = duration;

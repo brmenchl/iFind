@@ -38,6 +38,33 @@
     [self addSubview:self.imageView];
 }
 
+#pragma UIImagePickerControllerDelegate methods
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    UIImage *photo = [info objectForKey:UIImagePickerControllerOriginalImage];
+    if(photo.imageOrientation == UIImageOrientationDown || photo.imageOrientation == UIImageOrientationUp) {
+        //Shrink image for landscape
+        UIGraphicsBeginImageContext(CGSizeMake(photo.size.width/3, photo.size.height/3));
+        [photo drawInRect: CGRectMake(0, 0, photo.size.width/3, photo.size.height/3)];
+    }
+    else {
+        //Shrink image for portrait
+        UIGraphicsBeginImageContext(CGSizeMake(photo.size.width/3, photo.size.height/3));
+        [photo drawInRect: CGRectMake(0, 0, photo.size.width/3, photo.size.height/3)];
+    }
+    UIImage *smallImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    [self setImage:smallImage];
+    
+    [picker.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
+}
+
+-(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    [self.delegate removeContentView:self];
+    [picker.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
+}
+
 #pragma ContentView methods
 //buttonImage doesn't need to be overridden
 
@@ -48,5 +75,7 @@
 -(void)clearData {
     self.imageView.image = nil;
 }
+
+
 
 @end
