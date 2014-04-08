@@ -60,6 +60,9 @@
     
     self.window.rootViewController = temp;
 //    if([PFUser currentUser]) {
+//        [[PFUser currentUser] refresh];
+//    }
+//    if([PFUser currentUser]) {
 //        self.window.rootViewController = self.bounceMenuController;
 //    }
 //    else {
