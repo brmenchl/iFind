@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE23730718F384FB00917970 /* WelcomeGoGeoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE23730518F384FB00917970 /* WelcomeGoGeoViewController.m */; };
+		CE23730B18F385B400917970 /* HowToUseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE23730A18F385B400917970 /* HowToUseViewController.m */; };
+		CE23730E18F3864400917970 /* IntroPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE23730D18F3864400917970 /* IntroPageViewController.m */; };
+		CE23731118F3960B00917970 /* StartingInventoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE23731018F3960B00917970 /* StartingInventoryViewController.m */; };
+		CE23731418F3962C00917970 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE23731318F3962C00917970 /* SignUpViewController.m */; };
+		CE23731718F3967A00917970 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE23731618F3967A00917970 /* LoginViewController.m */; };
 		CE3E63D118BD55A400A5DCD7 /* GemFinderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3E63D018BD55A400A5DCD7 /* GemFinderViewController.m */; };
 		CEA6D35818BD4E2800F36A35 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA6D35718BD4E2700F36A35 /* Foundation.framework */; };
 		CEA6D35A18BD4E2800F36A35 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA6D35918BD4E2800F36A35 /* CoreGraphics.framework */; };
@@ -72,6 +78,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CE23730418F384FB00917970 /* WelcomeGoGeoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeGoGeoViewController.h; sourceTree = "<group>"; };
+		CE23730518F384FB00917970 /* WelcomeGoGeoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeGoGeoViewController.m; sourceTree = "<group>"; };
+		CE23730918F385B400917970 /* HowToUseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HowToUseViewController.h; sourceTree = "<group>"; };
+		CE23730A18F385B400917970 /* HowToUseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HowToUseViewController.m; sourceTree = "<group>"; };
+		CE23730C18F3864400917970 /* IntroPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroPageViewController.h; sourceTree = "<group>"; };
+		CE23730D18F3864400917970 /* IntroPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroPageViewController.m; sourceTree = "<group>"; };
+		CE23730F18F3960B00917970 /* StartingInventoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartingInventoryViewController.h; sourceTree = "<group>"; };
+		CE23731018F3960B00917970 /* StartingInventoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartingInventoryViewController.m; sourceTree = "<group>"; };
+		CE23731218F3962C00917970 /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
+		CE23731318F3962C00917970 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
+		CE23731518F3967A00917970 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		CE23731618F3967A00917970 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		CE3E63CF18BD55A400A5DCD7 /* GemFinderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GemFinderViewController.h; sourceTree = "<group>"; };
 		CE3E63D018BD55A400A5DCD7 /* GemFinderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GemFinderViewController.m; sourceTree = "<group>"; };
 		CEA6D35418BD4E2700F36A35 /* iFind.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iFind.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -294,6 +312,18 @@
 				E2E7CD9818C1761100C20286 /* WelcomeViewController.m */,
 				E2675C6218CFB26A00F56BD3 /* CreateAccountViewController.h */,
 				E2675C6318CFB26A00F56BD3 /* CreateAccountViewController.m */,
+				CE23730C18F3864400917970 /* IntroPageViewController.h */,
+				CE23730D18F3864400917970 /* IntroPageViewController.m */,
+				CE23730418F384FB00917970 /* WelcomeGoGeoViewController.h */,
+				CE23730518F384FB00917970 /* WelcomeGoGeoViewController.m */,
+				CE23730918F385B400917970 /* HowToUseViewController.h */,
+				CE23730A18F385B400917970 /* HowToUseViewController.m */,
+				CE23730F18F3960B00917970 /* StartingInventoryViewController.h */,
+				CE23731018F3960B00917970 /* StartingInventoryViewController.m */,
+				CE23731218F3962C00917970 /* SignUpViewController.h */,
+				CE23731318F3962C00917970 /* SignUpViewController.m */,
+				CE23731518F3967A00917970 /* LoginViewController.h */,
+				CE23731618F3967A00917970 /* LoginViewController.m */,
 			);
 			name = Login/Welcome;
 			sourceTree = "<group>";
@@ -498,9 +528,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				E2675C6418CFB26A00F56BD3 /* CreateAccountViewController.m in Sources */,
+				CE23731718F3967A00917970 /* LoginViewController.m in Sources */,
 				E2BA8BCA18E0CB14002027EE /* ImageContentView.m in Sources */,
 				E2CC0B0318BE96F7008B6094 /* PlusButton.m in Sources */,
 				E234E85218DFE57500E2B16D /* UIImage+ImageEffects.m in Sources */,
+				CE23730E18F3864400917970 /* IntroPageViewController.m in Sources */,
 				CEA6D36818BD4E2800F36A35 /* AppDelegate.m in Sources */,
 				CEA6D36418BD4E2800F36A35 /* main.m in Sources */,
 				E2CC0B0018BE96ED008B6094 /* BounceMenuController.m in Sources */,
@@ -508,11 +540,15 @@
 				E21F9A6318E8DDE70029BA85 /* ALRadialMenu.m in Sources */,
 				E2E7CD9918C1761100C20286 /* WelcomeViewController.m in Sources */,
 				E2546AEE18D27DE0005F2D8B /* GemAnnotation.m in Sources */,
+				CE23731118F3960B00917970 /* StartingInventoryViewController.m in Sources */,
 				CEDAA0B218E91336009A67F9 /* SoundcloudContentView.m in Sources */,
 				CE3E63D118BD55A400A5DCD7 /* GemFinderViewController.m in Sources */,
+				CE23730B18F385B400917970 /* HowToUseViewController.m in Sources */,
+				CE23730718F384FB00917970 /* WelcomeGoGeoViewController.m in Sources */,
 				E21F9A6218E8DDE70029BA85 /* ALRadialButton.m in Sources */,
 				E2E711CB18C1AAF900F5EAC1 /* SettingsViewController.m in Sources */,
 				E234E85518E00AF300E2B16D /* ContentView.m in Sources */,
+				CE23731418F3962C00917970 /* SignUpViewController.m in Sources */,
 				E2733BD418D6A49200EB51B0 /* AddContentViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

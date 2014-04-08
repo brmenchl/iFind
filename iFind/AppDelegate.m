@@ -10,6 +10,7 @@
 #import "SettingsViewController.h"
 #import "GemFinderViewController.h"
 #import "WelcomeViewController.h"
+#import "IntroPageViewController.h"
 
 @interface AppDelegate()
 
@@ -49,12 +50,21 @@
     self.nav = [[UINavigationController alloc] initWithRootViewController: welcomeVC];
 
     //Check whether a user is currently logged in. If so, go straight to the bounce menu, if not, go to the welcome screen
-    if([PFUser currentUser]) {
-        self.window.rootViewController = self.bounceMenuController;
-    }
-    else {
-        self.window.rootViewController = self.nav;
-    }
+    
+    UIPageControl *pageControl = [UIPageControl appearance];
+    pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
+    pageControl.currentPageIndicatorTintColor = [UIColor colorWithRed:0.91 green:0.68 blue:0.05 alpha:1];
+    pageControl.backgroundColor = [UIColor colorWithRed:0.28 green:0.47 blue:0.29 alpha:1];
+    
+    IntroPageViewController * temp = [[IntroPageViewController alloc] init];
+    
+    self.window.rootViewController = temp;
+//    if([PFUser currentUser]) {
+//        self.window.rootViewController = self.bounceMenuController;
+//    }
+//    else {
+//        self.window.rootViewController = self.nav;
+//    }
     
     [self.window makeKeyAndVisible];
     return YES;
