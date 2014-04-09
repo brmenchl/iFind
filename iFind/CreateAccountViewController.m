@@ -60,6 +60,10 @@
             //Initialize empty inventory and timeline arrays
             user[ParseUserInventoryKey] = [[NSArray alloc] init];
             user[ParseUserTimelineKey] = [[NSArray alloc] init];
+            user[ParseUserPioneerRankKey] = @1;
+            PFGeoPoint * temp_loc = [PFGeoPoint geoPointWithLocation:((AppDelegate *)[[UIApplication sharedApplication] delegate]).currentLocation];
+            user[ParseUserLocationRegisteredKey] = temp_loc;
+            
             
             //Sign up user
             UIViewController *loadingVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"loadingVC"];

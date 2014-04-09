@@ -13,6 +13,7 @@
 		CE23731118F3960B00917970 /* StartingInventoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE23731018F3960B00917970 /* StartingInventoryViewController.m */; };
 		CE23731418F3962C00917970 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE23731318F3962C00917970 /* SignUpViewController.m */; };
 		CE23731718F3967A00917970 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE23731618F3967A00917970 /* LoginViewController.m */; };
+		CE23731A18F4D0FA00917970 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CE23731918F4D0FA00917970 /* LocationManager.m */; };
 		CE3E63D118BD55A400A5DCD7 /* GemFinderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3E63D018BD55A400A5DCD7 /* GemFinderViewController.m */; };
 		CEA6D35818BD4E2800F36A35 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA6D35718BD4E2700F36A35 /* Foundation.framework */; };
 		CEA6D35A18BD4E2800F36A35 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA6D35918BD4E2800F36A35 /* CoreGraphics.framework */; };
@@ -39,7 +40,6 @@
 		CEB7B36C18D68D3A00AC72C5 /* tower.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CEB7B36B18D68D3A00AC72C5 /* tower.jpg */; };
 		CEB7B36E18D6A8F000AC72C5 /* waterfall.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CEB7B36D18D6A8F000AC72C5 /* waterfall.jpg */; };
 		CEDAA0B218E91336009A67F9 /* SoundcloudContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDAA0B118E91336009A67F9 /* SoundcloudContentView.m */; };
-		CEDAA0B418E95250009A67F9 /* music_beamed_note.png in Resources */ = {isa = PBXBuildFile; fileRef = CEDAA0B318E95250009A67F9 /* music_beamed_note.png */; };
 		E21F9A6218E8DDE70029BA85 /* ALRadialButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E21F9A5F18E8DDE70029BA85 /* ALRadialButton.m */; };
 		E21F9A6318E8DDE70029BA85 /* ALRadialMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = E21F9A6118E8DDE70029BA85 /* ALRadialMenu.m */; };
 		E21F9A6618E90B8C0029BA85 /* download.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = E21F9A6518E90B8C0029BA85 /* download.jpeg */; };
@@ -93,6 +93,8 @@
 		CE23731318F3962C00917970 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 		CE23731518F3967A00917970 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		CE23731618F3967A00917970 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		CE23731818F4D0FA00917970 /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
+		CE23731918F4D0FA00917970 /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
 		CE3E63CF18BD55A400A5DCD7 /* GemFinderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GemFinderViewController.h; sourceTree = "<group>"; };
 		CE3E63D018BD55A400A5DCD7 /* GemFinderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GemFinderViewController.m; sourceTree = "<group>"; };
 		CEA6D35418BD4E2700F36A35 /* iFind.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iFind.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -125,7 +127,6 @@
 		CEB7B36D18D6A8F000AC72C5 /* waterfall.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = waterfall.jpg; sourceTree = "<group>"; };
 		CEDAA0B018E91336009A67F9 /* SoundcloudContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundcloudContentView.h; sourceTree = "<group>"; };
 		CEDAA0B118E91336009A67F9 /* SoundcloudContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundcloudContentView.m; sourceTree = "<group>"; };
-		CEDAA0B318E95250009A67F9 /* music_beamed_note.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = music_beamed_note.png; sourceTree = "<group>"; };
 		E21F9A5E18E8DDE70029BA85 /* ALRadialButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALRadialButton.h; sourceTree = "<group>"; };
 		E21F9A5F18E8DDE70029BA85 /* ALRadialButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALRadialButton.m; sourceTree = "<group>"; };
 		E21F9A6018E8DDE70029BA85 /* ALRadialMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALRadialMenu.h; sourceTree = "<group>"; };
@@ -385,6 +386,8 @@
 				E2546AEC18D27DE0005F2D8B /* GemAnnotation.h */,
 				E2546AED18D27DE0005F2D8B /* GemAnnotation.m */,
 				E234E84118DF9F2D00E2B16D /* AccountHandlerDelegate.h */,
+				CE23731818F4D0FA00917970 /* LocationManager.h */,
+				CE23731918F4D0FA00917970 /* LocationManager.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -465,7 +468,7 @@
 				ORGANIZATIONNAME = FuarkNet;
 				TargetAttributes = {
 					CEA6D35318BD4E2700F36A35 = {
-						DevelopmentTeam = K99KPPSM33;
+						DevelopmentTeam = 9CMR7RN56H;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -521,7 +524,6 @@
 				E21F9A6618E90B8C0029BA85 /* download.jpeg in Resources */,
 				CEA6D36218BD4E2800F36A35 /* InfoPlist.strings in Resources */,
 				E2E711C718C1AAD600F5EAC1 /* settingsGear.png in Resources */,
-				CEDAA0B418E95250009A67F9 /* music_beamed_note.png in Resources */,
 				E2BA8BCC18E224EF002027EE /* orkut.png in Resources */,
 				CEA6D36A18BD4E2800F36A35 /* Images.xcassets in Resources */,
 				E2CC0B0518BE9AF9008B6094 /* barDivider.png in Resources */,
@@ -556,6 +558,7 @@
 				E234E85818E00C0100E2B16D /* TextContentView.m in Sources */,
 				E2CB286818EF397400E2E386 /* GGAddContentView.m in Sources */,
 				E21F9A6318E8DDE70029BA85 /* ALRadialMenu.m in Sources */,
+				CE23731A18F4D0FA00917970 /* LocationManager.m in Sources */,
 				E2E7CD9918C1761100C20286 /* WelcomeViewController.m in Sources */,
 				E2546AEE18D27DE0005F2D8B /* GemAnnotation.m in Sources */,
 				CE23731118F3960B00917970 /* StartingInventoryViewController.m in Sources */,
@@ -686,6 +689,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					.,
@@ -695,6 +699,7 @@
 				GCC_PREFIX_HEADER = "iFind/iFind-Prefix.pch";
 				INFOPLIST_FILE = "iFind/iFind-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -705,6 +710,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					.,
@@ -714,6 +720,7 @@
 				GCC_PREFIX_HEADER = "iFind/iFind-Prefix.pch";
 				INFOPLIST_FILE = "iFind/iFind-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
