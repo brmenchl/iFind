@@ -75,7 +75,7 @@
         self.window.rootViewController = self.nav;
     }
     
-    self.window.rootViewController = temp;
+    //self.window.rootViewController = temp;
     
     self.currentUserQueue = dispatch_queue_create([CurrentUserQueueLabel cStringUsingEncoding:NSUTF8StringEncoding], NULL);
     [self.window makeKeyAndVisible];
