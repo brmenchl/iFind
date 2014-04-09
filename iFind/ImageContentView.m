@@ -36,6 +36,7 @@
 - (void) setImage:(UIImage *)image {
     [self.imageView setImage:image];
     [self addSubview:self.imageView];
+    [self.delegate addAndAnimateForView:self];
 }
 
 #pragma UIImagePickerControllerDelegate methods
@@ -56,12 +57,10 @@
     UIGraphicsEndImageContext();
     
     [self setImage:smallImage];
-    
     [picker.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
 }
 
 -(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
-    [self.delegate removeContentView:self];
     [picker.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
 }
 
@@ -74,6 +73,7 @@
 
 -(void)clearData {
     self.imageView.image = nil;
+    [self removeFromSuperview];
 }
 
 

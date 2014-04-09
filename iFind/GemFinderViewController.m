@@ -26,7 +26,7 @@
 @property (nonatomic, weak) PFObject * closestGem;
 
 //Private view controller reference for the modal addcontentviewcontroller
-@property (nonatomic, strong) AddContentViewController *addContentViewController;
+@property (nonatomic, strong) GGAddContentViewController *addContentViewController;
 
 //Alertview to notify user that location services are off and we cannot track their location
 @property (nonatomic, strong) UIAlertView *turnOnLocationServicesAlert;
@@ -47,7 +47,7 @@
     }
     
     //Initialize addContentViewController in background to speed up having it appear
-    self.addContentViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"LeaveGemVC"];
+    self.addContentViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"GGAddContentVC"];
     self.addContentViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     self.addContentViewController.delegate = self;
     

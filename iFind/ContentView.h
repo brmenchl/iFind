@@ -10,11 +10,13 @@
 @class ContentView;
 
 @protocol ContentViewDelegate <NSObject>
-- (void) removeContentView:(ContentView *)contentView;
+- (void)addAndAnimateForView:(UIView *)view;
+- (void) contentViewDeleted:(ContentView *)view;
+- (void) updateContentView:(ContentView *)view toSize:(CGSize)size;
 @end
 
 
-@interface ContentView : UIView
+@interface ContentView : UIView <UIGestureRecognizerDelegate>
 
 /*
  *  returns the relevant data from the contentView (UIImage, nsstring,...)
@@ -32,4 +34,5 @@
 -(void)clearData;
 
 @property (nonatomic, assign) id <ContentViewDelegate> delegate;
+
 @end

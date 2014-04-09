@@ -22,45 +22,44 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions{
     //Setting global window reference, initializing window
-//    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-//    
-//    //Initializing the app with parse and facebook
-//    [Parse setApplicationId:@"EXa4eSmnKSJ1Pe4KR1e6hnNMmTvbs7ExC441LLkR"
-//                  clientKey:@"4Cg6pBg5EUV3IAKmrpKsTLUoHMBbxoysNvL81q1x"];
-//    [PFFacebookUtils initializeFacebook];
-//    
-//    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//    
-//    //Initializing bouncemenucontroller and all sub-controllers, they are kept in the
-//    self.bounceMenuController = [[BounceMenuController alloc] init];
-//    GemFinderViewController *findervc = [sb instantiateViewControllerWithIdentifier:@"finderVC"];
-//    SettingsViewController *settingsvc = [sb instantiateViewControllerWithIdentifier:@"settingsVC"];
-//    //Setting the settings view controller delegate to the app delegate to handle log outs.  Might want to create a separate delegate to handle this
-//    //Because you can only have one delegate on at a time.
-//    settingsvc.delegate = self;
-//    self.controllers = [NSArray arrayWithObjects:findervc, settingsvc, nil];
-//    self.bounceMenuController.viewControllers = self.controllers;
-//    self.bounceMenuController.delegate = self;
-//    
-//    //Initializing Login/Signup screen
-//    WelcomeViewController *welcomeVC = [sb instantiateViewControllerWithIdentifier:@"welcomeVC"];
-//    welcomeVC.delegate = self;
-//    //initializing the navigation controller for the welcome controllers
-//    self.nav = [[UINavigationController alloc] initWithRootViewController: welcomeVC];
-//
-//    //Check whether a user is currently logged in. If so, go straight to the bounce menu, if not, go to the welcome screen
-//    if([PFUser currentUser]) {
-//        [[PFUser currentUser] refresh];
-//    }
-//    if([PFUser currentUser]) {
-//        self.window.rootViewController = self.bounceMenuController;
-//    }
-//    else {
-//        self.window.rootViewController = self.nav;
-//    }
-//    
-//    self.currentUserQueue = dispatch_queue_create([CurrentUserQueueLabel cStringUsingEncoding:NSUTF8StringEncoding], NULL);
-//    [self.window makeKeyAndVisible];
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    //Initializing the app with parse and facebook
+    [Parse setApplicationId:@"EXa4eSmnKSJ1Pe4KR1e6hnNMmTvbs7ExC441LLkR"
+                  clientKey:@"4Cg6pBg5EUV3IAKmrpKsTLUoHMBbxoysNvL81q1x"];
+    [PFFacebookUtils initializeFacebook];
+    
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    //Initializing bouncemenucontroller and all sub-controllers, they are kept in the
+    self.bounceMenuController = [[BounceMenuController alloc] init];
+    GemFinderViewController *findervc = [sb instantiateViewControllerWithIdentifier:@"finderVC"];
+    SettingsViewController *settingsvc = [sb instantiateViewControllerWithIdentifier:@"settingsVC"];
+    //Setting the settings view controller delegate to the app delegate to handle log outs.  Might want to create a separate delegate to handle this
+    //Because you can only have one delegate on at a time.
+    settingsvc.delegate = self;
+    self.controllers = [NSArray arrayWithObjects:findervc, settingsvc, nil];
+    self.bounceMenuController.viewControllers = self.controllers;
+    self.bounceMenuController.delegate = self;
+    
+    //Initializing Login/Signup screen
+    WelcomeViewController *welcomeVC = [sb instantiateViewControllerWithIdentifier:@"welcomeVC"];
+    welcomeVC.delegate = self;
+    //initializing the navigation controller for the welcome controllers
+    self.nav = [[UINavigationController alloc] initWithRootViewController: welcomeVC];
+
+    //Check whether a user is currently logged in. If so, go straight to the bounce menu, if not, go to the welcome screen
+    if([PFUser currentUser]) {
+        [[PFUser currentUser] refresh];
+    }
+    if([PFUser currentUser]) {
+        self.window.rootViewController = self.bounceMenuController;
+    }
+    else {
+        self.window.rootViewController = self.nav;
+    }
+    
+    self.currentUserQueue = dispatch_queue_create([CurrentUserQueueLabel cStringUsingEncoding:NSUTF8StringEncoding], NULL);
+    [self.window makeKeyAndVisible];
     return YES;
 }
 

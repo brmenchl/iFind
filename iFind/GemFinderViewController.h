@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
-#import "AddContentViewController.h"
+#import "GGAddContentViewController.h"
 @class MKMapView;
 
-@interface GemFinderViewController : UIViewController <CLLocationManagerDelegate, AddContentViewControllerDelegate>
+@interface GemFinderViewController : UIViewController <CLLocationManagerDelegate, GGAddContentViewControllerDelegate>
 
 //Temporary mapview outlet to show nearby gems
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;

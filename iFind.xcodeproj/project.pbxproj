@@ -33,7 +33,6 @@
 		CEB7B36C18D68D3A00AC72C5 /* tower.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CEB7B36B18D68D3A00AC72C5 /* tower.jpg */; };
 		CEB7B36E18D6A8F000AC72C5 /* waterfall.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CEB7B36D18D6A8F000AC72C5 /* waterfall.jpg */; };
 		CEDAA0B218E91336009A67F9 /* SoundcloudContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDAA0B118E91336009A67F9 /* SoundcloudContentView.m */; };
-		CEDAA0B418E95250009A67F9 /* music_beamed_note.png in Resources */ = {isa = PBXBuildFile; fileRef = CEDAA0B318E95250009A67F9 /* music_beamed_note.png */; };
 		E21F9A6218E8DDE70029BA85 /* ALRadialButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E21F9A5F18E8DDE70029BA85 /* ALRadialButton.m */; };
 		E21F9A6318E8DDE70029BA85 /* ALRadialMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = E21F9A6118E8DDE70029BA85 /* ALRadialMenu.m */; };
 		E21F9A6618E90B8C0029BA85 /* download.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = E21F9A6518E90B8C0029BA85 /* download.jpeg */; };
@@ -43,20 +42,20 @@
 		E234E85818E00C0100E2B16D /* TextContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = E234E85718E00C0100E2B16D /* TextContentView.m */; };
 		E2546AEE18D27DE0005F2D8B /* GemAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = E2546AED18D27DE0005F2D8B /* GemAnnotation.m */; };
 		E2675C6418CFB26A00F56BD3 /* CreateAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2675C6318CFB26A00F56BD3 /* CreateAccountViewController.m */; };
-		E2733BD418D6A49200EB51B0 /* AddContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2733BD318D6A49200EB51B0 /* AddContentViewController.m */; };
 		E2733BE418D6C12500EB51B0 /* soundcloud.png in Resources */ = {isa = PBXBuildFile; fileRef = E2733BE318D6C12500EB51B0 /* soundcloud.png */; };
 		E2733BE618D6C15B00EB51B0 /* messenger-generic.png in Resources */ = {isa = PBXBuildFile; fileRef = E2733BE518D6C15B00EB51B0 /* messenger-generic.png */; };
+		E29B2D5B18F335EE004D02AE /* music_beamed_note.png in Resources */ = {isa = PBXBuildFile; fileRef = E29B2D5A18F335EE004D02AE /* music_beamed_note.png */; };
 		E2AC39D518E892E70030461C /* plusButton.png in Resources */ = {isa = PBXBuildFile; fileRef = E2AC39D418E892E70030461C /* plusButton.png */; };
 		E2BA8BCA18E0CB14002027EE /* ImageContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = E2BA8BC918E0CB14002027EE /* ImageContentView.m */; };
 		E2BA8BCC18E224EF002027EE /* orkut.png in Resources */ = {isa = PBXBuildFile; fileRef = E2BA8BCB18E224EF002027EE /* orkut.png */; };
-		E2CB286518EF382000E2E386 /* GGAddContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2CB286418EF382000E2E386 /* GGAddContentViewController.m */; };
-		E2CB286818EF397400E2E386 /* GGAddContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = E2CB286718EF397400E2E386 /* GGAddContentView.m */; };
 		E2CC0AF918BE95E3008B6094 /* compass@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2CC0AF818BE95E3008B6094 /* compass@2x.png */; };
 		E2CC0AFB18BE964A008B6094 /* compass.png in Resources */ = {isa = PBXBuildFile; fileRef = E2CC0AFA18BE964A008B6094 /* compass.png */; };
 		E2CC0B0018BE96ED008B6094 /* BounceMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2CC0AFF18BE96ED008B6094 /* BounceMenuController.m */; };
 		E2CC0B0318BE96F7008B6094 /* PlusButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E2CC0B0218BE96F7008B6094 /* PlusButton.m */; };
 		E2CC0B0518BE9AF9008B6094 /* barDivider.png in Resources */ = {isa = PBXBuildFile; fileRef = E2CC0B0418BE9AF9008B6094 /* barDivider.png */; };
 		E2CC0B1118BEC3ED008B6094 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2CC0B1018BEC3ED008B6094 /* FacebookSDK.framework */; };
+		E2E0577218F36E0700315297 /* GGAddContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E0577118F36E0700315297 /* GGAddContentViewController.m */; };
+		E2E0577518F36EF100315297 /* GGAddContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E0577418F36EF100315297 /* GGAddContentView.m */; };
 		E2E711BE18C17DB100F5EAC1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2E711BD18C17DB100F5EAC1 /* Main.storyboard */; };
 		E2E711C718C1AAD600F5EAC1 /* settingsGear.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E711C518C1AAD600F5EAC1 /* settingsGear.png */; };
 		E2E711C818C1AAD600F5EAC1 /* settingsGear@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E711C618C1AAD600F5EAC1 /* settingsGear@2x.png */; };
@@ -107,7 +106,6 @@
 		CEB7B36D18D6A8F000AC72C5 /* waterfall.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = waterfall.jpg; sourceTree = "<group>"; };
 		CEDAA0B018E91336009A67F9 /* SoundcloudContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundcloudContentView.h; sourceTree = "<group>"; };
 		CEDAA0B118E91336009A67F9 /* SoundcloudContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundcloudContentView.m; sourceTree = "<group>"; };
-		CEDAA0B318E95250009A67F9 /* music_beamed_note.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = music_beamed_note.png; sourceTree = "<group>"; };
 		E21F9A5E18E8DDE70029BA85 /* ALRadialButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALRadialButton.h; sourceTree = "<group>"; };
 		E21F9A5F18E8DDE70029BA85 /* ALRadialButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALRadialButton.m; sourceTree = "<group>"; };
 		E21F9A6018E8DDE70029BA85 /* ALRadialMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALRadialMenu.h; sourceTree = "<group>"; };
@@ -125,20 +123,13 @@
 		E2546AED18D27DE0005F2D8B /* GemAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GemAnnotation.m; sourceTree = "<group>"; };
 		E2675C6218CFB26A00F56BD3 /* CreateAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateAccountViewController.h; sourceTree = "<group>"; };
 		E2675C6318CFB26A00F56BD3 /* CreateAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateAccountViewController.m; sourceTree = "<group>"; };
-		E2733BD218D6A49200EB51B0 /* AddContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddContentViewController.h; sourceTree = "<group>"; };
-		E2733BD318D6A49200EB51B0 /* AddContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddContentViewController.m; sourceTree = "<group>"; };
 		E2733BE318D6C12500EB51B0 /* soundcloud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = soundcloud.png; sourceTree = "<group>"; };
 		E2733BE518D6C15B00EB51B0 /* messenger-generic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messenger-generic.png"; sourceTree = "<group>"; };
+		E29B2D5A18F335EE004D02AE /* music_beamed_note.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = music_beamed_note.png; sourceTree = "<group>"; };
 		E2AC39D418E892E70030461C /* plusButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plusButton.png; sourceTree = "<group>"; };
 		E2BA8BC818E0CB14002027EE /* ImageContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageContentView.h; sourceTree = "<group>"; };
 		E2BA8BC918E0CB14002027EE /* ImageContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageContentView.m; sourceTree = "<group>"; };
 		E2BA8BCB18E224EF002027EE /* orkut.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = orkut.png; sourceTree = "<group>"; };
-		E2CB286318EF382000E2E386 /* GGAddContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGAddContentViewController.h; sourceTree = "<group>"; };
-		E2CB286418EF382000E2E386 /* GGAddContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGAddContentViewController.m; sourceTree = "<group>"; };
-		E2CB286618EF397400E2E386 /* GGAddContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGAddContentView.h; sourceTree = "<group>"; };
-		E2CB286718EF397400E2E386 /* GGAddContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGAddContentView.m; sourceTree = "<group>"; };
-		E2CB286918EF3CEB00E2E386 /* GGAddContentViewDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GGAddContentViewDataSource.h; sourceTree = "<group>"; };
-		E2CB286A18F11F5600E2E386 /* GGAddContentViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GGAddContentViewDelegate.h; sourceTree = "<group>"; };
 		E2CC0AF818BE95E3008B6094 /* compass@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "compass@2x.png"; sourceTree = "<group>"; };
 		E2CC0AFA18BE964A008B6094 /* compass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = compass.png; sourceTree = "<group>"; };
 		E2CC0AFE18BE96EC008B6094 /* BounceMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BounceMenuController.h; sourceTree = "<group>"; };
@@ -147,6 +138,12 @@
 		E2CC0B0218BE96F7008B6094 /* PlusButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlusButton.m; sourceTree = "<group>"; };
 		E2CC0B0418BE9AF9008B6094 /* barDivider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barDivider.png; sourceTree = "<group>"; };
 		E2CC0B1018BEC3ED008B6094 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		E2E0577018F36E0700315297 /* GGAddContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGAddContentViewController.h; sourceTree = "<group>"; };
+		E2E0577118F36E0700315297 /* GGAddContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGAddContentViewController.m; sourceTree = "<group>"; };
+		E2E0577318F36EF100315297 /* GGAddContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGAddContentView.h; sourceTree = "<group>"; };
+		E2E0577418F36EF100315297 /* GGAddContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGAddContentView.m; sourceTree = "<group>"; };
+		E2E0577618F36FA000315297 /* GGAddContentViewDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GGAddContentViewDataSource.h; sourceTree = "<group>"; };
+		E2E0577718F379C000315297 /* GGAddContentViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GGAddContentViewDelegate.h; sourceTree = "<group>"; };
 		E2E711BD18C17DB100F5EAC1 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		E2E711C518C1AAD600F5EAC1 /* settingsGear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settingsGear.png; sourceTree = "<group>"; };
 		E2E711C618C1AAD600F5EAC1 /* settingsGear@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settingsGear@2x.png"; sourceTree = "<group>"; };
@@ -244,12 +241,6 @@
 				CEA6D36918BD4E2800F36A35 /* Images.xcassets */,
 				CEA6D35E18BD4E2800F36A35 /* Supporting Files */,
 				E2E711BD18C17DB100F5EAC1 /* Main.storyboard */,
-				E2CB286318EF382000E2E386 /* GGAddContentViewController.h */,
-				E2CB286418EF382000E2E386 /* GGAddContentViewController.m */,
-				E2CB286618EF397400E2E386 /* GGAddContentView.h */,
-				E2CB286718EF397400E2E386 /* GGAddContentView.m */,
-				E2CB286918EF3CEB00E2E386 /* GGAddContentViewDataSource.h */,
-				E2CB286A18F11F5600E2E386 /* GGAddContentViewDelegate.h */,
 			);
 			path = iFind;
 			sourceTree = "<group>";
@@ -283,6 +274,35 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		E20CE6C218F3AA8A00327101 /* AddContent */ = {
+			isa = PBXGroup;
+			children = (
+				E2E0577718F379C000315297 /* GGAddContentViewDelegate.h */,
+				E2E0577618F36FA000315297 /* GGAddContentViewDataSource.h */,
+				E2E0577318F36EF100315297 /* GGAddContentView.h */,
+				E2E0577418F36EF100315297 /* GGAddContentView.m */,
+				E2E0577018F36E0700315297 /* GGAddContentViewController.h */,
+				E2E0577118F36E0700315297 /* GGAddContentViewController.m */,
+			);
+			name = AddContent;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		E20CE6C318F3AAA100327101 /* ContentView subclasses */ = {
+			isa = PBXGroup;
+			children = (
+				E234E85318E00AF300E2B16D /* ContentView.h */,
+				E234E85418E00AF300E2B16D /* ContentView.m */,
+				E234E85618E00C0100E2B16D /* TextContentView.h */,
+				E234E85718E00C0100E2B16D /* TextContentView.m */,
+				E2BA8BC818E0CB14002027EE /* ImageContentView.h */,
+				E2BA8BC918E0CB14002027EE /* ImageContentView.m */,
+				CEDAA0B018E91336009A67F9 /* SoundcloudContentView.h */,
+				CEDAA0B118E91336009A67F9 /* SoundcloudContentView.m */,
+			);
+			name = "ContentView subclasses";
+			sourceTree = "<group>";
+		};
 		E234E84218DFA60A00E2B16D /* Bounce Menu */ = {
 			isa = PBXGroup;
 			children = (
@@ -306,6 +326,7 @@
 		E2733BDC18D6B48700EB51B0 /* Login/Welcome */ = {
 			isa = PBXGroup;
 			children = (
+				E234E84118DF9F2D00E2B16D /* AccountHandlerDelegate.h */,
 				E2E7CD9718C1761100C20286 /* WelcomeViewController.h */,
 				E2E7CD9818C1761100C20286 /* WelcomeViewController.m */,
 				E2675C6218CFB26A00F56BD3 /* CreateAccountViewController.h */,
@@ -317,6 +338,7 @@
 		E2CC0B0618BE9C2B008B6094 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				E29B2D5A18F335EE004D02AE /* music_beamed_note.png */,
 				E21F9A6918E958DA0029BA85 /* archive.png */,
 				E21F9A6518E90B8C0029BA85 /* download.jpeg */,
 				E2AC39D418E892E70030461C /* plusButton.png */,
@@ -339,10 +361,9 @@
 			children = (
 				E234E84218DFA60A00E2B16D /* Bounce Menu */,
 				E2733BDC18D6B48700EB51B0 /* Login/Welcome */,
+				E20CE6C218F3AA8A00327101 /* AddContent */,
 				CE3E63CF18BD55A400A5DCD7 /* GemFinderViewController.h */,
 				CE3E63D018BD55A400A5DCD7 /* GemFinderViewController.m */,
-				E2733BD218D6A49200EB51B0 /* AddContentViewController.h */,
-				E2733BD318D6A49200EB51B0 /* AddContentViewController.m */,
 				E2E711C918C1AAF900F5EAC1 /* SettingsViewController.h */,
 				E2E711CA18C1AAF900F5EAC1 /* SettingsViewController.m */,
 			);
@@ -354,7 +375,6 @@
 			children = (
 				E2546AEC18D27DE0005F2D8B /* GemAnnotation.h */,
 				E2546AED18D27DE0005F2D8B /* GemAnnotation.m */,
-				E234E84118DF9F2D00E2B16D /* AccountHandlerDelegate.h */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -366,14 +386,7 @@
 				E2E30DD718E61F1D004770FA /* PlusButton */,
 				E234E85018DFE57500E2B16D /* UIImage+ImageEffects.h */,
 				E234E85118DFE57500E2B16D /* UIImage+ImageEffects.m */,
-				E234E85318E00AF300E2B16D /* ContentView.h */,
-				E234E85418E00AF300E2B16D /* ContentView.m */,
-				E234E85618E00C0100E2B16D /* TextContentView.h */,
-				E234E85718E00C0100E2B16D /* TextContentView.m */,
-				E2BA8BC818E0CB14002027EE /* ImageContentView.h */,
-				E2BA8BC918E0CB14002027EE /* ImageContentView.m */,
-				CEDAA0B018E91336009A67F9 /* SoundcloudContentView.h */,
-				CEDAA0B118E91336009A67F9 /* SoundcloudContentView.m */,
+				E20CE6C318F3AAA100327101 /* ContentView subclasses */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -486,12 +499,12 @@
 				E2E711C818C1AAD600F5EAC1 /* settingsGear@2x.png in Resources */,
 				E2E711BE18C17DB100F5EAC1 /* Main.storyboard in Resources */,
 				E2733BE418D6C12500EB51B0 /* soundcloud.png in Resources */,
+				E29B2D5B18F335EE004D02AE /* music_beamed_note.png in Resources */,
 				E2CC0AF918BE95E3008B6094 /* compass@2x.png in Resources */,
 				E2CC0AFB18BE964A008B6094 /* compass.png in Resources */,
 				E21F9A6618E90B8C0029BA85 /* download.jpeg in Resources */,
 				CEA6D36218BD4E2800F36A35 /* InfoPlist.strings in Resources */,
 				E2E711C718C1AAD600F5EAC1 /* settingsGear.png in Resources */,
-				CEDAA0B418E95250009A67F9 /* music_beamed_note.png in Resources */,
 				E2BA8BCC18E224EF002027EE /* orkut.png in Resources */,
 				CEA6D36A18BD4E2800F36A35 /* Images.xcassets in Resources */,
 				E2CC0B0518BE9AF9008B6094 /* barDivider.png in Resources */,
@@ -518,21 +531,20 @@
 				E2BA8BCA18E0CB14002027EE /* ImageContentView.m in Sources */,
 				E2CC0B0318BE96F7008B6094 /* PlusButton.m in Sources */,
 				E234E85218DFE57500E2B16D /* UIImage+ImageEffects.m in Sources */,
+				E2E0577518F36EF100315297 /* GGAddContentView.m in Sources */,
 				CEA6D36818BD4E2800F36A35 /* AppDelegate.m in Sources */,
 				CEA6D36418BD4E2800F36A35 /* main.m in Sources */,
 				E2CC0B0018BE96ED008B6094 /* BounceMenuController.m in Sources */,
 				E234E85818E00C0100E2B16D /* TextContentView.m in Sources */,
-				E2CB286818EF397400E2E386 /* GGAddContentView.m in Sources */,
 				E21F9A6318E8DDE70029BA85 /* ALRadialMenu.m in Sources */,
 				E2E7CD9918C1761100C20286 /* WelcomeViewController.m in Sources */,
 				E2546AEE18D27DE0005F2D8B /* GemAnnotation.m in Sources */,
 				CEDAA0B218E91336009A67F9 /* SoundcloudContentView.m in Sources */,
 				CE3E63D118BD55A400A5DCD7 /* GemFinderViewController.m in Sources */,
 				E21F9A6218E8DDE70029BA85 /* ALRadialButton.m in Sources */,
-				E2CB286518EF382000E2E386 /* GGAddContentViewController.m in Sources */,
+				E2E0577218F36E0700315297 /* GGAddContentViewController.m in Sources */,
 				E2E711CB18C1AAF900F5EAC1 /* SettingsViewController.m in Sources */,
 				E234E85518E00AF300E2B16D /* ContentView.m in Sources */,
-				E2733BD418D6A49200EB51B0 /* AddContentViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
