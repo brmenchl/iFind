@@ -9,9 +9,7 @@
 /* Begin PBXBuildFile section */
 		CE23730718F384FB00917970 /* WelcomeGoGeoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE23730518F384FB00917970 /* WelcomeGoGeoViewController.m */; };
 		CE23730B18F385B400917970 /* HowToUseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE23730A18F385B400917970 /* HowToUseViewController.m */; };
-		CE23730E18F3864400917970 /* IntroPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE23730D18F3864400917970 /* IntroPageViewController.m */; };
 		CE23731118F3960B00917970 /* StartingInventoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE23731018F3960B00917970 /* StartingInventoryViewController.m */; };
-		CE23731418F3962C00917970 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE23731318F3962C00917970 /* SignUpViewController.m */; };
 		CE23731718F3967A00917970 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE23731618F3967A00917970 /* LoginViewController.m */; };
 		CE23731A18F4D0FA00917970 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CE23731918F4D0FA00917970 /* LocationManager.m */; };
 		CE3E63D118BD55A400A5DCD7 /* GemFinderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3E63D018BD55A400A5DCD7 /* GemFinderViewController.m */; };
@@ -37,6 +35,8 @@
 		CEA6D39718BD51BC00F36A35 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA6D39618BD51BC00F36A35 /* QuartzCore.framework */; };
 		CEA6D39918BD51C600F36A35 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA6D39818BD51C600F36A35 /* Security.framework */; };
 		CEA6D39D18BD51DD00F36A35 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA6D39C18BD51DD00F36A35 /* SystemConfiguration.framework */; };
+		CEAA237818F4FCBE0042C8FE /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE23731318F3962C00917970 /* SignUpViewController.m */; };
+		CEAA237918F4FCCA0042C8FE /* IntroPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE23730D18F3864400917970 /* IntroPageViewController.m */; };
 		CEB7B36C18D68D3A00AC72C5 /* tower.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CEB7B36B18D68D3A00AC72C5 /* tower.jpg */; };
 		CEB7B36E18D6A8F000AC72C5 /* waterfall.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CEB7B36D18D6A8F000AC72C5 /* waterfall.jpg */; };
 		CEDAA0B218E91336009A67F9 /* SoundcloudContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDAA0B118E91336009A67F9 /* SoundcloudContentView.m */; };
@@ -563,6 +563,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEAA237918F4FCCA0042C8FE /* IntroPageViewController.m in Sources */,
+				CEAA237818F4FCBE0042C8FE /* SignUpViewController.m in Sources */,
 				E2675C6418CFB26A00F56BD3 /* CreateAccountViewController.m in Sources */,
 				CE23731718F3967A00917970 /* LoginViewController.m in Sources */,
 				E2BA8BCA18E0CB14002027EE /* ImageContentView.m in Sources */,
@@ -707,7 +709,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					.,
-					/Users/bradleymenchl/Documents/Courses/eecs441/iFindProject/iFind,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iFind/iFind-Prefix.pch";
@@ -728,7 +729,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					.,
-					/Users/bradleymenchl/Documents/Courses/eecs441/iFindProject/iFind,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iFind/iFind-Prefix.pch";

@@ -60,7 +60,7 @@
             //Initialize empty inventory and timeline arrays
             user[ParseUserInventoryKey] = [[NSArray alloc] init];
             user[ParseUserTimelineKey] = [[NSArray alloc] init];
-            user[ParseUserPioneerRankKey] = @1;
+            user[ParseUserPioneerRankKey] = @3;
             PFGeoPoint * temp_loc = [PFGeoPoint geoPointWithLocation:((AppDelegate *)[[UIApplication sharedApplication] delegate]).currentLocation];
             user[ParseUserLocationRegisteredKey] = temp_loc;
             

@@ -7,6 +7,8 @@
 //
 
 #import "WelcomeGoGeoViewController.h"
+#import "AppDelegate.h"
+
 
 @interface WelcomeGoGeoViewController ()
 

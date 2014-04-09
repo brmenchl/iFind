@@ -8,8 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface StartingInventoryViewController : UIViewController
 
 @property (strong, nonatomic) UILabel* titleLabel;
+
+@property NSString * distanceFromGem;
+@property int pioneerRank;
 
 @end
