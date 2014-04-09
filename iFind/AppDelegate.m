@@ -10,6 +10,7 @@
 #import "SettingsViewController.h"
 #import "GemFinderViewController.h"
 #import "WelcomeViewController.h"
+#import "IntroPageViewController.h"
 
 @interface AppDelegate()
 
