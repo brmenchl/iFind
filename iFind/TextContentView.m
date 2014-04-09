@@ -35,7 +35,7 @@
 //This calls initWithFrame.  Only use init method on textcontentview
 -(id) init {
     CGRect main = [UIScreen mainScreen].bounds;
-    self = [self initWithFrame:CGRectMake(0,0,main.size.width, 60)];
+    self = [self initWithFrame:CGRectMake(0,0,main.size.width, 30)];
     if(self) {
         self.buttonImage = [UIImage imageNamed:@"messenger-generic.png"];
     }
@@ -44,10 +44,12 @@
 
 
 #pragma UITextViewDelegate method
-- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
-    //Only allowing 140 characters in message (we can change this, this is the twitter amount)
-    NSUInteger newLength = [textView.text length] + [text length] - range.length;
-    return (newLength > 140) ? NO : YES;
+- (void) textViewDidChange:(UITextView *)textView {
+    CGRect frame = textView.frame;
+    frame.size.height = [textView sizeThatFits:CGSizeMake(self.bounds.size.width, FLT_MAX)].height;
+    NSLog(@"%f vs. %f and %f",textView.frame.size.height,frame.size.height, self.frame.size.height);
+    textView.frame = frame;
+    [self.delegate updateContentView:self toSize:textView.frame.size];
 }
 
 #pragma ContentView methods
@@ -59,6 +61,7 @@
 
 -(void)clearData {
     self.textView.text = @"";
+    [self removeFromSuperview];
 }
 
 @end

@@ -31,7 +31,6 @@
     [PFFacebookUtils initializeFacebook];
     
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    
     //Initializing bouncemenucontroller and all sub-controllers, they are kept in the
     self.bounceMenuController = [[BounceMenuController alloc] init];
     GemFinderViewController *findervc = [sb instantiateViewControllerWithIdentifier:@"finderVC"];

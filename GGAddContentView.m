@@ -2,19 +2,21 @@
 //  GGAddContentView.m
 //  iFind
 //
-//  Created by Bradley Menchl on 4/4/14.
+//  Created by Bradley Menchl on 4/7/14.
 //  Copyright (c) 2014 FuarkNet. All rights reserved.
 //
 
 #import "GGAddContentView.h"
 #define BUTTON_SIZE 30
+#define SCROLL_MARGINS 50
 @interface GGAddContentView()
 @property (readwrite) UIScrollView *scrollView;
 @property (nonatomic) UIButton *addContentButton;
-@property Class class;
 @end
 
-@implementation GGAddContentView
+@implementation GGAddContentView {
+    Class _subClass;
+}
 
 -(id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
@@ -22,8 +24,10 @@
         self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectNull];
         [self addSubview:self.scrollView];
         self.scrollView.backgroundColor = [UIColor clearColor];
-        self.backgroundColor = [UIColor clearColor]; //TODO
+        self.backgroundColor = [UIColor clearColor];
         self.scrollView.delegate = self;
+        self.scrollView.scrollEnabled = YES;
+        self.scrollView.alwaysBounceVertical = YES;
     }
     return self;
 }
@@ -33,10 +37,6 @@
     [self refreshView];
 }
 
--(void)registerCellClass:(Class)aClass {
-    self.class = aClass;
-}
-
 // based on the current scroll location, recycles off-screen cells and
 // creates new ones to fill the empty space.
 -(void) refreshView {
@@ -44,8 +44,8 @@
         return;
     }
     // set the scrollview height
-    self.scrollView.contentSize = CGSizeMake(self.scrollView.bounds.size.width,[self.dataSource totalViewHeight] + [self addContentButtonSpace]);
-    float topEdgeForRow = 0;
+    self.scrollView.contentSize = CGSizeMake(self.scrollView.bounds.size.width,[self.dataSource totalViewHeight] + [self addContentButtonSpace] + SCROLL_MARGINS);
+    float topEdgeForRow = SCROLL_MARGINS/2;
     for(int row = 0; row < [self.dataSource numberOfRows]; row++) {
         UIView* cell = [self cellWithTopEdge:topEdgeForRow];
         if (!cell) {
@@ -54,27 +54,31 @@
             CGRect frame = cell.frame;
             frame.origin.y = topEdgeForRow;
             cell.frame = frame;
-            if(!CGAffineTransformIsIdentity([cell.layer affineTransform])) {
-                [self.scrollView insertSubview:cell atIndex:0];
-                [UIView animateWithDuration:0.4
-                                      delay:0.4
-                                    options:UIViewAnimationOptionCurveEaseInOut
-                                 animations:^{
-                                     cell.layer.transform = CATransform3DIdentity;
-                                 }
-                                 completion:NULL];
-            }
-            }
+            [self.scrollView insertSubview:cell atIndex:0];
+        }
         topEdgeForRow += (cell.frame.size.height + ROW_MARGINS);
+        if(!CGAffineTransformIsIdentity([cell.layer affineTransform])) {
+            
+            [UIView animateWithDuration:0.4
+                                  delay:0.4
+                                options:UIViewAnimationOptionCurveEaseInOut
+                             animations:^{
+                                 cell.layer.transform = CATransform3DIdentity;
+                             }
+                             completion:NULL];
+        }
     }
     if(!self.addContentButton) {
-        NSLog(@"making button");
         self.addContentButton = [[UIButton alloc] init];
         [self.addContentButton setImage:[UIImage imageNamed:@"plusButton.png"] forState:UIControlStateNormal];
-        [self.addContentButton addTarget:self.delegate action:@selector(addContentPress:) forControlEvents:UIControlEventTouchUpInside];
+        [self.addContentButton addTarget:self action:@selector(addContentPress:) forControlEvents:UIControlEventTouchUpInside];
         [self.scrollView insertSubview:self.addContentButton atIndex:0];
-        self.addContentButton.frame = CGRectMake(self.bounds.size.width/2 - 20, (topEdgeForRow), 40, 40);
     }
+    self.addContentButton.frame = CGRectMake(self.bounds.size.width/2 - 20, (topEdgeForRow), 40, 40);
+}
+
+-(void) addContentPress:(UIButton *)sender {
+    [self.delegate addContentPress:sender];
 }
 
 // returns the cell for the given row, or nil if it doesn't exist
@@ -91,15 +95,30 @@
 -(NSArray*)cellSubviews {
     NSMutableArray* cells = [[NSMutableArray alloc] init];
     for (UIView* subView in self.scrollView.subviews) {
-        if ([subView isKindOfClass:self.class]) {
+        if ([subView isKindOfClass:_subClass]) {
             [cells addObject:subView];
         }
     }
     return cells;
 }
 
+-(NSArray *)visibleViews {
+    NSMutableArray *views = [[self cellSubviews] mutableCopy];
+    [views addObject:self.addContentButton];
+    return views;
+}
+
+-(void)registerClassForSubViews:(Class)subClass {
+    _subClass = subClass;
+}
+
 
 #pragma mark - UIScrollViewDelegate handlers
+-(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    NSLog(@"SVWBD");
+    [self.delegate scrollViewBeginDragging];
+}
+
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView {
     [self refreshView];
 }
@@ -119,4 +138,5 @@
 - (NSInteger) addContentButtonSpace {
     return BUTTON_SIZE + ROW_MARGINS;
 }
+
 @end

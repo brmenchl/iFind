@@ -2,7 +2,7 @@
 //  GGAddContentView.h
 //  iFind
 //
-//  Created by Bradley Menchl on 4/4/14.
+//  Created by Bradley Menchl on 4/7/14.
 //  Copyright (c) 2014 FuarkNet. All rights reserved.
 //
 
@@ -17,7 +17,7 @@
 // the object that acts as the data source for this list
 @property (nonatomic, assign) id<GGAddContentViewDataSource> dataSource;
 
-// the object that acts as the delegate for this list
+//// the object that acts as the delegate for this list
 @property (nonatomic, assign) id<GGAddContentViewDelegate> delegate;
 
 // forces the list to dispose of all the cells and re-build the list.
@@ -28,6 +28,11 @@
 
 @property (nonatomic, readonly) UIButton *addContentButton;
 
--(void)registerCellClass:(Class)aClass;
+-(NSArray*)cellSubviews;
+
+-(NSArray *)visibleViews;
+
+// registers a class for use as new subviews
+-(void)registerClassForSubViews:(Class)subClass;
 
 @end
