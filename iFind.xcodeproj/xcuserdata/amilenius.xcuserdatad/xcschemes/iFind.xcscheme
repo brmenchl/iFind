@@ -16,7 +16,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "CEA6D35318BD4E2700F36A35"
                BuildableName = "iFind.app"
-               BlueprintName = "iFind"
+               BlueprintName = "GoGeo"
                ReferencedContainer = "container:iFind.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -44,7 +44,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CEA6D35318BD4E2700F36A35"
             BuildableName = "iFind.app"
-            BlueprintName = "iFind"
+            BlueprintName = "GoGeo"
             ReferencedContainer = "container:iFind.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -63,7 +63,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CEA6D35318BD4E2700F36A35"
             BuildableName = "iFind.app"
-            BlueprintName = "iFind"
+            BlueprintName = "GoGeo"
             ReferencedContainer = "container:iFind.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -81,7 +81,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CEA6D35318BD4E2700F36A35"
             BuildableName = "iFind.app"
-            BlueprintName = "iFind"
+            BlueprintName = "GoGeo"
             ReferencedContainer = "container:iFind.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

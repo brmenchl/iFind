@@ -491,9 +491,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		CEA6D35318BD4E2700F36A35 /* iFind */ = {
+		CEA6D35318BD4E2700F36A35 /* GoGeo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CEA6D38018BD4E2800F36A35 /* Build configuration list for PBXNativeTarget "iFind" */;
+			buildConfigurationList = CEA6D38018BD4E2800F36A35 /* Build configuration list for PBXNativeTarget "GoGeo" */;
 			buildPhases = (
 				CEA6D35018BD4E2700F36A35 /* Sources */,
 				CEA6D35118BD4E2700F36A35 /* Frameworks */,
@@ -503,7 +503,7 @@
 			);
 			dependencies = (
 			);
-			name = iFind;
+			name = GoGeo;
 			productName = iFind;
 			productReference = CEA6D35418BD4E2700F36A35 /* iFind.app */;
 			productType = "com.apple.product-type.application";
@@ -569,7 +569,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				CEA6D35318BD4E2700F36A35 /* iFind */,
+				CEA6D35318BD4E2700F36A35 /* GoGeo */,
 				CEA6D36E18BD4E2800F36A35 /* iFindTests */,
 			);
 		};
@@ -627,7 +627,6 @@
 				E2CC0B0318BE96F7008B6094 /* PlusButton.m in Sources */,
 				E234E85218DFE57500E2B16D /* UIImage+ImageEffects.m in Sources */,
 				E2E0577518F36EF100315297 /* GGAddContentView.m in Sources */,
-				CE23730E18F3864400917970 /* IntroPageViewController.m in Sources */,
 				CEA6D36818BD4E2800F36A35 /* AppDelegate.m in Sources */,
 				E2C2FD7A18F65CC200D56B52 /* AccordianDrawerView.m in Sources */,
 				CEA6D36418BD4E2800F36A35 /* main.m in Sources */,
@@ -649,7 +648,6 @@
 				E2E0577218F36E0700315297 /* GGAddContentViewController.m in Sources */,
 				E2E711CB18C1AAF900F5EAC1 /* SettingsViewController.m in Sources */,
 				E234E85518E00AF300E2B16D /* ContentView.m in Sources */,
-				CE23731418F3962C00917970 /* SignUpViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -666,7 +664,7 @@
 /* Begin PBXTargetDependency section */
 		CEA6D37518BD4E2800F36A35 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = CEA6D35318BD4E2700F36A35 /* iFind */;
+			target = CEA6D35318BD4E2700F36A35 /* GoGeo */;
 			targetProxy = CEA6D37418BD4E2800F36A35 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -853,7 +851,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CEA6D38018BD4E2800F36A35 /* Build configuration list for PBXNativeTarget "iFind" */ = {
+		CEA6D38018BD4E2800F36A35 /* Build configuration list for PBXNativeTarget "GoGeo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CEA6D38118BD4E2800F36A35 /* Debug */,
