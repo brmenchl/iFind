@@ -19,6 +19,9 @@ static NSString * const ParseCreatedAtKey = @"createdAt";
 static NSString * const ParseUserClassName = @"User";
 static NSString * const ParseUserInventoryKey = @"inventory"; //Array of pointers to gems
 static NSString * const ParseUserTimelineKey = @"timeline"; //Array of pairs of pointers to gems and arrays of pointers to all relevant metadata
+static NSString * const ParseUserPioneerRankKey = @"pioneerRank";
+static NSString * const ParseUserPioneerPointerKey = @"pioneerPointer";
+static NSString * const ParseUserLocationRegisteredKey = @"locationRegistered";
 //Gem Class
 static NSString * const ParseGemClassName = @"Gem";
 static NSString * const ParseGemLocationsKey = @"locations"; //Array of PFGeopoints
@@ -47,6 +50,7 @@ static NSString * const LoadingViewControllerIdentfier = @"LoadingViewController
 #import <Parse/Parse.h>
 #import "BounceMenuController.h"
 #import "AccountHandlerDelegate.h"
+#import "LocationManager.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, BounceMenuControllerDelegate, AccountHandlerDelegate>
 
@@ -65,5 +69,7 @@ static NSString * const LoadingViewControllerIdentfier = @"LoadingViewController
 
 // Queues
 @property dispatch_queue_t currentUserQueue;
+
+@property (nonatomic, strong) LocationManager* locationManager;
 
 @end

@@ -7,6 +7,8 @@
 //
 
 #import "SignUpViewController.h"
+#import "AppDelegate.h"
+
 
 @interface SignUpViewController ()
 

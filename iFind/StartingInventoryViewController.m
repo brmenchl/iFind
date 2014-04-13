@@ -7,6 +7,9 @@
 //
 
 #import "StartingInventoryViewController.h"
+#import "AppDelegate.h"
+#import <Parse/Parse.h>
+
 
 @interface StartingInventoryViewController ()
 
@@ -19,6 +22,38 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        CLLocation * temp_ref = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).currentLocation;
+        
+        
+        
+        NSDictionary *pioneerParams = @{@"latitude":[NSNumber numberWithDouble:temp_ref.coordinate.latitude],@"longitude":[NSNumber numberWithDouble:temp_ref.coordinate.longitude]};
+        
+        [PFCloud callFunctionInBackground:@"pioneerStatusClosestGem" withParameters:pioneerParams block:^(NSString* response, NSError* error){
+            
+            NSData* jsonObj = [response dataUsingEncoding:NSUTF8StringEncoding];
+            
+            if (!error){
+                
+                NSDictionary* cloudResponse = nil;
+                
+                NSError* localError = nil;
+                cloudResponse = [NSJSONSerialization JSONObjectWithData:jsonObj options:0 error:&localError];
+                NSLog(@"%@",cloudResponse);
+                NSLog(@"%@",(NSNumber*)cloudResponse[@"distance"]);
+                NSLog(@"%@",(NSNumber*)cloudResponse[@"pioneerRank"]);
+                
+                 self.distanceFromGem = [NSString stringWithFormat:@"%@",cloudResponse[@"distance"]];
+                
+                NSString * fuark = [NSString stringWithFormat:@"%@",cloudResponse[@"pioneerRank"]];
+                
+                self.pioneerRank = [fuark intValue];
+                
+                
+            }
+            
+            
+            
+        }];
     }
     return self;
 }
@@ -41,6 +76,8 @@
     [self.view addSubview:self.titleLabel];
     
     self.view.backgroundColor = [UIColor colorWithRed:0.28 green:0.47 blue:0.29 alpha:1];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning

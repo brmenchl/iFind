@@ -7,6 +7,8 @@
 //
 
 #import "HowToUseViewController.h"
+#import "AppDelegate.h"
+
 
 @interface HowToUseViewController ()
 
