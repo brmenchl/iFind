@@ -418,6 +418,7 @@
 				CE705AA218FA8A0D00B0498B /* big_compass@2x.png */,
 				CE705AA018FA8A0300B0498B /* big_compass.png */,
 				CE705A9C18F8A75400B0498B /* arrow_up.png */,
+				E20CE6CA18F512BD00327101 /* cup.png */,
 				E29B2D5A18F335EE004D02AE /* music_beamed_note.png */,
 				E21F9A6918E958DA0029BA85 /* archive.png */,
 				E21F9A6518E90B8C0029BA85 /* download.jpeg */,

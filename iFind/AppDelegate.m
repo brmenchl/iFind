@@ -11,6 +11,7 @@
 #import "GemFinderViewController.h"
 #import "WelcomeViewController.h"
 #import "IntroPageViewController.h"
+#import "TimelineViewController.h"
 #import "GGCompassViewController.h"
 
 @interface AppDelegate()
@@ -46,9 +47,7 @@
     //Setting the settings view controller delegate to the app delegate to handle log outs.  Might want to create a separate delegate to handle this
     //Because you can only have one delegate on at a time.
     settingsvc.delegate = self;
-    
-    [[UITabBar appearance] setTintColor:[UIColor redColor]];
-    
+        
     
     GGCompassViewController * compassVC = [self.sb instantiateViewControllerWithIdentifier:@"GGCompass"];
     
@@ -70,7 +69,7 @@
     pageControl.currentPageIndicatorTintColor = [UIColor colorWithRed:0.91 green:0.68 blue:0.05 alpha:1];
     pageControl.backgroundColor = [UIColor colorWithRed:0.28 green:0.47 blue:0.29 alpha:1];
     
-    IntroPageViewController * temp = [[IntroPageViewController alloc] init];
+//    IntroPageViewController * temp = [[IntroPageViewController alloc] init];
     
     
     
@@ -78,7 +77,6 @@
     
     
     
-    //self.window.rootViewController = temp;
     if([PFUser currentUser]) {
         [[PFUser currentUser] refresh];
     }
