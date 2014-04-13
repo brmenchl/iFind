@@ -66,5 +66,6 @@ static NSString * const LoadingViewControllerIdentfier = @"LoadingViewController
 @property dispatch_queue_t currentUserQueue;
 
 @property (nonatomic, strong) LocationManager* locationManager;
+@property (nonatomic, strong) UIStoryboard* sb;
 
 @end

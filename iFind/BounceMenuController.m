@@ -207,6 +207,7 @@
             [controllerButton setEnabled:NO];
         }
         
+        
         // find offset from center of buttons
         // this is used to give a "converging" effect when animating in the buttons
         CGFloat buttonX = buttonStartX + (i * 50);

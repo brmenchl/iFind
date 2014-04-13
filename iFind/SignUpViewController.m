@@ -29,7 +29,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake((self.view.frame.size.width/2)-60, 50, 120, 60)];
+    self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake((self.view.frame.size.width/2)-60, 25, 120, 60)];
     
     self.titleLabel.text = @"Create a Locker Key";
     [self.titleLabel setFont:[UIFont fontWithName:@"Futura" size:20]];
@@ -42,6 +42,13 @@
     [self.view addSubview:self.titleLabel];
     
     self.view.backgroundColor = [UIColor colorWithRed:0.28 green:0.47 blue:0.29 alpha:1];
+    
+    [self.createButton setTitleColor:[UIColor colorWithRed:0.91 green:0.68 blue:0.05 alpha:1] forState:UIControlStateNormal];
+    [self.loginButton setTitleColor:[UIColor colorWithRed:0.91 green:0.68 blue:0.05 alpha:1] forState:UIControlStateNormal];
+    [self.facebookButton setTitleColor:[UIColor colorWithRed:0.91 green:0.68 blue:0.05 alpha:1] forState:UIControlStateNormal];
+    [self.skipButton setTitleColor:[UIColor colorWithRed:0.91 green:0.68 blue:0.05 alpha:1] forState:UIControlStateNormal];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning

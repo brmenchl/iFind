@@ -13,5 +13,8 @@
 
 @property (strong, nonatomic) UIPageViewController *pageController;
 
+@property (nonatomic, strong) NSString* responseDistance;
+@property NSInteger responseRank;
+
 
 @end

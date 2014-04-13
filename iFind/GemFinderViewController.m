@@ -83,8 +83,7 @@
     
     //If currentLocation can be gotten at this point, we should make an else block
 	if (currentLocation) {
-		AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-		appDelegate.currentLocation = currentLocation;
+		
         
         //Set viewed region on map to center on user.  The zoom level was copied from parse's app
         self.mapView.region = MKCoordinateRegionMake(CLLocationCoordinate2DMake(currentLocation.coordinate.latitude, currentLocation.coordinate.longitude), MKCoordinateSpanMake(0.008516f, 0.021801f));

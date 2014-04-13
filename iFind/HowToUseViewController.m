@@ -29,7 +29,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake((self.view.frame.size.width/2)-60, 50, 120, 30)];
+    self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake((self.view.frame.size.width/2)-60, 30, 120, 30)];
     
     self.titleLabel.text = @"How To Use";
     [self.titleLabel setFont:[UIFont fontWithName:@"Futura" size:20]];

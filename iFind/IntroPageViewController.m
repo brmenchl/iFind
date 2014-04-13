@@ -11,6 +11,8 @@
 #import "HowToUseViewController.h"
 #import "StartingInventoryViewController.h"
 #import "SignUpViewController.h"
+#import "AppDelegate.h"
+#import <Parse/Parse.h>
 
 #define MAX_PAGES 4
 
@@ -25,6 +27,38 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        // Custom initialization
+        CLLocation * temp_ref = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).currentLocation;
+        
+        
+        
+        NSDictionary *pioneerParams = @{@"latitude":[NSNumber numberWithDouble:temp_ref.coordinate.latitude],@"longitude":[NSNumber numberWithDouble:temp_ref.coordinate.longitude]};
+        
+        NSError* error = nil;
+        NSString* response = [PFCloud callFunction:@"pioneerStatusClosestGem" withParameters:pioneerParams error:&error];
+        
+        NSData* jsonObj = [response dataUsingEncoding:NSUTF8StringEncoding];
+                
+        if (!error){
+            
+            NSDictionary* cloudResponse = nil;
+            
+            NSError* localError = nil;
+            cloudResponse = [NSJSONSerialization JSONObjectWithData:jsonObj options:0 error:&localError];
+            NSLog(@"%@",cloudResponse);
+            NSLog(@"%@",(NSNumber*)cloudResponse[@"distance"]);
+            NSLog(@"%@",(NSNumber*)cloudResponse[@"pioneerRank"]);
+            
+            self.responseDistance = [NSString stringWithFormat:@"%@",cloudResponse[@"distance"]];
+            
+            NSString * fuark = [NSString stringWithFormat:@"%@",cloudResponse[@"pioneerRank"]];
+            
+            self.responseRank = [fuark intValue];
+        }
+        
+        
+        
+        
     }
     return self;
 }
@@ -109,6 +143,8 @@
 - (UIViewController *)viewControllerAtIndex:(int)i {
     // Asking for a page that is out of bounds??
     
+    UIStoryboard *sbptr = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).sb;
+    
     if (i == 0){
         WelcomeGoGeoViewController* WelcomeGoGeoController=[[WelcomeGoGeoViewController alloc] init];
         return WelcomeGoGeoController;
@@ -118,12 +154,12 @@
         return HowToUseController;
     }
     else if (i == 2){
-        StartingInventoryViewController * StartingInventoryController = [[StartingInventoryViewController alloc] init];
+        StartingInventoryViewController * StartingInventoryController = [[StartingInventoryViewController alloc] initWithParams:self.responseDistance responseRank:self.responseRank];
         return StartingInventoryController;
         
     }
     else if (i == 3){
-        SignUpViewController * SignUpController = [[SignUpViewController alloc] init];
+        SignUpViewController * SignUpController = [sbptr instantiateViewControllerWithIdentifier:@"SignUp"];
         return SignUpController;
     }
     

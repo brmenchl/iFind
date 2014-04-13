@@ -29,7 +29,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake((self.view.frame.size.width/2)-80, 40, 160, 60)];
+    self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake((self.view.frame.size.width/2)-80, 25, 160, 60)];
     self.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
     self.titleLabel.numberOfLines = 2;
     self.titleLabel.textAlignment = NSTextAlignmentCenter;

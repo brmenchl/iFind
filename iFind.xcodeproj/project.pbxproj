@@ -13,6 +13,10 @@
 		CE23731718F3967A00917970 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE23731618F3967A00917970 /* LoginViewController.m */; };
 		CE23731A18F4D0FA00917970 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CE23731918F4D0FA00917970 /* LocationManager.m */; };
 		CE3E63D118BD55A400A5DCD7 /* GemFinderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3E63D018BD55A400A5DCD7 /* GemFinderViewController.m */; };
+		CE705A9B18F8A66B00B0498B /* GGCompassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE705A9A18F8A66B00B0498B /* GGCompassViewController.m */; };
+		CE705A9D18F8A75400B0498B /* arrow_up.png in Resources */ = {isa = PBXBuildFile; fileRef = CE705A9C18F8A75400B0498B /* arrow_up.png */; };
+		CE705AA118FA8A0300B0498B /* big_compass.png in Resources */ = {isa = PBXBuildFile; fileRef = CE705AA018FA8A0300B0498B /* big_compass.png */; };
+		CE705AA318FA8A0D00B0498B /* big_compass@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CE705AA218FA8A0D00B0498B /* big_compass@2x.png */; };
 		CEA6D35818BD4E2800F36A35 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA6D35718BD4E2700F36A35 /* Foundation.framework */; };
 		CEA6D35A18BD4E2800F36A35 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA6D35918BD4E2800F36A35 /* CoreGraphics.framework */; };
 		CEA6D35C18BD4E2800F36A35 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA6D35B18BD4E2800F36A35 /* UIKit.framework */; };
@@ -97,6 +101,11 @@
 		CE23731918F4D0FA00917970 /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
 		CE3E63CF18BD55A400A5DCD7 /* GemFinderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GemFinderViewController.h; sourceTree = "<group>"; };
 		CE3E63D018BD55A400A5DCD7 /* GemFinderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GemFinderViewController.m; sourceTree = "<group>"; };
+		CE705A9918F8A66B00B0498B /* GGCompassViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGCompassViewController.h; sourceTree = "<group>"; };
+		CE705A9A18F8A66B00B0498B /* GGCompassViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGCompassViewController.m; sourceTree = "<group>"; };
+		CE705A9C18F8A75400B0498B /* arrow_up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_up.png; sourceTree = "<group>"; };
+		CE705AA018FA8A0300B0498B /* big_compass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = big_compass.png; sourceTree = "<group>"; };
+		CE705AA218FA8A0D00B0498B /* big_compass@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "big_compass@2x.png"; sourceTree = "<group>"; };
 		CEA6D35418BD4E2700F36A35 /* iFind.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iFind.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEA6D35718BD4E2700F36A35 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		CEA6D35918BD4E2800F36A35 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -371,6 +380,9 @@
 		E2CC0B0618BE9C2B008B6094 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				CE705AA218FA8A0D00B0498B /* big_compass@2x.png */,
+				CE705AA018FA8A0300B0498B /* big_compass.png */,
+				CE705A9C18F8A75400B0498B /* arrow_up.png */,
 				E29B2D5A18F335EE004D02AE /* music_beamed_note.png */,
 				E21F9A6918E958DA0029BA85 /* archive.png */,
 				E21F9A6518E90B8C0029BA85 /* download.jpeg */,
@@ -397,6 +409,8 @@
 				E20CE6C218F3AA8A00327101 /* AddContent */,
 				CE3E63CF18BD55A400A5DCD7 /* GemFinderViewController.h */,
 				CE3E63D018BD55A400A5DCD7 /* GemFinderViewController.m */,
+				CE705A9918F8A66B00B0498B /* GGCompassViewController.h */,
+				CE705A9A18F8A66B00B0498B /* GGCompassViewController.m */,
 				E2E711C918C1AAF900F5EAC1 /* SettingsViewController.h */,
 				E2E711CA18C1AAF900F5EAC1 /* SettingsViewController.m */,
 			);
@@ -538,10 +552,13 @@
 				E29B2D5B18F335EE004D02AE /* music_beamed_note.png in Resources */,
 				E2CC0AF918BE95E3008B6094 /* compass@2x.png in Resources */,
 				E2CC0AFB18BE964A008B6094 /* compass.png in Resources */,
+				CE705A9D18F8A75400B0498B /* arrow_up.png in Resources */,
 				E21F9A6618E90B8C0029BA85 /* download.jpeg in Resources */,
 				CEA6D36218BD4E2800F36A35 /* InfoPlist.strings in Resources */,
 				E2E711C718C1AAD600F5EAC1 /* settingsGear.png in Resources */,
+				CE705AA318FA8A0D00B0498B /* big_compass@2x.png in Resources */,
 				E2BA8BCC18E224EF002027EE /* orkut.png in Resources */,
+				CE705AA118FA8A0300B0498B /* big_compass.png in Resources */,
 				CEA6D36A18BD4E2800F36A35 /* Images.xcassets in Resources */,
 				E2CC0B0518BE9AF9008B6094 /* barDivider.png in Resources */,
 				CEB7B36C18D68D3A00AC72C5 /* tower.jpg in Resources */,
@@ -576,6 +593,7 @@
 				E2CC0B0018BE96ED008B6094 /* BounceMenuController.m in Sources */,
 				E234E85818E00C0100E2B16D /* TextContentView.m in Sources */,
 				E21F9A6318E8DDE70029BA85 /* ALRadialMenu.m in Sources */,
+				CE705A9B18F8A66B00B0498B /* GGCompassViewController.m in Sources */,
 				CE23731A18F4D0FA00917970 /* LocationManager.m in Sources */,
 				E2E7CD9918C1761100C20286 /* WelcomeViewController.m in Sources */,
 				E2546AEE18D27DE0005F2D8B /* GemAnnotation.m in Sources */,

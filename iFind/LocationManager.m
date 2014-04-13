@@ -7,6 +7,9 @@
 //
 
 #import "LocationManager.h"
+#import "AppDelegate.h"
+#import <math.h>
+
 
 
 @interface LocationManager(){
@@ -32,14 +35,42 @@
         self.locationManager.distanceFilter = kCLLocationAccuracyNearestTenMeters;
         
         [self.locationManager startUpdatingLocation];
+        [self.locationManager startUpdatingHeading];
         
         self.currentLocation = self.locationManager.location;
+        
+        if (self.currentLocation){
+            AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+            appDelegate.currentLocation = self.currentLocation;
+        }
         
 
     }
     
     return self;
 }
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading
+{
+    
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"didUpdateHeading" object:manager];
+    
+    
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+    
+    NSLog(@"didUpdateLocations");
+    //Set global reference to current location
+	self.currentLocation = [locations lastObject];
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    appDelegate.currentLocation = self.currentLocation;
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"didUpdateLocationNotification" object:manager];
+
+}
+
 
 
 

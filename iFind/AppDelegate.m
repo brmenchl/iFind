@@ -11,6 +11,7 @@
 #import "GemFinderViewController.h"
 #import "WelcomeViewController.h"
 #import "IntroPageViewController.h"
+#import "GGCompassViewController.h"
 
 @interface AppDelegate()
 
@@ -30,20 +31,34 @@
                   clientKey:@"4Cg6pBg5EUV3IAKmrpKsTLUoHMBbxoysNvL81q1x"];
     [PFFacebookUtils initializeFacebook];
     
-    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    //Location Services.
+    
+    self.locationManager = [[LocationManager alloc] init];
+    
+    NSLog(@"lat: %f",self.currentLocation.coordinate.latitude);
+    NSLog(@"lon: %f",self.currentLocation.coordinate.longitude);
+    
+    self.sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     //Initializing bouncemenucontroller and all sub-controllers, they are kept in the
     self.bounceMenuController = [[BounceMenuController alloc] init];
-    GemFinderViewController *findervc = [sb instantiateViewControllerWithIdentifier:@"finderVC"];
-    SettingsViewController *settingsvc = [sb instantiateViewControllerWithIdentifier:@"settingsVC"];
+    GemFinderViewController *findervc = [self.sb instantiateViewControllerWithIdentifier:@"finderVC"];
+    SettingsViewController *settingsvc = [self.sb instantiateViewControllerWithIdentifier:@"settingsVC"];
     //Setting the settings view controller delegate to the app delegate to handle log outs.  Might want to create a separate delegate to handle this
     //Because you can only have one delegate on at a time.
     settingsvc.delegate = self;
-    self.controllers = [NSArray arrayWithObjects:findervc, settingsvc, nil];
+    
+    [[UITabBar appearance] setTintColor:[UIColor redColor]];
+    
+    
+    GGCompassViewController * compassVC = [self.sb instantiateViewControllerWithIdentifier:@"GGCompass"];
+    
+    
+    self.controllers = [NSArray arrayWithObjects:compassVC, settingsvc, nil];
     self.bounceMenuController.viewControllers = self.controllers;
     self.bounceMenuController.delegate = self;
     
     //Initializing Login/Signup screen
-    WelcomeViewController *welcomeVC = [sb instantiateViewControllerWithIdentifier:@"welcomeVC"];
+    WelcomeViewController *welcomeVC = [self.sb instantiateViewControllerWithIdentifier:@"welcomeVC"];
     welcomeVC.delegate = self;
     //initializing the navigation controller for the welcome controllers
     self.nav = [[UINavigationController alloc] initWithRootViewController: welcomeVC];
@@ -58,9 +73,7 @@
     IntroPageViewController * temp = [[IntroPageViewController alloc] init];
     
     
-    //Location Services.
     
-    self.locationManager = [[LocationManager alloc] init];
     
     
     
@@ -75,7 +88,7 @@
         self.window.rootViewController = self.nav;
     }
     
-    //self.window.rootViewController = temp;
+    //self.window.rootViewController = tempCompass;
     
     self.currentUserQueue = dispatch_queue_create([CurrentUserQueueLabel cStringUsingEncoding:NSUTF8StringEncoding], NULL);
     [self.window makeKeyAndVisible];
