@@ -14,22 +14,39 @@
 @interface GGAddContentViewController ()
 @property NSMutableArray *currentContentViews;
 //Private property for the animated button menu, centered on the addcontentbutton
+@property (nonatomic) UIButton *addContentButton;
 @property (nonatomic) ALRadialMenu *radialMenu;
 @property (nonatomic) NSMutableArray *unusedContentViews;
 //UIImagePickerController to allow camera photo selection
-@property (nonatomic, strong) UIImagePickerController *imagePickerController;
+@property (nonatomic) UIImagePickerController *imagePickerController;
 @property (assign, nonatomic) CATransform3D initialTransform;
 @end
 
 @implementation GGAddContentViewController
 
+static CGFloat const ROW_MARGINS = 50;
+static CGFloat const BUTTON_SIZE = 30 + ROW_MARGINS;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     //Initialize radialMenu
     self.radialMenu = [[ALRadialMenu alloc] init];
 	self.radialMenu.delegate = self;
+    
+    self.totalViewHeight = BUTTON_SIZE;
     self.addContentView.dataSource = self;
     self.addContentView.delegate = self;
+    [self.addContentView setRecycleCells:NO];
+    if(!self.addContentButton) {
+        NSLog(@"here");
+        self.addContentButton = [[UIButton alloc] init];
+        [self.addContentButton setImage:[UIImage imageNamed:@"plusButton.png"] forState:UIControlStateNormal];
+        [self.addContentButton addTarget:self action:@selector(addContentPress:) forControlEvents:UIControlEventTouchUpInside];
+        [self.addContentView addExtraView:self.addContentButton];
+    }
+    [self.addContentView registerClassForSubViews:[ContentView class]];
+    
     //Initialize the unused and current content view arrays
     //I PUT THIS DUMMY ELEMENT HERE BECAUSE THE GUY WHO MADE THE RADIAL MENU DOES 1-BASED COUNTING
     self.unusedContentViews = [[NSMutableArray alloc] initWithObjects:@"dummy", [[TextContentView alloc] init],
@@ -39,9 +56,9 @@
         [self.unusedContentViews[index] setDelegate:self];
     }
     self.currentContentViews = [[NSMutableArray alloc] init];
+    
     //Initialize imagePicker
     self.imagePickerController = [[UIImagePickerController alloc] init];
-    self.totalViewHeight = 0;
     
     CATransform3D transform = CATransform3DIdentity;
     transform = CATransform3DTranslate(transform, -[UIScreen mainScreen].bounds.size.width, 0, 0.0);
@@ -62,7 +79,7 @@
 
 //This method runs through all subviews and resets their data to allow for a new gem to be dropped
 -(void) clearAllData {
-    [self.radialMenu itemsWillDisapearIntoButton:self.addContentView.addContentButton];
+    [self.radialMenu itemsWillDisapearIntoButton:self.addContentButton];
     self.totalViewHeight = 0;
     //Replace all contentViews in unusedContentViews
     [self.unusedContentViews addObjectsFromArray:self.currentContentViews];
@@ -79,17 +96,20 @@
     return [self.currentContentViews count];
 }
 
+- (NSInteger) rowMargins {
+    return ROW_MARGINS;
+}
+
 - (ContentView *) cellForRow:(NSInteger) row {
     ContentView* cell = [self.currentContentViews objectAtIndex:row];
-    [self.addContentView registerClassForSubViews:[ContentView class]];
     cell.delegate = self;
     return cell;
 }
 
 //Handles pressing the add content button
 - (void)addContentPress:(UIButton *)sender {
-    if(self.addContentView.addContentButton.frame.origin.y > (self.addContentView.scrollView.contentOffset.y + self.addContentView.bounds.size.height - [self expandedButtonSpace])) {
-        [self.addContentView.scrollView setContentOffset:CGPointMake(0, [self addContentView].addContentButton.frame.origin.y - (self.addContentView.bounds.size.height - [self expandedButtonSpace])) animated:YES];
+    if(self.addContentButton.frame.origin.y > (self.addContentView.scrollView.contentOffset.y + self.addContentView.bounds.size.height - [self expandedButtonSpace])) {
+        [self.addContentView.scrollView setContentOffset:CGPointMake(0, self.addContentButton.frame.origin.y - (self.addContentView.bounds.size.height - [self expandedButtonSpace])) animated:YES];
     }
     [self.radialMenu buttonsWillAnimateFromButton:sender withFrame:[sender convertRect:sender.bounds toView:self.view] inView:self.view];
 }
@@ -154,7 +174,7 @@
 }
 
 - (void)handleTap:(UITapGestureRecognizer *)sender {
-    [self.radialMenu itemsWillDisapearIntoButton:self.addContentView.addContentButton];
+    [self.radialMenu itemsWillDisapearIntoButton:self.addContentButton];
     [self.view endEditing:YES];
 }
 
@@ -184,7 +204,7 @@
                           delay:0.4
                         options:UIViewAnimationOptionCurveEaseInOut
                      animations:^{
-                         self.addContentView.addContentButton.frame = CGRectOffset(self.addContentView.addContentButton.frame, 0, ROW_MARGINS + distance);
+                         self.addContentButton.frame = CGRectOffset(self.addContentButton.frame, 0, ROW_MARGINS + distance);
                      }
                      completion:NULL
      ];
@@ -202,7 +222,7 @@
 //}
 
 -(void)addAndAnimateForView:(UIView *)view {
-    [self.radialMenu itemsWillDisapearIntoButton:[self.addContentView addContentButton]];
+    [self.radialMenu itemsWillDisapearIntoButton:self.addContentButton];
     view.layer.transform = self.initialTransform;
     self.totalViewHeight += (ROW_MARGINS + view.frame.size.height);
     [self animateDownward:view.frame.size.height];
@@ -212,7 +232,7 @@
 }
 
 - (void) scrollViewBeginDragging {
-    [self.radialMenu itemsWillDisapearIntoButton:[self.addContentView addContentButton]];
+    [self.radialMenu itemsWillDisapearIntoButton:self.addContentButton];
 }
 
 - (void) contentViewDeleted:(ContentView *)view {
@@ -250,7 +270,6 @@
     if(view.frame.size.height != size.height) {
         CGSize oldSize = CGSizeMake(view.frame.size.width, view.frame.size.height);
         NSLog(@"oldSize: %f,%f", oldSize.width, oldSize.height);
-        NSLog(@"%lu",[[self.addContentView visibleViews] count]);
         for(UIView* subview in [self.addContentView visibleViews]) {
             NSLog(@"old location: %f,%f", subview.frame.origin.x, subview.frame.origin.y);
             if(subview == view) {
@@ -276,5 +295,6 @@
         }
     }
 }
+
 
 @end

@@ -132,35 +132,36 @@
         
         //Create new gemMetadata object, get reference to next gem to drop from current user inventory array
         AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-
+        
         dispatch_async(appDelegate.currentUserQueue,^{
-
-        PFObject *gemMetadata = [PFObject objectWithClassName:ParseGemMetadataClassName];
-        NSLog(@"%@",[[PFUser currentUser] objectForKey:ParseUserInventoryKey]);
-        NSArray *inventory = [[PFUser currentUser] objectForKey:ParseUserInventoryKey];
-        PFObject *gemToDrop = [inventory firstObject];
-        [gemToDrop fetchIfNeeded];
-        
-        //Loop through all added content from AddContentViewController and add content to relevant field in gemMetadata object
-        for(NSObject *object in content) {
-            if([object isKindOfClass:[NSString class]]) {
-                gemMetadata[ParseMetaTextContentKey] = object;
+            
+            PFObject *gemMetadata = [PFObject objectWithClassName:ParseGemMetadataClassName];
+            NSLog(@"%@",[[PFUser currentUser] objectForKey:ParseUserInventoryKey]);
+            NSArray *inventory = [[PFUser currentUser] objectForKey:ParseUserInventoryKey];
+            PFObject *gemToDrop = [inventory firstObject];
+            [gemToDrop fetchIfNeeded];
+            
+            //Loop through all added content from AddContentViewController and add content to relevant field in gemMetadata object
+            for(NSObject *object in content) {
+                if([object isKindOfClass:[NSString class]]) {
+                    gemMetadata[ParseMetaTextContentKey] = object;
+                }
+                else if([object isKindOfClass:[UIImage class]]) {
+                    gemMetadata[ParseMetaImageContentKey] = [PFFile fileWithName:@"image.jpg" data:UIImageJPEGRepresentation((UIImage *)object, 0.05f)];
+                }
             }
-            else if([object isKindOfClass:[UIImage class]]) {
-                gemMetadata[ParseMetaImageContentKey] = [PFFile fileWithName:@"image.jpg" data:UIImageJPEGRepresentation((UIImage *)object, 0.05f)];
-            }
-        }
-
-
-        gemToDrop[ParseGemCurrentLocationKey] = [PFGeoPoint geoPointWithLocation:appDelegate.currentLocation];
-        [gemToDrop[ParseGemLocationsKey] addObject:[PFGeoPoint geoPointWithLocation:appDelegate.currentLocation]];
+            
+            
+            gemToDrop[ParseGemCurrentLocationKey] = [PFGeoPoint geoPointWithLocation:appDelegate.currentLocation];
+            [gemToDrop[ParseGemLocationsKey] addObject: [PFGeoPoint geoPointWithLocation:appDelegate.currentLocation]];
             NSLog(@"this is the stuff: %@",gemToDrop[ParseGemLocationsKey]);
-        gemToDrop[ParseGemMetadataReferenceKey] = gemMetadata;
-        gemToDrop[ParseGemCurrentOwnerKey] = [NSNull null];
-        gemMetadata[ParseMetaGemReferenceKey] = gemToDrop;
-        
-        NSLog(@"%@\n\n%@",gemToDrop, gemMetadata);
-        //Attempt to save gem and gemMetadata PFObjects
+            gemToDrop[ParseGemMetadataReferenceKey] = gemMetadata;
+            gemMetadata[ParseMetaGemReferenceKey] = gemToDrop;
+            gemMetadata[ParseMetaDropLocationKey] = [PFGeoPoint geoPointWithLocation:appDelegate.currentLocation];
+            gemMetadata[ParseMetaPickUpDateKey] = [NSNull null];
+            
+            NSLog(@"%@\n\n%@",gemToDrop, gemMetadata);
+            //Attempt to save gem and gemMetadata PFObjects
             NSError *dropGemError = nil;
             [PFObject saveAll:@[gemToDrop, gemMetadata] error: &dropGemError];
             if (!dropGemError) {
@@ -217,15 +218,20 @@
         
         [[PFUser currentUser]addObject:self.closestGem[ParseGemMetadataReferenceKey] forKey:ParseUserTimelineKey];
         [[PFUser currentUser] addObject:self.closestGem forKey:ParseUserInventoryKey];
+        
+        PFObject *metadata = self.closestGem[ParseMetaGemReferenceKey];
+        metadata[ParseMetaPickUpDateKey] = [NSDate date];
+        
         self.closestGem[ParseGemCurrentLocationKey] = [NSNull null];
         self.closestGem[ParseGemMetadataReferenceKey] = [NSNull null];
-        self.closestGem[ParseGemCurrentOwnerKey] = [PFUser currentUser];
+        self.closestGem[ParseGemLastOwnerKey] = [PFUser currentUser];
+        
         
         //Attempt to save picked up gem object and current user
         AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         dispatch_async(appDelegate.currentUserQueue, ^{
             NSError *pickUpGemError = nil;
-            [PFObject saveAll:@[self.closestGem, [PFUser currentUser]] error:&pickUpGemError];
+            [PFObject saveAll:@[self.closestGem, [PFUser currentUser], metadata] error:&pickUpGemError];
             if(!pickUpGemError) {
                 //query for nearby gems
                 dispatch_async(dispatch_get_main_queue(), ^{

@@ -9,9 +9,7 @@
 #import <Foundation/Foundation.h>
 @class ContentView;
 @protocol GGAddContentViewDelegate <NSObject>
-
-- (void) addContentPress:(UIButton*)sender;
-
+@optional
 - (void) scrollViewBeginDragging;
 
 @end

@@ -9,8 +9,8 @@
             <objects>
                 <viewController storyboardIdentifier="finderVC" id="rbi-zI-fFJ" customClass="GemFinderViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="9bM-e5-g8h"/>
-                        <viewControllerLayoutGuide type="bottom" id="KiG-5k-9bw"/>
+                        <viewControllerLayoutGuide type="top" id="SC8-LJ-ZsR"/>
+                        <viewControllerLayoutGuide type="bottom" id="E8o-Tq-LXq"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="nZd-Y0-vom">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -55,15 +55,15 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HLf-53-0Ye" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="531" y="-69"/>
+            <point key="canvasLocation" x="528" y="-69"/>
         </scene>
         <!--Welcome View Controller-->
         <scene sceneID="dZJ-hP-y8f">
             <objects>
                 <viewController storyboardIdentifier="welcomeVC" id="quL-I0-GfF" customClass="WelcomeViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="YPt-J2-bc6"/>
-                        <viewControllerLayoutGuide type="bottom" id="pBf-xO-MmX"/>
+                        <viewControllerLayoutGuide type="top" id="wlq-Li-rIm"/>
+                        <viewControllerLayoutGuide type="bottom" id="xXk-qx-M3N"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="vTP-PF-C00">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -176,8 +176,8 @@
             <objects>
                 <viewController id="Ceh-7c-fwB" customClass="CreateAccountViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="mgJ-9U-BPh"/>
-                        <viewControllerLayoutGuide type="bottom" id="p5U-fF-2c6"/>
+                        <viewControllerLayoutGuide type="top" id="XVz-73-u5O"/>
+                        <viewControllerLayoutGuide type="bottom" id="ZU6-GR-Sni"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="58A-vv-SVp">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -262,8 +262,8 @@
             <objects>
                 <viewController storyboardIdentifier="settingsVC" id="AdG-YQ-gZx" customClass="SettingsViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Cxe-XD-Lcg"/>
-                        <viewControllerLayoutGuide type="bottom" id="lNS-tx-UzQ"/>
+                        <viewControllerLayoutGuide type="top" id="cp8-Qy-Q09"/>
+                        <viewControllerLayoutGuide type="bottom" id="FAY-0T-xZE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="9ve-XK-nwu">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -288,15 +288,53 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yw3-08-N4W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="977" y="-69"/>
+            <point key="canvasLocation" x="1461" y="-69"/>
+        </scene>
+        <!--Timeline View Controller - Timeline-->
+        <scene sceneID="SbF-dt-X3X">
+            <objects>
+                <viewController storyboardIdentifier="timelineVC" title="Timeline" id="rDT-TD-Vlo" customClass="TimelineViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="JuO-Bq-Y6m"/>
+                        <viewControllerLayoutGuide type="bottom" id="zgg-mC-Q6Y"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Psn-DG-p1J">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fv7-7X-5CL">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <items>
+                                    <navigationItem title="Timeline" id="l1D-Mk-6p6"/>
+                                </items>
+                            </navigationBar>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tji-ck-rUv" customClass="GGAddContentView">
+                                <rect key="frame" x="0.0" y="44" width="320" height="429"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.31949541450000002" green="0.30633188369999997" blue="0.31995376279999999" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Timeline" image="archive.png" id="3p9-to-yFI"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="timelineTableView" destination="tji-ck-rUv" id="UEP-FU-jj4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dbS-aK-Vnc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="969" y="-69"/>
         </scene>
         <!--Add Content View Controller-->
         <scene sceneID="Wd5-r0-Wcr">
             <objects>
                 <viewController storyboardIdentifier="GGAddContentVC" id="Ko9-HW-SIr" customClass="GGAddContentViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="4h2-wc-16x"/>
-                        <viewControllerLayoutGuide type="bottom" id="xLg-Td-izw"/>
+                        <viewControllerLayoutGuide type="top" id="Cn9-Jy-PWo"/>
+                        <viewControllerLayoutGuide type="bottom" id="k2d-No-olF"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="rMJ-XA-3M3">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -311,7 +349,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="88r-t9-qN3">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="88r-t9-qN3">
                                 <rect key="frame" x="20" y="524" width="71" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Drop Gem">
@@ -322,7 +360,7 @@
                                     <action selector="dropGemPress:" destination="Ko9-HW-SIr" eventType="touchUpInside" id="OKT-tS-wCc"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wlP-rT-J0U">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wlP-rT-J0U">
                                 <rect key="frame" x="252" y="524" width="48" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Cancel">
@@ -336,12 +374,6 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
-                        <constraints>
-                            <constraint firstItem="88r-t9-qN3" firstAttribute="leading" secondItem="rMJ-XA-3M3" secondAttribute="leading" constant="20" id="3b7-QB-Rty"/>
-                            <constraint firstItem="wlP-rT-J0U" firstAttribute="leading" secondItem="88r-t9-qN3" secondAttribute="trailing" constant="161" id="4Ac-f6-D4d"/>
-                            <constraint firstItem="xLg-Td-izw" firstAttribute="top" secondItem="88r-t9-qN3" secondAttribute="bottom" constant="14" id="MKr-ad-L8Q"/>
-                            <constraint firstItem="xLg-Td-izw" firstAttribute="top" secondItem="wlP-rT-J0U" secondAttribute="bottom" constant="14" id="Mox-Bn-BBA"/>
-                        </constraints>
                     </view>
                     <connections>
                         <outlet property="addContentView" destination="mHG-wJ-DSp" id="HIH-Lh-hum"/>
@@ -357,8 +389,8 @@
             <objects>
                 <viewController storyboardIdentifier="loadingVC" id="Ca5-vp-Pir" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="PxW-bT-UHc"/>
-                        <viewControllerLayoutGuide type="bottom" id="gZh-Pd-dIb"/>
+                        <viewControllerLayoutGuide type="top" id="yl5-nK-rCL"/>
+                        <viewControllerLayoutGuide type="bottom" id="bQN-ak-Pym"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="PNv-wZ-svs">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -386,6 +418,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="archive.png" width="30" height="30"/>
         <image name="compass.png" width="30" height="30"/>
         <image name="download.jpeg" width="211" height="238"/>
         <image name="settingsGear.png" width="30" height="30"/>

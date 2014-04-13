@@ -11,6 +11,7 @@
 #import "GemFinderViewController.h"
 #import "WelcomeViewController.h"
 #import "IntroPageViewController.h"
+#import "TimelineViewController.h"
 
 @interface AppDelegate()
 
@@ -31,14 +32,16 @@
     [PFFacebookUtils initializeFacebook];
     
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
     //Initializing bouncemenucontroller and all sub-controllers, they are kept in the
     self.bounceMenuController = [[BounceMenuController alloc] init];
     GemFinderViewController *findervc = [sb instantiateViewControllerWithIdentifier:@"finderVC"];
+    TimelineViewController *timelinevc = [sb instantiateViewControllerWithIdentifier:@"timelineVC"];
     SettingsViewController *settingsvc = [sb instantiateViewControllerWithIdentifier:@"settingsVC"];
     //Setting the settings view controller delegate to the app delegate to handle log outs.  Might want to create a separate delegate to handle this
     //Because you can only have one delegate on at a time.
     settingsvc.delegate = self;
-    self.controllers = [NSArray arrayWithObjects:findervc, settingsvc, nil];
+    self.controllers = [NSArray arrayWithObjects:findervc, timelinevc, settingsvc, nil];
     self.bounceMenuController.viewControllers = self.controllers;
     self.bounceMenuController.delegate = self;
     
@@ -49,6 +52,15 @@
     self.nav = [[UINavigationController alloc] initWithRootViewController: welcomeVC];
 
     //Check whether a user is currently logged in. If so, go straight to the bounce menu, if not, go to the welcome screen
+    
+    UIPageControl *pageControl = [UIPageControl appearance];
+    pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
+    pageControl.currentPageIndicatorTintColor = [UIColor colorWithRed:0.91 green:0.68 blue:0.05 alpha:1];
+    pageControl.backgroundColor = [UIColor colorWithRed:0.28 green:0.47 blue:0.29 alpha:1];
+    
+//    IntroPageViewController * temp = [[IntroPageViewController alloc] init];
+    
+    //self.window.rootViewController = temp;
     if([PFUser currentUser]) {
         [[PFUser currentUser] refresh];
     }
@@ -140,7 +152,7 @@
             gem[ParseGemLocationsKey] = [[NSMutableArray alloc] init];
             gem[ParseGemCurrentLocationKey] = [NSNull null];
             gem[ParseGemMetadataReferenceKey] = [NSNull null];
-            gem[ParseGemCurrentOwnerKey] = [PFUser currentUser];
+            gem[ParseGemLastOwnerKey] = [PFUser currentUser];
             [inventory addObject:gem];
             [[PFUser currentUser] addObject:gem forKey:ParseUserInventoryKey];
         }

@@ -7,14 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-@class ContentView;
-
-@protocol ContentViewDelegate <NSObject>
-- (void)addAndAnimateForView:(UIView *)view;
-- (void) contentViewDeleted:(ContentView *)view;
-- (void) updateContentView:(ContentView *)view toSize:(CGSize)size;
-@end
-
+#import "ContentViewDelegate.h"
 
 @interface ContentView : UIView <UIGestureRecognizerDelegate>
 
