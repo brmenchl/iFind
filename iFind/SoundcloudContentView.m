@@ -83,10 +83,9 @@
     
     NSURLSessionTask *task = [[NSURLSession sharedSession] dataTaskWithURL:trackURL completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
 
-        CGRect main = [UIScreen mainScreen].bounds;
         NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
         if (httpResponse.statusCode == 200){
-            UIView *previewPane = [[UIView alloc] initWithFrame:CGRectMake(0, 60, main.size.width, 60)];
+//            UIView *previewPane = [[UIView alloc] initWithFrame:CGRectMake(0, 60, main.size.width, 60)];
             NSError *e = nil;
             NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&e];
             
@@ -109,15 +108,6 @@
     
     [task resume];
 }
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
 
 -(id)contentData {
     return self.textView.text;

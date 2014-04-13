@@ -78,6 +78,7 @@
     
     
     
+    //self.window.rootViewController = temp;
     if([PFUser currentUser]) {
         [[PFUser currentUser] refresh];
     }
@@ -171,7 +172,7 @@
             gem[ParseGemLocationsKey] = [[NSMutableArray alloc] init];
             gem[ParseGemCurrentLocationKey] = [NSNull null];
             gem[ParseGemMetadataReferenceKey] = [NSNull null];
-            gem[ParseGemCurrentOwnerKey] = [PFUser currentUser];
+            gem[ParseGemLastOwnerKey] = [PFUser currentUser];
             [inventory addObject:gem];
             [[PFUser currentUser] addObject:gem forKey:ParseUserInventoryKey];
         }

@@ -7,24 +7,27 @@
 //
 
 #import "GGAddContentView.h"
-#define BUTTON_SIZE 30
-#define SCROLL_MARGINS 50
+
+
 @interface GGAddContentView()
 @property (readwrite) UIScrollView *scrollView;
-@property (nonatomic) UIButton *addContentButton;
+@property (nonatomic) NSMutableArray *extraViews;
+@property (nonatomic) NSMutableSet *reuseSet;
 @end
 
 @implementation GGAddContentView {
     Class _subClass;
 }
+static CGFloat const SCROLL_MARGINS = 25;
 
 -(id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectNull];
+        self.backgroundColor = [UIColor clearColor];
+        self.extraViews = [[NSMutableArray alloc] init];
+        self.scrollView = [[UIScrollView alloc] initWithFrame:self.frame];
         [self addSubview:self.scrollView];
         self.scrollView.backgroundColor = [UIColor clearColor];
-        self.backgroundColor = [UIColor clearColor];
         self.scrollView.delegate = self;
         self.scrollView.scrollEnabled = YES;
         self.scrollView.alwaysBounceVertical = YES;
@@ -44,9 +47,26 @@
         return;
     }
     // set the scrollview height
-    self.scrollView.contentSize = CGSizeMake(self.scrollView.bounds.size.width,[self.dataSource totalViewHeight] + [self addContentButtonSpace] + SCROLL_MARGINS);
-    float topEdgeForRow = SCROLL_MARGINS/2;
-    for(int row = 0; row < [self.dataSource numberOfRows]; row++) {
+    self.scrollView.contentSize = CGSizeMake(self.scrollView.bounds.size.width,[self.dataSource totalViewHeight] + SCROLL_MARGINS);
+    float topEdgeForRow = 0;
+    
+    if(self.recycleCells) {
+        // remove cells that are no longer visible
+        for (UIView* cell in [self cellSubviews]) {
+            // is the cell off the top of the scrollview?
+            if (cell.frame.origin.y + cell.frame.size.height < self.scrollView.contentOffset.y) {
+                [self recycleCell:cell];
+            }
+            // is the cell off the bottom of the scrollview?
+            if (cell.frame.origin.y > self.scrollView.contentOffset.y + self.scrollView.frame.size.height) {
+                [self recycleCell:cell];
+            }
+        }
+    }
+    int firstIndex = self.recycleCells ? MAX(0, floor(self.scrollView.contentOffset.y / [self.dataSource rowHeight])) : 0;
+    int lastIndex = self.recycleCells ? MIN([self.dataSource numberOfRows], firstIndex + 1 + ceil(self.scrollView.frame.size.height /[self.dataSource rowHeight])) : (int)[self.dataSource numberOfRows];
+//    NSLog(@"first index: %i, last index %i",firstIndex, lastIndex);
+    for(int row = firstIndex; row < lastIndex; row++) {
         UIView* cell = [self cellWithTopEdge:topEdgeForRow];
         if (!cell) {
             // create a new cell and add to the scrollview
@@ -56,7 +76,7 @@
             cell.frame = frame;
             [self.scrollView insertSubview:cell atIndex:0];
         }
-        topEdgeForRow += (cell.frame.size.height + ROW_MARGINS);
+        topEdgeForRow += (cell.frame.size.height + [self.dataSource rowMargins]);
         if(!CGAffineTransformIsIdentity([cell.layer affineTransform])) {
             
             [UIView animateWithDuration:0.4
@@ -68,17 +88,34 @@
                              completion:NULL];
         }
     }
-    if(!self.addContentButton) {
-        self.addContentButton = [[UIButton alloc] init];
-        [self.addContentButton setImage:[UIImage imageNamed:@"plusButton.png"] forState:UIControlStateNormal];
-        [self.addContentButton addTarget:self action:@selector(addContentPress:) forControlEvents:UIControlEventTouchUpInside];
-        [self.scrollView insertSubview:self.addContentButton atIndex:0];
+    for(UIView * extraView in self.extraViews) {
+        if(extraView.superview != self.scrollView) {
+            [self.scrollView insertSubview:extraView atIndex:0];
+        }
+        extraView.frame = CGRectMake(self.bounds.size.width/2 - 20, (topEdgeForRow), 40, 40);
+        topEdgeForRow += (extraView.frame.size.height + [self.dataSource rowMargins]);
     }
-    self.addContentButton.frame = CGRectMake(self.bounds.size.width/2 - 20, (topEdgeForRow), 40, 40);
 }
 
--(void) addContentPress:(UIButton *)sender {
-    [self.delegate addContentPress:sender];
+// recycles a cell by adding it the set of reuse cells and removing it from the view
+-(void) recycleCell:(UIView*)cell {
+    [self.reuseSet addObject:cell];
+    [cell removeFromSuperview];
+}
+
+-(UIView*)dequeueReusableCell {
+    // first obtain a cell from the reuse pool
+    UIView* cell = [self.reuseSet anyObject];
+    if (cell) {
+        NSLog(@"Returning a cell from the pool");
+        [self.reuseSet removeObject:cell];
+    }
+    // otherwise create a new cell
+    if (!cell) {
+        NSLog(@"Creating a new cell");
+        cell = [[_subClass alloc] init];
+    }
+    return cell;
 }
 
 // returns the cell for the given row, or nil if it doesn't exist
@@ -102,10 +139,24 @@
     return cells;
 }
 
--(NSArray *)visibleViews {
+- (NSArray *)visibleViews {
     NSMutableArray *views = [[self cellSubviews] mutableCopy];
-    [views addObject:self.addContentButton];
-    return views;
+    for (UIView *extraView in self.extraViews) {
+        [views addObject:extraView];
+    }
+    NSArray* sortedViews = [views sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        UIView* view1 = (UIView*)obj1;
+        UIView* view2 = (UIView*)obj2;
+        float result = view2.frame.origin.y - view1.frame.origin.y;
+        if (result > 0.0) {
+            return NSOrderedAscending;
+        } else if (result < 0.0){
+            return NSOrderedDescending;
+        } else {
+            return NSOrderedSame;
+        }
+    }];
+    return sortedViews;
 }
 
 -(void)registerClassForSubViews:(Class)subClass {
@@ -115,8 +166,9 @@
 
 #pragma mark - UIScrollViewDelegate handlers
 -(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
-    NSLog(@"SVWBD");
-    [self.delegate scrollViewBeginDragging];
+    if([self.delegate respondsToSelector:@selector(scrollViewBeginDragging)]) {
+        [self.delegate scrollViewBeginDragging];
+    }
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView {
@@ -135,8 +187,8 @@
     [self refreshView];
 }
 
-- (NSInteger) addContentButtonSpace {
-    return BUTTON_SIZE + ROW_MARGINS;
+- (void) addExtraView:(UIView *)view {
+    [self.extraViews addObject:view];
 }
 
 @end

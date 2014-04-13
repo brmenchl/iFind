@@ -17,6 +17,8 @@
 
 @implementation TextContentView
 
+static CGFloat const Default_Size = 30;
+
 //initWithFrame, sets up textView and adds it to the view
 -(id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
@@ -34,20 +36,22 @@
 //Generic init method allowing textcontentview to specify its own dimensions and buttonimage
 //This calls initWithFrame.  Only use init method on textcontentview
 -(id) init {
-    CGRect main = [UIScreen mainScreen].bounds;
-    self = [self initWithFrame:CGRectMake(0,0,main.size.width, 30)];
+    self = [self initWithFrame:[self getDefaultFrame]];
     if(self) {
         self.buttonImage = [UIImage imageNamed:@"messenger-generic.png"];
     }
     return self;
 }
 
+- (CGRect) getDefaultFrame {
+    CGRect main = [UIScreen mainScreen].bounds;
+    return CGRectMake(0, 0, main.size.width, Default_Size);
+}
 
 #pragma UITextViewDelegate method
 - (void) textViewDidChange:(UITextView *)textView {
     CGRect frame = textView.frame;
     frame.size.height = [textView sizeThatFits:CGSizeMake(self.bounds.size.width, FLT_MAX)].height;
-    NSLog(@"%f vs. %f and %f",textView.frame.size.height,frame.size.height, self.frame.size.height);
     textView.frame = frame;
     [self.delegate updateContentView:self toSize:textView.frame.size];
 }
@@ -61,6 +65,8 @@
 
 -(void)clearData {
     self.textView.text = @"";
+    self.frame = [self getDefaultFrame];
+    self.textView.frame = self.frame;
     [self removeFromSuperview];
 }
 

@@ -18,4 +18,10 @@
 
 -(NSInteger)totalViewHeight;
 
+-(NSInteger)rowMargins;
+
+@optional
+-(CGFloat)rowHeight;
+
+
 @end

@@ -12,6 +12,9 @@ static double const PickUpDistance = 100; //Maximum distance allowing user to pi
 static NSUInteger const GemQueryLimit = 20; //Currently limits the mapview querying for nearby gems, we might set this to 1 later
 
 // Parse API key constants:
+static NSString * const ParseObjectIDKey = @"objectId";
+static NSString * const ParseCreatedAtKey = @"createdAt";
+
 //User Class
 static NSString * const ParseUserClassName = @"User";
 static NSString * const ParseUserInventoryKey = @"inventory"; //Array of pointers to gems
@@ -21,15 +24,17 @@ static NSString * const ParseUserPioneerPointerKey = @"pioneerPointer";
 static NSString * const ParseUserLocationRegisteredKey = @"locationRegistered";
 //Gem Class
 static NSString * const ParseGemClassName = @"Gem";
-static NSString * const ParseGemLocationsKey = @"locations"; //Array of CLLocations
+static NSString * const ParseGemLocationsKey = @"locations"; //Array of PFGeopoints
 static NSString * const ParseGemCurrentLocationKey = @"currentLocation"; //PFGeopoint
 static NSString * const ParseGemMetadataReferenceKey = @"metadata"; //Pointer to metadata
-static NSString * const ParseGemCurrentOwnerKey = @"currentOwner"; //Pointer to user currently holding gem, nil if on map
+static NSString * const ParseGemLastOwnerKey = @"lastOwner"; //Pointer to last user carrying gem, or current user if gem is not on field
 //Gem Metadata Class
 static NSString * const ParseGemMetadataClassName = @"GemMetadata";
 static NSString * const ParseMetaTextContentKey = @"textContent"; //Text message content
 static NSString * const ParseMetaImageContentKey = @"imageContent"; //Photo content
 static NSString * const ParseMetaGemReferenceKey = @"gem"; //Pointer to gem
+static NSString * const ParseMetaDropLocationKey = @"dropLocation"; //PFGeopoint of dropped location
+static NSString * const ParseMetaPickUpDateKey = @"pickUpDate"; //Date of metaData pick up
 
 // Notification Names:
 static NSString * const GemDroppedNotification = @"GemDroppedNotification";
