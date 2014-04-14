@@ -16,5 +16,6 @@
 
 //reference to AccountHandlerDelegate to handle log out success
 @property (nonatomic, assign) id <AccountHandlerDelegate> delegate;
+@property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
 
 @end

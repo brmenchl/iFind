@@ -70,27 +70,41 @@
     pageControl.currentPageIndicatorTintColor = [UIColor colorWithRed:0.91 green:0.68 blue:0.05 alpha:1];
     pageControl.backgroundColor = [UIColor colorWithRed:0.28 green:0.47 blue:0.29 alpha:1];
     
-//    IntroPageViewController * temp = [[IntroPageViewController alloc] init];
     
     //Login Screen
     
     self.loginVC = [self.sb instantiateViewControllerWithIdentifier:@"Login"];
     
     
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"HasLaunchedOnce"]){
+        
+        if([PFUser currentUser]) {
+            [[PFUser currentUser] refresh];
+        }
+        if([PFUser currentUser]) {
+            self.window.rootViewController = self.bounceMenuController;
+        }
+        else {
+            self.window.rootViewController = self.loginVC;
+        }
     
-    
-    
-    if([PFUser currentUser]) {
-        [[PFUser currentUser] refresh];
     }
-    if([PFUser currentUser]) {
-        self.window.rootViewController = self.bounceMenuController;
-    }
-    else {
-        self.window.rootViewController = self.loginVC;
+    else{
+        
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"HasLaunchedOnce"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        
+        
+        IntroPageViewController * tutorial = [[IntroPageViewController alloc] init];
+
+        self.window.rootViewController = tutorial;
+
+        
     }
     
-    //self.window.rootViewController = self.loginVC;
+    
+    
+    
     
     self.currentUserQueue = dispatch_queue_create([CurrentUserQueueLabel cStringUsingEncoding:NSUTF8StringEncoding], NULL);
     [self.window makeKeyAndVisible];

@@ -30,17 +30,19 @@
 + (AccordianDrawerView *) createGeneralInfoDrawer:(PFObject *)info frame:(CGRect)frame {
     AccordianDrawerView *generalDrawer = [[AccordianDrawerView alloc] initWithFrame:frame];
     generalDrawer.title.text = @"Information";
-    UILabel *dropLocationLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, generalDrawer.frame.size.height/2, generalDrawer.frame.size.width, 40)];
-    dropLocationLabel.textAlignment = NSTextAlignmentCenter;
+    UILabel *dropLocationLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 50, generalDrawer.frame.size.width, 70)];
+    dropLocationLabel.textAlignment = NSTextAlignmentLeft;
     dropLocationLabel.font = [UIFont fontWithName:@"Futura" size:20];
+    dropLocationLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    dropLocationLabel.numberOfLines = 2;
     PFGeoPoint *dropGeoPoint = info[ParseMetaDropLocationKey];
     CLLocation *dropLoc = [[CLLocation alloc] initWithLatitude:dropGeoPoint.latitude longitude:dropGeoPoint.longitude];
     CLGeocoder *geocoder = [[CLGeocoder alloc] init];
     [geocoder reverseGeocodeLocation:dropLoc completionHandler:^(NSArray *placemarks, NSError *error) {
         for (CLPlacemark * placemark in placemarks) {
             NSString * city = [placemark locality]; // city
-            NSString * country = [placemark country]; // country
-            dropLocationLabel.text = [NSString stringWithFormat:@"Found in %@, %@", city, country];
+            NSString * state = [placemark administrativeArea]; // country
+            dropLocationLabel.text = [NSString stringWithFormat:@"  Found in:\n  %@, %@", city, state];
         }
         [generalDrawer addSubview:dropLocationLabel];
     }];
@@ -76,7 +78,7 @@
     
     else if([self.content isKindOfClass:[NSNumber class]]) {
         self.title.text = @"Soundcloud Track";
-        SoundcloudPaneView *contentContainer = [[SoundcloudPaneView alloc] initWithSoundcloudID:(NSNumber*)self.content frame:CGRectMake(0, 50, self.frame.size.width, 60)];
+        SoundcloudPaneView *contentContainer = [[SoundcloudPaneView alloc] initWithSoundcloudID:(NSNumber*)self.content frame:CGRectMake(0, 70, self.frame.size.width, 240)];
         [self addSubview:contentContainer];
     }
 }

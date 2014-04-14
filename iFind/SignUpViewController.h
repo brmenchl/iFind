@@ -30,5 +30,7 @@
 
 
 - (IBAction)createLockerPress:(id)sender;
+- (IBAction)didPressSkip:(id)sender;
+- (IBAction)didPressFb:(id)sender;
 
 @end

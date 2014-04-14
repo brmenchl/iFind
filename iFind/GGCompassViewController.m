@@ -65,6 +65,8 @@
     self.currentLocation = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).currentLocation;
     
     [self queryClosestGem];
+    
+    self.inventoryLabel.text = [NSString stringWithFormat:@"%i",[[[PFUser currentUser] objectForKey:ParseUserInventoryKey] count]];
 
     
     [self.compassImage setImage:[UIImage imageNamed:@"big_compass.png"]];
@@ -85,6 +87,8 @@
     self.pageTitle.textColor = [UIColor colorWithRed:0.61 green:0.2 blue:0.12 alpha:1];
     self.distanceLabel.textColor = [UIColor colorWithRed:0.61 green:0.2 blue:0.12 alpha:1];
     self.milesLabel.textColor = [UIColor colorWithRed:0.61 green:0.2 blue:0.12 alpha:1];
+    self.inventoryLabel.textColor = [UIColor colorWithRed:0.61 green:0.2 blue:0.12 alpha:1];
+    self.inventoryTitleLabel.textColor = [UIColor colorWithRed:0.61 green:0.2 blue:0.12 alpha:1];
     
     
     
@@ -155,6 +159,7 @@
             if(!pickUpGemError) {
                 //query for nearby gems
                 dispatch_async(dispatch_get_main_queue(), ^{
+                    self.inventoryLabel.text = [NSString stringWithFormat:@"%i",[[[PFUser currentUser] objectForKey:ParseUserInventoryKey] count]];
                     [self queryClosestGem];
                     NewMetadataViewController *vc = [[NewMetadataViewController alloc] initWithMetadata:metadata];
                     [self presentViewController:vc animated:YES completion:NULL];
@@ -226,6 +231,7 @@
                 //Success
                 //Remove dropped gem object from current user's inventory
                 [[PFUser currentUser] removeObject:gemToDrop forKey:ParseUserInventoryKey];
+                
                 NSLog(@"%@",[PFUser currentUser][ParseUserInventoryKey]);
                 //Attempt to save current user
                 [[PFUser currentUser] save:&dropGemError];
@@ -233,6 +239,7 @@
                     //Success
                     //Query for new nearby gems
                     dispatch_async(dispatch_get_main_queue(), ^{
+                        self.inventoryLabel.text = [NSString stringWithFormat:@"%i",[[[PFUser currentUser] objectForKey:ParseUserInventoryKey] count]];
                         [self queryClosestGem];
                         UIAlertView *didDropAlertView = [[UIAlertView alloc] initWithTitle:nil message:@"Geode has been dropped\nfor a stranger to enjoy" delegate:self cancelButtonTitle:@"Cool" otherButtonTitles:nil, nil];
                         [didDropAlertView show];

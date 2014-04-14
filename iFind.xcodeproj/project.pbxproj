@@ -106,6 +106,7 @@
 		CE23731618F3967A00917970 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		CE23731818F4D0FA00917970 /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
 		CE23731918F4D0FA00917970 /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
+		CE2BEECE18FC24DD004ECACE /* AccountHandlerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountHandlerDelegate.h; sourceTree = "<group>"; };
 		CE3E63CF18BD55A400A5DCD7 /* GemFinderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GemFinderViewController.h; sourceTree = "<group>"; };
 		CE3E63D018BD55A400A5DCD7 /* GemFinderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GemFinderViewController.m; sourceTree = "<group>"; };
 		CE705A9918F8A66B00B0498B /* GGCompassViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGCompassViewController.h; sourceTree = "<group>"; };
@@ -151,7 +152,6 @@
 		E21F9A5F18E8DDE70029BA85 /* ALRadialButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALRadialButton.m; sourceTree = "<group>"; };
 		E21F9A6018E8DDE70029BA85 /* ALRadialMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALRadialMenu.h; sourceTree = "<group>"; };
 		E21F9A6118E8DDE70029BA85 /* ALRadialMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALRadialMenu.m; sourceTree = "<group>"; };
-		E234E84118DF9F2D00E2B16D /* AccountHandlerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AccountHandlerDelegate.h; path = /Users/bradleymenchl/Documents/Courses/eecs441/iFindProject/GoGeo/iFind/AccountHandlerDelegate.h; sourceTree = "<absolute>"; };
 		E234E85018DFE57500E2B16D /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
 		E234E85118DFE57500E2B16D /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
 		E234E85318E00AF300E2B16D /* ContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentView.h; sourceTree = "<group>"; };
@@ -477,7 +477,7 @@
 		E2CC0B0F18BEB7E8008B6094 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				E234E84118DF9F2D00E2B16D /* AccountHandlerDelegate.h */,
+				CE2BEECE18FC24DD004ECACE /* AccountHandlerDelegate.h */,
 				CE23731818F4D0FA00917970 /* LocationManager.h */,
 				CE23731918F4D0FA00917970 /* LocationManager.m */,
 			);
@@ -558,7 +558,7 @@
 				ORGANIZATIONNAME = FuarkNet;
 				TargetAttributes = {
 					CEA6D35318BD4E2700F36A35 = {
-						DevelopmentTeam = K99KPPSM33;
+						DevelopmentTeam = 9CMR7RN56H;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;

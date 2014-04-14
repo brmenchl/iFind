@@ -11,5 +11,11 @@
 @interface HowToUseViewController : UIViewController
 
 @property (strong, nonatomic) UILabel* titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *label0;
+@property (weak, nonatomic) IBOutlet UILabel *label1;
+@property (weak, nonatomic) IBOutlet UILabel *label2;
+@property (weak, nonatomic) IBOutlet UILabel *label3;
+@property (weak, nonatomic) IBOutlet UILabel *label4;
+@property (weak, nonatomic) IBOutlet UIImageView *geodeImage;
 
 @end

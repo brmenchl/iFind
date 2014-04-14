@@ -33,6 +33,11 @@ static CGFloat const ROW_HEIGHT = 40;
     [self.timelineTableView registerClassForSubViews:[TimelineAccordianView class]];
     opened = NO;
     self.lastScrollLocation = CGPointZero;
+    self.titleLabel.textColor = [UIColor colorWithRed:0.61 green:0.2 blue:0.12 alpha:1];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     
     [PFObject fetchAllIfNeededInBackground:[PFUser currentUser][ParseUserTimelineKey] block:^(NSArray *objects, NSError *error) {
         if(error) {
@@ -46,10 +51,6 @@ static CGFloat const ROW_HEIGHT = 40;
         NSLog(@"array: %@",self.timelineArray);
         [self.timelineTableView reloadData];
     }];
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
 }
 
 - (UIView *) cellForRow:(NSInteger)row {
