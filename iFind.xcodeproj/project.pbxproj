@@ -51,6 +51,8 @@
 		E234E85218DFE57500E2B16D /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = E234E85118DFE57500E2B16D /* UIImage+ImageEffects.m */; };
 		E234E85518E00AF300E2B16D /* ContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = E234E85418E00AF300E2B16D /* ContentView.m */; };
 		E234E85818E00C0100E2B16D /* TextContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = E234E85718E00C0100E2B16D /* TextContentView.m */; };
+		E23A2DD018FC266F00352FE7 /* RDVKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = E23A2DCF18FC266F00352FE7 /* RDVKeyboardAvoidingScrollView.m */; };
+		E23A2DD418FC298B00352FE7 /* SoundcloudSearchResultView.m in Sources */ = {isa = PBXBuildFile; fileRef = E23A2DD318FC298B00352FE7 /* SoundcloudSearchResultView.m */; };
 		E25135E418FBC9A70068D351 /* timeline.png in Resources */ = {isa = PBXBuildFile; fileRef = E25135E218FBC9A70068D351 /* timeline.png */; };
 		E25135E518FBC9A70068D351 /* timeline@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E25135E318FBC9A70068D351 /* timeline@2x.png */; };
 		E25135EB18FBCBB00068D351 /* SoundcloudPaneView.m in Sources */ = {isa = PBXBuildFile; fileRef = E25135EA18FBCBB00068D351 /* SoundcloudPaneView.m */; };
@@ -156,6 +158,10 @@
 		E234E85418E00AF300E2B16D /* ContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentView.m; sourceTree = "<group>"; };
 		E234E85618E00C0100E2B16D /* TextContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextContentView.h; sourceTree = "<group>"; };
 		E234E85718E00C0100E2B16D /* TextContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextContentView.m; sourceTree = "<group>"; };
+		E23A2DCE18FC266F00352FE7 /* RDVKeyboardAvoidingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDVKeyboardAvoidingScrollView.h; sourceTree = "<group>"; };
+		E23A2DCF18FC266F00352FE7 /* RDVKeyboardAvoidingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDVKeyboardAvoidingScrollView.m; sourceTree = "<group>"; };
+		E23A2DD218FC298B00352FE7 /* SoundcloudSearchResultView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundcloudSearchResultView.h; sourceTree = "<group>"; };
+		E23A2DD318FC298B00352FE7 /* SoundcloudSearchResultView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundcloudSearchResultView.m; sourceTree = "<group>"; };
 		E25135E218FBC9A70068D351 /* timeline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = timeline.png; sourceTree = "<group>"; };
 		E25135E318FBC9A70068D351 /* timeline@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "timeline@2x.png"; sourceTree = "<group>"; };
 		E25135E918FBCBB00068D351 /* SoundcloudPaneView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundcloudPaneView.h; sourceTree = "<group>"; };
@@ -359,6 +365,15 @@
 			name = "Bounce Menu";
 			sourceTree = "<group>";
 		};
+		E23A2DD118FC267300352FE7 /* RDVKeyboardAvoidingScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				E23A2DCE18FC266F00352FE7 /* RDVKeyboardAvoidingScrollView.h */,
+				E23A2DCF18FC266F00352FE7 /* RDVKeyboardAvoidingScrollView.m */,
+			);
+			name = RDVKeyboardAvoidingScrollView;
+			sourceTree = "<group>";
+		};
 		E2733BDB18D6B43000EB51B0 /* ALRadial */ = {
 			isa = PBXGroup;
 			children = (
@@ -472,6 +487,7 @@
 		E2E30DD618E61BFA004770FA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E23A2DD118FC267300352FE7 /* RDVKeyboardAvoidingScrollView */,
 				E2733BDB18D6B43000EB51B0 /* ALRadial */,
 				E2E30DD718E61F1D004770FA /* PlusButton */,
 				E2C2FD8018F75C3600D56B52 /* ImageEffects */,
@@ -479,6 +495,8 @@
 				E2C2FD8118FAAA3900D56B52 /* TimelineViews */,
 				E25135E918FBCBB00068D351 /* SoundcloudPaneView.h */,
 				E25135EA18FBCBB00068D351 /* SoundcloudPaneView.m */,
+				E23A2DD218FC298B00352FE7 /* SoundcloudSearchResultView.h */,
+				E23A2DD318FC298B00352FE7 /* SoundcloudSearchResultView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -630,6 +648,7 @@
 				E2BA8BCA18E0CB14002027EE /* ImageContentView.m in Sources */,
 				E2CC0B0318BE96F7008B6094 /* PlusButton.m in Sources */,
 				E234E85218DFE57500E2B16D /* UIImage+ImageEffects.m in Sources */,
+				E23A2DD418FC298B00352FE7 /* SoundcloudSearchResultView.m in Sources */,
 				E2E0577518F36EF100315297 /* GGAddContentView.m in Sources */,
 				CEA6D36818BD4E2800F36A35 /* AppDelegate.m in Sources */,
 				E2C2FD7A18F65CC200D56B52 /* AccordianDrawerView.m in Sources */,
@@ -637,6 +656,7 @@
 				E2CC0B0018BE96ED008B6094 /* BounceMenuController.m in Sources */,
 				E234E85818E00C0100E2B16D /* TextContentView.m in Sources */,
 				E21F9A6318E8DDE70029BA85 /* ALRadialMenu.m in Sources */,
+				E23A2DD018FC266F00352FE7 /* RDVKeyboardAvoidingScrollView.m in Sources */,
 				E25135EB18FBCBB00068D351 /* SoundcloudPaneView.m in Sources */,
 				CE705A9B18F8A66B00B0498B /* GGCompassViewController.m in Sources */,
 				CE23731A18F4D0FA00917970 /* LocationManager.m in Sources */,

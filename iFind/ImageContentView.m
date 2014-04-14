@@ -22,11 +22,11 @@
 //imageview is created here.
 - (id) init {
     CGRect main = [UIScreen mainScreen].bounds;
-    self = [super initWithFrame:CGRectMake(0,0,main.size.width, main.size.height/2)];
+    self = [super initWithFrame:CGRectMake(10,0,main.size.width - 20, main.size.height/2)];
     if(self) {
         //we need to change this image
         self.buttonImage = [UIImage imageNamed:@"orkut.png"];
-        self.imageView = [[UIImageView alloc] initWithFrame:self.frame];
+        self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width - DELETE_BUTTON_MARGIN, self.frame.size.height)];
         self.imageView.contentMode = UIViewContentModeScaleAspectFit;
     }
     return self;
@@ -73,7 +73,6 @@
 
 -(void)clearData {
     self.imageView.image = nil;
-    [self removeFromSuperview];
 }
 
 

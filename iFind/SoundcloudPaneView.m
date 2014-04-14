@@ -63,23 +63,17 @@
         NSURL *trackURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://api.soundcloud.com/tracks/%@.json?client_id=17bb2cf97cb0c0db9c8e6e5bd4523979", ID]];
         NSURLSessionTask *task = [[NSURLSession sharedSession] dataTaskWithURL:trackURL completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
             NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
-            NSLog(@"status code: %li",(long)httpResponse.statusCode);
             if (httpResponse.statusCode == 200){
                 NSError *e = nil;
                 NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&e];
                 [self.trackTitleLabel setText:[dictionary objectForKey:@"title"]];
-                NSLog(@"track title is %@",[dictionary objectForKey:@"title"]);
                 [self.trackArtistLabel setText:[[dictionary objectForKey:@"user"] objectForKey:@"username"]];
-                NSLog(@"track artist is %@",[[dictionary objectForKey:@"user"] objectForKey:@"username"]);
                 self.permalink = [[dictionary objectForKey:@"permalink_url"] copy];
-                NSLog(@"permalink %@",self.permalink);
                 self.playButton.hidden = NO;
                     if([dictionary objectForKey:@"artwork_url"] != [NSNull null]) {
-                        NSLog(@"Got artwork");
                         [self.artwork setImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[dictionary objectForKey:@"artwork_url"]]]]];
                     }
                     else if([[dictionary objectForKey:@"user"] objectForKey:@"avatar_url"] != [NSNull null]) {
-                        NSLog(@"Got avatar");
                         [self.artwork setImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[[dictionary objectForKey:@"user"] objectForKey:@"avatar_url"]]]]];
                     }
                 [self.spinner stopAnimating];

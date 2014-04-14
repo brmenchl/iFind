@@ -11,7 +11,9 @@
 #import "ImageContentView.h"
 #import "SoundcloudContentView.h"
 
-@interface GGAddContentViewController ()
+@interface GGAddContentViewController () {
+    CGPoint lastLocation;
+}
 @property NSMutableArray *currentContentViews;
 //Private property for the animated button menu, centered on the addcontentbutton
 @property (nonatomic) UIButton *addContentButton;
@@ -33,6 +35,8 @@ static CGFloat const BUTTON_SIZE = 30 + ROW_MARGINS;
     //Initialize radialMenu
     self.radialMenu = [[ALRadialMenu alloc] init];
 	self.radialMenu.delegate = self;
+    
+    lastLocation = CGPointZero;
     
     self.totalViewHeight = BUTTON_SIZE;
     self.addContentView.dataSource = self;
@@ -88,6 +92,9 @@ static CGFloat const BUTTON_SIZE = 30 + ROW_MARGINS;
     //Clear data from every contentView
     for(int i = 1; i < [self.unusedContentViews count]; i++) {
         [self.unusedContentViews[i] clearData];
+    }
+    for (UIView *cell in [self.addContentView cellSubviews]) {
+        [cell removeFromSuperview];
     }
 }
 
@@ -210,17 +217,6 @@ static CGFloat const BUTTON_SIZE = 30 + ROW_MARGINS;
      ];
 }
 
-//- (void)animateUpward:(CGFloat)distance delay:(CGFloat)delay {
-//    [UIView animateWithDuration:0.3
-//                          delay:delay
-//                        options:UIViewAnimationOptionCurveEaseInOut
-//                     animations:^{
-//                         self.addContentView.addContentButton.frame = CGRectOffset(self.addContentView.addContentButton.frame, 0, -(ROW_MARGINS + distance));
-//                     }
-//                     completion:NULL
-//     ];
-//}
-
 -(void)addAndAnimateForView:(UIView *)view {
     [self.radialMenu itemsWillDisapearIntoButton:self.addContentButton];
     view.layer.transform = self.initialTransform;
@@ -235,34 +231,34 @@ static CGFloat const BUTTON_SIZE = 30 + ROW_MARGINS;
     [self.radialMenu itemsWillDisapearIntoButton:self.addContentButton];
 }
 
-- (void) contentViewDeleted:(ContentView *)view {
-//    float delay = 0.0f;
+- (void) contentViewWillBeDeleted:(ContentView *)view {
+    float delay = 0.0f;
     [self.unusedContentViews addObject:view];
     [self.currentContentViews removeObject:view];
     self.totalViewHeight -= (ROW_MARGINS + view.frame.size.height);
-    [self.addContentView reloadData];
-//    BOOL reachedDeletedView = FALSE;
-//    for(ContentView *contentView in [self.addContentView cellSubviews]) {
-//        if(reachedDeletedView) {
-//            [UIView animateWithDuration:0.3
-//                                  delay:delay
-//                                options:UIViewAnimationOptionCurveEaseInOut
-//                             animations:^{
-//                                 contentView.frame = CGRectOffset(contentView.frame, 0.0f, -contentView.frame.size.height);
-//                             }
-//                             completion:NULL
-//             ];
-//            delay+=0.03;
-//
-//        }
-//        if(contentView == view) {
-//            reachedDeletedView = TRUE;
-//            [view clearData];
-//            NSLog(@"FOUND IT");
-//            self.totalViewHeight -= (ROW_MARGINS + view.frame.size.height);
-//        }
-//    }
-//    [self animateUpward:view.frame.size.height delay:delay];
+    BOOL reachedDeletedView = FALSE;
+    for(UIView *subview in [self.addContentView visibleViews]) {
+        if(reachedDeletedView) {
+            [UIView animateWithDuration:0.3
+                                  delay:delay
+                                options:UIViewAnimationOptionCurveEaseInOut
+                             animations:^{
+                                 subview.frame = CGRectOffset(subview.frame, 0.0f, -(view.frame.size.height + ROW_MARGINS));
+                             }
+                             completion:^(BOOL finished) {
+                                 [self.addContentView reloadData];
+                             }
+             ];
+            delay+=0.03;
+
+        }
+        if(subview == view) {
+            reachedDeletedView = TRUE;
+            [view clearData];
+            [view removeFromSuperview];
+            self.totalViewHeight -= (ROW_MARGINS + view.frame.size.height);
+        }
+    }
 }
 
 - (void) updateContentView:(ContentView *)view toSize:(CGSize)size {
@@ -273,7 +269,6 @@ static CGFloat const BUTTON_SIZE = 30 + ROW_MARGINS;
         for(UIView* subview in [self.addContentView visibleViews]) {
             NSLog(@"old location: %f,%f", subview.frame.origin.x, subview.frame.origin.y);
             if(subview == view) {
-                NSLog(@"growing");
                 [UIView animateWithDuration:0.1
                                       delay:0
                                     options:UIViewAnimationOptionCurveEaseInOut
