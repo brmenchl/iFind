@@ -53,10 +53,6 @@ static CGFloat const ROW_HEIGHT = 40;
     }];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-}
-
 - (UIView *) cellForRow:(NSInteger)row {
 //    TimelineAccordianView* cell = (TimelineAccordianView *)[self.timelineTableView dequeueReusableCell];
     TimelineAccordianView *cell = [[TimelineAccordianView alloc] init];

@@ -24,6 +24,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *milesLabel;
 @property (weak, nonatomic) IBOutlet UIView *withinRangeView;
 @property (weak, nonatomic) IBOutlet UILabel *withinRangeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *inventoryLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *inventoryImage;
+@property (weak, nonatomic) IBOutlet UILabel *inventoryTitleLabel;
 
 - (IBAction)didTapDropButton:(id)sender;
 - (IBAction)didTapPickUpButton:(id)sender;

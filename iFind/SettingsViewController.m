@@ -17,4 +17,8 @@
     [self.delegate viewController:self didUserLogoutSuccessfully:YES];
 }
 
+-(void) viewDidLoad{
+    self.usernameLabel.text = [PFUser currentUser].username;
+}
+
 @end

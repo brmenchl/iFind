@@ -200,4 +200,96 @@
     
     
 }
+
+- (IBAction)didPressSkip:(id)sender {
+    [PFAnonymousUtils logInWithBlock:^(PFUser *user, NSError *error) {
+        if (error) {
+            NSLog(@"Anonymous login failed.");
+            NSLog(@"%@", [[[error userInfo] objectForKey:@"NSUnderlyingErrorKey"]localizedDescription]);
+        }
+        else {
+            NSLog(@"Anonymous user logged in.");
+            
+            NSUInteger gemCount = 5;
+            
+            if (self.pioneerRank == 1){
+                gemCount = 25;
+            }
+            else if (self.pioneerRank == 2){
+                gemCount = 20;
+            }
+            else if (self.pioneerRank == 3){
+                gemCount = 15;
+            }
+            else if (self.pioneerRank == 4){
+                gemCount = 10;
+            }
+            
+            [self.delegate createGem:gemCount];
+            
+            
+            if (self.pioneerRank < 5){
+                NSDictionary * update_dict = @{@"curUser":[PFUser currentUser].objectId,@"prevNode":self.responseParentNode};
+                
+                [PFCloud callFunctionInBackground:@"updatePioneerList" withParameters:update_dict block:nil];
+            }
+            
+            [self.delegate viewController:self didUserLoginSuccessfully:YES];
+        }
+    }];
+}
+
+- (IBAction)didPressFb:(id)sender {
+    
+    //Empty array for permissions required from facebook, we can change this later if we want info
+    NSArray *fbPermissions = @[];
+    //Attempt to log in through facebook (either brings up facebook.com or the facebook app to authenticate)
+    [PFFacebookUtils logInWithPermissions:fbPermissions block:^(PFUser *user, NSError *error) {
+        if (!user) {
+            //Login was unsuccessful
+            if (!error) {
+                NSLog(@"The user cancelled the Facebook login.");
+            }
+            else {
+                NSLog(@"An error occurred: %@", error);
+            }
+        }
+        else if (user.isNew) {
+            @synchronized([PFUser currentUser]) {
+                //If this is the first time the user logged in (they created their account through facebook)
+                NSLog(@"User with facebook signed up and logged in");
+                
+                NSUInteger gemCount = 5;
+                
+                if (self.pioneerRank == 1){
+                    gemCount = 25;
+                }
+                else if (self.pioneerRank == 2){
+                    gemCount = 20;
+                }
+                else if (self.pioneerRank == 3){
+                    gemCount = 15;
+                }
+                else if (self.pioneerRank == 4){
+                    gemCount = 10;
+                }
+                
+                [self.delegate createGem:gemCount];
+                
+                
+                if (self.pioneerRank < 5){
+                    NSDictionary * update_dict = @{@"curUser":[PFUser currentUser].objectId,@"prevNode":self.responseParentNode};
+                    
+                    [PFCloud callFunctionInBackground:@"updatePioneerList" withParameters:update_dict block:nil];
+                }
+                
+                [self.delegate viewController:self didUserLoginSuccessfully:YES];
+            }
+        }
+        else {
+            NSLog(@"User with facebook logged in");
+            [self.delegate viewController:self didUserLoginSuccessfully:YES];
+        }
+    }];
+}
 @end
