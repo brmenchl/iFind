@@ -13,19 +13,18 @@
 @interface TimelineViewController () {
     BOOL opened;
 }
-@property (nonatomic) NSMutableArray *gemMetadataArray; //holds arrays of gemMetadata info  Arrays are grouped by gem.
+@property (nonatomic) NSMutableArray *timelineArray; //holds arrays of gemMetadata info  Arrays are grouped by gem.
 @property (nonatomic) CGPoint lastScrollLocation;
 @end
 
 @implementation TimelineViewController
 
 static CGFloat const ROW_HEIGHT = 40;
-static CGFloat const DRAWER_HEIGHT = 200;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    if(!self.gemMetadataArray) {
-        self.gemMetadataArray = [[NSMutableArray alloc] init];
+    if(!self.timelineArray) {
+        self.timelineArray = [[NSMutableArray alloc] init];
     }
     
     self.timelineTableView.dataSource = self;
@@ -34,24 +33,21 @@ static CGFloat const DRAWER_HEIGHT = 200;
     [self.timelineTableView registerClassForSubViews:[TimelineAccordianView class]];
     opened = NO;
     self.lastScrollLocation = CGPointZero;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     
     [PFObject fetchAllIfNeededInBackground:[PFUser currentUser][ParseUserTimelineKey] block:^(NSArray *objects, NSError *error) {
         if(error) {
             NSLog(@"%@", [[[error userInfo] objectForKey:@"NSUnderlyingErrorKey"]localizedDescription]);
             return;
         }
-        [self.gemMetadataArray removeAllObjects];
+        [self.timelineArray removeAllObjects];
         for (PFObject *object in objects) {
-            NSMutableArray *tempArray = [[NSMutableArray alloc] init];
-            [tempArray addObject:object];
-            for (PFObject *otherObject in objects) {
-                if(![object.objectId isEqualToString: otherObject.objectId] && [object[ParseMetaGemReferenceKey] isEqual: otherObject[ParseMetaGemReferenceKey]]) {
-                    [tempArray addObject:object];
-                }
-            }
-            [self.gemMetadataArray addObject:tempArray];
+            [self.timelineArray addObject:object];
         }
-        NSLog(@"array: %@",self.gemMetadataArray);
+        NSLog(@"array: %@",self.timelineArray);
         [self.timelineTableView reloadData];
     }];
 }
@@ -59,13 +55,13 @@ static CGFloat const DRAWER_HEIGHT = 200;
 - (UIView *) cellForRow:(NSInteger)row {
 //    TimelineAccordianView* cell = (TimelineAccordianView *)[self.timelineTableView dequeueReusableCell];
     TimelineAccordianView *cell = [[TimelineAccordianView alloc] init];
-    [cell setMetadataArray:self.gemMetadataArray[row]];
+    [cell setMetadata:self.timelineArray[row]];
     cell.delegate = self;
     return cell;
 }
 
 - (NSInteger) numberOfRows {
-    return [self.gemMetadataArray count];
+    return [self.timelineArray count];
 }
 
 - (void) expandView:(TimelineAccordianView *)view {
@@ -87,7 +83,6 @@ static CGFloat const DRAWER_HEIGHT = 200;
             startAnimating = YES;
         }
     }
-//    [self.timelineTableView reloadData];
 }
 
 - (NSInteger) rowMargins {
@@ -99,7 +94,7 @@ static CGFloat const DRAWER_HEIGHT = 200;
 }
 
 - (NSInteger) totalViewHeight {
-    return opened ? ([self.gemMetadataArray count] - 1) * ROW_HEIGHT + DRAWER_HEIGHT : [self.gemMetadataArray count] * ROW_HEIGHT;
+    return opened ? ([self.timelineArray count] - 1) * ROW_HEIGHT + self.timelineTableView.scrollView.frame.size.height : [self.timelineArray count] * ROW_HEIGHT;
 }
 
 @end

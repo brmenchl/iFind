@@ -7,13 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
 #import "TimelineAccordianViewDelegate.h"
 
 @interface TimelineAccordianView : UIView <UIScrollViewDelegate>
 
 @property (nonatomic, assign) id <TimelineAccordianViewDelegate> delegate;
 
-@property (nonatomic) NSArray *metadataArray;
+@property (nonatomic) PFObject *metadata;
 
 @property (nonatomic) BOOL opened;
 
