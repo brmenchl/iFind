@@ -14,6 +14,9 @@
 @property (strong, nonatomic) UILabel* titleLabel;
 @property (strong, nonatomic) UILabel* closestGemTitle;
 @property (nonatomic, strong) UILabel* distanceLabel;
+@property (weak, nonatomic) IBOutlet UILabel *messageLabel;
+@property (weak, nonatomic) IBOutlet UILabel *inventoryCountLabel;
+@property (weak, nonatomic) IBOutlet UILabel *geodeLabel;
 
 @property NSString * distanceFromGem;
 @property int pioneerRank;

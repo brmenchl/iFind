@@ -71,6 +71,30 @@
     self.distanceLabel.textAlignment = NSTextAlignmentRight;
     //self.distanceLabel.backgroundColor = [UIColor redColor];
     
+    self.geodeLabel.textColor = [UIColor colorWithRed:0.91 green:0.68 blue:0.05 alpha:1];
+    self.messageLabel.textColor = [UIColor colorWithRed:0.91 green:0.68 blue:0.05 alpha:1];
+    self.inventoryCountLabel.textColor = [UIColor colorWithRed:0.91 green:0.68 blue:0.05 alpha:1];
+    
+    
+    if (self.pioneerRank == 1){
+        self.messageLabel.text = [NSString stringWithFormat:@"Congratulations! You are the first to this territory. Take these and leave something interesting for those who follow your tracks."];
+        self.inventoryCountLabel.text = [NSString stringWithFormat:@"25"];
+    }
+    else if (self.pioneerRank < 5){
+        self.messageLabel.text = [NSString stringWithFormat:@"Congratulations! You are the one of the first to this territory. Take these and leave something interesting. Go track down the messages of those few who have come before you."];
+        
+        if (self.pioneerRank == 2){
+            self.inventoryCountLabel.text = [NSString stringWithFormat:@"20"];
+        }
+        else if (self.pioneerRank == 3){
+            self.inventoryCountLabel.text = [NSString stringWithFormat:@"15"];
+        }
+        else if (self.pioneerRank == 4){
+            self.inventoryCountLabel.text = [NSString stringWithFormat:@"10"];
+        }
+        
+    }
+    
     [self.view addSubview:self.distanceLabel];
     
     

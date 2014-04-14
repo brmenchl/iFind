@@ -73,7 +73,9 @@
     
     self.pageController.dataSource = self;
     
-    WelcomeGoGeoViewController* firstController = [[WelcomeGoGeoViewController alloc] init];
+    UIStoryboard *sbptr = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).sb;
+    
+    WelcomeGoGeoViewController* firstController = [sbptr instantiateViewControllerWithIdentifier:@"WelcomeGoGeo"];
     NSArray *viewControllerArr = [NSArray arrayWithObject:firstController];
     
     [self.pageController setViewControllers:viewControllerArr direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
@@ -147,15 +149,17 @@
     UIStoryboard *sbptr = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).sb;
     
     if (i == 0){
-        WelcomeGoGeoViewController* WelcomeGoGeoController=[[WelcomeGoGeoViewController alloc] init];
+        WelcomeGoGeoViewController* WelcomeGoGeoController=[sbptr instantiateViewControllerWithIdentifier:@"WelcomeGoGeo"];
         return WelcomeGoGeoController;
     }
     else if (i == 1){
-        HowToUseViewController* HowToUseController = [[HowToUseViewController alloc] init];
+        HowToUseViewController* HowToUseController = [sbptr instantiateViewControllerWithIdentifier:@"HowToUse"];
         return HowToUseController;
     }
     else if (i == 2){
-        StartingInventoryViewController * StartingInventoryController = [[StartingInventoryViewController alloc] initWithParams:self.responseDistance responseRank:self.responseRank];
+        StartingInventoryViewController * StartingInventoryController = [sbptr instantiateViewControllerWithIdentifier:@"StartingInventory"];
+        StartingInventoryController.pioneerRank = self.responseRank;
+        StartingInventoryController.distanceFromGem = self.responseDistance;
         return StartingInventoryController;
         
     }

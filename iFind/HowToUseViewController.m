@@ -39,6 +39,12 @@
     
     self.titleLabel.textColor = [UIColor colorWithRed:0.91 green:0.68 blue:0.05 alpha:1];
     
+    self.label0.textColor = [UIColor colorWithRed:0.91 green:0.68 blue:0.05 alpha:1];
+    self.label1.textColor = [UIColor colorWithRed:0.91 green:0.68 blue:0.05 alpha:1];
+    self.label2.textColor = [UIColor colorWithRed:0.91 green:0.68 blue:0.05 alpha:1];
+    self.label3.textColor = [UIColor colorWithRed:0.91 green:0.68 blue:0.05 alpha:1];
+    self.label4.textColor = [UIColor colorWithRed:0.91 green:0.68 blue:0.05 alpha:1];
+    
     [self.view addSubview:self.titleLabel];
     
     self.view.backgroundColor = [UIColor colorWithRed:0.28 green:0.47 blue:0.29 alpha:1];
