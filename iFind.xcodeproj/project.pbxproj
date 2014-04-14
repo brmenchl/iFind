@@ -417,6 +417,10 @@
 		E2CC0B0618BE9C2B008B6094 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				E25135E218FBC9A70068D351 /* timeline.png */,
+				E25135E318FBC9A70068D351 /* timeline@2x.png */,
+				CE705AA218FA8A0D00B0498B /* big_compass@2x.png */,
+				CE705AA018FA8A0300B0498B /* big_compass.png */,
 				CE705AA418FBD1D700B0498B /* big_compass@2x.png */,
 				CE705AA518FBD1D700B0498B /* big_compass.png */,
 				CE705A9C18F8A75400B0498B /* arrow_up.png */,
