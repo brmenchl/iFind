@@ -48,12 +48,12 @@
 		E20CE6CB18F512BD00327101 /* cup.png in Resources */ = {isa = PBXBuildFile; fileRef = E20CE6CA18F512BD00327101 /* cup.png */; };
 		E21F9A6218E8DDE70029BA85 /* ALRadialButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E21F9A5F18E8DDE70029BA85 /* ALRadialButton.m */; };
 		E21F9A6318E8DDE70029BA85 /* ALRadialMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = E21F9A6118E8DDE70029BA85 /* ALRadialMenu.m */; };
-		E21F9A6A18E958DA0029BA85 /* archive.png in Resources */ = {isa = PBXBuildFile; fileRef = E21F9A6918E958DA0029BA85 /* archive.png */; };
 		E234E85218DFE57500E2B16D /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = E234E85118DFE57500E2B16D /* UIImage+ImageEffects.m */; };
 		E234E85518E00AF300E2B16D /* ContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = E234E85418E00AF300E2B16D /* ContentView.m */; };
 		E234E85818E00C0100E2B16D /* TextContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = E234E85718E00C0100E2B16D /* TextContentView.m */; };
 		E25135E418FBC9A70068D351 /* timeline.png in Resources */ = {isa = PBXBuildFile; fileRef = E25135E218FBC9A70068D351 /* timeline.png */; };
 		E25135E518FBC9A70068D351 /* timeline@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E25135E318FBC9A70068D351 /* timeline@2x.png */; };
+		E25135EB18FBCBB00068D351 /* SoundcloudPaneView.m in Sources */ = {isa = PBXBuildFile; fileRef = E25135EA18FBCBB00068D351 /* SoundcloudPaneView.m */; };
 		E2546AEE18D27DE0005F2D8B /* GemAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = E2546AED18D27DE0005F2D8B /* GemAnnotation.m */; };
 		E2675C6418CFB26A00F56BD3 /* CreateAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2675C6318CFB26A00F56BD3 /* CreateAccountViewController.m */; };
 		E2733BE418D6C12500EB51B0 /* soundcloud.png in Resources */ = {isa = PBXBuildFile; fileRef = E2733BE318D6C12500EB51B0 /* soundcloud.png */; };
@@ -149,7 +149,6 @@
 		E21F9A5F18E8DDE70029BA85 /* ALRadialButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALRadialButton.m; sourceTree = "<group>"; };
 		E21F9A6018E8DDE70029BA85 /* ALRadialMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALRadialMenu.h; sourceTree = "<group>"; };
 		E21F9A6118E8DDE70029BA85 /* ALRadialMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALRadialMenu.m; sourceTree = "<group>"; };
-		E21F9A6918E958DA0029BA85 /* archive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = archive.png; sourceTree = "<group>"; };
 		E234E84118DF9F2D00E2B16D /* AccountHandlerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountHandlerDelegate.h; sourceTree = "<group>"; };
 		E234E85018DFE57500E2B16D /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
 		E234E85118DFE57500E2B16D /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
@@ -159,6 +158,8 @@
 		E234E85718E00C0100E2B16D /* TextContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextContentView.m; sourceTree = "<group>"; };
 		E25135E218FBC9A70068D351 /* timeline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = timeline.png; sourceTree = "<group>"; };
 		E25135E318FBC9A70068D351 /* timeline@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "timeline@2x.png"; sourceTree = "<group>"; };
+		E25135E918FBCBB00068D351 /* SoundcloudPaneView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundcloudPaneView.h; sourceTree = "<group>"; };
+		E25135EA18FBCBB00068D351 /* SoundcloudPaneView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundcloudPaneView.m; sourceTree = "<group>"; };
 		E2546AEC18D27DE0005F2D8B /* GemAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GemAnnotation.h; sourceTree = "<group>"; };
 		E2546AED18D27DE0005F2D8B /* GemAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GemAnnotation.m; sourceTree = "<group>"; };
 		E2675C6218CFB26A00F56BD3 /* CreateAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateAccountViewController.h; sourceTree = "<group>"; };
@@ -424,7 +425,6 @@
 				CE705A9C18F8A75400B0498B /* arrow_up.png */,
 				E20CE6CA18F512BD00327101 /* cup.png */,
 				E29B2D5A18F335EE004D02AE /* music_beamed_note.png */,
-				E21F9A6918E958DA0029BA85 /* archive.png */,
 				E2AC39D418E892E70030461C /* plusButton.png */,
 				E2BA8BCB18E224EF002027EE /* orkut.png */,
 				E2733BE518D6C15B00EB51B0 /* messenger-generic.png */,
@@ -478,6 +478,8 @@
 				E2C2FD8018F75C3600D56B52 /* ImageEffects */,
 				E20CE6C318F3AAA100327101 /* ContentView subclasses */,
 				E2C2FD8118FAAA3900D56B52 /* TimelineViews */,
+				E25135E918FBCBB00068D351 /* SoundcloudPaneView.h */,
+				E25135EA18FBCBB00068D351 /* SoundcloudPaneView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -585,7 +587,6 @@
 			files = (
 				E20CE6CB18F512BD00327101 /* cup.png in Resources */,
 				E25135E518FBC9A70068D351 /* timeline@2x.png in Resources */,
-				E21F9A6A18E958DA0029BA85 /* archive.png in Resources */,
 				E2AC39D518E892E70030461C /* plusButton.png in Resources */,
 				CEB7B36E18D6A8F000AC72C5 /* waterfall.jpg in Resources */,
 				E2733BE618D6C15B00EB51B0 /* messenger-generic.png in Resources */,
@@ -637,6 +638,7 @@
 				E2CC0B0018BE96ED008B6094 /* BounceMenuController.m in Sources */,
 				E234E85818E00C0100E2B16D /* TextContentView.m in Sources */,
 				E21F9A6318E8DDE70029BA85 /* ALRadialMenu.m in Sources */,
+				E25135EB18FBCBB00068D351 /* SoundcloudPaneView.m in Sources */,
 				CE705A9B18F8A66B00B0498B /* GGCompassViewController.m in Sources */,
 				CE23731A18F4D0FA00917970 /* LocationManager.m in Sources */,
 				E2E7CD9918C1761100C20286 /* WelcomeViewController.m in Sources */,

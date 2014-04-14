@@ -7,6 +7,7 @@
 //
 
 #import "AccordianDrawerView.h"
+#import "SoundcloudPaneView.h"
 #import <QuartzCore/QuartzCore.h>
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
@@ -71,6 +72,13 @@
         contentContainer.file = (PFFile *)self.content;
         [contentContainer loadInBackground];
         [self addSubview:contentContainer];
+    }
+    
+    else if([self.content isKindOfClass:[NSNumber class]]) {
+        self.title.text = @"Soundcloud Track";
+        SoundcloudPaneView *contentContainer = [[SoundcloudPaneView alloc] initWithSoundcloudID:(NSNumber*)self.content frame:CGRectMake(0, 50, self.frame.size.width, 60)];
+        [self addSubview:contentContainer];
+        NSLog(@"pane frame: (%f,%f,%f,%f)",contentContainer.frame.origin.x, contentContainer.frame.origin.y, contentContainer.frame.size.width, contentContainer.frame.size.height);
     }
 }
 

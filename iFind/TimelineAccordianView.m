@@ -86,6 +86,12 @@ static CGFloat const HEADER_HEIGHT = 40;
         [self.scrollView addSubview:drawerContents];
         pageStart += self.scrollView.frame.size.width;
     }
+    if(self.metadata[ParseMetaSoundcloudContentKey]) {
+        AccordianDrawerView *drawerContents = [[AccordianDrawerView alloc] initWithFrame:CGRectMake(pageStart, 0, self.scrollView.frame.size.width, self.scrollView.frame.size.height)];
+        [drawerContents setContent:self.metadata[ParseMetaSoundcloudContentKey]];
+        [self.scrollView addSubview:drawerContents];
+        pageStart += self.scrollView.frame.size.width;
+    }
     self.scrollView.contentSize = CGSizeMake(pageStart, self.scrollView.frame.size.height);
     [self.drawer addSubview:self.scrollView];
 

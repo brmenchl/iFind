@@ -35,6 +35,7 @@ static NSString * const ParseMetaImageContentKey = @"imageContent"; //Photo cont
 static NSString * const ParseMetaGemReferenceKey = @"gem"; //Pointer to gem
 static NSString * const ParseMetaDropLocationKey = @"dropLocation"; //PFGeopoint of dropped location
 static NSString * const ParseMetaPickUpDateKey = @"pickUpDate"; //Date of metaData pick up
+static NSString * const ParseMetaSoundcloudContentKey = @"SoundcloudContent"; //Integer id of soundloud link
 
 // Notification Names:
 static NSString * const GemDroppedNotification = @"GemDroppedNotification";
