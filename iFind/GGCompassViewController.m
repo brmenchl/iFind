@@ -119,10 +119,82 @@
     
 }
 
+/*
+ *  Takes content added in addContentViewController and saves it to Parse in a new gemMetadata Parse object
+ *  the gemMetadata Object is created and initialized with:
+ *      the relevant content field initialized to added content (if it exists), a pointer to the gem it was created with
+ *  the gem Object is created and initialized with:
+ *      a pointer to the new gemMetadata object, currentOwner = null, locations array field push back current location,
+ *      currentLocation field = current user location
+ *  the gem object is removed from the user's inventory array
+ *  all three objects (gem, gemMetadata, current user) are saved to Parse
+ */
 - (void)dropGemWithContent:(NSArray *)content {
-
-
-
+    NSLog(@"Drop gem with content");
+    @synchronized([PFUser currentUser]) {
+        //If location services off
+        if(![CLLocationManager locationServicesEnabled]) {
+            [self.turnOnLocationServicesAlert show];
+            return;
+        }
+        
+        //Create new gemMetadata object, get reference to next gem to drop from current user inventory array
+        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        
+        dispatch_async(appDelegate.currentUserQueue,^{
+            
+            PFObject *gemMetadata = [PFObject objectWithClassName:ParseGemMetadataClassName];
+            NSLog(@"%@",[[PFUser currentUser] objectForKey:ParseUserInventoryKey]);
+            NSArray *inventory = [[PFUser currentUser] objectForKey:ParseUserInventoryKey];
+            PFObject *gemToDrop = [inventory firstObject];
+            [gemToDrop fetchIfNeeded];
+            
+            //Loop through all added content from AddContentViewController and add content to relevant field in gemMetadata object
+            for(NSObject *object in content) {
+                if([object isKindOfClass:[NSString class]]) {
+                    gemMetadata[ParseMetaTextContentKey] = object;
+                }
+                else if([object isKindOfClass:[UIImage class]]) {
+                    gemMetadata[ParseMetaImageContentKey] = [PFFile fileWithName:@"image.jpg" data:UIImageJPEGRepresentation((UIImage *)object, 0.05f)];
+                }
+            }
+            
+            
+            gemToDrop[ParseGemCurrentLocationKey] = [PFGeoPoint geoPointWithLocation:appDelegate.currentLocation];
+            [gemToDrop[ParseGemLocationsKey] addObject: [PFGeoPoint geoPointWithLocation:appDelegate.currentLocation]];
+            NSLog(@"this is the stuff: %@",gemToDrop[ParseGemLocationsKey]);
+            gemToDrop[ParseGemMetadataReferenceKey] = gemMetadata;
+            gemMetadata[ParseMetaGemReferenceKey] = gemToDrop;
+            gemMetadata[ParseMetaDropLocationKey] = [PFGeoPoint geoPointWithLocation:appDelegate.currentLocation];
+            gemMetadata[ParseMetaPickUpDateKey] = [NSNull null];
+            
+            NSLog(@"%@\n\n%@",gemToDrop, gemMetadata);
+            //Attempt to save gem and gemMetadata PFObjects
+            NSError *dropGemError = nil;
+            [PFObject saveAll:@[gemToDrop, gemMetadata] error: &dropGemError];
+            if (!dropGemError) {
+                //Success
+                //Remove dropped gem object from current user's inventory
+                [[PFUser currentUser] removeObject:gemToDrop forKey:ParseUserInventoryKey];
+                NSLog(@"%@",[PFUser currentUser][ParseUserInventoryKey]);
+                //Attempt to save current user
+                [[PFUser currentUser] save:&dropGemError];
+                if(!dropGemError ) {
+                    //Success
+                    //Query for new nearby gems
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self queryClosestGem];
+                    });
+                }
+                else {
+                    NSLog(@"%@", [[[dropGemError userInfo] objectForKey:@"NSUnderlyingErrorKey"]localizedDescription]);
+                }
+            }
+            else {
+                NSLog(@"%@", [[[dropGemError userInfo] objectForKey:@"NSUnderlyingErrorKey"]localizedDescription]);
+            }
+        });
+    }
 }
 
 - (void)queryClosestGem{
@@ -132,11 +204,17 @@
         return;
 	}
     
+    if (![PFUser currentUser]){
+        NSLog(@"user not logged in");
+        return;
+    }
+    
     //Create Parse query on gem table
     PFQuery *query = [PFQuery queryWithClassName:ParseGemClassName];
     //Query for posts near current location
 	PFGeoPoint *point = [PFGeoPoint geoPointWithLatitude:self.currentLocation.coordinate.latitude longitude:self.currentLocation.coordinate.longitude];
 	[query whereKey:ParseGemCurrentLocationKey nearGeoPoint:point];
+    [query whereKey:ParseGemLastOwnerKey notEqualTo:[PFUser currentUser]];
     
     
     [query getFirstObjectInBackgroundWithBlock:^(PFObject *result, NSError *error) {
@@ -298,6 +376,7 @@
     }
     else{
         NSLog(@"%@ %@",self.closestGem,self.currentLocation);
+        [self queryClosestGem];
     }
     
 

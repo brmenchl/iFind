@@ -8,7 +8,7 @@
 
 #import "ContentView.h"
 
-@interface SoundcloudContentView : ContentView <UISearchBarDelegate>
+@interface SoundcloudContentView : ContentView <UISearchBarDelegate, UIAlertViewDelegate>
 
 
 

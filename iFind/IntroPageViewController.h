@@ -15,6 +15,7 @@
 
 @property (nonatomic, strong) NSString* responseDistance;
 @property NSInteger responseRank;
+@property (nonatomic, strong) NSString * responseParentNode;
 
 
 @end

@@ -49,6 +49,7 @@
             NSLog(@"%@",(NSNumber*)cloudResponse[@"distance"]);
             NSLog(@"%@",(NSNumber*)cloudResponse[@"pioneerRank"]);
             
+            self.responseParentNode = [NSString stringWithFormat:@"%@",cloudResponse[@"parentNode"]];
             self.responseDistance = [NSString stringWithFormat:@"%@",cloudResponse[@"distance"]];
             
             NSString * fuark = [NSString stringWithFormat:@"%@",cloudResponse[@"pioneerRank"]];
@@ -161,6 +162,7 @@
     else if (i == 3){
         SignUpViewController * SignUpController = [sbptr instantiateViewControllerWithIdentifier:@"SignUp"];
         SignUpController.pioneerRank = self.responseRank;
+        SignUpController.responseParentNode = self.responseParentNode;
         return SignUpController;
     }
     

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AccountHandlerDelegate.h"
 
 @interface SignUpViewController : UIViewController
 
@@ -22,6 +23,11 @@
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
 
 @property int pioneerRank;
+@property (nonatomic, strong) NSString * responseParentNode;
+
+//Account handler delegate property to handle successful log in
+@property (nonatomic, assign) id <AccountHandlerDelegate> delegate;
+
 
 - (IBAction)createLockerPress:(id)sender;
 

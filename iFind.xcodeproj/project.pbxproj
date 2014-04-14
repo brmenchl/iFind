@@ -15,8 +15,8 @@
 		CE3E63D118BD55A400A5DCD7 /* GemFinderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3E63D018BD55A400A5DCD7 /* GemFinderViewController.m */; };
 		CE705A9B18F8A66B00B0498B /* GGCompassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE705A9A18F8A66B00B0498B /* GGCompassViewController.m */; };
 		CE705A9D18F8A75400B0498B /* arrow_up.png in Resources */ = {isa = PBXBuildFile; fileRef = CE705A9C18F8A75400B0498B /* arrow_up.png */; };
-		CE705AA118FA8A0300B0498B /* big_compass.png in Resources */ = {isa = PBXBuildFile; fileRef = CE705AA018FA8A0300B0498B /* big_compass.png */; };
-		CE705AA318FA8A0D00B0498B /* big_compass@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CE705AA218FA8A0D00B0498B /* big_compass@2x.png */; };
+		CE705AA618FBD1D700B0498B /* big_compass@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CE705AA418FBD1D700B0498B /* big_compass@2x.png */; };
+		CE705AA718FBD1D700B0498B /* big_compass.png in Resources */ = {isa = PBXBuildFile; fileRef = CE705AA518FBD1D700B0498B /* big_compass.png */; };
 		CEA6D35818BD4E2800F36A35 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA6D35718BD4E2700F36A35 /* Foundation.framework */; };
 		CEA6D35A18BD4E2800F36A35 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA6D35918BD4E2800F36A35 /* CoreGraphics.framework */; };
 		CEA6D35C18BD4E2800F36A35 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA6D35B18BD4E2800F36A35 /* UIKit.framework */; };
@@ -108,8 +108,8 @@
 		CE705A9918F8A66B00B0498B /* GGCompassViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGCompassViewController.h; sourceTree = "<group>"; };
 		CE705A9A18F8A66B00B0498B /* GGCompassViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGCompassViewController.m; sourceTree = "<group>"; };
 		CE705A9C18F8A75400B0498B /* arrow_up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_up.png; sourceTree = "<group>"; };
-		CE705AA018FA8A0300B0498B /* big_compass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = big_compass.png; sourceTree = "<group>"; };
-		CE705AA218FA8A0D00B0498B /* big_compass@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "big_compass@2x.png"; sourceTree = "<group>"; };
+		CE705AA418FBD1D700B0498B /* big_compass@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "big_compass@2x.png"; sourceTree = "<group>"; };
+		CE705AA518FBD1D700B0498B /* big_compass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = big_compass.png; sourceTree = "<group>"; };
 		CEA6D35418BD4E2700F36A35 /* iFind.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iFind.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEA6D35718BD4E2700F36A35 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		CEA6D35918BD4E2800F36A35 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -415,8 +415,8 @@
 		E2CC0B0618BE9C2B008B6094 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				CE705AA218FA8A0D00B0498B /* big_compass@2x.png */,
-				CE705AA018FA8A0300B0498B /* big_compass.png */,
+				CE705AA418FBD1D700B0498B /* big_compass@2x.png */,
+				CE705AA518FBD1D700B0498B /* big_compass.png */,
 				CE705A9C18F8A75400B0498B /* arrow_up.png */,
 				E20CE6CA18F512BD00327101 /* cup.png */,
 				E29B2D5A18F335EE004D02AE /* music_beamed_note.png */,
@@ -583,6 +583,7 @@
 				E20CE6CB18F512BD00327101 /* cup.png in Resources */,
 				E21F9A6A18E958DA0029BA85 /* archive.png in Resources */,
 				E2AC39D518E892E70030461C /* plusButton.png in Resources */,
+				CE705AA718FBD1D700B0498B /* big_compass.png in Resources */,
 				CEB7B36E18D6A8F000AC72C5 /* waterfall.jpg in Resources */,
 				E2733BE618D6C15B00EB51B0 /* messenger-generic.png in Resources */,
 				E2E711C818C1AAD600F5EAC1 /* settingsGear@2x.png in Resources */,
@@ -594,10 +595,9 @@
 				CE705A9D18F8A75400B0498B /* arrow_up.png in Resources */,
 				E21F9A6618E90B8C0029BA85 /* download.jpeg in Resources */,
 				CEA6D36218BD4E2800F36A35 /* InfoPlist.strings in Resources */,
+				CE705AA618FBD1D700B0498B /* big_compass@2x.png in Resources */,
 				E2E711C718C1AAD600F5EAC1 /* settingsGear.png in Resources */,
-				CE705AA318FA8A0D00B0498B /* big_compass@2x.png in Resources */,
 				E2BA8BCC18E224EF002027EE /* orkut.png in Resources */,
-				CE705AA118FA8A0300B0498B /* big_compass.png in Resources */,
 				CEA6D36A18BD4E2800F36A35 /* Images.xcassets in Resources */,
 				E2CC0B0518BE9AF9008B6094 /* barDivider.png in Resources */,
 				CEB7B36C18D68D3A00AC72C5 /* tower.jpg in Resources */,
