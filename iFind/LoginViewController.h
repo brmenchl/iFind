@@ -7,7 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AccountHandlerDelegate.h"
 
 @interface LoginViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UITextField *usernameField;
+@property (weak, nonatomic) IBOutlet UITextField *passwordField;
+@property (weak, nonatomic) IBOutlet UIButton *loginButton;
+@property (weak, nonatomic) IBOutlet UIButton *facebookButton;
+@property (weak, nonatomic) IBOutlet UIButton *createKeyButton;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+- (IBAction)didPressLogin:(id)sender;
+- (IBAction)fbLoginPress:(id)sender;
+
+
+//Account handler delegate to handle login success
+@property (nonatomic, assign) id <AccountHandlerDelegate> delegate;
 
 @end

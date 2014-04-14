@@ -160,6 +160,7 @@
     }
     else if (i == 3){
         SignUpViewController * SignUpController = [sbptr instantiateViewControllerWithIdentifier:@"SignUp"];
+        SignUpController.pioneerRank = self.responseRank;
         return SignUpController;
     }
     
@@ -175,6 +176,12 @@
     }
     else if ([[pageViewController.viewControllers objectAtIndex:0] isKindOfClass:[HowToUseViewController class]]){
         return 1;
+    }
+    else if ([[pageViewController.viewControllers objectAtIndex:0] isKindOfClass:[StartingInventoryViewController class]]){
+        return 2;
+    }
+    else if ([[pageViewController.viewControllers objectAtIndex:0] isKindOfClass:[SignUpViewController class]]){
+        return 3;
     }
     
     return 0;

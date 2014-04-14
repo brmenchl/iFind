@@ -13,6 +13,7 @@
 #import "IntroPageViewController.h"
 #import "TimelineViewController.h"
 #import "GGCompassViewController.h"
+#import "LoginViewController.h"
 
 @interface AppDelegate()
 
@@ -71,7 +72,9 @@
     
 //    IntroPageViewController * temp = [[IntroPageViewController alloc] init];
     
+    //Login Screen
     
+    self.loginVC = [self.sb instantiateViewControllerWithIdentifier:@"Login"];
     
     
     
@@ -84,10 +87,10 @@
         self.window.rootViewController = self.bounceMenuController;
     }
     else {
-        self.window.rootViewController = self.nav;
+        self.window.rootViewController = self.loginVC;
     }
     
-    //self.window.rootViewController = tempCompass;
+    //self.window.rootViewController = self.loginVC;
     
     self.currentUserQueue = dispatch_queue_create([CurrentUserQueueLabel cStringUsingEncoding:NSUTF8StringEncoding], NULL);
     [self.window makeKeyAndVisible];
@@ -138,7 +141,7 @@
     //
     if(success) {
         //Reset bounce menu to login screen if on create account screen.
-        [self.nav popToRootViewControllerAnimated:NO];
+        //[self.nav popToRootViewControllerAnimated:NO];
         self.window.rootViewController = self.bounceMenuController;
     }
 }
@@ -147,7 +150,7 @@
     if(success) {
         //Reset bounce menu to gem finder screen.
         [self.bounceMenuController setSelectedIndex:0];
-        self.window.rootViewController = self.nav;
+        self.window.rootViewController = self.loginVC;
     }
 }
 

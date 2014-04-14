@@ -51,6 +51,7 @@ static NSString * const LoadingViewControllerIdentfier = @"LoadingViewController
 #import "BounceMenuController.h"
 #import "AccountHandlerDelegate.h"
 #import "LocationManager.h"
+#import "LoginViewController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, BounceMenuControllerDelegate, AccountHandlerDelegate>
 
@@ -63,6 +64,9 @@ static NSString * const LoadingViewControllerIdentfier = @"LoadingViewController
 //Public reference to the NavigationController, which is the wrapper controller for the login and sign up screens.
 //We might want to make create user a modal view controller, so we might eventually get rid of this
 @property (strong, nonatomic) UINavigationController *nav;
+
+//Public reference to the Login Screen
+@property (strong, nonatomic) LoginViewController *loginVC;
 
 //Public reference to the last current location grabbed by Core Location.  This should speed up some execution.
 @property (nonatomic, strong) CLLocation *currentLocation;

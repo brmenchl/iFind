@@ -21,5 +21,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *skipButton;
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
 
+@property int pioneerRank;
+
+- (IBAction)createLockerPress:(id)sender;
 
 @end

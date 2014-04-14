@@ -8,6 +8,8 @@
 
 #import "SignUpViewController.h"
 #import "AppDelegate.h"
+#import <Parse/Parse.h>
+
 
 
 @interface SignUpViewController ()
@@ -48,6 +50,9 @@
     [self.facebookButton setTitleColor:[UIColor colorWithRed:0.91 green:0.68 blue:0.05 alpha:1] forState:UIControlStateNormal];
     [self.skipButton setTitleColor:[UIColor colorWithRed:0.91 green:0.68 blue:0.05 alpha:1] forState:UIControlStateNormal];
     
+//    if (!self.pioneerRank){
+//        
+//    }
     
 }
 
@@ -68,4 +73,25 @@
 }
 */
 
+//Checks that pass word is at least 6 characters long and is a mix of at least one letter and one number
+// returns yes if valid password
+-(BOOL) NStringIsValidPassword: (NSString *)checkString {
+    NSString *passwordRegex = @"(?=^.{6,}$)(?=.*[0-9])(?![.\n])(?=.*[a-zA-Z]).*$";
+    NSPredicate *passTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", passwordRegex];
+    return [passTest evaluateWithObject:checkString];
+}
+
+//Checks that email is of the correct general format (some number of characters + @ + some number of characters + . + 2-4 characters
+// returns yes if valid email
+-(BOOL) NSStringIsValidEmail:(NSString *)checkString {
+    BOOL stricterFilter = YES;
+    NSString *strictFilterString = @"[A-Z0-9a-z\\._%+-]+@([A-Za-z0-9-]+\\.)+[A-Za-z]{2,4}";
+    NSString *unstrictFilterString = @".+@([A-Za-z0-9]+\\.)+[A-Za-z]{2}[A-Za-z]*";
+    NSString *emailRegex = stricterFilter ? strictFilterString : unstrictFilterString;
+    NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
+    return [emailTest evaluateWithObject:checkString];
+}
+
+- (IBAction)createLockerPress:(id)sender {
+}
 @end

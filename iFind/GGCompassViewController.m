@@ -162,7 +162,6 @@
                 double temp = distance * 100;
                 temp = (double)((int)(temp+0.5));
                 distance = temp/100;
-                NSLog(@"rounded distance: %f",distance);
                 
                 self.distanceLabel.text = [NSString stringWithFormat:@"%.2f",distance];
             }
@@ -180,8 +179,6 @@
 
 - (void)receivedLocationNotification:(NSNotification *) notification {
     
-    NSLog(@"wahoo!");
-    
     CLLocationManager *manager = (CLLocationManager*)notification.object;
     
     self.currentLocation = manager.location;
@@ -195,7 +192,6 @@
     double temp = distance * 100;
     temp = (double)((int)(temp+0.5));
     distance = temp/100;
-    NSLog(@"rounded distance: %f",distance);
     
     self.distanceLabel.text = [NSString stringWithFormat:@"%.2f",distance];
 
