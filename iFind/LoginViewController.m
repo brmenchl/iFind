@@ -77,11 +77,10 @@
 
 - (IBAction)didPressLogin:(id)sender {
     
+    NSLog(@"didPressLogin");
     //[self.delegate viewController:self didUserLoginSuccessfully:YES];
     //Attempts to log in user with current credentials
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    UIViewController *loadingVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"loadingVC"];
-    loadingVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     dispatch_async(appDelegate.currentUserQueue, ^{
         NSError *logInError = nil;
         [PFUser logInWithUsername:self.usernameField.text password:self.passwordField.text error:&logInError];

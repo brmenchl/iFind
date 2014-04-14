@@ -50,9 +50,40 @@
     [self.facebookButton setTitleColor:[UIColor colorWithRed:0.91 green:0.68 blue:0.05 alpha:1] forState:UIControlStateNormal];
     [self.skipButton setTitleColor:[UIColor colorWithRed:0.91 green:0.68 blue:0.05 alpha:1] forState:UIControlStateNormal];
     
-//    if (!self.pioneerRank){
-//        
-//    }
+    self.delegate = ((id<AccountHandlerDelegate>)[[UIApplication sharedApplication] delegate]);
+    
+    if (!self.pioneerRank){
+        
+         CLLocation * temp_ref = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).currentLocation;
+        
+        NSDictionary *pioneerParams = @{@"latitude":[NSNumber numberWithDouble:temp_ref.coordinate.latitude],@"longitude":[NSNumber numberWithDouble:temp_ref.coordinate.longitude]};
+        
+        NSError* error = nil;
+        NSString* response = [PFCloud callFunction:@"pioneerStatusClosestGem" withParameters:pioneerParams error:&error];
+        
+        NSData* jsonObj = [response dataUsingEncoding:NSUTF8StringEncoding];
+        
+        if (!error){
+            
+            NSDictionary* cloudResponse = nil;
+            
+            NSError* localError = nil;
+            cloudResponse = [NSJSONSerialization JSONObjectWithData:jsonObj options:0 error:&localError];
+            NSLog(@"%@",cloudResponse);
+            NSLog(@"%@",(NSNumber*)cloudResponse[@"distance"]);
+            NSLog(@"%@",(NSNumber*)cloudResponse[@"pioneerRank"]);
+            
+            self.responseParentNode = [NSString stringWithFormat:@"%@",cloudResponse[@"parentNode"]];
+            
+            NSString * fuark = [NSString stringWithFormat:@"%@",cloudResponse[@"pioneerRank"]];
+            
+            self.pioneerRank = [fuark intValue];
+        }
+        
+        NSLog(@"pioneerRank: %i",self.pioneerRank);
+        
+        
+    }
     
 }
 
@@ -93,5 +124,80 @@
 }
 
 - (IBAction)createLockerPress:(id)sender {
+    
+    UIAlertView *alertView = nil;
+    if([self NStringIsValidPassword:self.passwordField.text]) {
+        if([self NSStringIsValidEmail:self.emailField.text]) {
+            //This block is reached upon recognizing a valid password and email
+            //Create a new PFUser object to sign up with
+            PFUser *user = [PFUser user];
+            user.username = self.usernameField.text;
+            user.password = self.passwordField.text;
+            user.email = self.emailField.text;
+            //Initialize empty inventory and timeline arrays
+            user[ParseUserInventoryKey] = [[NSArray alloc] init];
+            user[ParseUserTimelineKey] = [[NSArray alloc] init];
+            user[ParseUserPioneerRankKey] = [NSNumber numberWithInt:self.pioneerRank];
+            PFGeoPoint * temp_loc = [PFGeoPoint geoPointWithLocation:((AppDelegate *)[[UIApplication sharedApplication] delegate]).currentLocation];
+            user[ParseUserLocationRegisteredKey] = temp_loc;
+            
+            
+            //Sign up user
+//            UIViewController *loadingVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"loadingVC"];
+//            loadingVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+            [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
+//                [self.navigationController dismissViewControllerAnimated:YES completion:NULL];
+                if(succeeded) {
+                    //Success
+                    //Create gems for starting inventory and notify the delegate of a successful login
+                    NSUInteger gemCount = 5;
+                    
+                    if (self.pioneerRank == 1){
+                        gemCount = 25;
+                    }
+                    else if (self.pioneerRank == 2){
+                        gemCount = 20;
+                    }
+                    else if (self.pioneerRank == 3){
+                        gemCount = 15;
+                    }
+                    else if (self.pioneerRank == 4){
+                        gemCount = 10;
+                    }
+                    
+                    [self.delegate createGem:gemCount];
+                    
+                    
+                    if (self.pioneerRank < 5){
+                        NSDictionary * update_dict = @{@"curUser":[PFUser currentUser].objectId,@"prevNode":self.responseParentNode};
+                        
+                        [PFCloud callFunctionInBackground:@"updatePioneerList" withParameters:update_dict block:nil];
+                    }
+                    
+                    [self.delegate viewController:self didUserLoginSuccessfully:YES];
+                }
+                else {
+                    //No success, we need to have error code checks here for things like:
+                    // Username taken, email taken, etc..
+                    NSLog(@"%@", [[[error userInfo] objectForKey:@"NSUnderlyingErrorKey"]localizedDescription]);
+                }
+            }];
+//            [self.navigationController presentViewController:loadingVC animated:YES completion:NULL];
+            
+        }
+        else {
+            //Invalid email
+            alertView = [[UIAlertView alloc] initWithTitle:@"Invalid Email" message:@"Please enter a valid email" delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+            [alertView show];
+        }
+    }
+    else {
+        //Invalid password
+        alertView = [[UIAlertView alloc] initWithTitle:@"Invalid Password" message:@"Please enter a valid password\n(passwords must have at least 6 characters and be a mix of letters and numbers)" delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+        [alertView show];
+    }
+    
+    
+    
 }
 @end
