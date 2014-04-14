@@ -32,7 +32,8 @@
     [Parse setApplicationId:@"EXa4eSmnKSJ1Pe4KR1e6hnNMmTvbs7ExC441LLkR"
                   clientKey:@"4Cg6pBg5EUV3IAKmrpKsTLUoHMBbxoysNvL81q1x"];
     [PFFacebookUtils initializeFacebook];
-    
+    NSLog(@"Bundle ID: %@",[[NSBundle mainBundle] bundleIdentifier]);
+
     //Location Services.
     
     self.locationManager = [[LocationManager alloc] init];
@@ -43,8 +44,9 @@
     self.sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     //Initializing bouncemenucontroller and all sub-controllers, they are kept in the
     self.bounceMenuController = [[BounceMenuController alloc] init];
-    GemFinderViewController *findervc = [self.sb instantiateViewControllerWithIdentifier:@"finderVC"];
+//    GemFinderViewController *findervc = [self.sb instantiateViewControllerWithIdentifier:@"finderVC"];
     SettingsViewController *settingsvc = [self.sb instantiateViewControllerWithIdentifier:@"settingsVC"];
+    TimelineViewController *timelinevc = [self.sb instantiateViewControllerWithIdentifier:@"timelineVC"];
     //Setting the settings view controller delegate to the app delegate to handle log outs.  Might want to create a separate delegate to handle this
     //Because you can only have one delegate on at a time.
     settingsvc.delegate = self;
@@ -53,7 +55,7 @@
     GGCompassViewController * compassVC = [self.sb instantiateViewControllerWithIdentifier:@"GGCompass"];
     
     
-    self.controllers = [NSArray arrayWithObjects:compassVC, settingsvc, nil];
+    self.controllers = [NSArray arrayWithObjects:compassVC, timelinevc, settingsvc, nil];
     self.bounceMenuController.viewControllers = self.controllers;
     self.bounceMenuController.delegate = self;
     

@@ -18,7 +18,6 @@
 @implementation GGAddContentView {
     Class _subClass;
 }
-static CGFloat const SCROLL_MARGINS = 25;
 
 -(id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
@@ -47,7 +46,7 @@ static CGFloat const SCROLL_MARGINS = 25;
         return;
     }
     // set the scrollview height
-    self.scrollView.contentSize = CGSizeMake(self.scrollView.bounds.size.width,[self.dataSource totalViewHeight] + SCROLL_MARGINS);
+    self.scrollView.contentSize = CGSizeMake(self.scrollView.bounds.size.width,[self.dataSource totalViewHeight] + [self.dataSource rowMargins]/2);
     float topEdgeForRow = 0;
     
     if(self.recycleCells) {

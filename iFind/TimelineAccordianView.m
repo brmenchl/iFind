@@ -45,6 +45,7 @@ static CGFloat const HEADER_HEIGHT = 40;
         
         self.headerLabel = [[UILabel alloc] initWithFrame:CGRectNull];
         self.headerLabel.textColor = [UIColor colorWithRed:0.76 green:0.44 blue:0.36 alpha:1];
+        self.headerLabel.font = [UIFont fontWithName:@"Futura" size:18];
         [self.header addSubview:self.headerLabel];
         
         [self addSubview:self.header];
@@ -58,23 +59,32 @@ static CGFloat const HEADER_HEIGHT = 40;
 - (id)init {
     CGRect mainBounds = [UIScreen mainScreen].bounds;
     self = [self initWithFrame:CGRectMake(0,0,mainBounds.size.width, HEADER_HEIGHT)];
-
     return self;
 }
 
 - (void) didMoveToSuperview {
-    self.drawer.frame = CGRectMake(5, 40, self.superview.frame.size.width - 5, self.superview.frame.size.height - 40);
+    self.drawer.frame = CGRectMake(0, 40, self.superview.frame.size.width, self.superview.frame.size.height - 40);
     self.drawer.frame = CGRectOffset(self.drawer.frame, 0, -(self.drawer.frame.size.height - HEADER_HEIGHT));
     
     self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0,0,self.drawer.frame.size.width,self.drawer.frame.size.height)];
+    self.scrollView.delegate = self;
     self.scrollView.pagingEnabled = YES;
-    self.scrollView.showsHorizontalScrollIndicator = NO;
+    self.scrollView.showsHorizontalScrollIndicator = YES;
     float pageStart = 0;
-    for(PFObject *object in self.metadataArray) {
+    AccordianDrawerView *generalDrawer = [AccordianDrawerView createGeneralInfoDrawer:self.metadata frame:CGRectMake(0, pageStart, self.scrollView.frame.size.width, self.scrollView.frame.size.height)];
+    [self.scrollView addSubview:generalDrawer];
+    pageStart += self.scrollView.frame.size.width;
+    if(self.metadata[ParseMetaTextContentKey]) {
         AccordianDrawerView *drawerContents = [[AccordianDrawerView alloc] initWithFrame:CGRectMake(pageStart, 0, self.scrollView.frame.size.width, self.scrollView.frame.size.height)];
-        [drawerContents setContents:object];
-        pageStart += self.scrollView.frame.size.width;
+        [drawerContents setContent:self.metadata[ParseMetaTextContentKey]];
         [self.scrollView addSubview:drawerContents];
+        pageStart += self.scrollView.frame.size.width;
+    }
+    if(self.metadata[ParseMetaImageContentKey]) {
+        AccordianDrawerView *drawerContents = [[AccordianDrawerView alloc] initWithFrame:CGRectMake(pageStart, 0, self.scrollView.frame.size.width, self.scrollView.frame.size.height)];
+        [drawerContents setContent:self.metadata[ParseMetaImageContentKey]];
+        [self.scrollView addSubview:drawerContents];
+        pageStart += self.scrollView.frame.size.width;
     }
     self.scrollView.contentSize = CGSizeMake(pageStart, self.scrollView.frame.size.height);
     [self.drawer addSubview:self.scrollView];
@@ -85,9 +95,9 @@ static CGFloat const HEADER_HEIGHT = 40;
     self.pageControl.enabled = YES;
     self.pageControl.backgroundColor = [UIColor clearColor];
     self.pageControl.highlighted = YES;
-    self.pageControl.numberOfPages = [self.metadataArray count];
+    self.pageControl.numberOfPages = floor(pageStart/self.scrollView.frame.size.width);
     self.pageControl.currentPage = 0;
-    NSLog(@"%f",self.scrollView.frame.size.height);
+    NSLog(@"logging TAV info: numPages:%i\nscrollView frame: (%f,%f,%f,%f)\n contentSize: (%f,%f)",self.pageControl.numberOfPages,self.scrollView.frame.origin.x,self.scrollView.frame.origin.y, self.scrollView.frame.size.width, self.scrollView.frame.size.height,self.scrollView.contentSize.width,self.scrollView.contentSize.height);
     [self.drawer addSubview:self.pageControl];
 }
 
@@ -98,6 +108,7 @@ static CGFloat const HEADER_HEIGHT = 40;
 
 - (void) handleTap:(id)sender {
     self.opened = !self.opened;
+    self.scrollView.contentOffset = CGPointZero;
     if(self.opened) self.drawer.hidden = NO;
     [UIView animateWithDuration:0.3
                           delay:0
@@ -116,13 +127,19 @@ static CGFloat const HEADER_HEIGHT = 40;
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    NSLog(@"scrollViewDidScroll, contentOffsetx:%f",self.scrollView.contentOffset.x);
     float pageWidth = self.scrollView.frame.size.width;
     int page = floor((self.scrollView.contentOffset.x - pageWidth/2) / pageWidth) + 1;
-    self.pageControl.currentPage = page;}
+    NSLog(@" page is now %i",page);
+    self.pageControl.currentPage = page;
+}
 
-- (void) setMetadataArray:(NSArray *)metadataArray {
-    _metadataArray = metadataArray;
-    PFObject *metadata = [metadataArray firstObject];
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    NSLog(@"scrollViewWillBeginDragging");
+}
+
+- (void) setMetadata:(PFObject *)metadata {
+    _metadata = metadata;
     NSDate *pickUpDate = metadata[ParseMetaPickUpDateKey];
     NSString *pickUpDateString = [self.formatter stringFromDate: pickUpDate];
     [self.headerLabel setText: pickUpDateString];

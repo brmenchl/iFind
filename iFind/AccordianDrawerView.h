@@ -11,6 +11,8 @@
 
 @interface AccordianDrawerView : UIView
 
-@property (nonatomic) PFObject *contents;
+@property (nonatomic) NSObject *content;
+
++ (AccordianDrawerView *) createGeneralInfoDrawer:(PFObject *)info frame:(CGRect)frame;
 
 @end

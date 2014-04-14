@@ -205,6 +205,9 @@
         // show which view controller is currently selected
         if (i == self.selectedIndex) {
             [controllerButton setEnabled:NO];
+            controllerButton.layer.cornerRadius = 5;
+            controllerButton.layer.masksToBounds = YES;
+            controllerButton.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.6];
         }
         
         
