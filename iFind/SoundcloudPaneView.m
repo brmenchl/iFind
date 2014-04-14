@@ -31,26 +31,31 @@
         
         self.artwork = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"music_beamed_note.png"]];
         self.artwork.contentMode = UIViewContentModeScaleAspectFill;
-        self.artwork.frame = CGRectMake(10, 0, 60, 60);
+        self.artwork.frame = CGRectMake(10, 65, 160, 160);
         [self addSubview:self.artwork];
         
-        self.trackTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(80, 0, self.frame.size.width - 80, 30)];
+        NSLog(@"curious: %f",self.frame.size.width);
+        self.trackTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, self.frame.size.width-40, 30)];
         self.trackTitleLabel.textAlignment = NSTextAlignmentLeft;
         self.trackTitleLabel.font = [UIFont fontWithName:@"Futura" size:15];
         self.trackTitleLabel.text = @"Loading Title...";
         [self addSubview:self.trackTitleLabel];
         
-        self.trackArtistLabel = [[UILabel alloc] initWithFrame:CGRectMake(80, 30, self.frame.size.width - 80, 30)];
+        self.trackArtistLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 30, self.frame.size.width-40, 30)];
         self.trackArtistLabel.textAlignment = NSTextAlignmentLeft;
         self.trackArtistLabel.font = [UIFont fontWithName:@"Futura" size:12];
         self.trackArtistLabel.text = @"Loading Artist...";
         [self addSubview:self.trackArtistLabel];
         
-        self.spinner = [[UIActivityIndicatorView alloc] initWithFrame:self.artwork.frame];
+        self.spinner = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(self.frame.size.width-45, 5, 35, 35)];
         self.spinner.hidesWhenStopped = YES;
         [self addSubview:self.spinner];
         
-        self.playButton = [[UIButton alloc] initWithFrame:CGRectMake(self.frame.size.width - 60, 0, 50, 50)];
+        self.playButton = [[UIButton alloc] initWithFrame:CGRectMake(self.frame.size.width - 110, 85, 80, 40)];
+        [self.playButton.titleLabel setFont:[UIFont fontWithName:@"Futura" size:14]];
+        self.playButton.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
+        self.playButton.titleLabel.numberOfLines = 2;
+        self.playButton.titleLabel.textAlignment = NSTextAlignmentRight;
         [self.playButton addTarget:self action:@selector(playButtonPress:) forControlEvents:UIControlEventTouchUpInside];
         [self.playButton setTitle:@"Open Song" forState:UIControlStateNormal];
         self.playButton.backgroundColor = [UIColor grayColor];
@@ -72,6 +77,7 @@
                 [self.trackArtistLabel setText:[[dictionary objectForKey:@"user"] objectForKey:@"username"]];
                 NSLog(@"track artist is %@",[[dictionary objectForKey:@"user"] objectForKey:@"username"]);
                 self.permalink = [[dictionary objectForKey:@"permalink_url"] copy];
+                self.playButton.hidden = NO;
                 NSLog(@"permalink %@",self.permalink);
                     if([dictionary objectForKey:@"artwork_url"] != [NSNull null]) {
                         NSLog(@"Got artwork");
@@ -82,7 +88,7 @@
                         [self.artwork setImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[[dictionary objectForKey:@"user"] objectForKey:@"avatar_url"]]]]];
                     }
                 [self.spinner stopAnimating];
-                self.playButton.hidden = NO;
+                
             }
         }];
         [task resume];
@@ -91,9 +97,9 @@
 }
 
 - (void)layoutSubviews {
-    self.artwork.frame = CGRectMake(10, 0, 60, 60);
-    self.trackTitleLabel.frame = CGRectMake(80, 0, 100, 30);
-    self.trackArtistLabel.frame = CGRectMake(80, 30, 100, 30);
+    //self.artwork.frame = CGRectMake(10, 0, 60, 60);
+    //self.trackTitleLabel.frame = CGRectMake(80, 0, 100, 30);
+    //self.trackArtistLabel.frame = CGRectMake(80, 30, 100, 30);
 }
 
 - (void) playButtonPress:(UIButton*)sender {

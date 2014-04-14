@@ -44,7 +44,7 @@ static CGFloat const HEADER_HEIGHT = 40;
         [self.header addGestureRecognizer:recognizer];
         
         self.headerLabel = [[UILabel alloc] initWithFrame:CGRectNull];
-        self.headerLabel.textColor = [UIColor colorWithRed:0.76 green:0.44 blue:0.36 alpha:1];
+        self.headerLabel.textColor = [UIColor colorWithRed:0.61 green:0.2 blue:0.12 alpha:1];
         self.headerLabel.font = [UIFont fontWithName:@"Futura" size:18];
         [self.header addSubview:self.headerLabel];
         

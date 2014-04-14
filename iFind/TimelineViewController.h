@@ -12,5 +12,6 @@
 
 @interface TimelineViewController : UIViewController <GGAddContentViewDataSource, GGAddContentViewDelegate, TimelineAccordianViewDelegate>
 @property (strong, nonatomic) IBOutlet GGAddContentView *timelineTableView;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
 @end
