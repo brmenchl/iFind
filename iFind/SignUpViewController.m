@@ -210,6 +210,24 @@
         else {
             NSLog(@"Anonymous user logged in.");
             
+            [PFUser currentUser][ParseUserPioneerRankKey] = [NSNumber numberWithInt:self.pioneerRank];
+            [PFUser currentUser][ParseUserInventoryKey] = [[NSArray alloc] init];
+            
+            PFGeoPoint *fuarktemp = [PFGeoPoint geoPointWithLocation:((AppDelegate *)[[UIApplication sharedApplication] delegate]).currentLocation];
+            
+            [PFUser currentUser][ParseUserLocationRegisteredKey] =fuarktemp;
+            
+            
+            
+            
+            
+            AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+            
+            dispatch_async(appDelegate.currentUserQueue,^{
+                [[PFUser currentUser] save];
+                
+            });
+            
             NSUInteger gemCount = 5;
             
             if (self.pioneerRank == 1){
@@ -258,6 +276,25 @@
             @synchronized([PFUser currentUser]) {
                 //If this is the first time the user logged in (they created their account through facebook)
                 NSLog(@"User with facebook signed up and logged in");
+                
+                [PFUser currentUser][ParseUserPioneerRankKey] = [NSNumber numberWithInt:self.pioneerRank];
+                [PFUser currentUser][ParseUserInventoryKey] = [[NSArray alloc] init];
+                
+                PFGeoPoint *fuarktemp = [PFGeoPoint geoPointWithLocation:((AppDelegate *)[[UIApplication sharedApplication] delegate]).currentLocation];
+                
+                [PFUser currentUser][ParseUserLocationRegisteredKey] =fuarktemp;
+                
+                
+                
+                
+                
+                AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+                
+                dispatch_async(appDelegate.currentUserQueue,^{
+                    [[PFUser currentUser] save];
+                
+                });
+                
                 
                 NSUInteger gemCount = 5;
                 
