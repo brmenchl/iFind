@@ -9,17 +9,19 @@
 #import "SoundcloudContentView.h"
 
 @interface SoundcloudContentView()
-    //The content of the SoundcloudContentView, a textview for users to write a message in.
-    @property (nonatomic, strong) UISearchBar *textView;
-    //Button image for the SoundcloudContentView
-    @property (nonatomic, strong) UIImage *buttonImage;
-    @property (nonatomic, strong) UIImageView *albumArt;
-    @property (nonatomic, strong) UILabel *songDetails;
-    @property (nonatomic, strong) UIAlertView* clipBoardAlert;
+//The content of the SoundcloudContentView, a textview for users to write a message in.
+@property (nonatomic, strong) UISearchBar *textView;
+//Button image for the SoundcloudContentView
+@property (nonatomic, strong) UIImage *buttonImage;
+@property (nonatomic, strong) UIImageView *albumArt;
+@property (nonatomic, strong) UILabel *songDetails;
+@property (nonatomic, strong) UIAlertView* clipBoardAlert;
 
-    @property (nonatomic, strong) UIPasteboard* pasteboard;
-    @property (nonatomic,strong) NSNumber *songId;
+@property (nonatomic, strong) UIPasteboard* pasteboard;
+@property (nonatomic,strong) NSNumber *songId;
 @property (nonatomic,strong) UIActivityIndicatorView* isLoading;
+@property (nonatomic) NSMutableArray *resultArray;
+@property (nonatomic) CGSize originalSize;
 
 @end
 
@@ -30,20 +32,13 @@
     self = [super initWithFrame:frame];
     if(self) {
         CGRect main = [UIScreen mainScreen].bounds;
-        self.textView = [[UISearchBar alloc] initWithFrame:CGRectMake(40,0,main.size.width-71, 40)];
+        self.textView = [[UISearchBar alloc] initWithFrame:CGRectMake(40,0,self.frame.size.width - DELETE_BUTTON_MARGIN - 40, 40)];
         self.textView.delegate = self;
         self.textView.placeholder = @" Search tracks...";
         self.textView.backgroundColor = [UIColor colorWithRed:0.68 green:0.71 blue:0.71 alpha:0.3];
-        //[self.textView addTarget:self action:@selector(textFieldDidChange) forControlEvents:UIControlEventEditingChanged];
         
         self.pasteboard = [UIPasteboard generalPasteboard];
         
-        UIButton *helpButton = [[UIButton alloc] initWithFrame:CGRectMake(main.size.width-30, 0, 30, 40)];
-        [helpButton setTitle:@"?" forState:UIControlStateNormal];
-        helpButton.backgroundColor = [UIColor colorWithRed:0.68 green:0.71 blue:0.71 alpha:0.4];
-        helpButton.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
-        helpButton.titleLabel.textAlignment = NSTextAlignmentCenter;
-        [helpButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         
         self.albumArt = [[UIImageView alloc] initWithFrame:CGRectMake(0, 40, 60, 60)];
         [self.albumArt setImage:[UIImage imageNamed:@"music_beamed_note.png"]];
@@ -53,14 +48,14 @@
         self.songDetails.textAlignment = NSTextAlignmentLeft;
         self.songDetails.textColor = [UIColor blackColor];
         
-        self.isLoading = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(main.size.width-45, 55, 35, 35)];
+        self.isLoading = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(main.size.width-55, 55, 35, 35)];
         
         self.isLoading.hidesWhenStopped = YES;
         
         [self addSubview:self.isLoading];
         
         
-        
+        self.resultArray = [[NSMutableArray alloc] init];
         
         
         
@@ -71,7 +66,6 @@
         [soundCloudIcon setImage:[UIImage imageNamed:@"soundcloud.png"]];
         
         [self addSubview:soundCloudIcon];
-        [self addSubview:helpButton];
         [self addSubview:self.textView];
         [self addSubview:self.albumArt];
         [self addSubview:self.songDetails];
@@ -83,8 +77,9 @@
 //This calls initWithFrame.  Only use init method on textcontentview
 -(id) init {
     CGRect main = [UIScreen mainScreen].bounds;
-    self = [self initWithFrame:CGRectMake(0,0,main.size.width, 100)];
+    self = [self initWithFrame:CGRectMake(10,0,main.size.width - 20, 100)];
     self.backgroundColor = [UIColor colorWithRed:0.68 green:0.71 blue:0.71 alpha:0.4];
+    self.originalSize = self.frame.size;
     if(self) {
         self.buttonImage = [UIImage imageNamed:@"soundcloud.png"];
     }
@@ -115,18 +110,71 @@
     
 }
 
--(void) searchBarSearchButtonClicked:(UISearchBar *)searchBar{
-    
+- (void) selectTrackWithDictionary:(NSDictionary *)dictionary {
+    [self.isLoading startAnimating];
+    NSString *temp = (NSString *)[dictionary objectForKey:@"title"];
+    [self.songDetails setText:temp];
+    self.songId = [NSNumber numberWithInt:[[dictionary objectForKey:@"ID"] intValue]];
+    for(UIView *view in self.resultArray) {
+        [view removeFromSuperview];
+    }
+    [self.resultArray removeAllObjects];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.albumArt setImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[dictionary objectForKey:@"artURI"]]]]];
+        [self.isLoading stopAnimating];
+        [self.delegate updateContentView:self toSize:self.originalSize];
+    });
 }
 
--(void) searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
-    
+-(void) searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+    [searchBar resignFirstResponder];
+    [searchBar setUserInteractionEnabled:NO];
+    [self.isLoading startAnimating];
+    NSString *encodedQuery = (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL,(CFStringRef) searchBar.text,NULL,(CFStringRef) @"!*'();:@&=+$,/?%#[]",kCFStringEncodingUTF8));
+    NSURL *trackURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://api.soundcloud.com/tracks.json?client_id=17bb2cf97cb0c0db9c8e6e5bd4523979&q=%@", encodedQuery]];
+    NSURLSessionTask *task = [[NSURLSession sharedSession] dataTaskWithURL:trackURL completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+        if(httpResponse.statusCode == 200) {
+            NSError *e = nil;
+            NSArray *allResults = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&e];
+            float topEdge = self.frame.size.height;
+            for(int i = 0; i < 4; i++) {
+                NSDictionary *tempResultDict = [allResults objectAtIndex:i];
+                SoundcloudSearchResultView *result = [[SoundcloudSearchResultView alloc] initWithDictionary:tempResultDict frame:CGRectMake(0,topEdge, self.frame.size.width, 60)];
+                topEdge += 60;
+                result.delegate = self;
+                [self.resultArray addObject:result];
+            }
+            [self.isLoading stopAnimating];
+            [self animateResults];
+            [searchBar setUserInteractionEnabled:YES];
+        }
+    }];
+    [task resume];
+}
+
+- (void) animateResults {
+    for(UIView *view in self.resultArray) {
+        view.alpha = 0;
+        [self addSubview:view];
+        [UIView animateWithDuration:0.8 animations:^{
+            view.alpha=1;
+        }];
+    }
+    [self.delegate updateContentView:self toSize:CGSizeMake(self.frame.size.width, self.frame.size.height + 4*60)];
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    if ([searchText isEqualToString:@""]) {
+        for(UIView *view in self.resultArray) {
+            [view removeFromSuperview];
+        }
+        [self.resultArray removeAllObjects];
+        [self.delegate updateContentView:self toSize:self.originalSize];
+    }
 }
 
 -(void) textFieldDidChange {
-    
-    
-    
     NSLog(@"%@",self.textView.text);
     
     NSURL *trackURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://api.soundcloud.com/resolve.json?url=%@&client_id=17bb2cf97cb0c0db9c8e6e5bd4523979", self.textView.text]];

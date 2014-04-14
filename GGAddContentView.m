@@ -7,10 +7,11 @@
 //
 
 #import "GGAddContentView.h"
+#import "RDVKeyboardAvoidingScrollView.h"
 
 
 @interface GGAddContentView()
-@property (readwrite) UIScrollView *scrollView;
+@property (readwrite) RDVKeyboardAvoidingScrollView *scrollView;
 @property (nonatomic) NSMutableArray *extraViews;
 @property (nonatomic) NSMutableSet *reuseSet;
 @end
@@ -24,7 +25,7 @@
     if (self) {
         self.backgroundColor = [UIColor clearColor];
         self.extraViews = [[NSMutableArray alloc] init];
-        self.scrollView = [[UIScrollView alloc] initWithFrame:self.frame];
+        self.scrollView = [[RDVKeyboardAvoidingScrollView alloc] initWithFrame:self.frame];
         [self addSubview:self.scrollView];
         self.scrollView.backgroundColor = [UIColor clearColor];
         self.scrollView.delegate = self;

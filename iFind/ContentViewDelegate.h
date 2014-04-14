@@ -12,7 +12,6 @@
 @protocol ContentViewDelegate <NSObject>
 
 - (void)addAndAnimateForView:(UIView *)view;
-- (void) contentViewDeleted:(ContentView *)view;
+- (void) contentViewWillBeDeleted:(ContentView *)view;
 - (void) updateContentView:(ContentView *)view toSize:(CGSize)size;
-
 @end

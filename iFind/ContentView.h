@@ -11,6 +11,8 @@
 
 @interface ContentView : UIView <UIGestureRecognizerDelegate>
 
+#define DELETE_BUTTON_MARGIN 35
+
 /*
  *  returns the relevant data from the contentView (UIImage, nsstring,...)
  */

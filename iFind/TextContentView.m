@@ -17,15 +17,14 @@
 
 @implementation TextContentView
 
-static CGFloat const Default_Size = 30;
 
 //initWithFrame, sets up textView and adds it to the view
 -(id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if(self) {
-        self.textView = [[UITextView alloc] initWithFrame:self.frame];
+        self.textView = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width - DELETE_BUTTON_MARGIN, self.frame.size.height)];
         self.textView.delegate = self;
-        [self.textView setShowsVerticalScrollIndicator:YES];
+        [self.textView setShowsVerticalScrollIndicator:NO];
         [self.textView setShowsHorizontalScrollIndicator:NO];
         self.textView.backgroundColor = [UIColor colorWithRed:0.68 green:0.71 blue:0.71 alpha:0.4];
         [self addSubview:self.textView];
@@ -45,7 +44,7 @@ static CGFloat const Default_Size = 30;
 
 - (CGRect) getDefaultFrame {
     CGRect main = [UIScreen mainScreen].bounds;
-    return CGRectMake(0, 0, main.size.width, Default_Size);
+    return CGRectMake(10, 0, main.size.width - 20, 30);
 }
 
 #pragma UITextViewDelegate method
@@ -56,6 +55,7 @@ static CGFloat const Default_Size = 30;
     [self.delegate updateContentView:self toSize:textView.frame.size];
 }
 
+
 #pragma ContentView methods
 //buttonImage doesn't need to be overidden
 
@@ -65,9 +65,6 @@ static CGFloat const Default_Size = 30;
 
 -(void)clearData {
     self.textView.text = @"";
-    self.frame = [self getDefaultFrame];
-    self.textView.frame = self.frame;
-    [self removeFromSuperview];
 }
 
 @end
