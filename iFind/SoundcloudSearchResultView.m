@@ -42,6 +42,8 @@
 - (id) initWithDictionary:(NSDictionary*)dictionary frame:(CGRect)frame {
     self = [self initWithFrame:frame];
     if (self) {
+        NSLog(@"initWithDict %@",dictionary);
+        NSLog(@"%@",(NSNumber*)dictionary[@"id"]);
         [self.trackTitle setText: dictionary[@"title"]];
         [self.trackArtist setText: [dictionary[@"user"] objectForKey:@"username"]];
         if(dictionary[@"artwork_url"] != [NSNull null]) {
@@ -67,7 +69,8 @@
 }
 
 - (void)didSelectResult:(id)sender {
-    [self.delegate selectTrackWithDictionary:@{@"ID": self.ID, @"title": self.trackTitle, @"artist": self.trackArtist, @"artURI": self.artURI, @"permalink": self.permalink}];
+    NSLog(@"recognized tap");
+    [self.delegate selectTrackWithDictionary:@{@"ID": self.ID, @"title": self.trackTitle.text, @"artURI": self.artURI}];
 }
 
 @end
