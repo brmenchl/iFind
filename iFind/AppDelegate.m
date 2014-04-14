@@ -8,7 +8,6 @@
 
 #import "AppDelegate.h"
 #import "SettingsViewController.h"
-#import "GemFinderViewController.h"
 #import "WelcomeViewController.h"
 #import "IntroPageViewController.h"
 #import "TimelineViewController.h"
@@ -32,7 +31,6 @@
     [Parse setApplicationId:@"EXa4eSmnKSJ1Pe4KR1e6hnNMmTvbs7ExC441LLkR"
                   clientKey:@"4Cg6pBg5EUV3IAKmrpKsTLUoHMBbxoysNvL81q1x"];
     [PFFacebookUtils initializeFacebook];
-    NSLog(@"Bundle ID: %@",[[NSBundle mainBundle] bundleIdentifier]);
 
     //Location Services.
     

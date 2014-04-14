@@ -54,7 +54,6 @@
 		E25135E418FBC9A70068D351 /* timeline.png in Resources */ = {isa = PBXBuildFile; fileRef = E25135E218FBC9A70068D351 /* timeline.png */; };
 		E25135E518FBC9A70068D351 /* timeline@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E25135E318FBC9A70068D351 /* timeline@2x.png */; };
 		E25135EB18FBCBB00068D351 /* SoundcloudPaneView.m in Sources */ = {isa = PBXBuildFile; fileRef = E25135EA18FBCBB00068D351 /* SoundcloudPaneView.m */; };
-		E2546AEE18D27DE0005F2D8B /* GemAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = E2546AED18D27DE0005F2D8B /* GemAnnotation.m */; };
 		E2675C6418CFB26A00F56BD3 /* CreateAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2675C6318CFB26A00F56BD3 /* CreateAccountViewController.m */; };
 		E2733BE418D6C12500EB51B0 /* soundcloud.png in Resources */ = {isa = PBXBuildFile; fileRef = E2733BE318D6C12500EB51B0 /* soundcloud.png */; };
 		E2733BE618D6C15B00EB51B0 /* messenger-generic.png in Resources */ = {isa = PBXBuildFile; fileRef = E2733BE518D6C15B00EB51B0 /* messenger-generic.png */; };
@@ -72,6 +71,7 @@
 		E2CC0B1118BEC3ED008B6094 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2CC0B1018BEC3ED008B6094 /* FacebookSDK.framework */; };
 		E2E0577218F36E0700315297 /* GGAddContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E0577118F36E0700315297 /* GGAddContentViewController.m */; };
 		E2E0577518F36EF100315297 /* GGAddContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E0577418F36EF100315297 /* GGAddContentView.m */; };
+		E2E1D09918FC033A0035758F /* NewMetadataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E1D09718FC033A0035758F /* NewMetadataViewController.m */; };
 		E2E711BE18C17DB100F5EAC1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2E711BD18C17DB100F5EAC1 /* Main.storyboard */; };
 		E2E711C718C1AAD600F5EAC1 /* settingsGear.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E711C518C1AAD600F5EAC1 /* settingsGear.png */; };
 		E2E711C818C1AAD600F5EAC1 /* settingsGear@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E711C618C1AAD600F5EAC1 /* settingsGear@2x.png */; };
@@ -111,7 +111,7 @@
 		CE705A9C18F8A75400B0498B /* arrow_up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_up.png; sourceTree = "<group>"; };
 		CE705AA418FBD1D700B0498B /* big_compass@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "big_compass@2x.png"; sourceTree = "<group>"; };
 		CE705AA518FBD1D700B0498B /* big_compass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = big_compass.png; sourceTree = "<group>"; };
-		CEA6D35418BD4E2700F36A35 /* iFind.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iFind.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEA6D35418BD4E2700F36A35 /* GoGeo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoGeo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEA6D35718BD4E2700F36A35 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		CEA6D35918BD4E2800F36A35 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		CEA6D35B18BD4E2800F36A35 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -149,7 +149,7 @@
 		E21F9A5F18E8DDE70029BA85 /* ALRadialButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALRadialButton.m; sourceTree = "<group>"; };
 		E21F9A6018E8DDE70029BA85 /* ALRadialMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALRadialMenu.h; sourceTree = "<group>"; };
 		E21F9A6118E8DDE70029BA85 /* ALRadialMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALRadialMenu.m; sourceTree = "<group>"; };
-		E234E84118DF9F2D00E2B16D /* AccountHandlerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountHandlerDelegate.h; sourceTree = "<group>"; };
+		E234E84118DF9F2D00E2B16D /* AccountHandlerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AccountHandlerDelegate.h; path = /Users/bradleymenchl/Documents/Courses/eecs441/iFindProject/GoGeo/iFind/AccountHandlerDelegate.h; sourceTree = "<absolute>"; };
 		E234E85018DFE57500E2B16D /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
 		E234E85118DFE57500E2B16D /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
 		E234E85318E00AF300E2B16D /* ContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentView.h; sourceTree = "<group>"; };
@@ -160,8 +160,6 @@
 		E25135E318FBC9A70068D351 /* timeline@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "timeline@2x.png"; sourceTree = "<group>"; };
 		E25135E918FBCBB00068D351 /* SoundcloudPaneView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundcloudPaneView.h; sourceTree = "<group>"; };
 		E25135EA18FBCBB00068D351 /* SoundcloudPaneView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundcloudPaneView.m; sourceTree = "<group>"; };
-		E2546AEC18D27DE0005F2D8B /* GemAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GemAnnotation.h; sourceTree = "<group>"; };
-		E2546AED18D27DE0005F2D8B /* GemAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GemAnnotation.m; sourceTree = "<group>"; };
 		E2675C6218CFB26A00F56BD3 /* CreateAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateAccountViewController.h; sourceTree = "<group>"; };
 		E2675C6318CFB26A00F56BD3 /* CreateAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateAccountViewController.m; sourceTree = "<group>"; };
 		E2733BE318D6C12500EB51B0 /* soundcloud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = soundcloud.png; sourceTree = "<group>"; };
@@ -190,6 +188,8 @@
 		E2E0577418F36EF100315297 /* GGAddContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGAddContentView.m; sourceTree = "<group>"; };
 		E2E0577618F36FA000315297 /* GGAddContentViewDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GGAddContentViewDataSource.h; sourceTree = "<group>"; };
 		E2E0577718F379C000315297 /* GGAddContentViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GGAddContentViewDelegate.h; sourceTree = "<group>"; };
+		E2E1D09718FC033A0035758F /* NewMetadataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewMetadataViewController.m; sourceTree = "<group>"; };
+		E2E1D09818FC033A0035758F /* NewMetadataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewMetadataViewController.h; sourceTree = "<group>"; };
 		E2E711BD18C17DB100F5EAC1 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		E2E711C518C1AAD600F5EAC1 /* settingsGear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settingsGear.png; sourceTree = "<group>"; };
 		E2E711C618C1AAD600F5EAC1 /* settingsGear@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settingsGear@2x.png"; sourceTree = "<group>"; };
@@ -373,7 +373,6 @@
 		E2733BDC18D6B48700EB51B0 /* Login/Welcome */ = {
 			isa = PBXGroup;
 			children = (
-				E234E84118DF9F2D00E2B16D /* AccountHandlerDelegate.h */,
 				E2E7CD9718C1761100C20286 /* WelcomeViewController.h */,
 				E2E7CD9818C1761100C20286 /* WelcomeViewController.m */,
 				E2675C6218CFB26A00F56BD3 /* CreateAccountViewController.h */,
@@ -420,8 +419,6 @@
 			children = (
 				E25135E218FBC9A70068D351 /* timeline.png */,
 				E25135E318FBC9A70068D351 /* timeline@2x.png */,
-				CE705AA218FA8A0D00B0498B /* big_compass@2x.png */,
-				CE705AA018FA8A0300B0498B /* big_compass.png */,
 				CE705AA418FBD1D700B0498B /* big_compass@2x.png */,
 				CE705AA518FBD1D700B0498B /* big_compass.png */,
 				CE705A9C18F8A75400B0498B /* arrow_up.png */,
@@ -445,6 +442,8 @@
 		E2CC0B0918BEA48E008B6094 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				E2E1D09818FC033A0035758F /* NewMetadataViewController.h */,
+				E2E1D09718FC033A0035758F /* NewMetadataViewController.m */,
 				E234E84218DFA60A00E2B16D /* Bounce Menu */,
 				E2733BDC18D6B48700EB51B0 /* Login/Welcome */,
 				E20CE6C218F3AA8A00327101 /* AddContent */,
@@ -463,8 +462,6 @@
 		E2CC0B0F18BEB7E8008B6094 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				E2546AEC18D27DE0005F2D8B /* GemAnnotation.h */,
-				E2546AED18D27DE0005F2D8B /* GemAnnotation.m */,
 				E234E84118DF9F2D00E2B16D /* AccountHandlerDelegate.h */,
 				CE23731818F4D0FA00917970 /* LocationManager.h */,
 				CE23731918F4D0FA00917970 /* LocationManager.m */,
@@ -644,7 +641,6 @@
 				CE705A9B18F8A66B00B0498B /* GGCompassViewController.m in Sources */,
 				CE23731A18F4D0FA00917970 /* LocationManager.m in Sources */,
 				E2E7CD9918C1761100C20286 /* WelcomeViewController.m in Sources */,
-				E2546AEE18D27DE0005F2D8B /* GemAnnotation.m in Sources */,
 				E2C2FD7618F53BB700D56B52 /* TimelineAccordianView.m in Sources */,
 				E20CE6C718F5040C00327101 /* TimelineViewController.m in Sources */,
 				CE23731118F3960B00917970 /* StartingInventoryViewController.m in Sources */,
@@ -653,6 +649,7 @@
 				CE23730B18F385B400917970 /* HowToUseViewController.m in Sources */,
 				CE23730718F384FB00917970 /* WelcomeGoGeoViewController.m in Sources */,
 				E21F9A6218E8DDE70029BA85 /* ALRadialButton.m in Sources */,
+				E2E1D09918FC033A0035758F /* NewMetadataViewController.m in Sources */,
 				E2E0577218F36E0700315297 /* GGAddContentViewController.m in Sources */,
 				E2E711CB18C1AAF900F5EAC1 /* SettingsViewController.m in Sources */,
 				E234E85518E00AF300E2B16D /* ContentView.m in Sources */,

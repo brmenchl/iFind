@@ -57,7 +57,7 @@
         _isOpen = NO;
         _isAnimating = NO;
         _buttons = [NSMutableArray array];
-        
+        self.menuButtonIsHidden = NO;
         self.view.backgroundColor = [UIColor colorWithRed:0.13f green:0.13f blue:0.13f alpha:1.00f];
         UIImage *barImage = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"barDivider" ofType:@"png"]];
         self.vertBar = [[UIImageView alloc] initWithImage:barImage];
@@ -73,6 +73,11 @@
     [super viewDidLoad];
 }
 
+
+- (void) setMenuButtonIsHidden:(BOOL)menuButtonIsHidden {
+    _menuButtonIsHidden = menuButtonIsHidden;
+    self.menuButton.hidden = menuButtonIsHidden;
+}
 
 - (void)viewWillLayoutSubviews {
     self.menuButton.frame = CGRectMake(15, self.view.bounds.size.height - 45, self.menuButton.frame.size.width, self.menuButton.frame.size.height);
