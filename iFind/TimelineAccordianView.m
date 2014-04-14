@@ -69,7 +69,7 @@ static CGFloat const HEADER_HEIGHT = 40;
     self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0,0,self.drawer.frame.size.width,self.drawer.frame.size.height)];
     self.scrollView.delegate = self;
     self.scrollView.pagingEnabled = YES;
-    self.scrollView.showsHorizontalScrollIndicator = YES;
+    self.scrollView.showsHorizontalScrollIndicator = NO;
     float pageStart = 0;
     AccordianDrawerView *generalDrawer = [AccordianDrawerView createGeneralInfoDrawer:self.metadata frame:CGRectMake(0, pageStart, self.scrollView.frame.size.width, self.scrollView.frame.size.height)];
     [self.scrollView addSubview:generalDrawer];
@@ -103,7 +103,6 @@ static CGFloat const HEADER_HEIGHT = 40;
     self.pageControl.highlighted = YES;
     self.pageControl.numberOfPages = floor(pageStart/self.scrollView.frame.size.width);
     self.pageControl.currentPage = 0;
-    NSLog(@"logging TAV info: numPages:%i\nscrollView frame: (%f,%f,%f,%f)\n contentSize: (%f,%f)",self.pageControl.numberOfPages,self.scrollView.frame.origin.x,self.scrollView.frame.origin.y, self.scrollView.frame.size.width, self.scrollView.frame.size.height,self.scrollView.contentSize.width,self.scrollView.contentSize.height);
     [self.drawer addSubview:self.pageControl];
 }
 
@@ -133,7 +132,6 @@ static CGFloat const HEADER_HEIGHT = 40;
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    NSLog(@"scrollViewDidScroll, contentOffsetx:%f",self.scrollView.contentOffset.x);
     float pageWidth = self.scrollView.frame.size.width;
     int page = floor((self.scrollView.contentOffset.x - pageWidth/2) / pageWidth) + 1;
     NSLog(@" page is now %i",page);

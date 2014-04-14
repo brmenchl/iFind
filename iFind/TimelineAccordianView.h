@@ -19,4 +19,7 @@
 @property (nonatomic) BOOL opened;
 
 @property (nonatomic) CGFloat drawerHeight;
+
+- (void) handleTap:(id)sender;
+
 @end

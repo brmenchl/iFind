@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import "ALRadialMenu.h"
 #import "UIImage+ImageEffects.h"
+#import "NewMetadataViewController.h"
 
 #define PI 3.14159265
 
@@ -89,17 +90,26 @@
     
     [self.dropButton setTitleColor:[UIColor colorWithRed:0.61 green:0.2 blue:0.12 alpha:1] forState:UIControlStateNormal];
     [self.pickUpButton setTitleColor:[UIColor colorWithRed:0.61 green:0.2 blue:0.12 alpha:1] forState:UIControlStateNormal];
-    [self.pickUpButton setTitleColor:[UIColor grayColor] forState:UIControlStateDisabled];
     [self.pickUpButton setEnabled:NO];
     
-    
-    
-    
-    
+    [self.withinRangeLabel setTextColor:[UIColor colorWithRed:0.61 green:0.2 blue:0.12 alpha:1]];
+    self.withinRangeView.backgroundColor = [UIColor clearColor];
+    self.withinRangeView.alpha = 0;
+    [self.withinRangeView setHidden:YES];
+}
+
+- (void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.withinRangeView setHidden:YES];
+}
+
+- (void) dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didUpdateHeading" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didUpdateLocationNotification" object:nil];
 }
 
 - (IBAction)didTapDropButton:(id)sender{
-    
+
     //Getting image of current screen
     //This set of operations takes a little bit, we should figure out a faster way
     UIWindow *window = [[UIApplication sharedApplication] keyWindow];
@@ -117,6 +127,44 @@
     //Present AddContentViewController
     [self.view.window.rootViewController presentViewController:self.addContentViewController animated:YES completion:NULL];
     
+}
+
+- (IBAction)didTapPickUpButton:(id)sender {
+    @synchronized([PFUser currentUser]) {
+        if(![CLLocationManager locationServicesEnabled]) {
+            //if location services are disabled
+            [self.turnOnLocationServicesAlert show];
+            return;
+        }
+        
+        [[PFUser currentUser]addObject:self.closestGem[ParseGemMetadataReferenceKey] forKey:ParseUserTimelineKey];
+        [[PFUser currentUser] addObject:self.closestGem forKey:ParseUserInventoryKey];
+        
+        PFObject *metadata = self.closestGem[ParseMetaGemReferenceKey];
+        metadata[ParseMetaPickUpDateKey] = [NSDate date];
+        
+        self.closestGem[ParseGemCurrentLocationKey] = [NSNull null];
+        self.closestGem[ParseGemMetadataReferenceKey] = [NSNull null];
+        self.closestGem[ParseGemLastOwnerKey] = [PFUser currentUser];
+        
+        //Attempt to save picked up gem object and current user
+        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        dispatch_async(appDelegate.currentUserQueue, ^{
+            NSError *pickUpGemError = nil;
+            [PFObject saveAll:@[self.closestGem, [PFUser currentUser], metadata] error:&pickUpGemError];
+            if(!pickUpGemError) {
+                //query for nearby gems
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self queryClosestGem];
+                    NewMetadataViewController *vc = [[NewMetadataViewController alloc] initWithMetadata:metadata];
+                    [self presentViewController:vc animated:YES completion:NULL];
+                });
+            }
+            else {
+                NSLog(@"%@", [[[pickUpGemError userInfo] objectForKey:@"NSUnderlyingErrorKey"]localizedDescription]);
+            }
+        });
+    }
 }
 
 /*
@@ -157,8 +205,10 @@
                 else if([object isKindOfClass:[UIImage class]]) {
                     gemMetadata[ParseMetaImageContentKey] = [PFFile fileWithName:@"image.jpg" data:UIImageJPEGRepresentation((UIImage *)object, 0.05f)];
                 }
+                else if ([object isKindOfClass:[NSNumber class]]) {
+                    gemMetadata[ParseMetaSoundcloudContentKey] = object;
+                }
             }
-            
             
             gemToDrop[ParseGemCurrentLocationKey] = [PFGeoPoint geoPointWithLocation:appDelegate.currentLocation];
             [gemToDrop[ParseGemLocationsKey] addObject: [PFGeoPoint geoPointWithLocation:appDelegate.currentLocation]];
@@ -184,6 +234,8 @@
                     //Query for new nearby gems
                     dispatch_async(dispatch_get_main_queue(), ^{
                         [self queryClosestGem];
+                        UIAlertView *didDropAlertView = [[UIAlertView alloc] initWithTitle:nil message:@"Geode has been dropped\nfor a stranger to enjoy" delegate:self cancelButtonTitle:@"Cool" otherButtonTitles:nil, nil];
+                        [didDropAlertView show];
                     });
                 }
                 else {
@@ -198,7 +250,6 @@
 }
 
 - (void)queryClosestGem{
-    
     if (self.currentLocation == nil) {
 		NSLog(@"current location got a nil location!");
         return;
@@ -266,6 +317,21 @@
     PFGeoPoint *currentLoc = [PFGeoPoint geoPointWithLocation:self.currentLocation];
     
     double distance = [currentLoc distanceInMilesTo:geopoint];
+    
+    if(distance < 0.1) {
+        distance = distance * 5280;
+        self.milesLabel.text = @"feet";
+    }
+    else {
+        self.milesLabel.text = @"miles";
+    }
+    if(distance < 0.005) {
+        [self pickUpDistanceFadeIn:YES];
+    }
+    else {
+        [self pickUpDistanceFadeIn:NO];
+    }
+    
     NSLog(@"distance: %f",distance);
     double temp = distance * 100;
     temp = (double)((int)(temp+0.5));
@@ -382,22 +448,46 @@
 
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void) pickUpDistanceFadeIn:(BOOL)fadeIn {
+    if(!fadeIn) {
+        self.pickUpButton.enabled = NO;
+    }
+    [UIView animateWithDuration:0.8
+                     animations:^{
+                         if(fadeIn) {
+                             self.distanceView.alpha = 0;
+                         }
+                         else {
+                             self.withinRangeView.alpha = 0;
+                         }
+                     }
+                     completion:^(BOOL finished) {
+                         if(fadeIn) {
+                             self.withinRangeView.hidden = NO;
+                         }
+                         else {
+                             self.distanceView.hidden = NO;
+                         }
+                         [UIView animateWithDuration:0.8
+                                          animations:^{
+                                              if(fadeIn) {
+                                                  self.distanceView.hidden = YES;
+                                                  self.withinRangeView.alpha = 1;
+                                              }
+                                              else {
+                                                  self.withinRangeView.hidden = YES;
+                                                  self.distanceView.alpha = 1;
+                                              }
+                                          }
+                                          completion:^(BOOL finished) {
+                                              if(fadeIn) {
+                                                  self.pickUpButton.enabled = YES;
+                                              }
+                                          }
+                          ];
+                     }
+     ];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 
 @end

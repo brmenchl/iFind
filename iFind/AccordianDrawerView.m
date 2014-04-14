@@ -80,7 +80,6 @@
         self.title.text = @"Soundcloud Track";
         SoundcloudPaneView *contentContainer = [[SoundcloudPaneView alloc] initWithSoundcloudID:(NSNumber*)self.content frame:CGRectMake(0, 70, self.frame.size.width, 240)];
         [self addSubview:contentContainer];
-        NSLog(@"pane frame: (%f,%f,%f,%f)",contentContainer.frame.origin.x, contentContainer.frame.origin.y, contentContainer.frame.size.width, contentContainer.frame.size.height);
     }
 }
 

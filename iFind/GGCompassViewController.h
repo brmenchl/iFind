@@ -22,7 +22,10 @@
 @property (weak, nonatomic) IBOutlet UIView *distanceView;
 @property (weak, nonatomic) IBOutlet UILabel *distanceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *milesLabel;
+@property (weak, nonatomic) IBOutlet UIView *withinRangeView;
+@property (weak, nonatomic) IBOutlet UILabel *withinRangeLabel;
 
 - (IBAction)didTapDropButton:(id)sender;
+- (IBAction)didTapPickUpButton:(id)sender;
 
 @end

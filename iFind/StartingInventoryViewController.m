@@ -33,7 +33,7 @@
     
     if (self){
         self.distanceFromGem = responseDistance;
-        self.pioneerRank = responseRank;
+        self.pioneerRank = (int)responseRank;
     }
     
     return self;
@@ -60,7 +60,7 @@
     
     NSMutableAttributedString* tempStr = [[NSMutableAttributedString alloc] initWithString:distanceStuff];
     
-    int x = [tempStr length];
+    int x = (int)[tempStr length];
     
     [tempStr addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"Futura" size:17] range:NSMakeRange(x-6, 6)];
     [tempStr addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"Futura" size:60] range:NSMakeRange(0, x-6)];

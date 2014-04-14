@@ -29,4 +29,5 @@
 @property (nonatomic, retain) UIColor *backgroundColor;
 @property (nonatomic, retain) UIColor *menuButtonColor;
 
+@property (nonatomic) BOOL menuButtonIsHidden;
 @end
