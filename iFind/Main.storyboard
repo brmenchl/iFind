@@ -576,7 +576,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="AUF-ZB-hfo" kind="modal" modalTransitionStyle="flipHorizontal" id="YG2-2Y-9Hf"/>
+                                    <action selector="didPressLoginWithKey:" destination="OKl-wy-Mmw" eventType="touchUpInside" id="Z0J-l4-Iit"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="21c-4J-Ysb">
@@ -736,7 +736,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="OKl-wy-Mmw" kind="modal" modalTransitionStyle="flipHorizontal" id="s33-rC-srN"/>
+                                    <action selector="createKeyPress:" destination="AUF-ZB-hfo" eventType="touchUpInside" id="eJ3-BP-vca"/>
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Welcome Back" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Jv-ny-Ks2">

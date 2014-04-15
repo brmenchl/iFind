@@ -103,6 +103,10 @@
 }
 
 - (void) viewWillAppear:(BOOL)animated {
+    
+    self.inventoryLabel.text = [NSString stringWithFormat:@"%i",[[[PFUser currentUser] objectForKey:ParseUserInventoryKey] count]];
+    
+    
     [super viewWillAppear:animated];
     [self.withinRangeView setHidden:YES];
 }
@@ -145,31 +149,18 @@
         [[PFUser currentUser] addObject:self.closestGem forKey:ParseUserInventoryKey];
         
         PFObject *metadata = self.closestGem[ParseMetaGemReferenceKey];
+        [metadata fetchIfNeeded];
         metadata[ParseMetaPickUpDateKey] = [NSDate date];
         
         self.closestGem[ParseGemCurrentLocationKey] = [NSNull null];
         self.closestGem[ParseGemMetadataReferenceKey] = [NSNull null];
         self.closestGem[ParseGemLastOwnerKey] = [PFUser currentUser];
         
-        //Attempt to save picked up gem object and current user
-        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        dispatch_async(appDelegate.currentUserQueue, ^{
-            NSError *pickUpGemError = nil;
-            [PFObject saveAll:@[self.closestGem, [PFUser currentUser], metadata] error:&pickUpGemError];
-            if(!pickUpGemError) {
-                //query for nearby gems
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    self.inventoryLabel.text = [NSString stringWithFormat:@"%i",[[[PFUser currentUser] objectForKey:ParseUserInventoryKey] count]];
-                    [self queryClosestGem];
-                    NewMetadataViewController *vc = [[NewMetadataViewController alloc] initWithMetadata:metadata];
-                    [self presentViewController:vc animated:YES completion:NULL];
-                });
-            }
-            else {
-                NSLog(@"%@", [[[pickUpGemError userInfo] objectForKey:@"NSUnderlyingErrorKey"]localizedDescription]);
-            }
-        });
-    }
+        PFObject *metadataHardcoded = [PFObject objectWithClassName:ParseGemMetadataClassName];
+        metadataHardcoded[ParseMetaTextContentKey] = @"Go Blue! Hello EECS 441";
+        metadataHardcoded[ParseMetaSoundcloudContentKey] = @8534699;
+        [[PFUser currentUser][ParseUserTimelineKey] addObject:metadataHardcoded];
+     }
 }
 
 /*
@@ -325,6 +316,14 @@
     
     double distance = [currentLoc distanceInMilesTo:geopoint];
     
+    if(distance < 0.01) {
+        [self pickUpDistanceFadeIn:YES];
+    }
+    else {
+        [self pickUpDistanceFadeIn:NO];
+    }
+    
+    
     if(distance < 0.1) {
         distance = distance * 5280;
         self.milesLabel.text = @"feet";
@@ -332,12 +331,7 @@
     else {
         self.milesLabel.text = @"miles";
     }
-    if(distance < 0.005) {
-        [self pickUpDistanceFadeIn:YES];
-    }
-    else {
-        [self pickUpDistanceFadeIn:NO];
-    }
+    
     
     NSLog(@"distance: %f",distance);
     double temp = distance * 100;

@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 - (IBAction)didPressLogin:(id)sender;
 - (IBAction)fbLoginPress:(id)sender;
+- (IBAction)createKeyPress:(id)sender;
 
 
 //Account handler delegate to handle login success

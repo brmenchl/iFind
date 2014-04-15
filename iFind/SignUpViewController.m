@@ -123,6 +123,12 @@
     return [emailTest evaluateWithObject:checkString];
 }
 
+- (IBAction)didPressLoginWithKey:(id)sender {
+    AppDelegate*temp = (AppDelegate *)[[UIApplication sharedApplication]delegate];
+    
+    temp.window.rootViewController = temp.loginVC;
+}
+
 - (IBAction)createLockerPress:(id)sender {
     
     UIAlertView *alertView = nil;
