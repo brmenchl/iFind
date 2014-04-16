@@ -21,4 +21,8 @@
     self.usernameLabel.text = [PFUser currentUser].username;
 }
 
+-(void) viewWillAppear:(BOOL)animated{
+    self.usernameLabel.text = [PFUser currentUser].username;
+}
+
 @end

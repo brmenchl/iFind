@@ -28,34 +28,6 @@
     if (self) {
         // Custom initialization
         // Custom initialization
-        CLLocation * temp_ref = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).currentLocation;
-        
-        
-        
-        NSDictionary *pioneerParams = @{@"latitude":[NSNumber numberWithDouble:temp_ref.coordinate.latitude],@"longitude":[NSNumber numberWithDouble:temp_ref.coordinate.longitude]};
-        
-        NSError* error = nil;
-        NSString* response = [PFCloud callFunction:@"pioneerStatusClosestGem" withParameters:pioneerParams error:&error];
-        
-        NSData* jsonObj = [response dataUsingEncoding:NSUTF8StringEncoding];
-                
-        if (!error){
-            
-            NSDictionary* cloudResponse = nil;
-            
-            NSError* localError = nil;
-            cloudResponse = [NSJSONSerialization JSONObjectWithData:jsonObj options:0 error:&localError];
-            NSLog(@"%@",cloudResponse);
-            NSLog(@"%@",(NSNumber*)cloudResponse[@"distance"]);
-            NSLog(@"%@",(NSNumber*)cloudResponse[@"pioneerRank"]);
-            
-            self.responseParentNode = [NSString stringWithFormat:@"%@",cloudResponse[@"parentNode"]];
-            self.responseDistance = [NSString stringWithFormat:@"%@",cloudResponse[@"distance"]];
-            
-            NSString * fuark = [NSString stringWithFormat:@"%@",cloudResponse[@"pioneerRank"]];
-            
-            self.responseRank = [fuark intValue];
-        }
         
         
         
@@ -88,8 +60,52 @@
     
     [self.pageController didMoveToParentViewController:self];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(initPioneerParams:)
+                                                 name:@"didUpdateLocationNotification"
+                                               object:nil];
     
     
+    
+}
+
+- (void) dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didUpdateLocationNotification" object:nil];
+}
+
+
+-(void)initPioneerParams:(NSNotification *) notification {
+    
+    
+    CLLocation * temp_ref = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).currentLocation;
+    
+    
+    
+    NSDictionary *pioneerParams = @{@"latitude":[NSNumber numberWithDouble:temp_ref.coordinate.latitude],@"longitude":[NSNumber numberWithDouble:temp_ref.coordinate.longitude]};
+    
+    NSError* error = nil;
+    NSString* response = [PFCloud callFunction:@"pioneerStatusClosestGem" withParameters:pioneerParams error:&error];
+    
+    NSData* jsonObj = [response dataUsingEncoding:NSUTF8StringEncoding];
+    
+    if (!error){
+        
+        NSDictionary* cloudResponse = nil;
+        
+        NSError* localError = nil;
+        cloudResponse = [NSJSONSerialization JSONObjectWithData:jsonObj options:0 error:&localError];
+        NSLog(@"%@",cloudResponse);
+        NSLog(@"%@",(NSNumber*)cloudResponse[@"distance"]);
+        NSLog(@"%@",(NSNumber*)cloudResponse[@"pioneerRank"]);
+        
+        self.responseParentNode = [NSString stringWithFormat:@"%@",cloudResponse[@"parentNode"]];
+        self.responseDistance = [NSString stringWithFormat:@"%@",cloudResponse[@"distance"]];
+        
+        NSString * fuark = [NSString stringWithFormat:@"%@",cloudResponse[@"pioneerRank"]];
+        
+        self.responseRank = [fuark intValue];
+    }
+
 }
 
 - (void)didReceiveMemoryWarning

@@ -74,6 +74,46 @@
     
     [self queryClosestGem];
     
+    
+    if (self.currentLocation && self.closestGem){
+        
+        NSLog(@"viewLoaded");
+        
+        
+        PFGeoPoint *geopoint = [self.closestGem objectForKey:ParseGemCurrentLocationKey];
+        
+        PFGeoPoint *currentLoc = [PFGeoPoint geoPointWithLocation:self.currentLocation];
+        
+        double distance = [currentLoc distanceInMilesTo:geopoint];
+        
+        if(distance < 0.02) {
+            [self pickUpDistanceFadeIn:YES];
+        }
+        else {
+            [self pickUpDistanceFadeIn:NO];
+        }
+        
+        
+        if(distance < 0.1) {
+            distance = distance * 5280;
+            self.milesLabel.text = @"feet";
+        }
+        else {
+            self.milesLabel.text = @"miles";
+        }
+        
+        
+        NSLog(@"distance: %f",distance);
+        double temp = distance * 100;
+        temp = (double)((int)(temp+0.5));
+        distance = temp/100;
+        
+        self.distanceLabel.text = [NSString stringWithFormat:@"%.2f",distance];
+        
+    }
+    
+    
+    
     self.inventoryLabel.text = [NSString stringWithFormat:@"%lu",(unsigned long)[[[PFUser currentUser] objectForKey:ParseUserInventoryKey] count]];
 
     
@@ -221,6 +261,7 @@
         self.closestGem[ParseGemCurrentLocationKey] = [PFGeoPoint geoPointWithLocation:nil];
         self.closestGem[ParseGemMetadataReferenceKey] = [NSNull null];
         self.closestGem[ParseGemLastOwnerKey] = [PFUser currentUser];
+        self.closestGem[ParseGemIsHeldKey] = [NSNumber numberWithBool:YES];
         
         NSLog(@"third %@",self.closestGem);
         //Attempt to save picked up gem object and current user
@@ -327,6 +368,7 @@
             
             gemToDrop[ParseGemCurrentLocationKey] = [PFGeoPoint geoPointWithLocation:appDelegate.currentLocation];
             [gemToDrop[ParseGemLocationsKey] addObject: [PFGeoPoint geoPointWithLocation:appDelegate.currentLocation]];
+            gemToDrop[ParseGemIsHeldKey] = [NSNumber numberWithBool:NO];
             NSLog(@"this is the stuff: %@",gemToDrop[ParseGemLocationsKey]);
             gemToDrop[ParseGemMetadataReferenceKey] = gemMetadata;
             gemMetadata[ParseMetaGemReferenceKey] = gemToDrop;
@@ -382,6 +424,7 @@
 	PFGeoPoint *point = [PFGeoPoint geoPointWithLatitude:self.currentLocation.coordinate.latitude longitude:self.currentLocation.coordinate.longitude];
 	[query whereKey:ParseGemCurrentLocationKey nearGeoPoint:point];
     [query whereKey:ParseGemLastOwnerKey notEqualTo:[PFUser currentUser]];
+    [query whereKey:ParseGemIsHeldKey equalTo:[NSNumber numberWithBool:NO]];
     
     
     [query getFirstObjectInBackgroundWithBlock:^(PFObject *result, NSError *error) {
