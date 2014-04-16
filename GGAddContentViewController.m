@@ -197,7 +197,6 @@ static CGFloat const BUTTON_SIZE = 30 + ROW_MARGINS;
     
     //Notify delegate that gem is ready to be dropped, dismiss the view, and clear all data in the view
     [self.delegate dropGemWithContent:dataForGem];
-    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
     [self clearAllData];
 }
 

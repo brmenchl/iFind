@@ -20,6 +20,7 @@
 - (IBAction)didPressLogin:(id)sender;
 - (IBAction)fbLoginPress:(id)sender;
 - (IBAction)createKeyPress:(id)sender;
+- (IBAction)didTapView:(id)sender;
 
 
 //Account handler delegate to handle login success

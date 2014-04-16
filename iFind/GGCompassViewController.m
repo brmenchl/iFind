@@ -226,6 +226,10 @@
     
 }
 
+- (void) alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    [self dismissViewControllerAnimated:YES completion:NULL];
+}
+
 - (IBAction)didTapPickUpButton:(id)sender {
     @synchronized([PFUser currentUser]) {
         if(![CLLocationManager locationServicesEnabled]) {
@@ -276,6 +280,7 @@
                     [self queryClosestGem];
                     NSLog(@"wtf2");
                     NewMetadataViewController *vc = [[NewMetadataViewController alloc] initWithMetadata:metadata];
+                    self.HARDCODEACTIVATED = NO;
                     [self presentViewController:vc animated:YES completion:NULL];
                 });
             }
@@ -333,6 +338,7 @@
                     self.hardcodedInventoryCount = myNum;
                     self.inventoryLabel.text = [NSString stringWithFormat:@"%i",myNum];
                     UIAlertView *didDropAlertView = [[UIAlertView alloc] initWithTitle:nil message:@"Geode has been dropped\nfor a stranger to enjoy" delegate:self cancelButtonTitle:@"Cool" otherButtonTitles:nil, nil];
+                    didDropAlertView.delegate = self;
 //                    self.closestGem = self.hardcodedGem;
                     self.distanceLabel.text = 0;
                     NSLog(@"THIS IS HARDCODED YISSSSSS");
@@ -390,6 +396,7 @@
                     dispatch_async(dispatch_get_main_queue(), ^{
                         self.inventoryLabel.text = [NSString stringWithFormat:@"%lu",(unsigned long)[[[PFUser currentUser] objectForKey:ParseUserInventoryKey] count]];
                         UIAlertView *didDropAlertView = [[UIAlertView alloc] initWithTitle:nil message:@"Geode has been dropped\nfor a stranger to enjoy" delegate:self cancelButtonTitle:@"Cool" otherButtonTitles:nil, nil];
+                        didDropAlertView.delegate = self;
                         [didDropAlertView show];
                         [self queryClosestGem];
                     });

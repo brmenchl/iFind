@@ -9,6 +9,8 @@
 #import "AccordianDrawerView.h"
 #import "SoundcloudPaneView.h"
 #import <QuartzCore/QuartzCore.h>
+#import <MapKit/MapKit.h>
+#import "TimelineAnnotation.h"
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
 
@@ -46,6 +48,18 @@
         }
         [generalDrawer addSubview:dropLocationLabel];
     }];
+    MKMapView *mapView = [[MKMapView alloc] initWithFrame:CGRectMake(10, 130, generalDrawer.frame.size.width - 20, 220)];
+    mapView.region = MKCoordinateRegionMake(CLLocationCoordinate2DMake(dropLoc.coordinate.latitude, dropLoc.coordinate.longitude),
+                                            MKCoordinateSpanMake(0.018f, 0.018f));
+    mapView.scrollEnabled = NO;
+    mapView.zoomEnabled = NO;
+    mapView.pitchEnabled = NO;
+    mapView.layer.cornerRadius = 7;
+    mapView.layer.masksToBounds = YES;
+    CLLocationCoordinate2D dropLoc2d = CLLocationCoordinate2DMake(dropLoc.coordinate.latitude, dropLoc.coordinate.longitude);
+    TimelineAnnotation *pin = [[TimelineAnnotation alloc] initWithCoordinate:dropLoc2d];
+    [mapView addAnnotation:pin];
+    [generalDrawer addSubview:mapView];
     return generalDrawer;
 }
 
@@ -72,6 +86,7 @@
         self.title.text = @"Photo";
         PFImageView *contentContainer = [[PFImageView alloc] initWithFrame:CGRectMake(0, 50, self.frame.size.width, self.frame.size.height-50)];
         contentContainer.file = (PFFile *)self.content;
+        contentContainer.contentMode = UIViewContentModeScaleAspectFit;
         [contentContainer loadInBackground];
         [self addSubview:contentContainer];
     }

@@ -44,6 +44,7 @@
 		CEB7B36C18D68D3A00AC72C5 /* tower.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CEB7B36B18D68D3A00AC72C5 /* tower.jpg */; };
 		CEB7B36E18D6A8F000AC72C5 /* waterfall.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CEB7B36D18D6A8F000AC72C5 /* waterfall.jpg */; };
 		CEDAA0B218E91336009A67F9 /* SoundcloudContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDAA0B118E91336009A67F9 /* SoundcloudContentView.m */; };
+		E209E29418FEFA0C00420CC1 /* TimelineAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = E209E29318FEFA0C00420CC1 /* TimelineAnnotation.m */; };
 		E20CE6C718F5040C00327101 /* TimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E20CE6C618F5040C00327101 /* TimelineViewController.m */; };
 		E21F9A6218E8DDE70029BA85 /* ALRadialButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E21F9A5F18E8DDE70029BA85 /* ALRadialButton.m */; };
 		E21F9A6318E8DDE70029BA85 /* ALRadialMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = E21F9A6118E8DDE70029BA85 /* ALRadialMenu.m */; };
@@ -148,6 +149,8 @@
 		CEB7B36D18D6A8F000AC72C5 /* waterfall.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = waterfall.jpg; sourceTree = "<group>"; };
 		CEDAA0B018E91336009A67F9 /* SoundcloudContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundcloudContentView.h; sourceTree = "<group>"; };
 		CEDAA0B118E91336009A67F9 /* SoundcloudContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundcloudContentView.m; sourceTree = "<group>"; };
+		E209E29218FEFA0C00420CC1 /* TimelineAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineAnnotation.h; sourceTree = "<group>"; };
+		E209E29318FEFA0C00420CC1 /* TimelineAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineAnnotation.m; sourceTree = "<group>"; };
 		E20CE6C418F4FEA100327101 /* ContentViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContentViewDelegate.h; sourceTree = "<group>"; };
 		E20CE6C518F5040C00327101 /* TimelineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineViewController.h; sourceTree = "<group>"; };
 		E20CE6C618F5040C00327101 /* TimelineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineViewController.m; sourceTree = "<group>"; };
@@ -500,6 +503,8 @@
 		E2CC0B0F18BEB7E8008B6094 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				E209E29218FEFA0C00420CC1 /* TimelineAnnotation.h */,
+				E209E29318FEFA0C00420CC1 /* TimelineAnnotation.m */,
 				CE2BEECE18FC24DD004ECACE /* AccountHandlerDelegate.h */,
 				CE23731818F4D0FA00917970 /* LocationManager.h */,
 				CE23731918F4D0FA00917970 /* LocationManager.m */,
@@ -670,6 +675,7 @@
 				E2675C6418CFB26A00F56BD3 /* CreateAccountViewController.m in Sources */,
 				CE23731718F3967A00917970 /* LoginViewController.m in Sources */,
 				E2BA8BCA18E0CB14002027EE /* ImageContentView.m in Sources */,
+				E209E29418FEFA0C00420CC1 /* TimelineAnnotation.m in Sources */,
 				E2CC0B0318BE96F7008B6094 /* PlusButton.m in Sources */,
 				E234E85218DFE57500E2B16D /* UIImage+ImageEffects.m in Sources */,
 				E23A2DD418FC298B00352FE7 /* SoundcloudSearchResultView.m in Sources */,
