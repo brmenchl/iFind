@@ -13,7 +13,7 @@
 
 
 
-@interface GGCompassViewController : UIViewController<GGAddContentViewControllerDelegate, UIAlertViewDelegate>
+@interface GGCompassViewController : UIViewController<GGAddContentViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *pageTitle;
 @property (weak, nonatomic) IBOutlet UIImageView *compassImage;
 @property (weak, nonatomic) IBOutlet UILabel *distanceTitle;

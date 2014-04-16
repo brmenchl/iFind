@@ -28,13 +28,14 @@
 
 //Alertview to notify user that location services are off and we cannot track their location
 @property (nonatomic, strong) UIAlertView *turnOnLocationServicesAlert;
+@property (nonatomic) UIAlertView *didDropAlertView;
+
 
 //BEGIN HARDCODED BULLSHIT
 @property (nonatomic) BOOL HARDCODEACTIVATED;
 @property (nonatomic) PFObject *hardcodedMetadata;
 @property (nonatomic) PFObject *hardcodedGem;
 @property (nonatomic) int hardcodedInventoryCount;
-
 @end
 
 @implementation GGCompassViewController
@@ -62,6 +63,7 @@
         self.turnOnLocationServicesAlert = [[UIAlertView alloc] initWithTitle:nil message:@"Please turn on your location services" delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok", nil];
     }
     
+    self.didDropAlertView = [[UIAlertView alloc] initWithTitle:nil message:@"Geode has been dropped\nfor a stranger to enjoy" delegate:self cancelButtonTitle:@"Cool" otherButtonTitles:nil, nil];
     
     //Initialize addContentViewController in background to speed up having it appear
     self.addContentViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"GGAddContentVC"];
@@ -186,10 +188,6 @@
     
 }
 
-- (void) alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
-    [self dismissViewControllerAnimated:YES completion:NULL];
-}
-
 - (IBAction)didTapPickUpButton:(id)sender {
     @synchronized([PFUser currentUser]) {
         if(![CLLocationManager locationServicesEnabled]) {
@@ -296,12 +294,11 @@
                     myNum--;
                     self.hardcodedInventoryCount = myNum;
                     self.inventoryLabel.text = [NSString stringWithFormat:@"%i",myNum];
-                    UIAlertView *didDropAlertView = [[UIAlertView alloc] initWithTitle:nil message:@"Geode has been dropped\nfor a stranger to enjoy" delegate:self cancelButtonTitle:@"Cool" otherButtonTitles:nil, nil];
-                    didDropAlertView.delegate = self;
 //                    self.closestGem = self.hardcodedGem;
                     self.distanceLabel.text = 0;
                     NSLog(@"THIS IS HARDCODED YISSSSSS");
-                    [didDropAlertView show];
+                    [self.didDropAlertView show];
+                    [self dismissViewControllerAnimated:YES completion:NULL];
                     return;
                 }
             }
@@ -353,9 +350,7 @@
                     //Query for new nearby gems
                     dispatch_async(dispatch_get_main_queue(), ^{
                         self.inventoryLabel.text = [NSString stringWithFormat:@"%lu",(unsigned long)[[[PFUser currentUser] objectForKey:ParseUserInventoryKey] count]];
-                        UIAlertView *didDropAlertView = [[UIAlertView alloc] initWithTitle:nil message:@"Geode has been dropped\nfor a stranger to enjoy" delegate:self cancelButtonTitle:@"Cool" otherButtonTitles:nil, nil];
-                        didDropAlertView.delegate = self;
-                        [didDropAlertView show];
+                        [self.didDropAlertView show];
                         [self queryClosestGem];
                     });
                 }

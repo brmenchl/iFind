@@ -583,7 +583,7 @@
 				ORGANIZATIONNAME = FuarkNet;
 				TargetAttributes = {
 					CEA6D35318BD4E2700F36A35 = {
-						DevelopmentTeam = 9CMR7RN56H;
+						DevelopmentTeam = K99KPPSM33;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
