@@ -103,6 +103,10 @@
 }
 
 - (void) viewWillAppear:(BOOL)animated {
+    
+    self.inventoryLabel.text = [NSString stringWithFormat:@"%i",[[[PFUser currentUser] objectForKey:ParseUserInventoryKey] count]];
+    
+    
     [super viewWillAppear:animated];
     [self.withinRangeView setHidden:YES];
 }
@@ -145,6 +149,7 @@
         [[PFUser currentUser] addObject:self.closestGem forKey:ParseUserInventoryKey];
         
         PFObject *metadata = self.closestGem[ParseMetaGemReferenceKey];
+        [metadata fetchIfNeeded];
         metadata[ParseMetaPickUpDateKey] = [NSDate date];
         
         self.closestGem[ParseGemCurrentLocationKey] = [NSNull null];
@@ -325,6 +330,14 @@
     
     double distance = [currentLoc distanceInMilesTo:geopoint];
     
+    if(distance < 0.01) {
+        [self pickUpDistanceFadeIn:YES];
+    }
+    else {
+        [self pickUpDistanceFadeIn:NO];
+    }
+    
+    
     if(distance < 0.1) {
         distance = distance * 5280;
         self.milesLabel.text = @"feet";
@@ -332,12 +345,7 @@
     else {
         self.milesLabel.text = @"miles";
     }
-    if(distance < 0.005) {
-        [self pickUpDistanceFadeIn:YES];
-    }
-    else {
-        [self pickUpDistanceFadeIn:NO];
-    }
+    
     
     NSLog(@"distance: %f",distance);
     double temp = distance * 100;

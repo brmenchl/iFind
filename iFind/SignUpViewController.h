@@ -28,7 +28,7 @@
 //Account handler delegate property to handle successful log in
 @property (nonatomic, assign) id <AccountHandlerDelegate> delegate;
 
-
+- (IBAction)didPressLoginWithKey:(id)sender;
 - (IBAction)createLockerPress:(id)sender;
 - (IBAction)didPressSkip:(id)sender;
 - (IBAction)didPressFb:(id)sender;

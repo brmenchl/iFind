@@ -152,4 +152,11 @@
     //Immediately start loading spinner
     [self.activityIndicator startAnimating];
 }
+
+- (IBAction)createKeyPress:(id)sender {
+    
+    AppDelegate*temp = (AppDelegate *)[[UIApplication sharedApplication]delegate];
+
+    temp.window.rootViewController = [temp.sb instantiateViewControllerWithIdentifier:@"SignUp"];
+}
 @end
