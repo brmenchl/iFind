@@ -107,6 +107,7 @@ static CGFloat const HEADER_HEIGHT = 40;
 }
 
 - (void) layoutSubviews {
+    [super layoutSubviews];
     self.header.frame = CGRectMake(0, 0, self.frame.size.width, HEADER_HEIGHT);
     self.headerLabel.frame = CGRectMake(10, self.header.frame.origin.y, self.header.frame.size.width - 50, self.header.frame.size.height);
 }

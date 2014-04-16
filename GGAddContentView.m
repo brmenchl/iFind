@@ -36,6 +36,7 @@
 }
 
 -(void)layoutSubviews {
+    [super layoutSubviews];
     self.scrollView.frame = self.frame;
     [self refreshView];
 }

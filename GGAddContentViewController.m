@@ -188,7 +188,7 @@ static CGFloat const BUTTON_SIZE = 30 + ROW_MARGINS;
 
 - (IBAction)dropGemPress:(id)sender {
     NSMutableArray *dataForGem = [[NSMutableArray alloc] init];
-    
+    [self.view endEditing:YES];
     //Loop through every contentView and get it's content
     for(ContentView *content in self.currentContentViews) {
         [dataForGem addObject:[content contentData]];

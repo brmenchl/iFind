@@ -29,7 +29,7 @@ static NSString * const ParseGemCurrentLocationKey = @"currentLocation"; //PFGeo
 static NSString * const ParseGemMetadataReferenceKey = @"metadata"; //Pointer to metadata
 static NSString * const ParseGemLastOwnerKey = @"lastOwner"; //Pointer to last user carrying gem, or current user if gem is not on field
 //Gem Metadata Class
-static NSString * const ParseGemMetadataClassName = @"GemMetadata";
+static NSString * const ParseMetadataClassName = @"GemMetadata";
 static NSString * const ParseMetaTextContentKey = @"textContent"; //Text message content
 static NSString * const ParseMetaImageContentKey = @"imageContent"; //Photo content
 static NSString * const ParseMetaGemReferenceKey = @"gem"; //Pointer to gem

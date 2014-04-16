@@ -158,7 +158,7 @@
     }
     else if (i == 2){
         StartingInventoryViewController * StartingInventoryController = [sbptr instantiateViewControllerWithIdentifier:@"StartingInventory"];
-        StartingInventoryController.pioneerRank = self.responseRank;
+        StartingInventoryController.pioneerRank = (int)self.responseRank;
         StartingInventoryController.distanceFromGem = self.responseDistance;
         return StartingInventoryController;
         

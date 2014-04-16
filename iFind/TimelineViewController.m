@@ -46,7 +46,7 @@ static CGFloat const ROW_HEIGHT = 40;
         }
         [self.timelineArray removeAllObjects];
         for (PFObject *object in objects) {
-            [self.timelineArray addObject:object];
+            [self.timelineArray insertObject:object atIndex:0];
         }
         NSLog(@"array: %@",self.timelineArray);
         [self.timelineTableView reloadData];

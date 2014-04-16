@@ -80,6 +80,7 @@
 }
 
 - (void)viewWillLayoutSubviews {
+    [super viewWillLayoutSubviews];
     self.menuButton.frame = CGRectMake(15, self.view.bounds.size.height - 45, self.menuButton.frame.size.width, self.menuButton.frame.size.height);
     self.vertBar.frame = CGRectMake(62, self.view.bounds.size.height - 45, 4,30);
     self.vertBar.alpha = 0.6;
@@ -209,7 +210,7 @@
         
         // show which view controller is currently selected
         if (i == self.selectedIndex) {
-            [controllerButton setEnabled:NO];
+//            [controllerButton setEnabled:NO];
             controllerButton.layer.cornerRadius = 5;
             controllerButton.layer.masksToBounds = YES;
             controllerButton.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.6];

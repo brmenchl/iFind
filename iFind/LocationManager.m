@@ -32,7 +32,7 @@
         self.locationManager = [[CLLocationManager alloc] init];
 
         self.locationManager.delegate = self;
-        self.locationManager.distanceFilter = kCLLocationAccuracyNearestTenMeters;
+        self.locationManager.distanceFilter = kCLDistanceFilterNone;
         
         [self.locationManager startUpdatingLocation];
         [self.locationManager startUpdatingHeading];

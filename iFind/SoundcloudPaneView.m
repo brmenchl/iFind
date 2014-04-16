@@ -91,6 +91,7 @@
 }
 
 - (void)layoutSubviews {
+    [super layoutSubviews];
     //self.artwork.frame = CGRectMake(10, 0, 60, 60);
     //self.trackTitleLabel.frame = CGRectMake(80, 0, 100, 30);
     //self.trackArtistLabel.frame = CGRectMake(80, 30, 100, 30);

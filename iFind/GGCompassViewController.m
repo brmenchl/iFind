@@ -29,6 +29,11 @@
 //Alertview to notify user that location services are off and we cannot track their location
 @property (nonatomic, strong) UIAlertView *turnOnLocationServicesAlert;
 
+//BEGIN HARDCODED BULLSHIT
+@property (nonatomic) BOOL HARDCODEACTIVATED;
+@property (nonatomic) PFObject *hardcodedMetadata;
+@property (nonatomic) PFObject *hardcodedGem;
+@property (nonatomic) int hardcodedInventoryCount;
 
 @end
 
@@ -49,6 +54,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.HARDCODEACTIVATED = FALSE;
     // Do any additional setup after loading the view.
     
     //Create alertview
@@ -66,7 +72,7 @@
     
     [self queryClosestGem];
     
-    self.inventoryLabel.text = [NSString stringWithFormat:@"%i",[[[PFUser currentUser] objectForKey:ParseUserInventoryKey] count]];
+    self.inventoryLabel.text = [NSString stringWithFormat:@"%lu",(unsigned long)[[[PFUser currentUser] objectForKey:ParseUserInventoryKey] count]];
 
     
     [self.compassImage setImage:[UIImage imageNamed:@"big_compass.png"]];
@@ -103,9 +109,10 @@
 }
 
 - (void) viewWillAppear:(BOOL)animated {
-    
-    self.inventoryLabel.text = [NSString stringWithFormat:@"%i",[[[PFUser currentUser] objectForKey:ParseUserInventoryKey] count]];
-    
+    self.inventoryLabel.text = [NSString stringWithFormat:@"%lu",(unsigned long)[[[PFUser currentUser] objectForKey:ParseUserInventoryKey] count]];
+    if(self.HARDCODEACTIVATED) {
+        self.inventoryLabel.text = [NSString stringWithFormat:@"%i",self.hardcodedInventoryCount];
+    }
     
     [super viewWillAppear:animated];
     [self.withinRangeView setHidden:YES];
@@ -144,7 +151,17 @@
             [self.turnOnLocationServicesAlert show];
             return;
         }
-        
+        if(self.HARDCODEACTIVATED) {
+            [[PFUser currentUser]addObject:self.hardcodedMetadata forKey:ParseUserTimelineKey];
+            self.hardcodedInventoryCount++;
+            self.hardcodedMetadata[ParseMetaPickUpDateKey] = [NSDate date];
+            self.hardcodedGem[ParseGemCurrentLocationKey] = [NSNull null];
+            self.hardcodedGem[ParseGemMetadataReferenceKey] = [NSNull null];
+            self.hardcodedGem[ParseGemLastOwnerKey] = [PFUser currentUser];
+            NewMetadataViewController *vc = [[NewMetadataViewController alloc] initWithMetadata:self.hardcodedMetadata];
+            [self presentViewController:vc animated:YES completion:NULL];
+            return;
+        }
         [[PFUser currentUser]addObject:self.closestGem[ParseGemMetadataReferenceKey] forKey:ParseUserTimelineKey];
         [[PFUser currentUser] addObject:self.closestGem forKey:ParseUserInventoryKey];
         
@@ -188,6 +205,7 @@
  *  all three objects (gem, gemMetadata, current user) are saved to Parse
  */
 - (void)dropGemWithContent:(NSArray *)content {
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     NSLog(@"Drop gem with content");
     @synchronized([PFUser currentUser]) {
         //If location services off
@@ -195,13 +213,46 @@
             [self.turnOnLocationServicesAlert show];
             return;
         }
+        for(NSObject * object in content) {
+            if ([object isKindOfClass:[NSString class]]) {
+                if([(NSString*)object rangeOfString:@"441"].location != NSNotFound) {
+                    self.HARDCODEACTIVATED = TRUE;
+                    self.hardcodedMetadata = [PFObject objectWithClassName:ParseMetadataClassName];
+                    for ( NSObject * hardContent in content) {
+                        if([object isKindOfClass:[NSString class]]) {
+                            self.hardcodedMetadata[ParseMetaTextContentKey] = hardContent;
+                        }
+                        else if([object isKindOfClass:[UIImage class]]) {
+                            self.hardcodedMetadata[ParseMetaImageContentKey] = [PFFile fileWithName:@"image.jpg" data:UIImageJPEGRepresentation((UIImage *)hardContent, 0.05f)];
+                        }
+                        else if ([object isKindOfClass:[NSNumber class]]) {
+                            self.hardcodedMetadata[ParseMetaSoundcloudContentKey] = hardContent;
+                        }
+                    }
+                    self.hardcodedMetadata[ParseMetaDropLocationKey] = [PFGeoPoint geoPointWithLocation:appDelegate.currentLocation];
+                    self.hardcodedMetadata[ParseMetaPickUpDateKey] = [NSNull null];
+                    self.hardcodedGem = [PFObject objectWithClassName:ParseGemClassName];
+                    self.hardcodedGem[ParseGemMetadataReferenceKey] = self.hardcodedMetadata;
+                    self.hardcodedGem[ParseGemCurrentLocationKey] = [PFGeoPoint geoPointWithLocation:appDelegate.currentLocation];
+                    [self.hardcodedGem[ParseGemLocationsKey] addObject:[PFGeoPoint geoPointWithLocation:appDelegate.currentLocation]];
+                    self.hardcodedMetadata[ParseMetaGemReferenceKey] = self.hardcodedGem;
+                    int myNum= [self.inventoryLabel.text intValue];
+                    myNum--;
+                    self.hardcodedInventoryCount = myNum;
+                    self.inventoryLabel.text = [NSString stringWithFormat:@"%i",myNum];
+                    UIAlertView *didDropAlertView = [[UIAlertView alloc] initWithTitle:nil message:@"Geode has been dropped\nfor a stranger to enjoy" delegate:self cancelButtonTitle:@"Cool" otherButtonTitles:nil, nil];
+//                    self.closestGem = self.hardcodedGem;
+                    self.distanceLabel.text = 0;
+                    NSLog(@"THIS IS HARDCODED YISSSSSS");
+                    [didDropAlertView show];
+                    return;
+                }
+            }
+        }
         
         //Create new gemMetadata object, get reference to next gem to drop from current user inventory array
-        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        
         dispatch_async(appDelegate.currentUserQueue,^{
-            
-            PFObject *gemMetadata = [PFObject objectWithClassName:ParseGemMetadataClassName];
+            PFObject *gemMetadata = [PFObject objectWithClassName:ParseMetadataClassName];
             NSLog(@"%@",[[PFUser currentUser] objectForKey:ParseUserInventoryKey]);
             NSArray *inventory = [[PFUser currentUser] objectForKey:ParseUserInventoryKey];
             PFObject *gemToDrop = [inventory firstObject];
@@ -244,7 +295,7 @@
                     //Success
                     //Query for new nearby gems
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        self.inventoryLabel.text = [NSString stringWithFormat:@"%i",[[[PFUser currentUser] objectForKey:ParseUserInventoryKey] count]];
+                        self.inventoryLabel.text = [NSString stringWithFormat:@"%lu",(unsigned long)[[[PFUser currentUser] objectForKey:ParseUserInventoryKey] count]];
                         UIAlertView *didDropAlertView = [[UIAlertView alloc] initWithTitle:nil message:@"Geode has been dropped\nfor a stranger to enjoy" delegate:self cancelButtonTitle:@"Cool" otherButtonTitles:nil, nil];
                         [didDropAlertView show];
                         [self queryClosestGem];
@@ -329,6 +380,8 @@
     PFGeoPoint *currentLoc = [PFGeoPoint geoPointWithLocation:self.currentLocation];
     
     double distance = [currentLoc distanceInMilesTo:geopoint];
+    if(self.HARDCODEACTIVATED)
+    distance = 0;
     
     if(distance < 0.01) {
         [self pickUpDistanceFadeIn:YES];
@@ -352,6 +405,7 @@
     temp = (double)((int)(temp+0.5));
     distance = temp/100;
     
+    if(!self.HARDCODEACTIVATED)
     self.distanceLabel.text = [NSString stringWithFormat:@"%.2f",distance];
 
 }

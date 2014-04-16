@@ -29,10 +29,6 @@
     return self;
 }
 
--(void) layoutSubviews {
-    [super layoutSubviews];
-}
-
 //These implementations are included mostly to satisfy the compiler..
 
 - (id) contentData {
