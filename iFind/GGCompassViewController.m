@@ -297,6 +297,7 @@
                     self.hardcodedInventoryCount = myNum;
                     self.inventoryLabel.text = [NSString stringWithFormat:@"%i",myNum];
                     UIAlertView *didDropAlertView = [[UIAlertView alloc] initWithTitle:nil message:@"Geode has been dropped\nfor a stranger to enjoy" delegate:self cancelButtonTitle:@"Cool" otherButtonTitles:nil, nil];
+                    didDropAlertView.delegate = self;
 //                    self.closestGem = self.hardcodedGem;
                     self.distanceLabel.text = 0;
                     NSLog(@"THIS IS HARDCODED YISSSSSS");
@@ -353,6 +354,7 @@
                     dispatch_async(dispatch_get_main_queue(), ^{
                         self.inventoryLabel.text = [NSString stringWithFormat:@"%lu",(unsigned long)[[[PFUser currentUser] objectForKey:ParseUserInventoryKey] count]];
                         UIAlertView *didDropAlertView = [[UIAlertView alloc] initWithTitle:nil message:@"Geode has been dropped\nfor a stranger to enjoy" delegate:self cancelButtonTitle:@"Cool" otherButtonTitles:nil, nil];
+                        didDropAlertView.delegate = self;
                         [didDropAlertView show];
                         [self queryClosestGem];
                     });
