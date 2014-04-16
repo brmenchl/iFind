@@ -199,11 +199,25 @@
         self.closestGem[ParseGemMetadataReferenceKey] = [NSNull null];
         self.closestGem[ParseGemLastOwnerKey] = [PFUser currentUser];
         
-        PFObject *metadataHardcoded = [PFObject objectWithClassName:ParseGemMetadataClassName];
-        metadataHardcoded[ParseMetaTextContentKey] = @"Go Blue! Hello EECS 441";
-        metadataHardcoded[ParseMetaSoundcloudContentKey] = @8534699;
-        [[PFUser currentUser][ParseUserTimelineKey] addObject:metadataHardcoded];
-     }
+        //Attempt to save picked up gem object and current user
+        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        dispatch_async(appDelegate.currentUserQueue, ^{
+            NSError *pickUpGemError = nil;
+            [PFObject saveAll:@[self.closestGem, [PFUser currentUser], metadata] error:&pickUpGemError];
+            if(!pickUpGemError) {
+                //query for nearby gems
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    self.inventoryLabel.text = [NSString stringWithFormat:@"%lu",(unsigned long)[[[PFUser currentUser] objectForKey:ParseUserInventoryKey] count]];
+                    [self queryClosestGem];
+                    NewMetadataViewController *vc = [[NewMetadataViewController alloc] initWithMetadata:metadata];
+                    [self presentViewController:vc animated:YES completion:NULL];
+                });
+            }
+            else {
+                NSLog(@"%@", [[[pickUpGemError userInfo] objectForKey:@"NSUnderlyingErrorKey"]localizedDescription]);
+            }
+        });
+    }
 }
 
 /*
@@ -274,9 +288,9 @@
                     //Query for new nearby gems
                     dispatch_async(dispatch_get_main_queue(), ^{
                         self.inventoryLabel.text = [NSString stringWithFormat:@"%i",[[[PFUser currentUser] objectForKey:ParseUserInventoryKey] count]];
-                        [self queryClosestGem];
                         UIAlertView *didDropAlertView = [[UIAlertView alloc] initWithTitle:nil message:@"Geode has been dropped\nfor a stranger to enjoy" delegate:self cancelButtonTitle:@"Cool" otherButtonTitles:nil, nil];
                         [didDropAlertView show];
+                        [self queryClosestGem];
                     });
                 }
                 else {

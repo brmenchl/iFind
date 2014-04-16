@@ -45,7 +45,6 @@
 		CEB7B36E18D6A8F000AC72C5 /* waterfall.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CEB7B36D18D6A8F000AC72C5 /* waterfall.jpg */; };
 		CEDAA0B218E91336009A67F9 /* SoundcloudContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDAA0B118E91336009A67F9 /* SoundcloudContentView.m */; };
 		E20CE6C718F5040C00327101 /* TimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E20CE6C618F5040C00327101 /* TimelineViewController.m */; };
-		E20CE6CB18F512BD00327101 /* cup.png in Resources */ = {isa = PBXBuildFile; fileRef = E20CE6CA18F512BD00327101 /* cup.png */; };
 		E21F9A6218E8DDE70029BA85 /* ALRadialButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E21F9A5F18E8DDE70029BA85 /* ALRadialButton.m */; };
 		E21F9A6318E8DDE70029BA85 /* ALRadialMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = E21F9A6118E8DDE70029BA85 /* ALRadialMenu.m */; };
 		E234E85218DFE57500E2B16D /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = E234E85118DFE57500E2B16D /* UIImage+ImageEffects.m */; };
@@ -53,6 +52,11 @@
 		E234E85818E00C0100E2B16D /* TextContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = E234E85718E00C0100E2B16D /* TextContentView.m */; };
 		E23A2DD018FC266F00352FE7 /* RDVKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = E23A2DCF18FC266F00352FE7 /* RDVKeyboardAvoidingScrollView.m */; };
 		E23A2DD418FC298B00352FE7 /* SoundcloudSearchResultView.m in Sources */ = {isa = PBXBuildFile; fileRef = E23A2DD318FC298B00352FE7 /* SoundcloudSearchResultView.m */; };
+		E23A2DD918FC4D8000352FE7 /* inventoryGeodeIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E23A2DD818FC4D8000352FE7 /* inventoryGeodeIcon.png */; };
+		E23A2DDD18FC56D300352FE7 /* tmap.png in Resources */ = {isa = PBXBuildFile; fileRef = E23A2DDC18FC56D300352FE7 /* tmap.png */; };
+		E23A2DE118FC5AC200352FE7 /* appIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E23A2DDE18FC5AC200352FE7 /* appIcon.png */; };
+		E23A2DE218FC5AC200352FE7 /* appStoreIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E23A2DDF18FC5AC200352FE7 /* appStoreIcon.png */; };
+		E23A2DE318FC5AC200352FE7 /* launchImage.png in Resources */ = {isa = PBXBuildFile; fileRef = E23A2DE018FC5AC200352FE7 /* launchImage.png */; };
 		E25135E418FBC9A70068D351 /* timeline.png in Resources */ = {isa = PBXBuildFile; fileRef = E25135E218FBC9A70068D351 /* timeline.png */; };
 		E25135E518FBC9A70068D351 /* timeline@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E25135E318FBC9A70068D351 /* timeline@2x.png */; };
 		E25135EB18FBCBB00068D351 /* SoundcloudPaneView.m in Sources */ = {isa = PBXBuildFile; fileRef = E25135EA18FBCBB00068D351 /* SoundcloudPaneView.m */; };
@@ -114,7 +118,7 @@
 		CE705A9C18F8A75400B0498B /* arrow_up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_up.png; sourceTree = "<group>"; };
 		CE705AA418FBD1D700B0498B /* big_compass@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "big_compass@2x.png"; sourceTree = "<group>"; };
 		CE705AA518FBD1D700B0498B /* big_compass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = big_compass.png; sourceTree = "<group>"; };
-		CEA6D35418BD4E2700F36A35 /* GoGeo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoGeo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEA6D35418BD4E2700F36A35 /* GoGeo - Explore Your World.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GoGeo - Explore Your World.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEA6D35718BD4E2700F36A35 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		CEA6D35918BD4E2800F36A35 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		CEA6D35B18BD4E2800F36A35 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -147,7 +151,6 @@
 		E20CE6C418F4FEA100327101 /* ContentViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContentViewDelegate.h; sourceTree = "<group>"; };
 		E20CE6C518F5040C00327101 /* TimelineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineViewController.h; sourceTree = "<group>"; };
 		E20CE6C618F5040C00327101 /* TimelineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineViewController.m; sourceTree = "<group>"; };
-		E20CE6CA18F512BD00327101 /* cup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cup.png; sourceTree = "<group>"; };
 		E21F9A5E18E8DDE70029BA85 /* ALRadialButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALRadialButton.h; sourceTree = "<group>"; };
 		E21F9A5F18E8DDE70029BA85 /* ALRadialButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALRadialButton.m; sourceTree = "<group>"; };
 		E21F9A6018E8DDE70029BA85 /* ALRadialMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALRadialMenu.h; sourceTree = "<group>"; };
@@ -162,6 +165,11 @@
 		E23A2DCF18FC266F00352FE7 /* RDVKeyboardAvoidingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDVKeyboardAvoidingScrollView.m; sourceTree = "<group>"; };
 		E23A2DD218FC298B00352FE7 /* SoundcloudSearchResultView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundcloudSearchResultView.h; sourceTree = "<group>"; };
 		E23A2DD318FC298B00352FE7 /* SoundcloudSearchResultView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundcloudSearchResultView.m; sourceTree = "<group>"; };
+		E23A2DD818FC4D8000352FE7 /* inventoryGeodeIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = inventoryGeodeIcon.png; sourceTree = "<group>"; };
+		E23A2DDC18FC56D300352FE7 /* tmap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tmap.png; sourceTree = "<group>"; };
+		E23A2DDE18FC5AC200352FE7 /* appIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appIcon.png; sourceTree = "<group>"; };
+		E23A2DDF18FC5AC200352FE7 /* appStoreIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appStoreIcon.png; sourceTree = "<group>"; };
+		E23A2DE018FC5AC200352FE7 /* launchImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launchImage.png; sourceTree = "<group>"; };
 		E25135E218FBC9A70068D351 /* timeline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = timeline.png; sourceTree = "<group>"; };
 		E25135E318FBC9A70068D351 /* timeline@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "timeline@2x.png"; sourceTree = "<group>"; };
 		E25135E918FBCBB00068D351 /* SoundcloudPaneView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundcloudPaneView.h; sourceTree = "<group>"; };
@@ -253,7 +261,7 @@
 		CEA6D35518BD4E2700F36A35 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CEA6D35418BD4E2700F36A35 /* GoGeo.app */,
+				CEA6D35418BD4E2700F36A35 /* GoGeo - Explore Your World.app */,
 				CEA6D36F18BD4E2800F36A35 /* iFindTests.xctest */,
 			);
 			name = Products;
@@ -374,7 +382,7 @@
 			name = RDVKeyboardAvoidingScrollView;
 			sourceTree = "<group>";
 		};
-		E23A2DD518FC43E100352FE7 /* Souncloud Views */ = {
+		E23A2DD518FC43E100352FE7 /* Soundcloud Views */ = {
 			isa = PBXGroup;
 			children = (
 				E25135E918FBCBB00068D351 /* SoundcloudPaneView.h */,
@@ -382,7 +390,7 @@
 				E23A2DD218FC298B00352FE7 /* SoundcloudSearchResultView.h */,
 				E23A2DD318FC298B00352FE7 /* SoundcloudSearchResultView.m */,
 			);
-			name = "Souncloud Views";
+			name = "Soundcloud Views";
 			sourceTree = "<group>";
 		};
 		E2733BDB18D6B43000EB51B0 /* ALRadial */ = {
@@ -443,12 +451,16 @@
 		E2CC0B0618BE9C2B008B6094 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				E23A2DDE18FC5AC200352FE7 /* appIcon.png */,
+				E23A2DDF18FC5AC200352FE7 /* appStoreIcon.png */,
+				E23A2DE018FC5AC200352FE7 /* launchImage.png */,
+				E23A2DDC18FC56D300352FE7 /* tmap.png */,
+				E23A2DD818FC4D8000352FE7 /* inventoryGeodeIcon.png */,
 				E25135E218FBC9A70068D351 /* timeline.png */,
 				E25135E318FBC9A70068D351 /* timeline@2x.png */,
 				CE705AA418FBD1D700B0498B /* big_compass@2x.png */,
 				CE705AA518FBD1D700B0498B /* big_compass.png */,
 				CE705A9C18F8A75400B0498B /* arrow_up.png */,
-				E20CE6CA18F512BD00327101 /* cup.png */,
 				E29B2D5A18F335EE004D02AE /* music_beamed_note.png */,
 				E2AC39D418E892E70030461C /* plusButton.png */,
 				E2BA8BCB18E224EF002027EE /* orkut.png */,
@@ -504,7 +516,7 @@
 				E2C2FD8018F75C3600D56B52 /* ImageEffects */,
 				E20CE6C318F3AAA100327101 /* ContentView subclasses */,
 				E2C2FD8118FAAA3900D56B52 /* TimelineViews */,
-				E23A2DD518FC43E100352FE7 /* Souncloud Views */,
+				E23A2DD518FC43E100352FE7 /* Soundcloud Views */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -535,7 +547,7 @@
 			);
 			name = GoGeo;
 			productName = iFind;
-			productReference = CEA6D35418BD4E2700F36A35 /* GoGeo.app */;
+			productReference = CEA6D35418BD4E2700F36A35 /* GoGeo - Explore Your World.app */;
 			productType = "com.apple.product-type.application";
 		};
 		CEA6D36E18BD4E2800F36A35 /* iFindTests */ = {
@@ -566,7 +578,7 @@
 				ORGANIZATIONNAME = FuarkNet;
 				TargetAttributes = {
 					CEA6D35318BD4E2700F36A35 = {
-						DevelopmentTeam = 9CMR7RN56H;
+						DevelopmentTeam = K99KPPSM33;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -610,8 +622,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E20CE6CB18F512BD00327101 /* cup.png in Resources */,
 				E25135E518FBC9A70068D351 /* timeline@2x.png in Resources */,
+				E23A2DD918FC4D8000352FE7 /* inventoryGeodeIcon.png in Resources */,
+				E23A2DE218FC5AC200352FE7 /* appStoreIcon.png in Resources */,
 				E2AC39D518E892E70030461C /* plusButton.png in Resources */,
 				CE705AA718FBD1D700B0498B /* big_compass.png in Resources */,
 				CEB7B36E18D6A8F000AC72C5 /* waterfall.jpg in Resources */,
@@ -619,6 +632,7 @@
 				E2E711C818C1AAD600F5EAC1 /* settingsGear@2x.png in Resources */,
 				E2E711BE18C17DB100F5EAC1 /* Main.storyboard in Resources */,
 				E25135E418FBC9A70068D351 /* timeline.png in Resources */,
+				E23A2DE318FC5AC200352FE7 /* launchImage.png in Resources */,
 				E2733BE418D6C12500EB51B0 /* soundcloud.png in Resources */,
 				E29B2D5B18F335EE004D02AE /* music_beamed_note.png in Resources */,
 				E2CC0AF918BE95E3008B6094 /* compass@2x.png in Resources */,
@@ -626,8 +640,10 @@
 				CE705A9D18F8A75400B0498B /* arrow_up.png in Resources */,
 				CEA6D36218BD4E2800F36A35 /* InfoPlist.strings in Resources */,
 				CE705AA618FBD1D700B0498B /* big_compass@2x.png in Resources */,
+				E23A2DDD18FC56D300352FE7 /* tmap.png in Resources */,
 				E2E711C718C1AAD600F5EAC1 /* settingsGear.png in Resources */,
 				E2BA8BCC18E224EF002027EE /* orkut.png in Resources */,
+				E23A2DE118FC5AC200352FE7 /* appIcon.png in Resources */,
 				CEA6D36A18BD4E2800F36A35 /* Images.xcassets in Resources */,
 				E2CC0B0518BE9AF9008B6094 /* barDivider.png in Resources */,
 				CEB7B36C18D68D3A00AC72C5 /* tower.jpg in Resources */,
@@ -806,7 +822,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iFind/iFind-Prefix.pch";
 				INFOPLIST_FILE = "iFind/iFind-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "$(TARGET_NAME) - Explore Your World";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
@@ -826,7 +842,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iFind/iFind-Prefix.pch";
 				INFOPLIST_FILE = "iFind/iFind-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "$(TARGET_NAME) - Explore Your World";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};

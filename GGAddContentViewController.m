@@ -262,22 +262,14 @@ static CGFloat const BUTTON_SIZE = 30 + ROW_MARGINS;
 }
 
 - (void) updateContentView:(ContentView *)view toSize:(CGSize)size {
+    BOOL startAnimating = NO;
     NSLog(@"animating to: %f",size.height);
     if(view.frame.size.height != size.height) {
         CGSize oldSize = CGSizeMake(view.frame.size.width, view.frame.size.height);
         NSLog(@"oldSize: %f,%f", oldSize.width, oldSize.height);
         for(UIView* subview in [self.addContentView visibleViews]) {
             NSLog(@"old location: %f,%f", subview.frame.origin.x, subview.frame.origin.y);
-            if(subview == view) {
-                [UIView animateWithDuration:0.1
-                                      delay:0
-                                    options:UIViewAnimationOptionCurveEaseInOut
-                                 animations:^{
-                                     view.frame = CGRectMake(view.frame.origin.x, view.frame.origin.y, size.width, size.height);
-                                 }
-                                 completion:NULL];
-            }
-            else {
+            if (startAnimating) {
                 [UIView animateWithDuration:0.1
                                       delay:0
                                     options:UIViewAnimationOptionCurveEaseInOut
@@ -286,6 +278,17 @@ static CGFloat const BUTTON_SIZE = 30 + ROW_MARGINS;
                                  }
                                  completion:NULL];
             }
+            else if(subview == view) {
+                startAnimating = YES;
+                [UIView animateWithDuration:0.1
+                                      delay:0
+                                    options:UIViewAnimationOptionCurveEaseInOut
+                                 animations:^{
+                                     view.frame = CGRectMake(view.frame.origin.x, view.frame.origin.y, size.width, size.height);
+                                 }
+                                 completion:NULL];
+            }
+
             NSLog(@"new location: %f,%f", subview.frame.origin.x, subview.frame.origin.y);
         }
     }

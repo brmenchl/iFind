@@ -16,7 +16,8 @@
     //AlertView for forgotten password information
     UIAlertView *forgotPasswordAlert;
 }
-
+@property (nonatomic) NSString *responseParentNode;
+@property int pioneerRank;
 @end
 
 @implementation LoginViewController
@@ -138,7 +139,55 @@
             @synchronized([PFUser currentUser]) {
                 //If this is the first time the user logged in (they created their account through facebook)
                 NSLog(@"User with facebook signed up and logged in");
-                [self.delegate createGem:DefaultStartingInventory];
+                CLLocation *temp_ref = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).currentLocation;
+                NSDictionary *pioneerParams = @{@"latitude":[NSNumber numberWithDouble:temp_ref.coordinate.latitude],@"longitude":[NSNumber numberWithDouble:temp_ref.coordinate.longitude]};
+                
+                NSError* error = nil;
+                NSString* response = [PFCloud callFunction:@"pioneerStatusClosestGem" withParameters:pioneerParams error:&error];
+                NSData* jsonObj = [response dataUsingEncoding:NSUTF8StringEncoding];
+                
+                if (!error){
+                    
+                    NSDictionary* cloudResponse = nil;
+                    
+                    NSError* localError = nil;
+                    cloudResponse = [NSJSONSerialization JSONObjectWithData:jsonObj options:0 error:&localError];
+                    NSLog(@"%@",cloudResponse);
+                    NSLog(@"%@",(NSNumber*)cloudResponse[@"distance"]);
+                    NSLog(@"%@",(NSNumber*)cloudResponse[@"pioneerRank"]);
+                    
+                    self.responseParentNode = [NSString stringWithFormat:@"%@",cloudResponse[@"parentNode"]];
+                    
+                    NSString * fuark = [NSString stringWithFormat:@"%@",cloudResponse[@"pioneerRank"]];
+                    
+                    self.pioneerRank = [fuark intValue];
+                }
+                
+                NSLog(@"pioneerRank: %i",self.pioneerRank);
+                NSUInteger gemCount = 5;
+                
+                if (self.pioneerRank == 1){
+                    gemCount = 25;
+                }
+                else if (self.pioneerRank == 2){
+                    gemCount = 20;
+                }
+                else if (self.pioneerRank == 3){
+                    gemCount = 15;
+                }
+                else if (self.pioneerRank == 4){
+                    gemCount = 10;
+                }
+                
+                [self.delegate createGem:gemCount];
+                
+                
+                if (self.pioneerRank < 5){
+                    NSDictionary * update_dict = @{@"curUser":[PFUser currentUser].objectId,@"prevNode":self.responseParentNode};
+                    
+                    [PFCloud callFunctionInBackground:@"updatePioneerList" withParameters:update_dict block:nil];
+                }
+                
                 [self.activityIndicator stopAnimating];
                 [self.delegate viewController:self didUserLoginSuccessfully:YES];
             }
