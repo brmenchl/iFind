@@ -109,6 +109,49 @@
     
     [super viewWillAppear:animated];
     [self.withinRangeView setHidden:YES];
+    
+    
+    if (self.currentLocation && self.closestGem){
+        
+        
+        PFGeoPoint *geopoint = [self.closestGem objectForKey:ParseGemCurrentLocationKey];
+        
+        PFGeoPoint *currentLoc = [PFGeoPoint geoPointWithLocation:self.currentLocation];
+        
+        double distance = [currentLoc distanceInMilesTo:geopoint];
+        
+        if(distance < 0.02) {
+            [self pickUpDistanceFadeIn:YES];
+        }
+        else {
+            [self pickUpDistanceFadeIn:NO];
+        }
+        
+        
+        if(distance < 0.1) {
+            distance = distance * 5280;
+            self.milesLabel.text = @"feet";
+        }
+        else {
+            self.milesLabel.text = @"miles";
+        }
+        
+        
+        NSLog(@"distance: %f",distance);
+        double temp = distance * 100;
+        temp = (double)((int)(temp+0.5));
+        distance = temp/100;
+        
+        self.distanceLabel.text = [NSString stringWithFormat:@"%.2f",distance];
+        
+        
+        
+        
+    }
+    
+    
+    
+    
 }
 
 - (void) dealloc {

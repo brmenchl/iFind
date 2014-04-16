@@ -7,6 +7,7 @@
 //
 
 #import "SoundcloudSearchResultView.h"
+#import <QuartzCore/QuartzCore.h>
 @interface SoundcloudSearchResultView()
 @property (nonatomic) UILabel *trackTitle;
 @property (nonatomic) UILabel *trackArtist;
@@ -21,7 +22,6 @@
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [UIColor redColor];
         self.trackTitle = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height/2)];
         [self addSubview:self.trackTitle];
         
@@ -35,6 +35,8 @@
         
         UIGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didSelectResult:)];
         [self addGestureRecognizer:recognizer];
+        self.layer.borderColor = [[UIColor grayColor] CGColor];
+        self.layer.borderWidth = 1;
     }
     return self;
 }
