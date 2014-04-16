@@ -28,6 +28,7 @@ static NSString * const ParseGemLocationsKey = @"locations"; //Array of PFGeopoi
 static NSString * const ParseGemCurrentLocationKey = @"currentLocation"; //PFGeopoint
 static NSString * const ParseGemMetadataReferenceKey = @"metadata"; //Pointer to metadata
 static NSString * const ParseGemLastOwnerKey = @"lastOwner"; //Pointer to last user carrying gem, or current user if gem is not on field
+static NSString * const ParseGemIsHeldKey = @"isHeld";
 //Gem Metadata Class
 static NSString * const ParseMetadataClassName = @"GemMetadata";
 static NSString * const ParseMetaTextContentKey = @"textContent"; //Text message content

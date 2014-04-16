@@ -215,7 +215,8 @@
         NSLog(@"second %@",metadata);
         metadata[ParseMetaPickUpDateKey] = [NSDate date];
         
-        self.closestGem[ParseGemCurrentLocationKey] = [NSNull null];
+        
+        self.closestGem[ParseGemCurrentLocationKey] = [PFGeoPoint geoPointWithLocation:nil];
         self.closestGem[ParseGemMetadataReferenceKey] = [NSNull null];
         self.closestGem[ParseGemLastOwnerKey] = [PFUser currentUser];
         
@@ -269,13 +270,13 @@
                     self.HARDCODEACTIVATED = TRUE;
                     self.hardcodedMetadata = [PFObject objectWithClassName:ParseMetadataClassName];
                     for ( NSObject * hardContent in content) {
-                        if([object isKindOfClass:[NSString class]]) {
+                        if([hardContent isKindOfClass:[NSString class]]) {
                             self.hardcodedMetadata[ParseMetaTextContentKey] = hardContent;
                         }
-                        else if([object isKindOfClass:[UIImage class]]) {
+                        else if([hardContent isKindOfClass:[UIImage class]]) {
                             self.hardcodedMetadata[ParseMetaImageContentKey] = [PFFile fileWithName:@"image.jpg" data:UIImageJPEGRepresentation((UIImage *)hardContent, 0.05f)];
                         }
-                        else if ([object isKindOfClass:[NSNumber class]]) {
+                        else if ([hardContent isKindOfClass:[NSNumber class]]) {
                             self.hardcodedMetadata[ParseMetaSoundcloudContentKey] = hardContent;
                         }
                     }
