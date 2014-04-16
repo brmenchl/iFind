@@ -38,8 +38,26 @@
     
     NSLog(@"lat: %f",self.currentLocation.coordinate.latitude);
     NSLog(@"lon: %f",self.currentLocation.coordinate.longitude);
+  
+    // Determine whether we're using a 3.5inch or 4.0inch device
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+    {
+      CGSize result = [[UIScreen mainScreen] bounds].size;
+      CGFloat scale = [UIScreen mainScreen].scale;
+      result = CGSizeMake(result.width * scale, result.height * scale);
+      
+      if (result.height != 1136)
+      {
+        self.sb = [UIStoryboard storyboardWithName:@"Main_35" bundle:nil];
+      }
+      else
+      {
+        self.sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+      }
+    }
+  
     
-    self.sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    self.sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     //Initializing bouncemenucontroller and all sub-controllers, they are kept in the
     self.bounceMenuController = [[BounceMenuController alloc] init];
 //    GemFinderViewController *findervc = [self.sb instantiateViewControllerWithIdentifier:@"finderVC"];

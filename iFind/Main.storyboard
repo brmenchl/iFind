@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="quL-I0-GfF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="quL-I0-GfF">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
         <!--Gem Finder View Controller - GemFinder-->
@@ -409,7 +409,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="88r-t9-qN3">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="88r-t9-qN3">
                                 <rect key="frame" x="20" y="524" width="71" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Drop Gem">
@@ -420,7 +420,7 @@
                                     <action selector="dropGemPress:" destination="Ko9-HW-SIr" eventType="touchUpInside" id="OKT-tS-wCc"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wlP-rT-J0U">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wlP-rT-J0U">
                                 <rect key="frame" x="252" y="524" width="48" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Cancel">
@@ -434,6 +434,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="88r-t9-qN3" firstAttribute="leading" secondItem="rMJ-XA-3M3" secondAttribute="leading" constant="20" id="J35-r5-z0a"/>
+                            <constraint firstItem="k2d-No-olF" firstAttribute="top" secondItem="88r-t9-qN3" secondAttribute="bottom" constant="14" id="Uqi-bC-niN"/>
+                            <constraint firstItem="k2d-No-olF" firstAttribute="top" secondItem="wlP-rT-J0U" secondAttribute="bottom" constant="14" id="ZM1-s9-35Z"/>
+                            <constraint firstAttribute="trailing" secondItem="wlP-rT-J0U" secondAttribute="trailing" constant="20" id="gUh-tN-AK8"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="addContentView" destination="mHG-wJ-DSp" id="HIH-Lh-hum"/>
@@ -791,19 +797,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Geode Tracker" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DEI-kA-IIk">
-                                <rect key="frame" x="85" y="33" width="150" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Geode Tracker" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DEI-kA-IIk">
+                                <rect key="frame" x="85" y="33" width="150" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="22"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rJ9-0d-UHZ">
-                                <rect key="frame" x="35" y="135" width="250" height="250"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rJ9-0d-UHZ">
+                                <rect key="frame" x="35" y="128" width="250" height="250"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="2YK-sa-umd"/>
+                                    <constraint firstAttribute="width" constant="250" id="Zw5-gb-AzK"/>
+                                </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="wZ1-4P-9tL">
-                                <rect key="frame" x="35" y="71" width="73" height="48"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="wZ1-4P-9tL">
+                                <rect key="frame" x="20" y="71" width="73" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="73" id="KKO-PH-RQO"/>
+                                    <constraint firstAttribute="height" constant="50" id="vhK-wJ-G88"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="22"/>
                                 <state key="normal" title="Drop Geode">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -839,8 +853,8 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xvl-hK-Uvi">
-                                <rect key="frame" x="20" y="393" width="280" height="155"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xvl-hK-Uvi">
+                                <rect key="frame" x="20" y="386" width="280" height="131"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Distance from nearest Geode:" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="142" translatesAutoresizingMaskIntoConstraints="NO" id="wyD-0z-TOb">
@@ -850,13 +864,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="miles" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ofr-Mx-wjN">
-                                        <rect key="frame" x="226" y="94" width="41" height="21"/>
+                                        <rect key="frame" x="239" y="94" width="41" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pvg-5i-Tci">
-                                        <rect key="frame" x="1" y="65" width="217" height="50"/>
+                                        <rect key="frame" x="14" y="65" width="217" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="53"/>
                                         <nil key="highlightedColor"/>
@@ -864,24 +878,56 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p1J-CH-LvP">
-                                <rect key="frame" x="255" y="94" width="41" height="18"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p1J-CH-LvP">
+                                <rect key="frame" x="259" y="93" width="41" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ehk-3e-PqT">
-                                <rect key="frame" x="229" y="87" width="24" height="32"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ehk-3e-PqT">
+                                <rect key="frame" x="234" y="86" width="24" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="C8C-Pp-O1S"/>
+                                    <constraint firstAttribute="width" constant="24" id="wGD-w3-I7t"/>
+                                </constraints>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Inventory" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qFh-Fv-bg0">
-                                <rect key="frame" x="229" y="65" width="71" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Inventory" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qFh-Fv-bg0">
+                                <rect key="frame" x="236" y="65" width="64" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="rJ9-0d-UHZ" firstAttribute="top" secondItem="DEI-kA-IIk" secondAttribute="bottom" constant="66" id="96q-j3-KNI"/>
+                            <constraint firstAttribute="centerX" secondItem="rJ9-0d-UHZ" secondAttribute="centerX" id="Dft-Aa-i7c"/>
+                            <constraint firstAttribute="centerX" secondItem="DEI-kA-IIk" secondAttribute="centerX" id="Fvj-c3-Zdf"/>
+                            <constraint firstItem="yCv-Tz-Cc3" firstAttribute="top" secondItem="Xvl-hK-Uvi" secondAttribute="bottom" constant="2" id="GfF-BK-Odr"/>
+                            <constraint firstAttribute="trailing" secondItem="qFh-Fv-bg0" secondAttribute="trailing" constant="20" id="M0O-iU-Pz2"/>
+                            <constraint firstItem="DEI-kA-IIk" firstAttribute="top" secondItem="mj3-vY-0A1" secondAttribute="bottom" constant="13" id="MqL-sZ-jSM"/>
+                            <constraint firstItem="p1J-CH-LvP" firstAttribute="leading" secondItem="Ehk-3e-PqT" secondAttribute="trailing" constant="1" id="NMx-lg-AAW"/>
+                            <constraint firstItem="wZ1-4P-9tL" firstAttribute="leading" secondItem="SPG-xD-qQW" secondAttribute="leading" constant="20" id="NZH-75-30b"/>
+                            <constraint firstAttribute="trailing" secondItem="Xvl-hK-Uvi" secondAttribute="trailing" constant="20" id="R3W-Q6-G8m"/>
+                            <constraint firstAttribute="trailing" secondItem="rJ9-0d-UHZ" secondAttribute="trailing" constant="35" id="RdF-vN-FHE"/>
+                            <constraint firstItem="rJ9-0d-UHZ" firstAttribute="leading" secondItem="SPG-xD-qQW" secondAttribute="leading" constant="35" id="Rij-RR-xvL"/>
+                            <constraint firstItem="Xvl-hK-Uvi" firstAttribute="leading" secondItem="SPG-xD-qQW" secondAttribute="leading" constant="20" id="Tlt-8C-SX0"/>
+                            <constraint firstAttribute="trailing" secondItem="p1J-CH-LvP" secondAttribute="trailing" constant="20" id="UFA-SW-lsc"/>
+                            <constraint firstItem="qFh-Fv-bg0" firstAttribute="top" secondItem="mj3-vY-0A1" secondAttribute="bottom" constant="45" id="XLl-lZ-FL7"/>
+                            <constraint firstItem="p1J-CH-LvP" firstAttribute="top" secondItem="qFh-Fv-bg0" secondAttribute="bottom" constant="8" id="YhX-zA-7K3"/>
+                            <constraint firstItem="yCv-Tz-Cc3" firstAttribute="top" secondItem="Xvl-hK-Uvi" secondAttribute="bottom" constant="2" id="ZC9-QD-qOi"/>
+                            <constraint firstAttribute="centerX" secondItem="Xvl-hK-Uvi" secondAttribute="centerX" id="ZLd-nN-6H6"/>
+                            <constraint firstItem="yCv-Tz-Cc3" firstAttribute="top" secondItem="Xvl-hK-Uvi" secondAttribute="bottom" constant="2" id="cbd-Fj-r09"/>
+                            <constraint firstItem="wZ1-4P-9tL" firstAttribute="top" secondItem="DEI-kA-IIk" secondAttribute="bottom" constant="9" id="enk-5W-xAh"/>
+                            <constraint firstItem="yCv-Tz-Cc3" firstAttribute="top" secondItem="Xvl-hK-Uvi" secondAttribute="bottom" constant="2" id="gVK-L9-Tbx"/>
+                            <constraint firstAttribute="centerX" secondItem="rJ9-0d-UHZ" secondAttribute="centerX" id="inO-y3-Rq4"/>
+                            <constraint firstItem="Xvl-hK-Uvi" firstAttribute="top" secondItem="rJ9-0d-UHZ" secondAttribute="bottom" constant="8" id="j8e-wR-cGE"/>
+                            <constraint firstAttribute="trailing" secondItem="Ehk-3e-PqT" secondAttribute="trailing" constant="62" id="pbM-tc-YuN"/>
+                            <constraint firstAttribute="centerX" secondItem="rJ9-0d-UHZ" secondAttribute="centerX" id="sP3-5x-9eE"/>
+                            <constraint firstAttribute="centerX" secondItem="DEI-kA-IIk" secondAttribute="centerX" id="st7-Eg-J49"/>
+                            <constraint firstItem="Ehk-3e-PqT" firstAttribute="top" secondItem="qFh-Fv-bg0" secondAttribute="bottom" constant="1" id="w2A-4d-GWK"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Geode Tracker" image="compass.png" id="YXf-QU-cId"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>

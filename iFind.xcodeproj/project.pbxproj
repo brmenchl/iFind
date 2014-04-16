@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4CF58D5318FE01CB009F061C /* Main_35.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CF58D5218FE01CB009F061C /* Main_35.storyboard */; };
 		CE23730718F384FB00917970 /* WelcomeGoGeoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE23730518F384FB00917970 /* WelcomeGoGeoViewController.m */; };
 		CE23730B18F385B400917970 /* HowToUseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE23730A18F385B400917970 /* HowToUseViewController.m */; };
 		CE23731118F3960B00917970 /* StartingInventoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE23731018F3960B00917970 /* StartingInventoryViewController.m */; };
@@ -92,6 +93,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4CF58D5218FE01CB009F061C /* Main_35.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_35.storyboard; sourceTree = "<group>"; };
 		CE23730418F384FB00917970 /* WelcomeGoGeoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeGoGeoViewController.h; sourceTree = "<group>"; };
 		CE23730518F384FB00917970 /* WelcomeGoGeoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeGoGeoViewController.m; sourceTree = "<group>"; };
 		CE23730918F385B400917970 /* HowToUseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HowToUseViewController.h; sourceTree = "<group>"; };
@@ -290,6 +292,7 @@
 				E2CC0B0F18BEB7E8008B6094 /* Models */,
 				E2CC0B0918BEA48E008B6094 /* Controllers */,
 				E2E711BD18C17DB100F5EAC1 /* Main.storyboard */,
+				4CF58D5218FE01CB009F061C /* Main_35.storyboard */,
 				E2CC0B0618BE9C2B008B6094 /* Assets */,
 				CEA6D36918BD4E2800F36A35 /* Images.xcassets */,
 				CEA6D35E18BD4E2800F36A35 /* Supporting Files */,
@@ -566,7 +569,7 @@
 				ORGANIZATIONNAME = FuarkNet;
 				TargetAttributes = {
 					CEA6D35318BD4E2700F36A35 = {
-						DevelopmentTeam = 9CMR7RN56H;
+						DevelopmentTeam = 6V6CG978VS;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -631,6 +634,7 @@
 				CEA6D36A18BD4E2800F36A35 /* Images.xcassets in Resources */,
 				E2CC0B0518BE9AF9008B6094 /* barDivider.png in Resources */,
 				CEB7B36C18D68D3A00AC72C5 /* tower.jpg in Resources */,
+				4CF58D5318FE01CB009F061C /* Main_35.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
