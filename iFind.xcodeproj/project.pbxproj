@@ -118,7 +118,7 @@
 		CE705A9C18F8A75400B0498B /* arrow_up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_up.png; sourceTree = "<group>"; };
 		CE705AA418FBD1D700B0498B /* big_compass@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "big_compass@2x.png"; sourceTree = "<group>"; };
 		CE705AA518FBD1D700B0498B /* big_compass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = big_compass.png; sourceTree = "<group>"; };
-		CEA6D35418BD4E2700F36A35 /* GoGeo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoGeo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEA6D35418BD4E2700F36A35 /* GoGeo - Explore Your World.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GoGeo - Explore Your World.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEA6D35718BD4E2700F36A35 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		CEA6D35918BD4E2800F36A35 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		CEA6D35B18BD4E2800F36A35 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -261,7 +261,7 @@
 		CEA6D35518BD4E2700F36A35 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CEA6D35418BD4E2700F36A35 /* GoGeo.app */,
+				CEA6D35418BD4E2700F36A35 /* GoGeo - Explore Your World.app */,
 				CEA6D36F18BD4E2800F36A35 /* iFindTests.xctest */,
 			);
 			name = Products;
@@ -547,7 +547,7 @@
 			);
 			name = GoGeo;
 			productName = iFind;
-			productReference = CEA6D35418BD4E2700F36A35 /* GoGeo.app */;
+			productReference = CEA6D35418BD4E2700F36A35 /* GoGeo - Explore Your World.app */;
 			productType = "com.apple.product-type.application";
 		};
 		CEA6D36E18BD4E2800F36A35 /* iFindTests */ = {
@@ -822,7 +822,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iFind/iFind-Prefix.pch";
 				INFOPLIST_FILE = "iFind/iFind-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "$(TARGET_NAME) - Explore Your World";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
@@ -842,7 +842,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iFind/iFind-Prefix.pch";
 				INFOPLIST_FILE = "iFind/iFind-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "$(TARGET_NAME) - Explore Your World";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
