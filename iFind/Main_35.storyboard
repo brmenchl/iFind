@@ -1025,10 +1025,7 @@
     </scenes>
     <resources>
         <image name="compass.png" width="30" height="30"/>
-<<<<<<< HEAD
         <image name="inventoryGeodeIcon.png" width="250" height="396"/>
-=======
->>>>>>> c683367386a6ac1083e64e570aa07eac9ebcf20e
         <image name="settingsGear.png" width="30" height="30"/>
         <image name="timeline.png" width="26" height="32"/>
     </resources>
