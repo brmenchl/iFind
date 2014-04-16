@@ -116,6 +116,48 @@
     
     [super viewWillAppear:animated];
     [self.withinRangeView setHidden:YES];
+    
+    
+    if (self.currentLocation && self.closestGem){
+        
+        
+        PFGeoPoint *geopoint = [self.closestGem objectForKey:ParseGemCurrentLocationKey];
+        
+        PFGeoPoint *currentLoc = [PFGeoPoint geoPointWithLocation:self.currentLocation];
+        
+        double distance = [currentLoc distanceInMilesTo:geopoint];
+        
+        if(distance < 0.02) {
+            [self pickUpDistanceFadeIn:YES];
+        }
+        else {
+            [self pickUpDistanceFadeIn:NO];
+        }
+        
+        
+        if(distance < 0.1) {
+            distance = distance * 5280;
+            self.milesLabel.text = @"feet";
+        }
+        else {
+            self.milesLabel.text = @"miles";
+        }
+        
+        
+        NSLog(@"distance: %f",distance);
+        double temp = distance * 100;
+        temp = (double)((int)(temp+0.5));
+        distance = temp/100;
+        
+        self.distanceLabel.text = [NSString stringWithFormat:@"%.2f",distance];
+        
+    }
+    else if (self.currentLocation)
+        [self queryClosestGem];
+    
+    
+    
+    
 }
 
 - (void) dealloc {
@@ -165,24 +207,32 @@
         [[PFUser currentUser]addObject:self.closestGem[ParseGemMetadataReferenceKey] forKey:ParseUserTimelineKey];
         [[PFUser currentUser] addObject:self.closestGem forKey:ParseUserInventoryKey];
         
-        PFObject *metadata = self.closestGem[ParseMetaGemReferenceKey];
+        PFObject *metadata = self.closestGem[ParseGemMetadataReferenceKey];
+        
+        NSLog(@"zeroth %@",self.closestGem[ParseGemMetadataReferenceKey]);
+        NSLog(@"first %@",metadata);
         [metadata fetchIfNeeded];
+        NSLog(@"second %@",metadata);
         metadata[ParseMetaPickUpDateKey] = [NSDate date];
         
         self.closestGem[ParseGemCurrentLocationKey] = [NSNull null];
         self.closestGem[ParseGemMetadataReferenceKey] = [NSNull null];
         self.closestGem[ParseGemLastOwnerKey] = [PFUser currentUser];
         
+        NSLog(@"third %@",self.closestGem);
         //Attempt to save picked up gem object and current user
         AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         dispatch_async(appDelegate.currentUserQueue, ^{
+            NSLog(@"I'm down here now");
             NSError *pickUpGemError = nil;
             [PFObject saveAll:@[self.closestGem, [PFUser currentUser], metadata] error:&pickUpGemError];
             if(!pickUpGemError) {
                 //query for nearby gems
                 dispatch_async(dispatch_get_main_queue(), ^{
+                    NSLog(@"wtf1");
                     self.inventoryLabel.text = [NSString stringWithFormat:@"%lu",(unsigned long)[[[PFUser currentUser] objectForKey:ParseUserInventoryKey] count]];
                     [self queryClosestGem];
+                    NSLog(@"wtf2");
                     NewMetadataViewController *vc = [[NewMetadataViewController alloc] initWithMetadata:metadata];
                     [self presentViewController:vc animated:YES completion:NULL];
                 });
@@ -345,6 +395,9 @@
             self.closestGem = result;
             
             if (self.closestGem){
+                
+                NSLog(@"%@",self.closestGem);
+                
                 PFGeoPoint *geopoint = [self.closestGem objectForKey:ParseGemCurrentLocationKey];
                 
                 PFGeoPoint *currentLoc = [PFGeoPoint geoPointWithLocation:self.currentLocation];

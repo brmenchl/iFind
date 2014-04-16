@@ -113,6 +113,7 @@ static CGFloat const HEADER_HEIGHT = 40;
 }
 
 - (void) handleTap:(id)sender {
+    NSLog(@"didtap");
     self.opened = !self.opened;
     self.scrollView.contentOffset = CGPointZero;
     if(self.opened) self.drawer.hidden = NO;
