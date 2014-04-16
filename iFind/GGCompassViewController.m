@@ -186,6 +186,10 @@
     
 }
 
+- (void) alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    [self dismissViewControllerAnimated:YES completion:NULL];
+}
+
 - (IBAction)didTapPickUpButton:(id)sender {
     @synchronized([PFUser currentUser]) {
         if(![CLLocationManager locationServicesEnabled]) {
@@ -235,6 +239,7 @@
                     [self queryClosestGem];
                     NSLog(@"wtf2");
                     NewMetadataViewController *vc = [[NewMetadataViewController alloc] initWithMetadata:metadata];
+                    self.HARDCODEACTIVATED = NO;
                     [self presentViewController:vc animated:YES completion:NULL];
                 });
             }

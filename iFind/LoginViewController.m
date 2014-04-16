@@ -208,4 +208,8 @@
 
     temp.window.rootViewController = [temp.sb instantiateViewControllerWithIdentifier:@"SignUp"];
 }
+
+- (IBAction)didTapView:(id)sender {
+    [self.view endEditing:YES];
+}
 @end
