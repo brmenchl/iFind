@@ -185,7 +185,6 @@ static CGFloat const BUTTON_SIZE = 30 + ROW_MARGINS;
     [self.view endEditing:YES];
 }
 
-
 - (IBAction)dropGemPress:(id)sender {
     NSMutableArray *dataForGem = [[NSMutableArray alloc] init];
     [self.view endEditing:YES];

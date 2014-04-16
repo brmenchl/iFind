@@ -29,6 +29,10 @@
 @property (nonatomic, assign) id <AccountHandlerDelegate> delegate;
 
 - (IBAction)didPressLoginWithKey:(id)sender;
+
+//Handles tap gestures to lower the keyboard
+- (IBAction)tapAwayGesture:(id)sender;
+
 - (IBAction)createLockerPress:(id)sender;
 - (IBAction)didPressSkip:(id)sender;
 - (IBAction)didPressFb:(id)sender;

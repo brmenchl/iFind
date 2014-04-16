@@ -129,6 +129,11 @@
     temp.window.rootViewController = temp.loginVC;
 }
 
+// Hacky way to close keyboard upon tapping the view
+- (IBAction)tapAwayGesture:(id)sender {
+  [self.view endEditing:YES];
+}
+
 - (IBAction)createLockerPress:(id)sender {
     
     UIAlertView *alertView = nil;

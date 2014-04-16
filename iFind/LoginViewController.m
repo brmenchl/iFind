@@ -76,6 +76,11 @@
 }
 */
 
+// Hacky way to close keyboard upon tapping the view
+- (IBAction)tapAwayGesture:(id)sender {
+  [self.view endEditing:YES];
+}
+
 - (IBAction)didPressLogin:(id)sender {
     
     NSLog(@"didPressLogin");
