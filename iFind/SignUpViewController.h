@@ -28,6 +28,8 @@
 //Account handler delegate property to handle successful log in
 @property (nonatomic, assign) id <AccountHandlerDelegate> delegate;
 
+//Handles tap gestures to lower the keyboard
+- (IBAction)tapAwayGesture:(id)sender;
 
 - (IBAction)createLockerPress:(id)sender;
 - (IBAction)didPressSkip:(id)sender;

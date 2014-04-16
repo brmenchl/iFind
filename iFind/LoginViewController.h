@@ -17,6 +17,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *facebookButton;
 @property (weak, nonatomic) IBOutlet UIButton *createKeyButton;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+//Handles tap gestures to lower the keyboard
+- (IBAction)tapAwayGesture:(id)sender;
+
 - (IBAction)didPressLogin:(id)sender;
 - (IBAction)fbLoginPress:(id)sender;
 

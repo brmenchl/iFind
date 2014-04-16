@@ -611,6 +611,9 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="MQV-ni-mvq" appends="YES" id="IAw-pq-b8X"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="8sM-dG-fqs"/>
                     <connections>
@@ -625,6 +628,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="upJ-6T-rF5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="MQV-ni-mvq">
+                    <connections>
+                        <action selector="tapAwayGesture:" destination="OKl-wy-Mmw" id="w9r-3d-nKh"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="531" y="-1463"/>
         </scene>
@@ -769,6 +777,9 @@
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="Ho4-8Q-Hhl" appends="YES" id="F6J-xd-8tX"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="kaJ-gJ-t8k"/>
                     <connections>
@@ -782,6 +793,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wMf-sV-PpJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Ho4-8Q-Hhl">
+                    <connections>
+                        <action selector="tapAwayGesture:" destination="AUF-ZB-hfo" id="2gA-22-9m1"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="528" y="-2333"/>
         </scene>
