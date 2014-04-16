@@ -27,7 +27,8 @@
         self.TerribleCodingPracticeHeader.backgroundColor = [UIColor colorWithRed:0.77 green:0.65 blue:0.32 alpha:1];
         UIGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
         [self.TerribleCodingPracticeHeader addGestureRecognizer:recognizer];
-        UILabel *label = [[UILabel alloc] initWithFrame:self.TerribleCodingPracticeHeader.frame];
+        
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 20, self.TerribleCodingPracticeHeader.frame.size.width, self.TerribleCodingPracticeHeader.frame.size.height-20)];
         label.text = @"Close";
         label.textAlignment = NSTextAlignmentCenter;
         label.font = [UIFont fontWithName:@"Futura" size:18];

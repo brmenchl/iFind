@@ -119,6 +119,7 @@ static CGFloat const BUTTON_SIZE = 30 + ROW_MARGINS;
         [self.addContentView.scrollView setContentOffset:CGPointMake(0, self.addContentButton.frame.origin.y - (self.addContentView.bounds.size.height - [self expandedButtonSpace])) animated:YES];
     }
     [self.radialMenu buttonsWillAnimateFromButton:sender withFrame:[sender convertRect:sender.bounds toView:self.view] inView:self.view];
+    [self.view endEditing:YES];
 }
 
 - (NSInteger) expandedButtonSpace {

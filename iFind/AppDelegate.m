@@ -32,6 +32,9 @@
                   clientKey:@"4Cg6pBg5EUV3IAKmrpKsTLUoHMBbxoysNvL81q1x"];
     [PFFacebookUtils initializeFacebook];
 
+    self.currentUserQueue = dispatch_queue_create([CurrentUserQueueLabel cStringUsingEncoding:NSUTF8StringEncoding], NULL);
+    
+    
     //Location Services.
     
     self.locationManager = [[LocationManager alloc] init];
@@ -94,7 +97,7 @@
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"HasLaunchedOnce"];
         [[NSUserDefaults standardUserDefaults] synchronize];
         
-        
+        NSLog(@"is loading tutorial");
         IntroPageViewController * tutorial = [[IntroPageViewController alloc] init];
 
         self.window.rootViewController = tutorial;
@@ -106,7 +109,7 @@
     
     
     
-    self.currentUserQueue = dispatch_queue_create([CurrentUserQueueLabel cStringUsingEncoding:NSUTF8StringEncoding], NULL);
+    
     [self.window makeKeyAndVisible];
     return YES;
 }
@@ -163,6 +166,7 @@
 - (void) viewController:(UIViewController *)controller didUserLogoutSuccessfully:(BOOL)success{
     if(success) {
         //Reset bounce menu to gem finder screen.
+        [PFQuery clearAllCachedResults];
         [self.bounceMenuController setSelectedIndex:0];
         self.window.rootViewController = self.loginVC;
     }
@@ -188,6 +192,7 @@
             gem[ParseGemCurrentLocationKey] = [NSNull null];
             gem[ParseGemMetadataReferenceKey] = [NSNull null];
             gem[ParseGemLastOwnerKey] = [PFUser currentUser];
+            gem[ParseGemIsHeldKey] = [NSNumber numberWithBool:YES];
             [inventory addObject:gem];
             [[PFUser currentUser] addObject:gem forKey:ParseUserInventoryKey];
         }
