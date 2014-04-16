@@ -159,7 +159,7 @@
             if(!pickUpGemError) {
                 //query for nearby gems
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    self.inventoryLabel.text = [NSString stringWithFormat:@"%i",[[[PFUser currentUser] objectForKey:ParseUserInventoryKey] count]];
+                    self.inventoryLabel.text = [NSString stringWithFormat:@"%lu",(unsigned long)[[[PFUser currentUser] objectForKey:ParseUserInventoryKey] count]];
                     [self queryClosestGem];
                     NewMetadataViewController *vc = [[NewMetadataViewController alloc] initWithMetadata:metadata];
                     [self presentViewController:vc animated:YES completion:NULL];
@@ -240,9 +240,9 @@
                     //Query for new nearby gems
                     dispatch_async(dispatch_get_main_queue(), ^{
                         self.inventoryLabel.text = [NSString stringWithFormat:@"%i",[[[PFUser currentUser] objectForKey:ParseUserInventoryKey] count]];
-                        [self queryClosestGem];
                         UIAlertView *didDropAlertView = [[UIAlertView alloc] initWithTitle:nil message:@"Geode has been dropped\nfor a stranger to enjoy" delegate:self cancelButtonTitle:@"Cool" otherButtonTitles:nil, nil];
                         [didDropAlertView show];
+                        [self queryClosestGem];
                     });
                 }
                 else {

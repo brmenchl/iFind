@@ -192,7 +192,7 @@
             [[PFUser currentUser] addObject:gem forKey:ParseUserInventoryKey];
         }
         dispatch_async(self.currentUserQueue, ^{
-            [PFObject saveAll:inventory];
+//            [PFObject saveAll:inventory];
             [[PFUser currentUser] save];
             NSLog(@"save complete");
         });
